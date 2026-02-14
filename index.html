@@ -82,9 +82,31 @@
     }
 
     .logo-mark img {
-      height: 48px;
+      height: 42px;
       width: auto;
       filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    }
+
+    /* Large hero image */
+    .hero-image-container {
+      text-align: center;
+      padding: 60px 80px 0;
+      max-width: 1600px;
+      margin: 0 auto;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .hero-image {
+      max-width: 90%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6));
+      transition: transform 0.6s ease;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02);
     }
 
     .brand-name {
@@ -118,7 +140,7 @@
 
     /* Hero Section */
     .hero {
-      padding: 120px 80px 100px;
+      padding: 80px 80px 100px;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 100px;
@@ -449,6 +471,14 @@
         Request Access
       </button>
     </header>
+
+    <div class="hero-image-container">
+      <img 
+        src="OpenClaw1.jpg" 
+        alt="ClawSolved – Powered by OpenClaw™" 
+        class="hero-image"
+      />
+    </div>
 
     <section class="hero">
       <div class="hero-content">
