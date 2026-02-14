@@ -132,31 +132,60 @@
     /* Main Content Area */
     .main-content {
       flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr 1fr;
-      gap: 40px;
-      padding: 40px 60px;
-      align-items: center;
+      position: relative;
+      padding: 30px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       overflow: hidden;
+    }
+
+    /* Top Row - Image centered */
+    .image-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex: 0 0 auto;
+      margin-bottom: 20px;
+    }
+
+    .hero-image {
+      max-width: 85%;
+      height: auto;
+      filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6));
+      transition: transform 0.6s ease;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Bottom Row - Left and Right Content */
+    .content-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      flex: 1;
+      min-height: 0;
     }
 
     /* Left Panel */
     .left-panel {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      height: 100%;
+      justify-content: flex-start;
     }
 
     .eyebrow {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 20px;
-      padding: 6px 14px;
+      margin-bottom: 16px;
+      padding: 6px 12px;
       border: 1px solid rgba(212, 175, 55, 0.3);
       border-radius: 4px;
       background: rgba(212, 175, 55, 0.05);
@@ -165,10 +194,10 @@
 
     .tagline {
       font-family: var(--display);
-      font-size: clamp(2rem, 2.5vw, 2.8rem);
+      font-size: clamp(1.8rem, 2vw, 2.2rem);
       font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 20px;
+      line-height: 1.15;
+      margin-bottom: 16px;
       letter-spacing: -1px;
       color: #ffffff;
     }
@@ -178,19 +207,19 @@
     }
 
     .description {
-      font-size: 1.05rem;
-      line-height: 1.65;
+      font-size: 0.95rem;
+      line-height: 1.6;
       color: var(--silver);
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
 
     .cta-button {
-      padding: 16px 36px;
+      padding: 14px 32px;
       background: linear-gradient(135deg, var(--accent) 0%, #0550ae 100%);
       border: none;
       color: white;
       font-family: var(--display);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       letter-spacing: 0.3px;
       border-radius: 8px;
@@ -204,34 +233,11 @@
       box-shadow: 0 8px 24px rgba(9, 105, 218, 0.4);
     }
 
-    /* Center Image */
-    .center-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-
-    .hero-image {
-      max-width: 100%;
-      max-height: 70vh;
-      width: auto;
-      height: auto;
-      filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6));
-      transition: transform 0.6s ease;
-    }
-
-    .hero-image:hover {
-      transform: scale(1.03);
-    }
-
     /* Right Panel - Content Views */
     .right-panel {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      height: 100%;
-      position: relative;
+      justify-content: flex-start;
     }
 
     .content-view {
@@ -250,31 +256,31 @@
 
     .content-view h2 {
       font-family: var(--display);
-      font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+      font-size: clamp(1.5rem, 1.8vw, 2rem);
       font-weight: 700;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       color: #ffffff;
       letter-spacing: -0.8px;
     }
 
     .content-view p {
-      font-size: 1.05rem;
-      line-height: 1.65;
+      font-size: 0.95rem;
+      line-height: 1.6;
       color: var(--silver);
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .feature-list {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 14px;
     }
 
     .feature-item {
       background: linear-gradient(135deg, rgba(28, 33, 40, 0.6) 0%, rgba(45, 53, 64, 0.4) 100%);
       border: 1px solid rgba(139, 148, 158, 0.15);
       border-radius: 10px;
-      padding: 20px;
+      padding: 16px;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
@@ -286,16 +292,16 @@
 
     .feature-item h3 {
       font-family: var(--display);
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: var(--cream);
       letter-spacing: -0.3px;
     }
 
     .feature-item p {
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.5;
       color: var(--silver);
       margin-bottom: 0;
     }
@@ -303,17 +309,17 @@
     .value-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 18px;
     }
 
     .value-item {
       display: flex;
-      gap: 16px;
+      gap: 14px;
     }
 
     .value-number {
       font-family: var(--display);
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--gold);
       flex-shrink: 0;
@@ -322,16 +328,16 @@
 
     .value-content h4 {
       font-family: var(--display);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: var(--cream);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .value-content p {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       margin-bottom: 0;
     }
 
@@ -340,34 +346,34 @@
       background: linear-gradient(135deg, rgba(28, 33, 40, 0.7) 0%, rgba(45, 53, 64, 0.5) 100%);
       border: 1px solid rgba(139, 148, 158, 0.2);
       border-radius: 12px;
-      padding: 32px;
+      padding: 24px;
       backdrop-filter: blur(10px);
     }
 
     .email-form-container h3 {
       font-family: var(--display);
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       color: #ffffff;
       letter-spacing: -0.5px;
     }
 
     .email-form-container .form-note {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--silver);
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
 
     .email-capture {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     input[type="email"] {
-      padding: 16px 20px;
-      font-size: 1rem;
+      padding: 14px 18px;
+      font-size: 0.95rem;
       font-family: var(--sans);
       background: rgba(45, 53, 64, 0.5);
       border: 1px solid rgba(139, 148, 158, 0.25);
@@ -388,12 +394,12 @@
     }
 
     .submit-btn {
-      padding: 16px 32px;
+      padding: 14px 28px;
       background: linear-gradient(135deg, var(--accent) 0%, #0550ae 100%);
       border: none;
       color: white;
       font-family: var(--display);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       letter-spacing: 0.3px;
       border-radius: 8px;
@@ -407,56 +413,36 @@
     }
 
     .trust-note {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: rgba(139, 148, 158, 0.8);
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     /* Responsive */
     @media (max-width: 1400px) {
-      .main-content {
+      .hero-image {
+        max-width: 80%;
+      }
+
+      .content-row {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .content-row {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr auto;
-        gap: 20px;
-        padding: 30px 40px;
-      }
-
-      .left-panel, .right-panel {
-        height: auto;
-      }
-
-      .center-image {
-        order: -1;
+        gap: 30px;
       }
 
       .hero-image {
-        max-height: 40vh;
-      }
-
-      header {
-        padding: 20px 30px;
-      }
-
-      nav {
-        flex-wrap: wrap;
-      }
-
-      .nav-btn {
-        font-size: 0.8rem;
-        padding: 8px 14px;
+        max-width: 75%;
       }
     }
 
     @media (max-width: 768px) {
-      .tagline {
-        font-size: 1.8rem;
-      }
-
-      .main-content {
-        padding: 20px;
-      }
-
       header {
+        padding: 20px 30px;
         flex-direction: column;
         gap: 16px;
         align-items: flex-start;
@@ -465,6 +451,32 @@
       nav {
         width: 100%;
         justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .nav-btn {
+        font-size: 0.8rem;
+        padding: 8px 14px;
+      }
+
+      .main-content {
+        padding: 20px;
+      }
+
+      .hero-image {
+        max-width: 95%;
+      }
+
+      .tagline {
+        font-size: 1.6rem;
+      }
+
+      .image-row {
+        margin-bottom: 15px;
+      }
+
+      .content-row {
+        gap: 20px;
       }
     }
   </style>
@@ -485,20 +497,8 @@
     </header>
 
     <div class="main-content">
-      <!-- Left Panel -->
-      <div class="left-panel">
-        <span class="eyebrow">Powered by OpenClaw™</span>
-        <h1 class="tagline">
-          AI infrastructure that <span class="emphasis">doesn't break</span>
-        </h1>
-        <p class="description">
-          While others scramble with model changes and API failures, you build on resilience-first architecture that adapts and endures.
-        </p>
-        <button class="cta-button" onclick="switchView('access')">Request Early Access</button>
-      </div>
-
-      <!-- Center Image -->
-      <div class="center-image">
+      <!-- Top Row - Large Image -->
+      <div class="image-row">
         <img 
           src="OpenClaw1.jpg" 
           alt="ClawSolved – Powered by OpenClaw™" 
@@ -506,79 +506,94 @@
         />
       </div>
 
-      <!-- Right Panel - Switchable Content -->
-      <div class="right-panel">
-        <!-- Overview View -->
-        <div class="content-view active" data-content="overview">
-          <h2>Enterprise AI That Endures</h2>
-          <p>Your competitors are fighting fires. Model deprecations. API changes. Integration failures. <strong style="color: var(--cream);">You're building on quicksand.</strong></p>
-          <p>ClawSolved delivers resilience-first architecture engineered for non-technical leaders who demand stability in volatile AI landscapes.</p>
-          <p style="margin-top: 24px; color: var(--gold); font-weight: 600;">OpenClaw™ resilience architecture ensures your systems survive disruption, evolution, and uncertainty.</p>
+      <!-- Bottom Row - Left and Right Content -->
+      <div class="content-row">
+        <!-- Left Panel -->
+        <div class="left-panel">
+          <span class="eyebrow">Powered by OpenClaw™</span>
+          <h1 class="tagline">
+            AI infrastructure that <span class="emphasis">doesn't break</span>
+          </h1>
+          <p class="description">
+            While others scramble with model changes and API failures, you build on resilience-first architecture that adapts and endures.
+          </p>
+          <button class="cta-button" onclick="switchView('access')">Request Early Access</button>
         </div>
 
-        <!-- Features View -->
-        <div class="content-view" data-content="features">
-          <h2>What We Deliver</h2>
-          <div class="feature-list">
-            <div class="feature-item">
-              <h3>🛡️ Resilience Engineering</h3>
-              <p>Purpose-built systems that anticipate failure modes before they happen. Graceful degradation, not catastrophic collapse.</p>
-            </div>
-            <div class="feature-item">
-              <h3>⚙️ Zero-Meeting Delivery</h3>
-              <p>Professional asynchronous execution. Strategic diagnostics, blueprints, and deployment on your timeline.</p>
-            </div>
-            <div class="feature-item">
-              <h3>📊 Built for Leaders</h3>
-              <p>Stability metrics that matter. Clear insights into what's fragile, what's fortified, what's next.</p>
-            </div>
+        <!-- Right Panel - Switchable Content -->
+        <div class="right-panel">
+          <!-- Overview View -->
+          <div class="content-view active" data-content="overview">
+            <h2>Enterprise AI That Endures</h2>
+            <p>Your competitors are fighting fires. Model deprecations. API changes. Integration failures. <strong style="color: var(--cream);">You're building on quicksand.</strong></p>
+            <p>ClawSolved delivers resilience-first architecture engineered for non-technical leaders who demand stability in volatile AI landscapes.</p>
+            <p style="margin-top: 20px; color: var(--gold); font-weight: 600;">OpenClaw™ resilience architecture ensures your systems survive disruption, evolution, and uncertainty.</p>
           </div>
-        </div>
 
-        <!-- Resilience View -->
-        <div class="content-view" data-content="resilience">
-          <h2>The OpenClaw™ Difference</h2>
-          <div class="value-list">
-            <div class="value-item">
-              <div class="value-number">01</div>
-              <div class="value-content">
-                <h4>Model Agnostic</h4>
-                <p>Survive vendor lock-in, deprecations, and provider shifts. Build once, adapt infinitely.</p>
+          <!-- Features View -->
+          <div class="content-view" data-content="features">
+            <h2>What We Deliver</h2>
+            <div class="feature-list">
+              <div class="feature-item">
+                <h3>🛡️ Resilience Engineering</h3>
+                <p>Purpose-built systems that anticipate failure modes before they happen. Graceful degradation, not catastrophic collapse.</p>
               </div>
-            </div>
-            <div class="value-item">
-              <div class="value-number">02</div>
-              <div class="value-content">
-                <h4>Failure Tolerant</h4>
-                <p>Graceful degradation ensures partial functionality instead of total outage.</p>
+              <div class="feature-item">
+                <h3>⚙️ Zero-Meeting Delivery</h3>
+                <p>Professional asynchronous execution. Strategic diagnostics, blueprints, and deployment on your timeline.</p>
               </div>
-            </div>
-            <div class="value-item">
-              <div class="value-number">03</div>
-              <div class="value-content">
-                <h4>Evolution Ready</h4>
-                <p>Architecture designed for change. New capabilities extend what exists, not rewrite it.</p>
+              <div class="feature-item">
+                <h3>📊 Built for Leaders</h3>
+                <p>Stability metrics that matter. Clear insights into what's fragile, what's fortified, what's next.</p>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Early Access View -->
-        <div class="content-view" data-content="access">
-          <div class="email-form-container">
-            <h3>Secure Early Access</h3>
-            <p class="form-note">Join the founding partner program. Limited availability for stability-first organizations.</p>
-            <form class="email-capture" action="#" method="post">
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="Your work email" 
-                required 
-                aria-label="Email address"
-              />
-              <button type="submit" class="submit-btn">Get Priority Access</button>
-            </form>
-            <p class="trust-note">Exclusive OpenClaw™ diagnostics · Custom resilience blueprints · No meetings required</p>
+          <!-- Resilience View -->
+          <div class="content-view" data-content="resilience">
+            <h2>The OpenClaw™ Difference</h2>
+            <div class="value-list">
+              <div class="value-item">
+                <div class="value-number">01</div>
+                <div class="value-content">
+                  <h4>Model Agnostic</h4>
+                  <p>Survive vendor lock-in, deprecations, and provider shifts. Build once, adapt infinitely.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="value-number">02</div>
+                <div class="value-content">
+                  <h4>Failure Tolerant</h4>
+                  <p>Graceful degradation ensures partial functionality instead of total outage.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="value-number">03</div>
+                <div class="value-content">
+                  <h4>Evolution Ready</h4>
+                  <p>Architecture designed for change. New capabilities extend what exists, not rewrite it.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Early Access View -->
+          <div class="content-view" data-content="access">
+            <div class="email-form-container">
+              <h3>Secure Early Access</h3>
+              <p class="form-note">Join the founding partner program. Limited availability for stability-first organizations.</p>
+              <form class="email-capture" action="#" method="post">
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder="Your work email" 
+                  required 
+                  aria-label="Email address"
+                />
+                <button type="submit" class="submit-btn">Get Priority Access</button>
+              </form>
+              <p class="trust-note">Exclusive OpenClaw™ diagnostics · Custom resilience blueprints · No meetings required</p>
+            </div>
           </div>
         </div>
       </div>
