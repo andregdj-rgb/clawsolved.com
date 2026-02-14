@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ClawSolved – AI Systems That Don't Break</title>
-  <meta name="description" content="OpenClaw™ builds resilient AI infrastructure that survives model changes, API failures, and provider outages. Professional async delivery for teams that ship."/>
+  <title>ClawSolved – AI Systems That Don't Break When Vendors Change</title>
+  <meta name="description" content="Stop emergency fixes when OpenAI updates. OpenClaw™ hardens your AI infrastructure so vendor changes become config updates, not production fires. Fixed-scope delivery. 4-week timeline. Zero-outage guarantee."/>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,7 +169,7 @@
     .hero-image {
       width: 100vw;
       height: 100vh;
-      object-fit: contain;          /* Ensures entire claw is visible – no cutoff */
+      object-fit: contain;
       object-position: center;
       filter: brightness(0.94) contrast(1.06) drop-shadow(0 30px 80px rgba(0,0,0,0.7));
       transition: transform 0.8s ease;
@@ -185,7 +185,7 @@
       right: 0;
       top: 0;
       bottom: 0;
-      width: 500px;
+      width: 520px;
       max-width: 44vw;
       background: linear-gradient(to left, rgba(10,13,18,0.97) 0%, rgba(10,13,18,0.90) 70%, transparent 100%);
       backdrop-filter: blur(14px);
@@ -238,105 +238,249 @@
 
     .content-view h2 {
       font-family: var(--display);
-      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-size: clamp(1.95rem, 3.2vw, 2.65rem);
       font-weight: 800;
-      line-height: 1.12;
+      line-height: 1.15;
       letter-spacing: -0.9px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
+    }
+
+    .content-view h3 {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 14px;
+      margin-top: 24px;
     }
 
     .content-view p {
-      font-size: 1.06rem;
-      line-height: 1.72;
+      font-size: 1.04rem;
+      line-height: 1.7;
       color: var(--silver);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .feature-list, .value-list {
+    .content-view strong {
+      color: var(--cream);
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      background: rgba(196,160,71,0.08);
+      border: 1px solid rgba(196,160,71,0.26);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .problem-list {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 14px;
+      margin: 20px 0;
     }
 
-    .feature-item, .value-item {
-      background: rgba(22,27,34,0.78);
-      border: 1px solid rgba(139,148,165,0.14);
-      border-radius: 12px;
-      padding: 22px;
-      backdrop-filter: blur(12px);
-      transition: all 0.3s ease;
-    }
-
-    .feature-item:hover, .value-item:hover {
-      border-color: rgba(196,160,71,0.32);
-      transform: translateX(5px);
-    }
-
-    .value-item {
-      gap: 20px;
+    .problem-item {
+      display: flex;
+      gap: 12px;
       align-items: flex-start;
     }
 
-    .value-number {
-      font-family: var(--display);
-      font-size: 2.4rem;
-      font-weight: 800;
-      color: var(--gold);
+    .problem-item::before {
+      content: '×';
+      color: #ff6b6b;
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
       line-height: 1;
-      opacity: 0.92;
+      margin-top: 2px;
     }
 
-    .value-content h4 {
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 24px 0;
+    }
+
+    .timeline-item {
+      background: rgba(22,27,34,0.78);
+      border: 1px solid rgba(139,148,165,0.14);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .timeline-item h4 {
       font-family: var(--display);
-      font-size: 1.12rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    .pricing-tiers {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .pricing-tier {
+      background: rgba(22,27,34,0.82);
+      border: 1px solid rgba(139,148,165,0.16);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-tier:hover {
+      border-color: rgba(196,160,71,0.36);
+      transform: translateX(4px);
+    }
+
+    .pricing-tier.featured {
+      border: 2px solid var(--gold);
+      background: rgba(22,27,34,0.92);
+    }
+
+    .tier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .tier-name {
+      font-family: var(--display);
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--cream);
-      margin-bottom: 8px;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
+    }
+
+    .tier-price {
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .tier-description {
+      font-size: 0.95rem;
+      color: var(--silver);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .tier-includes {
+      font-size: 0.88rem;
+      color: rgba(195,212,255,0.9);
+      line-height: 1.6;
+    }
+
+    .benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .benefit-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+
+    .benefit-item::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .guarantee-box {
+      background: rgba(43,140,255,0.08);
+      border: 1px solid rgba(43,140,255,0.28);
+      border-radius: 10px;
+      padding: 18px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .guarantee-box p {
+      margin: 0;
+      color: var(--cream);
+      font-weight: 600;
+      font-size: 0.98rem;
     }
 
     .email-form-container {
       background: rgba(22,27,34,0.82);
       border: 1px solid rgba(139,148,165,0.16);
       border-radius: 14px;
-      padding: 36px;
+      padding: 32px;
       backdrop-filter: blur(14px);
+      margin-top: 12px;
     }
 
     .email-form-container h3 {
       font-family: var(--display);
-      font-size: 1.85rem;
+      font-size: 1.7rem;
       font-weight: 800;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
+      margin-top: 0;
     }
 
-    .form-note, .scarcity {
-      font-size: 0.98rem;
+    .form-note {
+      font-size: 0.96rem;
       color: var(--silver);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+      line-height: 1.6;
     }
 
     .scarcity {
+      font-size: 0.98rem;
       color: var(--gold);
       font-weight: 600;
+      margin-bottom: 18px;
+      text-align: center;
+      padding: 8px;
+      background: rgba(196,160,71,0.08);
+      border-radius: 6px;
     }
 
     .email-capture {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     input[type="email"] {
-      padding: 18px 24px;
-      font-size: 1.02rem;
+      padding: 16px 20px;
+      font-size: 1rem;
       background: rgba(38,45,56,0.65);
       border: 1px solid rgba(139,148,165,0.24);
       border-radius: 10px;
       color: var(--cream);
       outline: none;
       transition: all 0.3s;
+      font-family: var(--sans);
     }
 
     input:focus {
@@ -345,29 +489,30 @@
     }
 
     .submit-btn {
-      padding: 18px 44px;
+      padding: 16px 40px;
       background: linear-gradient(135deg, var(--accent), var(--accent-hover));
       border: none;
       border-radius: 10px;
       color: white;
       font-family: var(--display);
-      font-size: 1.04rem;
+      font-size: 1.02rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.35s;
-      width: fit-content;
+      width: 100%;
     }
 
     .submit-btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       box-shadow: 0 12px 32px rgba(43,140,255,0.32);
     }
 
     .trust-note {
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       color: rgba(195,212,255,0.82);
-      margin-top: 16px;
-      line-height: 1.55;
+      margin-top: 14px;
+      line-height: 1.5;
+      text-align: center;
     }
 
     footer {
@@ -380,8 +525,8 @@
 
     @media (max-width: 1400px) {
       .content-overlay {
-        width: 460px;
-        max-width: 40vw;
+        width: 480px;
+        max-width: 42vw;
         padding: 50px 45px 50px 55px;
       }
     }
@@ -393,7 +538,7 @@
         background: linear-gradient(to top, rgba(10,13,18,0.98) 0%, rgba(10,13,18,0.92) 70%, transparent 100%);
         top: auto;
         bottom: 0;
-        height: 62vh;
+        height: 65vh;
         padding: 40px 32px;
       }
     }
@@ -408,10 +553,15 @@
       nav {
         width: 100%;
         justify-content: center;
+        flex-wrap: wrap;
       }
 
       .hero-image {
         object-fit: contain;
+      }
+
+      .content-view h2 {
+        font-size: 1.75rem;
       }
     }
 
@@ -434,8 +584,9 @@
 
       <nav>
         <button class="nav-btn active" data-view="overview">Overview</button>
-        <button class="nav-btn" data-view="features">How It Works</button>
-        <button class="nav-btn" data-view="resilience">Why OpenClaw</button>
+        <button class="nav-btn" data-view="problem">The Problem</button>
+        <button class="nav-btn" data-view="process">How It Works</button>
+        <button class="nav-btn" data-view="pricing">Pricing</button>
         <button class="nav-btn" data-view="access">Get Started</button>
       </nav>
     </header>
@@ -453,71 +604,194 @@
         <!-- Overview -->
         <div class="content-view active" data-content="overview">
           <span class="eyebrow">Powered by OpenClaw™</span>
-          <h2>AI systems that survive vendor updates — not react to them</h2>
-          <p>Model deprecations. Rate limits. API rewrites. Provider outages.</p>
-          <p>Most implementations are one change away from failure.</p>
-          <p><strong style="color: var(--cream);">OpenClaw™ builds resilience into the architecture.</strong> Your applications keep running when dependencies shift.</p>
-          <p style="margin-top: 24px; color: var(--gold); font-weight: 600;">
-            Async delivery. No meetings. Built for teams that ship.
+          <h2>Your AI broke when the vendor updated. Again.</h2>
+          
+          <p>You're not a developer. You hired someone to build your AI system. It worked… until OpenAI deprecated the model. Or rate limits hit during peak hours. Or costs spiraled out of control.</p>
+
+          <p><strong>Now you're paying emergency rates for fixes that should never have been necessary.</strong></p>
+
+          <div class="highlight-box">
+            <p>OpenClaw™ hardens AI infrastructure so vendor changes become config updates — not production fires.</p>
+          </div>
+
+          <p>We rebuild your AI systems with resilience baked in. When providers update, your system adapts automatically. When APIs go down, fallbacks activate. When costs spike, circuit breakers engage.</p>
+
+          <div class="benefit-list">
+            <div class="benefit-item">Fixed-scope projects: $35k–$75k (no hourly surprises)</div>
+            <div class="benefit-item">4-week async delivery (no meetings, just results)</div>
+            <div class="benefit-item">Zero unplanned outages in first 90 days — guaranteed</div>
+          </div>
+
+          <p style="margin-top: 24px; color: var(--gold); font-weight: 600; font-size: 1.02rem;">
+            Built for founders and CTOs who want AI that just works — regardless of what vendors do.
           </p>
         </div>
 
-        <!-- How It Works -->
-        <div class="content-view" data-content="features">
+        <!-- The Problem -->
+        <div class="content-view" data-content="problem">
           <span class="eyebrow">Powered by OpenClaw™</span>
-          <h2>How It Works</h2>
-          <div class="feature-list">
-            <div class="feature-item">
-              <h3>Resilience by Design</h3>
-              <p>Anticipates failure modes. Automatic fallbacks and graceful degradation — slowdowns, never crashes.</p>
+          <h2>Most AI Implementations Are Built to Break</h2>
+
+          <p>Your developer built a system that works today. But AI infrastructure is different from traditional software — models update, APIs change, costs are unpredictable.</p>
+
+          <h3>What Usually Breaks</h3>
+          
+          <div class="problem-list">
+            <div class="problem-item">
+              <div><strong>Model deprecations.</strong> Your system calls GPT-3.5-turbo. OpenAI sunsets it. Your app stops working overnight.</div>
             </div>
-            <div class="feature-item">
-              <h3>Async Professional Delivery</h3>
-              <p>Send requirements → receive hardened implementation. No calls, no status updates, just results on your timeline.</p>
+            <div class="problem-item">
+              <div><strong>Rate limits.</strong> You hit peak traffic. Requests start failing. Customers see error messages.</div>
             </div>
-            <div class="feature-item">
-              <h3>Executive-Grade Visibility</h3>
-              <p>Clear metrics on fragility, uptime, and risk — no engineering jargon required.</p>
+            <div class="problem-item">
+              <div><strong>Cost explosions.</strong> Token usage spikes. Your $500/month bill becomes $5,000. No warning, no control.</div>
+            </div>
+            <div class="problem-item">
+              <div><strong>Prompt brittleness.</strong> The model updates. Your carefully tuned prompts now produce garbage.</div>
+            </div>
+            <div class="problem-item">
+              <div><strong>Vendor lock-in.</strong> You want to switch from OpenAI to Anthropic? Complete rewrite required.</div>
             </div>
           </div>
+
+          <div class="highlight-box">
+            <p>These aren't edge cases. They're inevitable outcomes of fragile architecture.</p>
+          </div>
+
+          <h3>The Real Cost</h3>
+          
+          <p>It's not just the $5k–$15k/month you're spending on emergency fixes. It's the opportunity cost of projects on hold. The customer trust lost from unreliable systems. The 3am panic when everything breaks and nobody knows why.</p>
+
+          <p><strong>You need infrastructure that survives vendor chaos — not reacts to it.</strong></p>
         </div>
 
-        <!-- Why OpenClaw -->
-        <div class="content-view" data-content="resilience">
+        <!-- How It Works -->
+        <div class="content-view" data-content="process">
           <span class="eyebrow">Powered by OpenClaw™</span>
-          <h2>Why OpenClaw Works</h2>
-          <div class="value-list">
-            <div class="value-item">
-              <div class="value-number">01</div>
-              <div class="value-content">
-                <h4>Provider Agnostic</h4>
-                <p>Switch models or vendors with a config change — no core logic rewrite.</p>
+          <h2>4 Weeks to Resilient AI Infrastructure</h2>
+
+          <p>We deliver hardened implementations through a fixed-scope, async process. No meetings. No status updates. Just architecture that won't break.</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Week 1: Fragility Assessment</h4>
+              <p>We audit your current implementation. Map dependencies, identify breaking points, calculate your fragility score (0–100). You receive a detailed architecture diagram and risk matrix.</p>
+            </div>
+
+            <div class="timeline-item">
+              <h4>Weeks 2-3: OpenClaw™ Hardening</h4>
+              <p>We refactor to the OpenClaw™ framework. Provider abstraction layer (switch vendors in one config change). Fallback chains (rate limits become slowdowns, not crashes). Cost guardrails (predictable spending). Prompt versioning (updates don't break production).</p>
+            </div>
+
+            <div class="timeline-item">
+              <h4>Week 4: Testing & Handoff</h4>
+              <p>We run chaos tests — simulating vendor failures, rate limits, model changes. You get a complete runbook, monitoring dashboard, and 30-minute walkthrough Loom. Plus quarterly resilience reviews for the first year.</p>
+            </div>
+          </div>
+
+          <div class="guarantee-box">
+            <p>Zero unplanned outages in first 90 days, or full refund. If your system breaks due to a vendor change in Year 1, we fix it free.</p>
+          </div>
+
+          <h3>What You Can Switch With One Config Change</h3>
+          
+          <div class="benefit-list">
+            <div class="benefit-item">OpenAI → Anthropic → Google → Cohere (or any combination)</div>
+            <div class="benefit-item">GPT-4 → Claude Sonnet → Gemini (seamless fallback chains)</div>
+            <div class="benefit-item">Primary provider down? Secondary activates automatically</div>
+          </div>
+
+          <p style="margin-top: 20px;"><strong>Your business logic stays unchanged. Only the infrastructure adapts.</strong></p>
+        </div>
+
+        <!-- Pricing -->
+        <div class="content-view" data-content="pricing">
+          <span class="eyebrow">Powered by OpenClaw™</span>
+          <h2>Founding Partner Pricing</h2>
+
+          <p>Fixed-scope engagements. No hourly billing. No scope creep. You know exactly what you're getting and what it costs.</p>
+
+          <div class="pricing-tiers">
+            <div class="pricing-tier">
+              <div class="tier-header">
+                <span class="tier-name">Essential</span>
+                <span class="tier-price">$35k</span>
+              </div>
+              <div class="tier-description">Single AI system hardening. Perfect for chatbots, document processors, or one core automation.</div>
+              <div class="tier-includes">
+                ✓ Full OpenClaw™ implementation<br>
+                ✓ Provider abstraction + failover config<br>
+                ✓ 3-month monitoring included<br>
+                ✓ 4-week delivery
               </div>
             </div>
-            <div class="value-item">
-              <div class="value-number">02</div>
-              <div class="value-content">
-                <h4>Failure Tolerant</h4>
-                <p>Rate limits? Failover. Model down? Cache fallback. Timeout? Retry queue. Failures become delays.</p>
+
+            <div class="pricing-tier featured">
+              <div class="tier-header">
+                <span class="tier-name">Professional</span>
+                <span class="tier-price">$50k</span>
+              </div>
+              <div class="tier-description">Multi-system + integration hardening. For companies with AI across multiple workflows.</div>
+              <div class="tier-includes">
+                ✓ Full stack hardening (all AI systems)<br>
+                ✓ Cost guardrails + budget controls<br>
+                ✓ 6-month monitoring + 2 quarterly reviews<br>
+                ✓ 5-week delivery
               </div>
             </div>
-            <div class="value-item">
-              <div class="value-number">03</div>
-              <div class="value-content">
-                <h4>Evolution Native</h4>
-                <p>New capabilities extend the existing system — architecture evolves, never rebuilt.</p>
+
+            <div class="pricing-tier">
+              <div class="tier-header">
+                <span class="tier-name">Enterprise</span>
+                <span class="tier-price">$75k</span>
+              </div>
+              <div class="tier-description">Ground-up architecture redesign + team enablement. For complex systems or technical teams.</div>
+              <div class="tier-includes">
+                ✓ Complete OpenClaw™ rebuild<br>
+                ✓ Team training + knowledge transfer<br>
+                ✓ 12-month monitoring + quarterly reviews<br>
+                ✓ 6-week delivery
               </div>
             </div>
+          </div>
+
+          <h3 style="margin-top: 32px;">Optional Add-Ons</h3>
+          
+          <div class="benefit-list">
+            <div class="benefit-item"><strong>Accelerated Delivery (+$10k):</strong> 2-week delivery instead of 4-6 weeks</div>
+            <div class="benefit-item"><strong>Advanced Monitoring ($5k + $500/mo):</strong> Real-time fragility dashboard with predictive alerts</div>
+            <div class="benefit-item"><strong>Cost Optimization Workshop ($12k):</strong> Reduce AI costs 30-50% while maintaining quality</div>
+          </div>
+
+          <h3>Annual Resilience Subscription</h3>
+          <p>Ongoing quarterly reviews + priority support + OpenClaw™ framework updates.</p>
+          <div class="benefit-list">
+            <div class="benefit-item">Professional: $16k/year</div>
+            <div class="benefit-item">Enterprise: $24k/year</div>
           </div>
         </div>
 
         <!-- Get Started -->
         <div class="content-view" data-content="access">
           <span class="eyebrow">Powered by OpenClaw™</span>
+          
+          <h2>Start With a Free Fragility Audit</h2>
+          
+          <p>Get a clear picture of your AI system's breaking points before committing to anything.</p>
+
+          <div class="benefit-list" style="margin-bottom: 28px;">
+            <div class="benefit-item">15-minute Loom video walkthrough</div>
+            <div class="benefit-item">3-page detailed report</div>
+            <div class="benefit-item">Fragility score (0–100) with breakdown</div>
+            <div class="benefit-item">Top 3 most likely failure modes</div>
+            <div class="benefit-item">90-day risk forecast</div>
+            <div class="benefit-item">Proposed hardening scope + cost estimate</div>
+          </div>
+
           <div class="email-form-container">
-            <h3>Founding Partner Access</h3>
-            <p class="scarcity">Limited to 12 founding teams in 2026</p>
-            <p class="form-note">Fixed-scope architecture review + OpenClaw™ hardening implementation. Async delivery. 4-week timeline.</p>
+            <h3>Request Your Free Audit</h3>
+            <p class="scarcity">Limited to 12 founding partners in 2026 · 7 slots remaining</p>
+            <p class="form-note">No obligation. No sales calls unless you want one. Just a clear assessment of what needs fixing and what it'll cost.</p>
             <form class="email-capture" action="#" method="post">
               <input 
                 type="email" 
@@ -525,18 +799,29 @@
                 placeholder="Your work email" 
                 required 
               />
-              <button type="submit" class="submit-btn">Claim Founding Slot</button>
+              <button type="submit" class="submit-btn">Get Free Fragility Audit</button>
             </form>
             <p class="trust-note">
-              Architecture fragility assessment · Custom resilience blueprint · Async professional hardening · Reserved capacity
+              Delivered within 48 hours · Async delivery · No credit card required
             </p>
+          </div>
+
+          <div style="margin-top: 32px; padding: 24px; background: rgba(22,27,34,0.65); border-radius: 10px; border: 1px solid rgba(139,148,165,0.14);">
+            <h3 style="margin-top: 0; margin-bottom: 16px; font-size: 1.15rem;">Founding Partner Benefits</h3>
+            <div class="benefit-list">
+              <div class="benefit-item">Reserved capacity (priority scheduling)</div>
+              <div class="benefit-item">Locked-in pricing (future clients pay 20-30% more)</div>
+              <div class="benefit-item">Direct access to founder (not junior engineers)</div>
+              <div class="benefit-item">Input on OpenClaw™ roadmap features</div>
+              <div class="benefit-item">Lifetime 15% discount on future projects</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <footer>
-      © 2026 ClawSolved — Engineered resilience for the AI era. United Kingdom.
+      © 2026 ClawSolved · Resilient AI infrastructure for teams that can't afford downtime · United Kingdom
     </footer>
   </div>
 
