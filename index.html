@@ -57,6 +57,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      position: relative;
     }
 
     header {
@@ -155,36 +156,26 @@
     .image-container {
       position: absolute;
       inset: 0;
+      width: 100vw;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 1;
+      overflow: hidden;
     }
 
     .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 30px 80px rgba(0,0,0,0.7));
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;          /* or 'contain' if you prefer no cropping */
+      object-position: center;
+      filter: brightness(0.92) contrast(1.08) drop-shadow(0 30px 80px rgba(0,0,0,0.7));
       transition: transform 0.8s ease;
     }
 
     .hero-image:hover {
-      transform: scale(1.012);
-    }
-
-    .brand-watermark {
-      position: absolute;
-      bottom: 32px;
-      left: 5vw;
-      z-index: 2;
-      font-family: var(--display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: rgba(196,160,71,0.28);
-      letter-spacing: -0.5px;
-      pointer-events: none;
-      user-select: none;
+      transform: scale(1.015);
     }
 
     .content-overlay {
@@ -192,8 +183,8 @@
       right: 0;
       top: 0;
       bottom: 0;
-      width: 480px;
-      max-width: 42vw;
+      width: 500px;
+      max-width: 44vw;
       background: linear-gradient(to left, rgba(10,13,18,0.97) 0%, rgba(10,13,18,0.90) 70%, transparent 100%);
       backdrop-filter: blur(14px);
       z-index: 3;
@@ -420,12 +411,6 @@
       .hero-image {
         object-fit: contain;
       }
-
-      .brand-watermark {
-        font-size: 0.95rem;
-        bottom: 16px;
-        left: 6vw;
-      }
     }
   </style>
 </head>
@@ -455,8 +440,6 @@
         />
       </div>
 
-      <div class="brand-watermark">ClawSolved</div>
-
       <div class="content-overlay">
         <!-- Overview -->
         <div class="content-view active" data-content="overview">
@@ -470,7 +453,7 @@
           </p>
         </div>
 
-        <!-- Features -->
+        <!-- How It Works -->
         <div class="content-view" data-content="features">
           <span class="eyebrow">Powered by OpenClaw™</span>
           <h2>How It Works</h2>
@@ -490,7 +473,7 @@
           </div>
         </div>
 
-        <!-- Resilience -->
+        <!-- Why OpenClaw -->
         <div class="content-view" data-content="resilience">
           <span class="eyebrow">Powered by OpenClaw™</span>
           <h2>Why OpenClaw Works</h2>
@@ -519,7 +502,7 @@
           </div>
         </div>
 
-        <!-- Access -->
+        <!-- Get Started -->
         <div class="content-view" data-content="access">
           <span class="eyebrow">Powered by OpenClaw™</span>
           <div class="email-form-container">
