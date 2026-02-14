@@ -3,19 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ClawSolved – AI Workflow Stability & Resilience</title>
-  <meta name="description" content="Building unbreakable AI workflows that survive model shifts, API changes, and real-world volatility. Coming soon."/>
+  <title>ClawSolved – Resilient AI Workflows</title>
+  <meta name="description" content="Engineered AI systems that endure model updates, API instability, and evolving business demands. Built for certainty in chaos. Coming soon."/>
+
+  <!-- Google Fonts: Orbitron for headings, Exo 2 for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-start: #0a0e1f;
-      --bg-mid: #11183a;
-      --bg-end: #1a255c;
-      --accent: #00d4ff;     /* neon cyan/teal from logo */
+      --bg-start: #090d1c;
+      --bg-mid: #0f1635;
+      --bg-end: #172366;
+      --accent: #00d4ff;       /* neon cyan core */
       --accent-glow: #4de0ff;
-      --text-primary: #e0e7ff;
-      --text-secondary: #a3bffa;
-      --glow: 0 0 20px rgba(0, 212, 255, 0.4);
+      --text-primary: #f0f4ff;
+      --text-secondary: #b3c7ff;
+      --glow: 0 0 24px rgba(0, 212, 255, 0.35);
+      --glow-strong: 0 0 40px rgba(0, 212, 255, 0.55);
     }
 
     * {
@@ -25,133 +31,160 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: 'Exo 2', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
       color: var(--text-primary);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow-x: hidden;
       background-attachment: fixed;
     }
 
     .container {
       text-align: center;
-      padding: 40px 20px;
-      max-width: 960px;
+      padding: 50px 20px;
+      max-width: 980px;
       width: 100%;
     }
 
     .logo-hero {
-      max-width: 90%;
+      max-width: 92%;
       height: auto;
-      margin: 0 auto 50px;
+      margin: 0 auto 60px;
       display: block;
-      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
-      transition: transform 0.6s ease;
+      filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.65));
+      transition: transform 0.7s ease, filter 0.4s ease;
     }
 
     .logo-hero:hover {
-      transform: scale(1.03);
+      transform: scale(1.025);
+      filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.7)) brightness(1.08);
     }
 
     h1 {
-      font-size: clamp(3.5rem, 8vw, 6rem);
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 0.2em;
-      background: linear-gradient(90deg, #ffffff, var(--accent), #ffffff);
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(4rem, 9vw, 7.2rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 0.15em;
+      background: linear-gradient(90deg, #ffffff, var(--accent), #e0f7ff, var(--accent), #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-shadow: var(--glow);
+      text-shadow: var(--glow-strong);
+      line-height: 0.95;
     }
 
     .tagline {
-      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-size: clamp(1.4rem, 4.5vw, 2rem);
       font-weight: 400;
       color: var(--text-secondary);
-      margin: 0 auto 2rem;
-      max-width: 700px;
-      line-height: 1.5;
+      margin: 0 auto 2.2rem;
+      max-width: 780px;
+      line-height: 1.55;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+      text-shadow: var(--glow);
     }
 
     .status {
-      font-size: 1.4rem;
-      font-weight: 600;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
       color: var(--accent);
-      margin: 1.5rem 0 2.5rem;
-      letter-spacing: 2px;
+      margin: 2rem 0 3rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      opacity: 0.9;
+      opacity: 0.92;
+      text-shadow: var(--glow);
     }
 
     .email-teaser {
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     .email-teaser p {
-      font-size: 1.2rem;
-      margin-bottom: 1.2rem;
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
       color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .email-form {
-      max-width: 480px;
+      max-width: 520px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
       justify-content: center;
     }
 
     input[type="email"] {
       flex: 1;
-      min-width: 220px;
-      padding: 14px 20px;
-      font-size: 1.1rem;
-      border: 1px solid rgba(77, 208, 255, 0.3);
-      border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-      color: white;
+      min-width: 240px;
+      padding: 16px 24px;
+      font-size: 1.15rem;
+      font-family: 'Exo 2', sans-serif;
+      border: 1px solid rgba(77, 208, 255, 0.35);
+      border-radius: 10px;
+      background: rgba(20, 30, 80, 0.4);
+      color: var(--text-primary);
       outline: none;
-      transition: all 0.3s;
+      transition: all 0.35s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    input[type="email"]::placeholder {
+      color: rgba(176, 196, 255, 0.6);
     }
 
     input[type="email"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+      border-color: var(--accent-glow);
+      box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.25);
+      background: rgba(20, 30, 80, 0.6);
     }
 
     button {
-      padding: 14px 32px;
-      font-size: 1.1rem;
+      padding: 16px 40px;
+      font-size: 1.15rem;
       font-weight: 600;
-      background: linear-gradient(90deg, var(--accent), #00aaff);
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, var(--accent), #00b0ff);
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.35s ease;
       box-shadow: var(--glow);
     }
 
     button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 0 45px rgba(0, 212, 255, 0.7);
+      background: linear-gradient(90deg, #00eaff, var(--accent));
     }
 
     .footer-note {
-      margin-top: 5rem;
-      font-size: 0.95rem;
-      color: #64748b;
+      margin-top: 6rem;
+      font-size: 1rem;
+      color: #5a6fa8;
+      opacity: 0.8;
     }
 
     @media (max-width: 640px) {
-      .container { padding: 30px 15px; }
-      h1 { font-size: clamp(2.8rem, 10vw, 4.5rem); }
-      .tagline { font-size: 1.2rem; }
+      .container { padding: 40px 15px; }
+      h1 { font-size: clamp(3.2rem, 11vw, 5rem); }
+      .tagline { font-size: 1.3rem; }
+      .status { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -159,36 +192,37 @@
   <div class="container">
     <img 
       src="OpenClaw1.jpg" 
-      alt="ClawSolved – Resilient AI Workflows" 
+      alt="ClawSolved – Engineered for AI Resilience" 
       class="logo-hero"
     />
 
     <h1>ClawSolved</h1>
 
     <p class="tagline">
-      Hardening AI workflows so they don't just work — they survive model shifts, API chaos, and real-world evolution.
+      AI workflows engineered to <span class="highlight">endure</span>.<br>
+      We harden systems against model drift, API breakage, integration volatility, and the relentless pace of change — so your business keeps running, no matter what breaks next.
     </p>
 
-    <div class="status">Coming Soon</div>
+    <div class="status">Launching Soon</div>
 
     <div class="email-teaser">
-      <p>Be the first to know when we launch. Early access & exclusive stability diagnostics reserved for subscribers.</p>
+      <p>Get notified on launch day. Early subscribers receive priority access to limited diagnostic slots, exclusive hardening blueprints, and first-look resilience strategies — built async, delivered with precision.</p>
 
-      <!-- Placeholder form — replace action with your Mailchimp/Stripe/ConvertKit endpoint later -->
+      <!-- Placeholder form – connect to your service (e.g., Mailchimp, ConvertKit, or custom endpoint) -->
       <form class="email-form" action="#" method="post">
         <input 
           type="email" 
           name="email" 
-          placeholder="your@email.com" 
+          placeholder="Enter your email" 
           required 
-          aria-label="Email address"
+          aria-label="Email address for launch updates"
         />
-        <button type="submit">Notify Me</button>
+        <button type="submit">Reserve My Spot</button>
       </form>
     </div>
 
     <p class="footer-note">
-      © 2026 ClawSolved. Building certainty in an uncertain AI world.
+      © 2026 ClawSolved. Certainty in the age of AI uncertainty.
     </p>
   </div>
 </body>
