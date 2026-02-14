@@ -3,25 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ClawSolved – Resilient AI Systems</title>
-  <meta name="description" content="Powered by OpenClaw™ — engineered AI workflows that withstand model changes, API instability, and business evolution. Professional, async delivery for certainty in uncertain times."/>
+  <title>ClawSolved – Enterprise AI That Endures</title>
+  <meta name="description" content="OpenClaw™ resilience architecture. Production AI systems engineered to withstand disruption, evolution, and uncertainty. For leaders who demand stability."/>
 
-  <!-- Google Fonts: Manrope for headings/brand, Inter for body -->
+  <!-- Google Fonts: Cormorant Garamond (elegant serif) + DM Sans (refined sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-start: #0a0e20;
-      --bg-mid: #10183a;
-      --bg-end: #18266b;
-      --accent: #00c8ff;       /* refined cyan/teal from logo */
-      --accent-glow: #40d8ff;
-      --text-primary: #f1f5ff;
-      --text-secondary: #c3d4ff;
-      --glow: 0 0 20px rgba(0, 200, 255, 0.3);
-      --glow-strong: 0 0 35px rgba(0, 200, 255, 0.5);
+      --ink: #0d1117;
+      --slate: #1c2128;
+      --steel: #2d3540;
+      --silver: #8b949e;
+      --cream: #f6f8fa;
+      --accent: #0969da;
+      --accent-hover: #0550ae;
+      --gold: #d4af37;
+      --gold-muted: #9a8043;
+      
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     * {
@@ -31,205 +34,514 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
-      color: var(--text-primary);
-      min-height: 100vh;
+      font-family: var(--sans);
+      background: linear-gradient(to bottom, #0a0d12 0%, var(--ink) 100%);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Subtle texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba(9, 105, 218, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    header {
+      padding: 40px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      background: rgba(13, 17, 23, 0.7);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-mark {
       display: flex;
       align-items: center;
-      justify-content: center;
-      background-attachment: fixed;
+      gap: 16px;
     }
 
-    .container {
-      text-align: center;
-      padding: 60px 20px;
-      max-width: 1000px;
-      width: 100%;
+    .logo-mark img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
     }
 
-    .logo-hero {
-      max-width: 90%;
-      height: auto;
-      margin: 0 auto 70px;
-      display: block;
-      filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6));
-      transition: transform 0.6s ease;
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: var(--cream);
     }
 
-    .logo-hero:hover {
-      transform: scale(1.02);
+    .header-cta {
+      padding: 12px 28px;
+      background: transparent;
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .header-cta:hover {
+      background: rgba(212, 175, 55, 0.12);
+      border-color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 120px 80px 100px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 100px;
+      align-items: center;
+      max-width: 1600px;
+      margin: 0 auto;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content {
+      animation: slideIn 0.9s ease-out 0.2s both;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      padding: 8px 16px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 4px;
+      background: rgba(212, 175, 55, 0.05);
     }
 
     h1 {
-      font-family: 'Manrope', sans-serif;
-      font-size: clamp(4.2rem, 9vw, 7.5rem);
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      margin-bottom: 0.2em;
-      background: linear-gradient(90deg, #ffffff, var(--accent), #e6f7ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: var(--glow-strong);
-      line-height: 0.92;
-    }
-
-    .tagline {
-      font-size: clamp(1.35rem, 4vw, 1.9rem);
-      font-weight: 400;
-      color: var(--text-secondary);
-      margin: 0 auto 2.5rem;
-      max-width: 820px;
-      line-height: 1.6;
-    }
-
-    .highlight {
-      color: var(--accent);
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 5.5vw, 5.2rem);
       font-weight: 600;
-      text-shadow: var(--glow);
+      line-height: 1.05;
+      margin-bottom: 32px;
+      letter-spacing: -1px;
+      color: #ffffff;
     }
 
-    .openclaw {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 700;
-      color: var(--accent-glow);
-      text-shadow: var(--glow);
+    h1 .emphasis {
+      color: var(--gold);
+      font-style: italic;
     }
 
-    .status {
-      font-family: 'Manrope', sans-serif;
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin: 2.2rem 0 3.5rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0.95;
-      text-shadow: var(--glow);
-    }
-
-    .email-teaser {
-      margin-top: 4.5rem;
-    }
-
-    .email-teaser p {
-      font-size: 1.3rem;
-      font-weight: 400;
-      margin-bottom: 1.8rem;
-      color: var(--text-secondary);
+    .lead {
+      font-size: 1.35rem;
       line-height: 1.65;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
+      color: var(--silver);
+      margin-bottom: 48px;
+      font-weight: 400;
+      max-width: 600px;
     }
 
-    .email-form {
-      max-width: 540px;
-      margin: 0 auto;
+    .lead strong {
+      color: var(--cream);
+      font-weight: 600;
+    }
+
+    /* Email Form */
+    .email-capture {
       display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      max-width: 560px;
     }
 
     input[type="email"] {
       flex: 1;
-      min-width: 260px;
-      padding: 18px 26px;
-      font-size: 1.18rem;
-      font-family: 'Inter', sans-serif;
-      border: 1px solid rgba(0, 200, 255, 0.3);
-      border-radius: 12px;
-      background: rgba(15, 25, 70, 0.45);
-      color: var(--text-primary);
+      padding: 18px 24px;
+      font-size: 1.05rem;
+      font-family: var(--sans);
+      background: rgba(45, 53, 64, 0.5);
+      border: 1px solid rgba(139, 148, 158, 0.25);
+      border-radius: 8px;
+      color: var(--cream);
       outline: none;
-      transition: all 0.4s ease;
-      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
     }
 
     input[type="email"]::placeholder {
-      color: rgba(180, 210, 255, 0.65);
+      color: rgba(139, 148, 158, 0.6);
     }
 
     input[type="email"]:focus {
-      border-color: var(--accent-glow);
-      box-shadow: 0 0 0 4px rgba(0, 200, 255, 0.22);
-      background: rgba(15, 25, 70, 0.65);
+      background: rgba(45, 53, 64, 0.8);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
     }
 
-    button {
-      padding: 18px 44px;
-      font-size: 1.18rem;
-      font-weight: 600;
-      font-family: 'Manrope', sans-serif;
-      letter-spacing: 0.8px;
-      background: linear-gradient(90deg, var(--accent), #00b3e6);
-      color: white;
+    .submit-btn {
+      padding: 18px 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, #0550ae 100%);
       border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: var(--glow);
-    }
-
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 50px rgba(0, 200, 255, 0.65);
-      background: linear-gradient(90deg, #00e0ff, var(--accent));
-    }
-
-    .footer-note {
-      margin-top: 7rem;
+      color: white;
+      font-family: var(--sans);
       font-size: 1.05rem;
-      color: #647cab;
-      opacity: 0.85;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
     }
 
-    @media (max-width: 640px) {
-      .container { padding: 50px 18px; }
-      h1 { font-size: clamp(3.5rem, 10vw, 5.5rem); }
-      .tagline { font-size: 1.35rem; }
-      .status { font-size: 1.5rem; }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(9, 105, 218, 0.4);
+    }
+
+    .trust-note {
+      font-size: 0.9rem;
+      color: rgba(139, 148, 158, 0.8);
+      font-weight: 400;
+    }
+
+    /* Right Side - Feature Highlights */
+    .feature-grid {
+      display: grid;
+      gap: 24px;
+      animation: slideIn 0.9s ease-out 0.4s both;
+    }
+
+    .feature-card {
+      background: linear-gradient(135deg, rgba(28, 33, 40, 0.6) 0%, rgba(45, 53, 64, 0.4) 100%);
+      border: 1px solid rgba(139, 148, 158, 0.15);
+      border-radius: 12px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      transform: translateX(4px);
+      background: linear-gradient(135deg, rgba(28, 33, 40, 0.8) 0%, rgba(45, 53, 64, 0.6) 100%);
+    }
+
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--cream);
+      letter-spacing: -0.3px;
+    }
+
+    .feature-card p {
+      color: var(--silver);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Value Props Section */
+    .value-props {
+      padding: 100px 80px;
+      max-width: 1600px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #ffffff;
+      letter-spacing: -0.8px;
+    }
+
+    .section-header .subtitle {
+      font-size: 1.25rem;
+      color: var(--silver);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .props-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+
+    .prop-item {
+      text-align: center;
+    }
+
+    .prop-number {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+
+    .prop-item h4 {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--cream);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .prop-item p {
+      color: var(--silver);
+      line-height: 1.6;
+    }
+
+    /* Footer CTA */
+    .footer-cta {
+      padding: 100px 80px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(to bottom, transparent 0%, rgba(9, 105, 218, 0.03) 100%);
+    }
+
+    .footer-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 4vw, 3.2rem);
+      font-weight: 600;
+      margin-bottom: 32px;
+      color: #ffffff;
+      letter-spacing: -0.8px;
+    }
+
+    .footer-cta p {
+      font-size: 1.2rem;
+      color: var(--silver);
+      margin-bottom: 40px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-email-form {
+      max-width: 500px;
+      margin: 0 auto 60px;
+      display: flex;
+      gap: 12px;
+    }
+
+    footer {
+      padding: 40px 80px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(139, 148, 158, 0.7);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding: 80px 60px;
+      }
+
+      .props-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 30px 30px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .hero {
+        padding: 60px 30px;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      .lead {
+        font-size: 1.15rem;
+      }
+
+      .email-capture,
+      .footer-email-form {
+        flex-direction: column;
+      }
+
+      .value-props,
+      .footer-cta {
+        padding: 60px 30px;
+      }
+
+      footer {
+        padding: 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img 
-      src="OpenClaw1.jpg" 
-      alt="ClawSolved – Powered by OpenClaw™" 
-      class="logo-hero"
-    />
+  <div class="page-wrapper">
+    <header>
+      <div class="logo-mark">
+        <img src="OpenClaw1.jpg" alt="OpenClaw" />
+        <span class="brand-name">ClawSolved</span>
+      </div>
+      <button class="header-cta" onclick="document.querySelector('.email-capture input').focus()">
+        Request Access
+      </button>
+    </header>
 
-    <h1>ClawSolved</h1>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">Powered by OpenClaw™</span>
+        
+        <h1>
+          AI infrastructure that <span class="emphasis">doesn't break</span> when everything else does
+        </h1>
 
-    <p class="tagline">
-      Powered by <span class="openclaw">OpenClaw™</span> — the proprietary resilience engine that makes AI workflows truly unbreakable.<br>
-      We deliver hardened, production-ready systems that survive model updates, API disruptions, integration failures, and ecosystem shifts — so your business operates with <span class="highlight">certainty</span>, not constant fixes.
-    </p>
+        <p class="lead">
+          Your competitors are fighting fires. Model deprecations. API changes. Integration failures. <strong>You're building on quicksand.</strong> ClawSolved delivers resilience-first architecture that adapts, endures, and scales while others scramble.
+        </p>
 
-    <div class="status">Launching Soon</div>
+        <form class="email-capture" action="#" method="post">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter your work email" 
+            required 
+            aria-label="Email address"
+          />
+          <button type="submit" class="submit-btn">Get Early Access</button>
+        </form>
+        <p class="trust-note">Limited founding partner slots · Professional async delivery · No meetings</p>
+      </div>
 
-    <div class="email-teaser">
-      <p>Sign up for launch priority. Early access includes exclusive OpenClaw™ hardening diagnostics, custom resilience blueprints, async professional delivery, and limited slots for our initial stability sprints — designed for non-technical leaders who demand reliability in volatile AI landscapes.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🛡️</span>
+          <h3>Resilience Engineering</h3>
+          <p>Purpose-built systems that anticipate failure modes before they happen. OpenClaw™ hardening ensures graceful degradation, not catastrophic collapse.</p>
+        </div>
 
-      <!-- Placeholder form – connect to Mailchimp/ConvertKit/Stripe later -->
-      <form class="email-form" action="#" method="post">
+        <div class="feature-card">
+          <span class="feature-icon">⚙️</span>
+          <h3>Zero-Meeting Delivery</h3>
+          <p>Professional asynchronous execution designed for decision-makers. Strategic diagnostics, implementation blueprints, and deployment—delivered on your timeline.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📊</span>
+          <h3>Built for Non-Technical Leaders</h3>
+          <p>Stability metrics that matter. No jargon, no hand-holding. Clear insights into what's fragile, what's fortified, and what's next.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="value-props">
+      <div class="section-header">
+        <h2>The OpenClaw™ Difference</h2>
+        <p class="subtitle">Resilience architecture that treats uncertainty as a design constraint, not an afterthought</p>
+      </div>
+
+      <div class="props-grid">
+        <div class="prop-item">
+          <div class="prop-number">01</div>
+          <h4>Model Agnostic</h4>
+          <p>Your systems survive vendor lock-in, deprecations, and shifts between providers. Build once, adapt infinitely.</p>
+        </div>
+
+        <div class="prop-item">
+          <div class="prop-number">02</div>
+          <h4>Failure Tolerant</h4>
+          <p>Graceful degradation patterns ensure partial functionality instead of total outage. Your business keeps running when APIs don't.</p>
+        </div>
+
+        <div class="prop-item">
+          <div class="prop-number">03</div>
+          <h4>Evolution Ready</h4>
+          <p>Architecture designed for change. New capabilities, integrations, and requirements don't trigger rewrites—they extend what exists.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-cta">
+      <h2>Stop rebuilding. Start enduring.</h2>
+      <p>Join the early access program for founding partners. Limited availability for stability-first organizations.</p>
+      
+      <form class="footer-email-form" action="#" method="post">
         <input 
           type="email" 
           name="email" 
-          placeholder="Your professional email" 
+          placeholder="Your work email" 
           required 
-          aria-label="Email for launch priority and early access"
+          aria-label="Email address for early access"
         />
-        <button type="submit">Secure Early Access</button>
+        <button type="submit" class="submit-btn">Secure Your Slot</button>
       </form>
-    </div>
+    </section>
 
-    <p class="footer-note">
-      © 2026 ClawSolved. Engineered resilience for the AI era.
-    </p>
+    <footer>
+      <p>© 2026 ClawSolved · OpenClaw™ is a proprietary resilience framework · Engineered for uncertainty</p>
+    </footer>
   </div>
 </body>
 </html>
