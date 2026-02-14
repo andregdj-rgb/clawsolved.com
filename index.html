@@ -132,62 +132,63 @@
     /* Main Content Area */
     .main-content {
       flex: 1;
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 50px;
-      padding: 40px 60px;
-      align-items: center;
+      position: relative;
       overflow: hidden;
-      min-height: 0;
     }
 
-    /* Center Column - Large Image */
+    /* Full-screen Image */
     .image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100%;
+      z-index: 1;
     }
 
     .hero-image {
-      max-width: 100%;
-      max-height: 80vh;
-      width: auto;
-      height: auto;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6));
-      transition: transform 0.6s ease;
     }
 
-    .hero-image:hover {
-      transform: scale(1.02);
-    }
-
-    /* Right Panel - Content Views */
-    .right-panel {
+    /* Overlaid Content Panel on Right */
+    .content-overlay {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 450px;
+      max-width: 40vw;
+      background: linear-gradient(to left, rgba(10, 13, 18, 0.95) 0%, rgba(10, 13, 18, 0.85) 70%, transparent 100%);
+      backdrop-filter: blur(12px);
+      z-index: 2;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      max-height: 80vh;
+      padding: 50px 50px 50px 60px;
       overflow-y: auto;
-      padding-left: 20px;
     }
 
-    /* Custom scrollbar for right panel */
-    .right-panel::-webkit-scrollbar {
+    /* Custom scrollbar for overlay */
+    .content-overlay::-webkit-scrollbar {
       width: 6px;
     }
 
-    .right-panel::-webkit-scrollbar-track {
+    .content-overlay::-webkit-scrollbar-track {
       background: rgba(139, 148, 158, 0.1);
       border-radius: 3px;
     }
 
-    .right-panel::-webkit-scrollbar-thumb {
+    .content-overlay::-webkit-scrollbar-thumb {
       background: rgba(212, 175, 55, 0.3);
       border-radius: 3px;
     }
 
-    .right-panel::-webkit-scrollbar-thumb:hover {
+    .content-overlay::-webkit-scrollbar-thumb:hover {
       background: rgba(212, 175, 55, 0.5);
     }
 
@@ -200,9 +201,9 @@
       color: var(--gold);
       margin-bottom: 20px;
       padding: 6px 12px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      border: 1px solid rgba(212, 175, 55, 0.4);
       border-radius: 4px;
-      background: rgba(212, 175, 55, 0.05);
+      background: rgba(212, 175, 55, 0.1);
       align-self: flex-start;
     }
 
@@ -222,52 +223,54 @@
 
     .content-view h2 {
       font-family: var(--display);
-      font-size: clamp(1.6rem, 2vw, 2.2rem);
+      font-size: clamp(1.8rem, 2.2vw, 2.4rem);
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       color: #ffffff;
       letter-spacing: -0.8px;
+      line-height: 1.15;
     }
 
     .content-view p {
-      font-size: 1rem;
-      line-height: 1.65;
+      font-size: 1.05rem;
+      line-height: 1.7;
       color: var(--silver);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .feature-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
     }
 
     .feature-item {
-      background: linear-gradient(135deg, rgba(28, 33, 40, 0.6) 0%, rgba(45, 53, 64, 0.4) 100%);
-      border: 1px solid rgba(139, 148, 158, 0.15);
+      background: linear-gradient(135deg, rgba(28, 33, 40, 0.8) 0%, rgba(45, 53, 64, 0.6) 100%);
+      border: 1px solid rgba(139, 148, 158, 0.2);
       border-radius: 10px;
-      padding: 18px;
+      padding: 20px;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
 
     .feature-item:hover {
-      border-color: rgba(212, 175, 55, 0.4);
+      border-color: rgba(212, 175, 55, 0.5);
       transform: translateX(4px);
+      background: linear-gradient(135deg, rgba(28, 33, 40, 0.9) 0%, rgba(45, 53, 64, 0.7) 100%);
     }
 
     .feature-item h3 {
       font-family: var(--display);
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       color: var(--cream);
       letter-spacing: -0.3px;
     }
 
     .feature-item p {
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.98rem;
+      line-height: 1.65;
       color: var(--silver);
       margin-bottom: 0;
     }
@@ -275,17 +278,17 @@
     .value-list {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
     }
 
     .value-item {
       display: flex;
-      gap: 16px;
+      gap: 18px;
     }
 
     .value-number {
       font-family: var(--display);
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--gold);
       flex-shrink: 0;
@@ -294,55 +297,57 @@
 
     .value-content h4 {
       font-family: var(--display);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       color: var(--cream);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .value-content p {
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       margin-bottom: 0;
+      line-height: 1.65;
     }
 
     /* Email Form */
     .email-form-container {
-      background: linear-gradient(135deg, rgba(28, 33, 40, 0.7) 0%, rgba(45, 53, 64, 0.5) 100%);
-      border: 1px solid rgba(139, 148, 158, 0.2);
+      background: linear-gradient(135deg, rgba(28, 33, 40, 0.9) 0%, rgba(45, 53, 64, 0.7) 100%);
+      border: 1px solid rgba(139, 148, 158, 0.25);
       border-radius: 12px;
-      padding: 28px;
+      padding: 32px;
       backdrop-filter: blur(10px);
     }
 
     .email-form-container h3 {
       font-family: var(--display);
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       color: #ffffff;
       letter-spacing: -0.5px;
     }
 
     .email-form-container .form-note {
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--silver);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+      line-height: 1.6;
     }
 
     .email-capture {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     input[type="email"] {
       padding: 16px 20px;
       font-size: 1rem;
       font-family: var(--sans);
-      background: rgba(45, 53, 64, 0.5);
-      border: 1px solid rgba(139, 148, 158, 0.25);
+      background: rgba(45, 53, 64, 0.6);
+      border: 1px solid rgba(139, 148, 158, 0.3);
       border-radius: 8px;
       color: var(--cream);
       outline: none;
@@ -350,13 +355,13 @@
     }
 
     input[type="email"]::placeholder {
-      color: rgba(139, 148, 158, 0.6);
+      color: rgba(139, 148, 158, 0.7);
     }
 
     input[type="email"]:focus {
-      background: rgba(45, 53, 64, 0.8);
+      background: rgba(45, 53, 64, 0.9);
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+      box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.2);
     }
 
     .submit-btn {
@@ -379,39 +384,44 @@
     }
 
     .trust-note {
-      font-size: 0.85rem;
-      color: rgba(139, 148, 158, 0.8);
-      margin-top: 12px;
+      font-size: 0.9rem;
+      color: rgba(195, 212, 255, 0.8);
+      margin-top: 14px;
+      line-height: 1.5;
     }
 
     /* Responsive */
     @media (max-width: 1400px) {
-      .main-content {
-        grid-template-columns: 1.2fr 1fr;
-        gap: 40px;
-        padding: 35px 50px;
+      .content-overlay {
+        width: 400px;
+        padding: 40px 40px 40px 50px;
+      }
+
+      .content-view h2 {
+        font-size: 1.8rem;
       }
     }
 
     @media (max-width: 1200px) {
-      .main-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 30px 40px;
+      .content-overlay {
+        max-width: 45vw;
+        width: 420px;
       }
+    }
 
-      .image-container {
-        order: -1;
-      }
-
+    @media (max-width: 900px) {
       .hero-image {
-        max-height: 50vh;
+        object-fit: cover;
       }
 
-      .right-panel {
-        max-height: none;
-        overflow-y: visible;
-        padding-left: 0;
+      .content-overlay {
+        width: 100%;
+        max-width: 100%;
+        background: linear-gradient(to top, rgba(10, 13, 18, 0.96) 0%, rgba(10, 13, 18, 0.88) 60%, transparent 100%);
+        top: auto;
+        bottom: 0;
+        height: 60vh;
+        padding: 40px 30px;
       }
     }
 
@@ -434,17 +444,17 @@
         padding: 7px 12px;
       }
 
-      .main-content {
-        padding: 20px;
-        gap: 20px;
-      }
-
-      .hero-image {
-        max-height: 40vh;
+      .content-overlay {
+        height: 65vh;
+        padding: 30px 25px;
       }
 
       .content-view h2 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+      }
+
+      .content-view p {
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -465,7 +475,7 @@
     </header>
 
     <div class="main-content">
-      <!-- Large Image -->
+      <!-- Full-screen Image -->
       <div class="image-container">
         <img 
           src="OpenClaw1.jpg" 
@@ -474,8 +484,8 @@
         />
       </div>
 
-      <!-- Right Panel - Switchable Content -->
-      <div class="right-panel">
+      <!-- Overlaid Content Panel on Right -->
+      <div class="content-overlay">
         <!-- Overview View -->
         <div class="content-view active" data-content="overview">
           <span class="eyebrow">Powered by OpenClaw™</span>
