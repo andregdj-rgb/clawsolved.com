@@ -161,6 +161,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      background: var(--ink);
       z-index: 1;
       overflow: hidden;
     }
@@ -168,14 +169,15 @@
     .hero-image {
       width: 100vw;
       height: 100vh;
-      object-fit: cover;          /* or 'contain' if you prefer no cropping */
+      object-fit: contain;          /* Ensures entire claw is visible – no cutoff */
       object-position: center;
-      filter: brightness(0.92) contrast(1.08) drop-shadow(0 30px 80px rgba(0,0,0,0.7));
+      filter: brightness(0.94) contrast(1.06) drop-shadow(0 30px 80px rgba(0,0,0,0.7));
       transition: transform 0.8s ease;
+      pointer-events: none;
     }
 
     .hero-image:hover {
-      transform: scale(1.015);
+      transform: scale(1.008);
     }
 
     .content-overlay {
@@ -410,6 +412,13 @@
 
       .hero-image {
         object-fit: contain;
+      }
+    }
+
+    @media (max-height: 600px) {
+      .hero-image {
+        object-fit: contain;
+        max-height: 90vh;
       }
     }
   </style>
