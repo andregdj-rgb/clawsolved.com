@@ -133,16 +133,16 @@
     .main-content {
       flex: 1;
       display: grid;
-      grid-template-columns: minmax(300px, 1fr) minmax(400px, 1.5fr) minmax(300px, 1fr);
-      gap: 40px;
-      padding: 30px 50px;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 50px;
+      padding: 40px 60px;
       align-items: center;
       overflow: hidden;
       min-height: 0;
     }
 
-    /* Center Column - Image */
-    .image-row {
+    /* Center Column - Large Image */
+    .image-container {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -151,7 +151,7 @@
 
     .hero-image {
       max-width: 100%;
-      max-height: 75vh;
+      max-height: 80vh;
       width: auto;
       height: auto;
       filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6));
@@ -162,99 +162,14 @@
       transform: scale(1.02);
     }
 
-    /* Left Panel */
-    .left-panel {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-height: 75vh;
-      overflow-y: auto;
-      padding-right: 10px;
-    }
-
-    /* Custom scrollbar for left panel */
-    .left-panel::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .left-panel::-webkit-scrollbar-track {
-      background: rgba(139, 148, 158, 0.1);
-      border-radius: 3px;
-    }
-
-    .left-panel::-webkit-scrollbar-thumb {
-      background: rgba(212, 175, 55, 0.3);
-      border-radius: 3px;
-    }
-
-    .left-panel::-webkit-scrollbar-thumb:hover {
-      background: rgba(212, 175, 55, 0.5);
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-      padding: 6px 12px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 4px;
-      background: rgba(212, 175, 55, 0.05);
-      align-self: flex-start;
-    }
-
-    .tagline {
-      font-family: var(--display);
-      font-size: clamp(1.6rem, 1.8vw, 2rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      letter-spacing: -1px;
-      color: #ffffff;
-    }
-
-    .tagline .emphasis {
-      color: var(--gold);
-    }
-
-    .description {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--silver);
-      margin-bottom: 24px;
-    }
-
-    .cta-button {
-      padding: 14px 32px;
-      background: linear-gradient(135deg, var(--accent) 0%, #0550ae 100%);
-      border: none;
-      color: white;
-      font-family: var(--display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      align-self: flex-start;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(9, 105, 218, 0.4);
-    }
-
     /* Right Panel - Content Views */
     .right-panel {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      max-height: 75vh;
+      max-height: 80vh;
       overflow-y: auto;
-      padding-left: 10px;
+      padding-left: 20px;
     }
 
     /* Custom scrollbar for right panel */
@@ -276,6 +191,21 @@
       background: rgba(212, 175, 55, 0.5);
     }
 
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      padding: 6px 12px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 4px;
+      background: rgba(212, 175, 55, 0.05);
+      align-self: flex-start;
+    }
+
     .content-view {
       display: none;
       animation: fadeIn 0.4s ease-out;
@@ -292,31 +222,31 @@
 
     .content-view h2 {
       font-family: var(--display);
-      font-size: clamp(1.4rem, 1.6vw, 1.8rem);
+      font-size: clamp(1.6rem, 2vw, 2.2rem);
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       color: #ffffff;
       letter-spacing: -0.8px;
     }
 
     .content-view p {
-      font-size: 0.9rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.65;
       color: var(--silver);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .feature-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
     }
 
     .feature-item {
       background: linear-gradient(135deg, rgba(28, 33, 40, 0.6) 0%, rgba(45, 53, 64, 0.4) 100%);
       border: 1px solid rgba(139, 148, 158, 0.15);
       border-radius: 10px;
-      padding: 14px;
+      padding: 18px;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
@@ -328,16 +258,16 @@
 
     .feature-item h3 {
       font-family: var(--display);
-      font-size: 1rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--cream);
       letter-spacing: -0.3px;
     }
 
     .feature-item p {
-      font-size: 0.85rem;
-      line-height: 1.5;
+      font-size: 0.95rem;
+      line-height: 1.6;
       color: var(--silver);
       margin-bottom: 0;
     }
@@ -345,17 +275,17 @@
     .value-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
     }
 
     .value-item {
       display: flex;
-      gap: 12px;
+      gap: 16px;
     }
 
     .value-number {
       font-family: var(--display);
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: var(--gold);
       flex-shrink: 0;
@@ -364,16 +294,16 @@
 
     .value-content h4 {
       font-family: var(--display);
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--cream);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .value-content p {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       margin-bottom: 0;
     }
 
@@ -382,34 +312,34 @@
       background: linear-gradient(135deg, rgba(28, 33, 40, 0.7) 0%, rgba(45, 53, 64, 0.5) 100%);
       border: 1px solid rgba(139, 148, 158, 0.2);
       border-radius: 12px;
-      padding: 20px;
+      padding: 28px;
       backdrop-filter: blur(10px);
     }
 
     .email-form-container h3 {
       font-family: var(--display);
-      font-size: 1.3rem;
+      font-size: 1.6rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #ffffff;
       letter-spacing: -0.5px;
     }
 
     .email-form-container .form-note {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: var(--silver);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .email-capture {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     input[type="email"] {
-      padding: 14px 18px;
-      font-size: 0.95rem;
+      padding: 16px 20px;
+      font-size: 1rem;
       font-family: var(--sans);
       background: rgba(45, 53, 64, 0.5);
       border: 1px solid rgba(139, 148, 158, 0.25);
@@ -430,12 +360,12 @@
     }
 
     .submit-btn {
-      padding: 14px 28px;
+      padding: 16px 32px;
       background: linear-gradient(135deg, var(--accent) 0%, #0550ae 100%);
       border: none;
       color: white;
       font-family: var(--display);
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 700;
       letter-spacing: 0.3px;
       border-radius: 8px;
@@ -449,48 +379,39 @@
     }
 
     .trust-note {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: rgba(139, 148, 158, 0.8);
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     /* Responsive */
     @media (max-width: 1400px) {
       .main-content {
-        grid-template-columns: minmax(280px, 0.9fr) minmax(350px, 1.3fr) minmax(280px, 0.9fr);
-        gap: 30px;
-        padding: 25px 40px;
-      }
-
-      .tagline {
-        font-size: 1.5rem;
-      }
-
-      .description, .content-view p {
-        font-size: 0.85rem;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 40px;
+        padding: 35px 50px;
       }
     }
 
     @media (max-width: 1200px) {
       .main-content {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
-        gap: 25px;
-        padding: 25px 35px;
+        gap: 30px;
+        padding: 30px 40px;
       }
 
-      .image-row {
+      .image-container {
         order: -1;
-        margin-bottom: 10px;
       }
 
       .hero-image {
-        max-height: 45vh;
+        max-height: 50vh;
       }
 
-      .left-panel, .right-panel {
+      .right-panel {
         max-height: none;
         overflow-y: visible;
+        padding-left: 0;
       }
     }
 
@@ -519,19 +440,11 @@
       }
 
       .hero-image {
-        max-height: 35vh;
+        max-height: 40vh;
       }
 
-      .tagline {
-        font-size: 1.4rem;
-      }
-
-      .left-panel {
-        padding-right: 0;
-      }
-
-      .right-panel {
-        padding-left: 0;
+      .content-view h2 {
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -552,20 +465,8 @@
     </header>
 
     <div class="main-content">
-      <!-- Left Panel -->
-      <div class="left-panel">
-        <span class="eyebrow">Powered by OpenClaw™</span>
-        <h1 class="tagline">
-          AI infrastructure that <span class="emphasis">doesn't break</span>
-        </h1>
-        <p class="description">
-          While others scramble with model changes and API failures, you build on resilience-first architecture that adapts and endures.
-        </p>
-        <button class="cta-button" onclick="switchView('access')">Request Early Access</button>
-      </div>
-
-      <!-- Center - Large Image -->
-      <div class="image-row">
+      <!-- Large Image -->
+      <div class="image-container">
         <img 
           src="OpenClaw1.jpg" 
           alt="ClawSolved – Powered by OpenClaw™" 
@@ -577,14 +478,16 @@
       <div class="right-panel">
         <!-- Overview View -->
         <div class="content-view active" data-content="overview">
-          <h2>Enterprise AI That Endures</h2>
+          <span class="eyebrow">Powered by OpenClaw™</span>
+          <h2>AI infrastructure that doesn't break when everything else does</h2>
           <p>Your competitors are fighting fires. Model deprecations. API changes. Integration failures. <strong style="color: var(--cream);">You're building on quicksand.</strong></p>
           <p>ClawSolved delivers resilience-first architecture engineered for non-technical leaders who demand stability in volatile AI landscapes.</p>
-          <p style="margin-top: 20px; color: var(--gold); font-weight: 600;">OpenClaw™ resilience architecture ensures your systems survive disruption, evolution, and uncertainty.</p>
+          <p style="margin-top: 24px; color: var(--gold); font-weight: 600;">OpenClaw™ resilience architecture ensures your systems survive disruption, evolution, and uncertainty.</p>
         </div>
 
         <!-- Features View -->
         <div class="content-view" data-content="features">
+          <span class="eyebrow">Powered by OpenClaw™</span>
           <h2>What We Deliver</h2>
           <div class="feature-list">
             <div class="feature-item">
@@ -604,6 +507,7 @@
 
         <!-- Resilience View -->
         <div class="content-view" data-content="resilience">
+          <span class="eyebrow">Powered by OpenClaw™</span>
           <h2>The OpenClaw™ Difference</h2>
           <div class="value-list">
             <div class="value-item">
@@ -632,6 +536,7 @@
 
         <!-- Early Access View -->
         <div class="content-view" data-content="access">
+          <span class="eyebrow">Powered by OpenClaw™</span>
           <div class="email-form-container">
             <h3>Secure Early Access</h3>
             <p class="form-note">Join the founding partner program. Limited availability for stability-first organizations.</p>
