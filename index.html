@@ -1,58 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClawSolved – Coming Soon</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ClawSolved – AI Workflow Stability & Resilience</title>
+  <meta name="description" content="Building unbreakable AI workflows that survive model shifts, API changes, and real-world volatility. Coming soon."/>
 
-<style>
+  <style>
+    :root {
+      --bg-start: #0a0e1f;
+      --bg-mid: #11183a;
+      --bg-end: #1a255c;
+      --accent: #00d4ff;     /* neon cyan/teal from logo */
+      --accent-glow: #4de0ff;
+      --text-primary: #e0e7ff;
+      --text-secondary: #a3bffa;
+      --glow: 0 0 20px rgba(0, 212, 255, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: linear-gradient(135deg, #0b0f2a 0%, #151c4b 50%, #1f2a6d 100%);
-        color: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid) 50%, var(--bg-end) 100%);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      background-attachment: fixed;
     }
 
     .container {
-        max-width: 900px;
-        padding: 40px 20px;
+      text-align: center;
+      padding: 40px 20px;
+      max-width: 960px;
+      width: 100%;
     }
 
-    img {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 30px;
+    .logo-hero {
+      max-width: 90%;
+      height: auto;
+      margin: 0 auto 50px;
+      display: block;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+      transition: transform 0.6s ease;
+    }
+
+    .logo-hero:hover {
+      transform: scale(1.03);
     }
 
     h1 {
-        font-size: 3rem;
-        margin: 0 0 15px 0;
-        font-weight: 600;
-        letter-spacing: 1px;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 0.2em;
+      background: linear-gradient(90deg, #ffffff, var(--accent), #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: var(--glow);
     }
 
-    p {
-        font-size: 1.2rem;
-        color: #c9d4ff;
-        margin: 0;
+    .tagline {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin: 0 auto 2rem;
+      max-width: 700px;
+      line-height: 1.5;
     }
 
-    .highlight {
-        color: #4dd0ff;
+    .status {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 1.5rem 0 2.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.9;
     }
-</style>
+
+    .email-teaser {
+      margin-top: 3rem;
+    }
+
+    .email-teaser p {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .email-form {
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 14px 20px;
+      font-size: 1.1rem;
+      border: 1px solid rgba(77, 208, 255, 0.3);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      color: white;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    input[type="email"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+    }
+
+    button {
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--accent), #00aaff);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: var(--glow);
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+    }
+
+    .footer-note {
+      margin-top: 5rem;
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 30px 15px; }
+      h1 { font-size: clamp(2.8rem, 10vw, 4.5rem); }
+      .tagline { font-size: 1.2rem; }
+    }
+  </style>
 </head>
-
 <body>
-<div class="container">
-    <img src="OpenClaw1.jpg" alt="ClawSolved">
-    <h1><span class="highlight">Coming Soon</span></h1>
-    <p>Innovative solutions are on the way.</p>
-</div>
+  <div class="container">
+    <img 
+      src="OpenClaw1.jpg" 
+      alt="ClawSolved – Resilient AI Workflows" 
+      class="logo-hero"
+    />
+
+    <h1>ClawSolved</h1>
+
+    <p class="tagline">
+      Hardening AI workflows so they don't just work — they survive model shifts, API chaos, and real-world evolution.
+    </p>
+
+    <div class="status">Coming Soon</div>
+
+    <div class="email-teaser">
+      <p>Be the first to know when we launch. Early access & exclusive stability diagnostics reserved for subscribers.</p>
+
+      <!-- Placeholder form — replace action with your Mailchimp/Stripe/ConvertKit endpoint later -->
+      <form class="email-form" action="#" method="post">
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="your@email.com" 
+          required 
+          aria-label="Email address"
+        />
+        <button type="submit">Notify Me</button>
+      </form>
+    </div>
+
+    <p class="footer-note">
+      © 2026 ClawSolved. Building certainty in an uncertain AI world.
+    </p>
+  </div>
 </body>
 </html>
