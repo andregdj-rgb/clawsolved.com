@@ -6,25 +6,26 @@
   <title>ClawSolved – AI Systems That Don't Break</title>
   <meta name="description" content="OpenClaw™ builds resilient AI infrastructure that survives model changes, API failures, and provider outages. Professional async delivery for teams that ship."/>
 
-  <!-- Google Fonts: Outfit (geometric display) + Work Sans (refined body) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --ink: #0d1117;
-      --slate: #1c2128;
-      --steel: #2d3540;
-      --silver: #8b949e;
-      --cream: #f6f8fa;
-      --accent: #0969da;
-      --accent-hover: #0550ae;
-      --gold: #d4af37;
-      --gold-muted: #9a8043;
-      
-      --display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-      --sans: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ink: #0a0d14;
+      --slate: #161b22;
+      --steel: #2a3038;
+      --silver: #929ca8;
+      --cream: #f3f8ff;
+      --accent: #2b8cff;
+      --accent-hover: #1a6fe6;
+      --gold: #c4a047;
+      --gold-muted: #a68b3c;
+      --glow: 0 0 20px rgba(196, 160, 71, 0.16);
+
+      --display: 'Outfit', system-ui, sans-serif;
+      --sans: 'Work Sans', system-ui, sans-serif;
     }
 
     * {
@@ -35,114 +36,125 @@
 
     body {
       font-family: var(--sans);
-      background: linear-gradient(to bottom, #0a0d12 0%, var(--ink) 100%);
+      background: linear-gradient(to bottom, #070a0f 0%, var(--ink) 100%);
       color: var(--cream);
-      line-height: 1.6;
-      overflow: hidden;
-      height: 100vh;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* Subtle texture overlay */
     body::before {
       content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background-image: 
-        radial-gradient(circle at 20% 50%, rgba(9, 105, 218, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
+        radial-gradient(circle at 15% 35%, rgba(196,160,71,0.035) 0%, transparent 65%),
+        radial-gradient(circle at 85% 70%, rgba(43,140,255,0.035) 0%, transparent 65%);
       pointer-events: none;
-      z-index: 0;
+      z-index: -1;
     }
 
     .viewport-container {
-      position: relative;
-      z-index: 1;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* Header */
     header {
-      padding: 30px 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 24px 5vw;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      background: rgba(13, 17, 23, 0.7);
-      flex-shrink: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(16px);
+      background: rgba(10,13,20,0.92);
     }
 
     .logo-mark {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .logo-mark img {
-      height: 38px;
+      height: 34px;
       width: auto;
     }
 
     .brand-name {
       font-family: var(--display);
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       font-weight: 700;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.4px;
       color: var(--cream);
     }
 
-    /* Navigation Menu */
+    .beta-pill {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(196,160,71,0.07);
+      border: 1px solid rgba(196,160,71,0.22);
+      padding: 3px 9px;
+      border-radius: 10px;
+      margin-left: 12px;
+      letter-spacing: 0.6px;
+    }
+
     nav {
       display: flex;
-      gap: 8px;
+      gap: 6px;
     }
 
     .nav-btn {
-      padding: 10px 20px;
+      padding: 8px 16px;
       background: transparent;
-      border: 1px solid rgba(139, 148, 158, 0.2);
+      border: none;
       color: var(--silver);
       font-family: var(--display);
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-    }
-
-    .nav-btn:hover {
-      border-color: rgba(212, 175, 55, 0.4);
-      color: var(--gold);
-      background: rgba(212, 175, 55, 0.05);
-    }
-
-    .nav-btn.active {
-      background: rgba(212, 175, 55, 0.15);
-      border-color: var(--gold);
-      color: var(--gold);
-    }
-
-    /* Main Content Area */
-    .main-content {
-      flex: 1;
       position: relative;
+      transition: color 0.25s ease;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      color: var(--gold);
+    }
+
+    .nav-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-btn.active::after {
+      width: 70%;
+    }
+
+    .nav-btn:hover::after {
+      width: 100%;
+    }
+
+    .main-content {
+      position: relative;
+      flex: 1;
       overflow: hidden;
     }
 
-    /* Full-screen Image */
     .image-container {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -153,308 +165,266 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.6));
+      filter: drop-shadow(0 30px 80px rgba(0,0,0,0.7));
+      transition: transform 0.8s ease;
     }
 
-    /* Overlaid Content Panel on Right */
+    .hero-image:hover {
+      transform: scale(1.012);
+    }
+
+    .brand-watermark {
+      position: absolute;
+      bottom: 32px;
+      left: 5vw;
+      z-index: 2;
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: rgba(196,160,71,0.28);
+      letter-spacing: -0.5px;
+      pointer-events: none;
+      user-select: none;
+    }
+
     .content-overlay {
       position: absolute;
       right: 0;
       top: 0;
       bottom: 0;
-      width: 450px;
-      max-width: 40vw;
-      background: linear-gradient(to left, rgba(10, 13, 18, 0.95) 0%, rgba(10, 13, 18, 0.85) 70%, transparent 100%);
-      backdrop-filter: blur(12px);
-      z-index: 2;
+      width: 480px;
+      max-width: 42vw;
+      background: linear-gradient(to left, rgba(10,13,18,0.97) 0%, rgba(10,13,18,0.90) 70%, transparent 100%);
+      backdrop-filter: blur(14px);
+      z-index: 3;
+      padding: 60px 50px 60px 64px;
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
-      padding: 50px 50px 50px 60px;
-      overflow-y: auto;
+      gap: 32px;
     }
 
-    /* Custom scrollbar for overlay */
     .content-overlay::-webkit-scrollbar {
-      width: 6px;
+      width: 5px;
     }
 
     .content-overlay::-webkit-scrollbar-track {
-      background: rgba(139, 148, 158, 0.1);
-      border-radius: 3px;
+      background: rgba(139,148,165,0.08);
     }
 
     .content-overlay::-webkit-scrollbar-thumb {
-      background: rgba(212, 175, 55, 0.3);
+      background: rgba(196,160,71,0.35);
       border-radius: 3px;
     }
 
-    .content-overlay::-webkit-scrollbar-thumb:hover {
-      background: rgba(212, 175, 55, 0.5);
-    }
-
     .eyebrow {
-      display: inline-block;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 20px;
-      padding: 6px 12px;
-      border: 1px solid rgba(212, 175, 55, 0.4);
+      background: rgba(196,160,71,0.06);
+      border: 1px solid rgba(196,160,71,0.26);
+      padding: 5px 12px;
       border-radius: 4px;
-      background: rgba(212, 175, 55, 0.1);
-      align-self: flex-start;
+      width: fit-content;
     }
 
     .content-view {
       display: none;
-      animation: fadeIn 0.4s ease-out;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
     }
 
     .content-view.active {
       display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .content-view h2 {
       font-family: var(--display);
-      font-size: clamp(1.8rem, 2.2vw, 2.4rem);
-      font-weight: 700;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.9px;
       margin-bottom: 24px;
-      color: #ffffff;
-      letter-spacing: -0.8px;
-      line-height: 1.15;
     }
 
     .content-view p {
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1.06rem;
+      line-height: 1.72;
       color: var(--silver);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .feature-list {
+    .feature-list, .value-list {
       display: flex;
       flex-direction: column;
       gap: 18px;
     }
 
-    .feature-item {
-      background: linear-gradient(135deg, rgba(28, 33, 40, 0.8) 0%, rgba(45, 53, 64, 0.6) 100%);
-      border: 1px solid rgba(139, 148, 158, 0.2);
-      border-radius: 10px;
-      padding: 20px;
-      backdrop-filter: blur(10px);
+    .feature-item, .value-item {
+      background: rgba(22,27,34,0.78);
+      border: 1px solid rgba(139,148,165,0.14);
+      border-radius: 12px;
+      padding: 22px;
+      backdrop-filter: blur(12px);
       transition: all 0.3s ease;
     }
 
-    .feature-item:hover {
-      border-color: rgba(212, 175, 55, 0.5);
-      transform: translateX(4px);
-      background: linear-gradient(135deg, rgba(28, 33, 40, 0.9) 0%, rgba(45, 53, 64, 0.7) 100%);
-    }
-
-    .feature-item h3 {
-      font-family: var(--display);
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--cream);
-      letter-spacing: -0.3px;
-    }
-
-    .feature-item p {
-      font-size: 0.98rem;
-      line-height: 1.65;
-      color: var(--silver);
-      margin-bottom: 0;
-    }
-
-    .value-list {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
+    .feature-item:hover, .value-item:hover {
+      border-color: rgba(196,160,71,0.32);
+      transform: translateX(5px);
     }
 
     .value-item {
-      display: flex;
-      gap: 18px;
+      gap: 20px;
+      align-items: flex-start;
     }
 
     .value-number {
       font-family: var(--display);
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 2.4rem;
+      font-weight: 800;
       color: var(--gold);
-      flex-shrink: 0;
       line-height: 1;
+      opacity: 0.92;
     }
 
     .value-content h4 {
       font-family: var(--display);
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       font-weight: 700;
-      margin-bottom: 10px;
       color: var(--cream);
+      margin-bottom: 8px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
-    .value-content p {
-      font-size: 0.98rem;
-      margin-bottom: 0;
-      line-height: 1.65;
-    }
-
-    /* Email Form */
     .email-form-container {
-      background: linear-gradient(135deg, rgba(28, 33, 40, 0.9) 0%, rgba(45, 53, 64, 0.7) 100%);
-      border: 1px solid rgba(139, 148, 158, 0.25);
-      border-radius: 12px;
-      padding: 32px;
-      backdrop-filter: blur(10px);
+      background: rgba(22,27,34,0.82);
+      border: 1px solid rgba(139,148,165,0.16);
+      border-radius: 14px;
+      padding: 36px;
+      backdrop-filter: blur(14px);
     }
 
     .email-form-container h3 {
       font-family: var(--display);
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-size: 1.85rem;
+      font-weight: 800;
       margin-bottom: 14px;
-      color: #ffffff;
-      letter-spacing: -0.5px;
     }
 
-    .email-form-container .form-note {
-      font-size: 1rem;
+    .form-note, .scarcity {
+      font-size: 0.98rem;
       color: var(--silver);
-      margin-bottom: 24px;
-      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .scarcity {
+      color: var(--gold);
+      font-weight: 600;
     }
 
     .email-capture {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
     input[type="email"] {
-      padding: 16px 20px;
-      font-size: 1rem;
-      font-family: var(--sans);
-      background: rgba(45, 53, 64, 0.6);
-      border: 1px solid rgba(139, 148, 158, 0.3);
-      border-radius: 8px;
+      padding: 18px 24px;
+      font-size: 1.02rem;
+      background: rgba(38,45,56,0.65);
+      border: 1px solid rgba(139,148,165,0.24);
+      border-radius: 10px;
       color: var(--cream);
       outline: none;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
     }
 
-    input[type="email"]::placeholder {
-      color: rgba(139, 148, 158, 0.7);
-    }
-
-    input[type="email"]:focus {
-      background: rgba(45, 53, 64, 0.9);
+    input:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.2);
+      box-shadow: 0 0 0 4px rgba(43,140,255,0.18);
     }
 
     .submit-btn {
-      padding: 16px 32px;
-      background: linear-gradient(135deg, var(--accent) 0%, #0550ae 100%);
+      padding: 18px 44px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
       border: none;
+      border-radius: 10px;
       color: white;
       font-family: var(--display);
-      font-size: 1rem;
+      font-size: 1.04rem;
       font-weight: 700;
-      letter-spacing: 0.3px;
-      border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.35s;
+      width: fit-content;
     }
 
     .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(9, 105, 218, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(43,140,255,0.32);
     }
 
     .trust-note {
-      font-size: 0.9rem;
-      color: rgba(195, 212, 255, 0.8);
-      margin-top: 14px;
-      line-height: 1.5;
+      font-size: 0.88rem;
+      color: rgba(195,212,255,0.82);
+      margin-top: 16px;
+      line-height: 1.55;
     }
 
-    /* Responsive */
+    footer {
+      padding: 40px 5vw;
+      text-align: center;
+      color: var(--silver);
+      font-size: 0.94rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
     @media (max-width: 1400px) {
       .content-overlay {
-        width: 400px;
-        padding: 40px 40px 40px 50px;
-      }
-
-      .content-view h2 {
-        font-size: 1.8rem;
+        width: 460px;
+        max-width: 40vw;
+        padding: 50px 45px 50px 55px;
       }
     }
 
-    @media (max-width: 1200px) {
-      .content-overlay {
-        max-width: 45vw;
-        width: 420px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .hero-image {
-        object-fit: cover;
-      }
-
+    @media (max-width: 1100px) {
       .content-overlay {
         width: 100%;
-        max-width: 100%;
-        background: linear-gradient(to top, rgba(10, 13, 18, 0.96) 0%, rgba(10, 13, 18, 0.88) 60%, transparent 100%);
+        max-width: none;
+        background: linear-gradient(to top, rgba(10,13,18,0.98) 0%, rgba(10,13,18,0.92) 70%, transparent 100%);
         top: auto;
         bottom: 0;
-        height: 60vh;
-        padding: 40px 30px;
+        height: 62vh;
+        padding: 40px 32px;
       }
     }
 
     @media (max-width: 768px) {
       header {
-        padding: 20px 25px;
+        padding: 20px 6vw;
         flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
+        gap: 18px;
       }
 
       nav {
         width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        justify-content: center;
       }
 
-      .nav-btn {
-        font-size: 0.75rem;
-        padding: 7px 12px;
+      .hero-image {
+        object-fit: contain;
       }
 
-      .content-overlay {
-        height: 65vh;
-        padding: 30px 25px;
-      }
-
-      .content-view h2 {
-        font-size: 1.6rem;
-      }
-
-      .content-view p {
+      .brand-watermark {
         font-size: 0.95rem;
+        bottom: 16px;
+        left: 6vw;
       }
     }
   </style>
@@ -465,7 +435,9 @@
       <div class="logo-mark">
         <img src="OpenClaw1.jpg" alt="OpenClaw" />
         <span class="brand-name">ClawSolved</span>
+        <span class="beta-pill">Founding 2026</span>
       </div>
+
       <nav>
         <button class="nav-btn active" data-view="overview">Overview</button>
         <button class="nav-btn" data-view="features">How It Works</button>
@@ -475,7 +447,6 @@
     </header>
 
     <div class="main-content">
-      <!-- Full-screen Image -->
       <div class="image-container">
         <img 
           src="OpenClaw1.jpg" 
@@ -484,122 +455,109 @@
         />
       </div>
 
-      <!-- Overlaid Content Panel on Right -->
+      <div class="brand-watermark">ClawSolved</div>
+
       <div class="content-overlay">
-        <!-- Overview View -->
+        <!-- Overview -->
         <div class="content-view active" data-content="overview">
           <span class="eyebrow">Powered by OpenClaw™</span>
-          <h2>Your AI systems shouldn't break every time a vendor updates</h2>
-          <p>Model deprecations. Rate limit changes. API rewrites. Provider outages. Most AI implementations are one breaking change away from failure.</p>
-          <p><strong style="color: var(--cream);">OpenClaw™ builds systems that survive these disruptions.</strong> Your applications keep working when dependencies change, degrade gracefully under failure, and adapt without rewrites.</p>
-          <p style="margin-top: 24px; color: var(--gold); font-weight: 600;">Professional async delivery. No meetings. Built for teams that ship, not talk.</p>
+          <h2>AI systems that survive vendor updates — not react to them</h2>
+          <p>Model deprecations. Rate limits. API rewrites. Provider outages.</p>
+          <p>Most implementations are one change away from failure.</p>
+          <p><strong style="color: var(--cream);">OpenClaw™ builds resilience into the architecture.</strong> Your applications keep running when dependencies shift.</p>
+          <p style="margin-top: 24px; color: var(--gold); font-weight: 600;">
+            Async delivery. No meetings. Built for teams that ship.
+          </p>
         </div>
 
-        <!-- Features View -->
+        <!-- Features -->
         <div class="content-view" data-content="features">
           <span class="eyebrow">Powered by OpenClaw™</span>
           <h2>How It Works</h2>
           <div class="feature-list">
             <div class="feature-item">
-              <h3>🛡️ Resilience by Design</h3>
-              <p>We anticipate failure modes before they happen. Automatic fallbacks, graceful degradation, and retry logic built in. Your users see slower responses, not error screens.</p>
+              <h3>Resilience by Design</h3>
+              <p>Anticipates failure modes. Automatic fallbacks and graceful degradation — slowdowns, never crashes.</p>
             </div>
             <div class="feature-item">
-              <h3>⚙️ Async Delivery</h3>
-              <p>Send requirements. Get implementation. No standup meetings, no status calls, no Slack check-ins. Just working code on your timeline.</p>
+              <h3>Async Professional Delivery</h3>
+              <p>Send requirements → receive hardened implementation. No calls, no status updates, just results on your timeline.</p>
             </div>
             <div class="feature-item">
-              <h3>📊 Clear Metrics</h3>
-              <p>Simple dashboards showing what's working, what's degraded, and where your risk is. No jargon. No bullshit.</p>
+              <h3>Executive-Grade Visibility</h3>
+              <p>Clear metrics on fragility, uptime, and risk — no engineering jargon required.</p>
             </div>
           </div>
         </div>
 
-        <!-- Resilience View -->
+        <!-- Resilience -->
         <div class="content-view" data-content="resilience">
           <span class="eyebrow">Powered by OpenClaw™</span>
-          <h2>Why OpenClaw™ Works</h2>
+          <h2>Why OpenClaw Works</h2>
           <div class="value-list">
             <div class="value-item">
               <div class="value-number">01</div>
               <div class="value-content">
                 <h4>Provider Agnostic</h4>
-                <p>Switch between OpenAI, Anthropic, or open source models without changing your code. When GPT-4 gets deprecated, you flip a config flag.</p>
+                <p>Switch models or vendors with a config change — no core logic rewrite.</p>
               </div>
             </div>
             <div class="value-item">
               <div class="value-number">02</div>
               <div class="value-content">
-                <h4>Failure Handling</h4>
-                <p>Rate limits? Try a different provider. Model down? Fall back to cached results. Network timeout? Queue and retry. Failures become slowdowns, not outages.</p>
+                <h4>Failure Tolerant</h4>
+                <p>Rate limits? Failover. Model down? Cache fallback. Timeout? Retry queue. Failures become delays.</p>
               </div>
             </div>
             <div class="value-item">
               <div class="value-number">03</div>
               <div class="value-content">
-                <h4>Built to Evolve</h4>
-                <p>Add new models, change providers, update logic—all without architectural rewrites. Extend what exists instead of rebuilding from scratch.</p>
+                <h4>Evolution Native</h4>
+                <p>New capabilities extend the existing system — architecture evolves, never rebuilt.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Early Access View -->
+        <!-- Access -->
         <div class="content-view" data-content="access">
           <span class="eyebrow">Powered by OpenClaw™</span>
           <div class="email-form-container">
-            <h3>Early Access Program</h3>
-            <p class="form-note">Limited founding partner slots. We assess your current architecture, identify fragility, and implement OpenClaw™ resilience patterns. Async delivery, fixed scope, clear timeline.</p>
+            <h3>Founding Partner Access</h3>
+            <p class="scarcity">Limited to 12 founding teams in 2026</p>
+            <p class="form-note">Fixed-scope architecture review + OpenClaw™ hardening implementation. Async delivery. 4-week timeline.</p>
             <form class="email-capture" action="#" method="post">
               <input 
                 type="email" 
                 name="email" 
                 placeholder="Your work email" 
                 required 
-                aria-label="Email address"
               />
-              <button type="submit" class="submit-btn">Request Assessment</button>
+              <button type="submit" class="submit-btn">Claim Founding Slot</button>
             </form>
-            <p class="trust-note">Architecture review · Implementation blueprint · 4-week delivery · No meetings required</p>
+            <p class="trust-note">
+              Architecture fragility assessment · Custom resilience blueprint · Async professional hardening · Reserved capacity
+            </p>
           </div>
         </div>
       </div>
     </div>
+
+    <footer>
+      © 2026 ClawSolved — Engineered resilience for the AI era. United Kingdom.
+    </footer>
   </div>
 
   <script>
-    // Navigation functionality
     const navBtns = document.querySelectorAll('.nav-btn');
     const contentViews = document.querySelectorAll('.content-view');
 
     function switchView(viewName) {
-      // Update active nav button
-      navBtns.forEach(btn => {
-        if (btn.dataset.view === viewName) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-
-      // Update active content view
-      contentViews.forEach(view => {
-        if (view.dataset.content === viewName) {
-          view.classList.add('active');
-        } else {
-          view.classList.remove('active');
-        }
-      });
+      navBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.view === viewName));
+      contentViews.forEach(view => view.classList.toggle('active', view.dataset.content === viewName));
     }
 
-    // Add click handlers to nav buttons
-    navBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        switchView(btn.dataset.view);
-      });
-    });
-
-    // Make switchView available globally for the CTA button
+    navBtns.forEach(btn => btn.addEventListener('click', () => switchView(btn.dataset.view)));
     window.switchView = switchView;
   </script>
 </body>
