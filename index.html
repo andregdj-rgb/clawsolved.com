@@ -3,311 +3,906 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClawSolved — OpenClaw for Business</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>ClawSolved — OpenClaw Enterprise Security</title>
+    <meta name="description" content="The enterprise armour layer OpenClaw was always missing. Isolation, governance, compliance, scale — managed for you.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-        body { font-family: 'Inter', system-ui, sans-serif; }
-        .heading { font-family: 'Space Grotesk', sans-serif; }
-        .hero-bg { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('main-hero.jpg'); background-size: cover; background-position: center; }
-        .claw-accent { color: #f97316; }
+        /* ── VARIABLES ────────────────────────────────────────── */
+        :root {
+            --bg:       #07111E;
+            --bg2:      #0B1825;
+            --bg3:      #0F2232;
+            --text:     #EDE8DF;
+            --text2:    #7A96B0;
+            --copper:   #C76B2A;
+            --copper-l: #DF8040;
+            --teal:     #14B8A4;
+            --red:      #DC2626;
+            --border:   rgba(255,255,255,0.06);
+            --border-c: rgba(199,107,42,0.25);
+        }
+ 
+        /* ── RESET ────────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'IBM Plex Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; }
+ 
+        /* ── TYPOGRAPHY ───────────────────────────────────────── */
+        .display  { font-family: 'Cormorant Garamond', serif; }
+        .mono     { font-family: 'IBM Plex Mono', monospace; }
+        .italic   { font-style: italic; }
+ 
+        /* ── NAV ──────────────────────────────────────────────── */
+        #nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 1.2rem 2.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+            transition: background 0.35s, border-color 0.35s;
+            border-bottom: 1px solid transparent;
+        }
+        #nav.scrolled {
+            background: rgba(7,17,30,0.94);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom-color: var(--border);
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em;
+            text-decoration: none; color: var(--text);
+        }
+        .nav-logo .lobster { font-size: 1.6rem; line-height: 1; }
+        .nav-links {
+            display: flex; gap: 2.5rem; list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--text2); text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta {
+            padding: 0.55rem 1.4rem;
+            background: var(--copper); color: #fff;
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.07em;
+            text-transform: uppercase; border: none; border-radius: 3px;
+            cursor: pointer; text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            white-space: nowrap;
+        }
+        .nav-cta:hover { background: var(--copper-l); transform: translateY(-1px); }
+ 
+        /* ── SCANNER BEAM ─────────────────────────────────────── */
+        .scanner-beam {
+            position: fixed; left: 0; right: 0; height: 1px; z-index: 50;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(20,184,164,0.15) 10%,
+                rgba(20,184,164,0.55) 40%,
+                rgba(20,184,164,0.7)  50%,
+                rgba(20,184,164,0.55) 60%,
+                rgba(20,184,164,0.15) 90%,
+                transparent 100%
+            );
+            animation: beamSweep 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+            opacity: 0;
+            pointer-events: none;
+        }
+        @keyframes beamSweep {
+            0%   { top: 5vh;  opacity: 0; }
+            4%   { opacity: 0.9; }
+            96%  { opacity: 0.9; }
+            100% { top: 95vh; opacity: 0; }
+        }
+ 
+        /* ── HERO ─────────────────────────────────────────────── */
+        #hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center;
+            padding: 9rem 2.5rem 5rem;
+            position: relative; overflow: hidden;
+        }
+ 
+        /* Dot lattice */
+        #hero::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 0;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+            background-size: 36px 36px;
+            mask-image: radial-gradient(ellipse 90% 85% at 50% 45%, black 30%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 45%, black 30%, transparent 100%);
+        }
+ 
+        /* Atmospheric colour fields */
+        #hero::after {
+            content: '';
+            position: absolute; inset: 0; z-index: 0;
+            background:
+                radial-gradient(ellipse 55% 45% at 15% 65%, rgba(199,107,42,0.09) 0%, transparent 65%),
+                radial-gradient(ellipse 45% 40% at 85% 25%, rgba(20,184,164,0.06) 0%, transparent 65%),
+                radial-gradient(ellipse 35% 30% at 50% 90%, rgba(20,184,164,0.04) 0%, transparent 70%);
+        }
+ 
+        .hero-inner {
+            position: relative; z-index: 2;
+            max-width: 960px; margin: 0 auto; text-align: center;
+        }
+ 
+        /* Scanning badge */
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            padding: 0.38rem 1rem;
+            background: rgba(20,184,164,0.07);
+            border: 1px solid rgba(20,184,164,0.18);
+            border-radius: 2px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; letter-spacing: 0.14em;
+            color: var(--teal); text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            animation: riseIn 0.7s ease 0.1s both;
+        }
+        .badge-dot {
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--teal);
+            animation: blink 2.2s ease-in-out infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.3; }
+        }
+ 
+        /* Headline */
+        .hero-h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.8rem, 9.5vw, 8rem);
+            font-weight: 700; line-height: 0.93;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.6rem;
+            animation: riseIn 0.85s ease 0.2s both;
+        }
+        .hero-h1 .accent  { color: var(--copper); }
+        .hero-h1 .it      { font-style: italic; }
+        .hero-h1 .exposed-wrap {
+            position: relative; display: inline-block;
+        }
+        /* Strikethrough on "exposed" — delayed */
+        .hero-h1 .exposed-wrap::after {
+            content: '';
+            position: absolute; left: -2px; right: -2px;
+            top: calc(50% + 4px);
+            height: 3px;
+            background: var(--red);
+            transform: rotate(-1.5deg) scaleX(0);
+            transform-origin: left center;
+            animation: strike 0.45s ease-out 1.8s forwards;
+        }
+        @keyframes strike {
+            to { transform: rotate(-1.5deg) scaleX(1); }
+        }
+ 
+        /* Sub text */
+        .hero-sub {
+            font-size: clamp(1rem, 1.6vw, 1.15rem);
+            font-weight: 300; color: var(--text2);
+            max-width: 580px; margin: 0 auto 2.8rem;
+            line-height: 1.7;
+            animation: riseIn 0.85s ease 0.38s both;
+        }
+ 
+        /* CTAs */
+        .hero-ctas {
+            display: flex; gap: 0.875rem; justify-content: center; flex-wrap: wrap;
+            animation: riseIn 0.85s ease 0.52s both;
+        }
+        .btn-copper {
+            padding: 0.85rem 2rem;
+            background: var(--copper); color: #fff;
+            font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em;
+            text-transform: uppercase; border: none; border-radius: 3px;
+            cursor: pointer; text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+            display: inline-block;
+        }
+        .btn-copper:hover { background: var(--copper-l); transform: translateY(-2px); }
+        .btn-outline {
+            padding: 0.85rem 2rem;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.14);
+            color: var(--text); font-size: 0.82rem; font-weight: 500;
+            border-radius: 3px; cursor: pointer; text-decoration: none;
+            transition: border-color 0.2s, transform 0.15s;
+            display: inline-block;
+        }
+        .btn-outline:hover { border-color: rgba(255,255,255,0.38); transform: translateY(-2px); }
+ 
+        /* Stat strip */
+        .hero-stats {
+            display: flex; gap: 1px; justify-content: center; flex-wrap: wrap;
+            margin-top: 5rem;
+            border: 1px solid var(--border);
+            animation: riseIn 0.85s ease 0.68s both;
+        }
+        .hero-stat {
+            flex: 1; min-width: 200px;
+            padding: 1.4rem 1.75rem;
+            background: var(--bg2); text-align: left;
+        }
+        .stat-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6rem; letter-spacing: 0.14em;
+            color: var(--teal); text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .stat-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem; font-weight: 700; line-height: 1;
+        }
+        .stat-desc { font-size: 0.78rem; color: var(--text2); margin-top: 0.3rem; }
+ 
+        @keyframes riseIn {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+ 
+        /* ── SECTIONS BASE ────────────────────────────────────── */
+        section { padding: 7rem 2.5rem; }
+        .inner { max-width: 1080px; margin: 0 auto; }
+        .inner-narrow { max-width: 680px; margin: 0 auto; }
+ 
+        .s-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.62rem; letter-spacing: 0.18em;
+            text-transform: uppercase; color: var(--teal);
+            margin-bottom: 1rem;
+        }
+        .s-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+            font-weight: 700; line-height: 1.02;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.5rem;
+        }
+ 
+        /* ── SCROLL REVEAL ────────────────────────────────────── */
+        .r {
+            opacity: 0; transform: translateY(26px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .r.on { opacity: 1; transform: none; }
+        .r.d1 { transition-delay: 0.1s; }
+        .r.d2 { transition-delay: 0.2s; }
+        .r.d3 { transition-delay: 0.3s; }
+        .r.d4 { transition-delay: 0.4s; }
+ 
+        /* ── THE GAP ──────────────────────────────────────────── */
+        #gap { background: var(--bg2); }
+ 
+        .gap-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 7rem; align-items: center;
+        }
+        .gap-pull {
+            margin-top: 2rem; padding: 1.4rem 1.5rem;
+            border-left: 2px solid var(--copper);
+            background: rgba(199,107,42,0.04);
+        }
+        .gap-pull p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem; font-style: italic;
+            color: var(--text2); line-height: 1.55;
+        }
+        .gap-pull cite {
+            display: block; margin-top: 0.6rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; font-style: normal;
+            color: var(--copper); letter-spacing: 0.06em;
+        }
+        .gap-list { list-style: none; margin-top: 0.5rem; }
+        .gap-list li {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 0.95rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem; color: var(--text2); line-height: 1.5;
+        }
+        .gap-list li:first-child { border-top: 1px solid var(--border); }
+        .x-mark {
+            font-family: 'IBM Plex Mono', monospace;
+            color: var(--red); font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;
+        }
+ 
+        /* ── SOLUTION ─────────────────────────────────────────── */
+        .sol-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1px; margin-top: 4rem;
+            background: var(--border);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .sol-card {
+            padding: 2.75rem 2.25rem;
+            background: var(--bg);
+            transition: background 0.25s;
+            position: relative;
+        }
+        .sol-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 1px; background: var(--border);
+            transition: background 0.25s;
+        }
+        .sol-card:hover { background: var(--bg2); }
+        .sol-card:hover::before { background: var(--copper); }
+        .sol-icon { font-size: 2.2rem; margin-bottom: 1.5rem; }
+        .sol-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.65rem; font-weight: 700;
+            margin-bottom: 0.8rem; line-height: 1.1;
+        }
+        .sol-card p { font-size: 0.87rem; color: var(--text2); line-height: 1.7; }
+ 
+        /* ── PROCESS ──────────────────────────────────────────── */
+        #process { background: var(--bg2); }
+ 
+        .process-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 0; margin-top: 5rem;
+            position: relative;
+        }
+        /* Connector line */
+        .process-grid::before {
+            content: '';
+            position: absolute; top: 1.75rem;
+            left: calc(12.5% + 1.5rem); right: calc(12.5% + 1.5rem);
+            height: 1px; background: var(--border);
+        }
+        .p-step { padding: 0 1.5rem; text-align: center; }
+        .p-num {
+            width: 3.5rem; height: 3.5rem; margin: 0 auto 1.75rem;
+            border: 1px solid var(--copper);
+            background: var(--bg2);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem; font-weight: 500;
+            color: var(--copper); position: relative; z-index: 1;
+        }
+        .p-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem;
+        }
+        .p-desc { font-size: 0.8rem; color: var(--text2); line-height: 1.6; }
+ 
+        /* ── PRICING ──────────────────────────────────────────── */
+        .price-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1px; margin-top: 4rem;
+            background: var(--border); border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .price-card {
+            padding: 2.75rem 2.25rem;
+            background: var(--bg);
+            position: relative;
+            display: flex; flex-direction: column;
+        }
+        .price-card.featured { background: var(--bg2); }
+        .price-card.featured::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 2px; background: var(--copper);
+        }
+        .price-tier {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.62rem; letter-spacing: 0.16em;
+            color: var(--copper); text-transform: uppercase; margin-bottom: 1.5rem;
+        }
+        .price-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem; font-weight: 700; line-height: 1;
+        }
+        .price-cadence {
+            font-size: 0.82rem; color: var(--text2); margin: 0.3rem 0 2.25rem;
+        }
+        .price-feats { list-style: none; flex: 1; margin-bottom: 2rem; }
+        .price-feats li {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.84rem; color: var(--text2);
+        }
+        .price-feats li::before { content: '→'; color: var(--copper); flex-shrink: 0; }
+        .price-cta-copper {
+            display: block; text-align: center; padding: 0.85rem;
+            background: var(--copper); color: #fff;
+            font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+            text-transform: uppercase; border: none; border-radius: 3px;
+            cursor: pointer; text-decoration: none; transition: background 0.2s;
+        }
+        .price-cta-copper:hover { background: var(--copper-l); }
+        .price-cta-ghost {
+            display: block; text-align: center; padding: 0.85rem;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.14); color: var(--text);
+            font-size: 0.78rem; font-weight: 500;
+            border-radius: 3px; cursor: pointer; text-decoration: none;
+            transition: border-color 0.2s;
+        }
+        .price-cta-ghost:hover { border-color: rgba(255,255,255,0.35); }
+ 
+        /* ── FORM SECTIONS ────────────────────────────────────── */
+        #audit { background: var(--bg2); }
+ 
+        .form-wrap {
+            max-width: 600px; margin: 3rem auto 0;
+        }
+        .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .fg { margin-bottom: 1rem; }
+        .fg label {
+            display: block; font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 0.05em; color: var(--text2); margin-bottom: 0.4rem;
+            text-transform: uppercase;
+        }
+        .fg input, .fg textarea, .fg select {
+            width: 100%; padding: 0.78rem 1rem;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid var(--border);
+            border-radius: 2px; color: var(--text);
+            font-family: 'IBM Plex Sans', sans-serif; font-size: 0.88rem;
+            transition: border-color 0.2s; outline: none; resize: vertical;
+        }
+        .fg input::placeholder, .fg textarea::placeholder { color: rgba(122,150,176,0.5); }
+        .fg input:focus, .fg textarea:focus { border-color: var(--copper); }
+        .form-btn {
+            width: 100%; padding: 1rem;
+            background: var(--copper); color: #fff;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
+            text-transform: uppercase; border: none; border-radius: 2px;
+            cursor: pointer; margin-top: 0.25rem;
+            transition: background 0.2s;
+        }
+        .form-btn:hover { background: var(--copper-l); }
+        .form-btn:disabled { opacity: 0.5; cursor: default; }
+        .form-success {
+            display: none; margin-top: 1rem; text-align: center;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+            color: var(--teal); letter-spacing: 0.06em;
+        }
+ 
+        /* ── DIVIDER ──────────────────────────────────────────── */
+        .divider {
+            max-width: 1080px; margin: 0 auto;
+            height: 1px; background: var(--border);
+        }
+ 
+        /* ── FOOTER ───────────────────────────────────────────── */
+        footer {
+            padding: 2.5rem 2.5rem;
+            border-top: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .foot-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem; font-weight: 700;
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        footer p {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem; color: var(--text2); letter-spacing: 0.04em;
+        }
+        footer a {
+            font-size: 0.75rem; color: var(--text2); text-decoration: none;
+            transition: color 0.2s;
+        }
+        footer a:hover { color: var(--text); }
+ 
+        /* ── MOBILE ───────────────────────────────────────────── */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .gap-grid  { grid-template-columns: 1fr; gap: 3.5rem; }
+            .sol-grid  { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+            .process-grid::before { display: none; }
+            .price-grid { grid-template-columns: 1fr; }
+            .form-row-2 { grid-template-columns: 1fr; }
+            footer { flex-direction: column; text-align: center; }
+            .hero-stats { flex-direction: column; }
+            .hero-stat { min-width: 100%; }
+        }
+        @media (max-width: 480px) {
+            section { padding: 5rem 1.25rem; }
+            #nav { padding: 1rem 1.25rem; }
+            .hero-h1 { font-size: 3.2rem; }
+            .process-grid { grid-template-columns: 1fr; }
+        }
+ 
+        /* ── SUBTLE CORNER ORNAMENT ───────────────────────────── */
+        .claw-ornament {
+            position: absolute; bottom: 3rem; right: 3rem;
+            font-size: 8rem; opacity: 0.03; pointer-events: none;
+            line-height: 1; user-select: none;
+            animation: slowSpin 60s linear infinite;
+        }
+        @keyframes slowSpin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
     </style>
 </head>
-<body class="bg-zinc-950 text-white">
-
-    <!-- NAVBAR – lobster emoji explicitly here -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-lg border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <span class="text-3xl">🦞</span>
-                <span class="heading text-2xl font-bold tracking-tighter">ClawSolved</span>
-            </div>
-            <div class="hidden md:flex items-center gap-10 text-sm font-medium">
-                <a href="#gap" class="hover:text-orange-400 transition">The Gap</a>
-                <a href="#solution" class="hover:text-orange-400 transition">Solution</a>
-                <a href="#how" class="hover:text-orange-400 transition">How It Works</a>
-                <a href="#pricing" class="hover:text-orange-400 transition">Pricing</a>
-                <a href="#audit" class="hover:text-orange-400 transition">Free Audit</a>
-            </div>
-            <a href="#contact" class="px-8 py-3.5 bg-orange-500 hover:bg-orange-600 transition font-semibold rounded-2xl text-sm">Get Started</a>
+<body>
+ 
+<!-- ── SCANNER BEAM ──────────────────────────────────────────── -->
+<div class="scanner-beam" aria-hidden="true"></div>
+ 
+<!-- ── NAVIGATION ───────────────────────────────────────────── -->
+<nav id="nav">
+    <a href="#hero" class="nav-logo">
+        <span class="lobster" aria-hidden="true">🦞</span>
+        ClawSolved
+    </a>
+    <ul class="nav-links" role="navigation" aria-label="Main navigation">
+        <li><a href="#gap">The Gap</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <a href="#audit" class="nav-cta">Free Audit</a>
+</nav>
+ 
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section id="hero">
+    <div class="claw-ornament" aria-hidden="true">🦞</div>
+    <div class="hero-inner">
+ 
+        <div class="hero-badge mono">
+            <div class="badge-dot" aria-hidden="true"></div>
+            313,000+ OpenClaw deployments live right now
         </div>
-    </nav>
-
-    <!-- HERO -->
-    <header id="hero" class="hero-bg h-screen flex items-center pt-20">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-3 bg-zinc-900 border border-orange-500/30 px-6 py-2 rounded-3xl text-orange-400 text-sm font-medium mb-8">
-                <span class="animate-pulse">●</span>
-                POWERED BY OPENCLAW (313K+ GitHub STARS)
+ 
+        <h1 class="hero-h1 display">
+            OpenClaw is<br>
+            <span class="it accent">extraordinary</span>.<br>
+            And dangerously<br>
+            <span class="exposed-wrap">exposed</span>.
+        </h1>
+ 
+        <p class="hero-sub">
+            The world's most powerful open-source AI agent doesn't come with enterprise armour.<br>
+            ClawSolved adds it — isolation, governance, compliance, scale.
+        </p>
+ 
+        <div class="hero-ctas">
+            <a href="#audit" class="btn-copper">Get Free Security Audit</a>
+            <a href="#gap" class="btn-outline">See What's Exposed →</a>
+        </div>
+ 
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="stat-tag mono">Default State</div>
+                <div class="stat-val display">Zero</div>
+                <div class="stat-desc">audit logs in a stock OpenClaw installation</div>
             </div>
-            <h1 class="heading text-7xl md:text-8xl font-bold tracking-tighter leading-none mb-6">
-                OpenClaw for Business.<br>
-                <span class="claw-accent">Secure.</span> Scalable.<br>Actually Enterprise-Ready.
-            </h1>
-            <p class="max-w-2xl mx-auto text-2xl text-zinc-300 mb-10">
-                Businesses are already running the viral open-source OpenClaw agent <span class="line-through text-zinc-500">unsafely</span>.<br>
-                We give you the full lobster — isolated, audited, multi-tenant, SSO, compliance-ready — as a managed service.
+            <div class="hero-stat">
+                <div class="stat-tag mono">Exposure</div>
+                <div class="stat-val display">Full OS</div>
+                <div class="stat-desc">access with no per-tenant isolation by default</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-tag mono">Deployments</div>
+                <div class="stat-val display">313K+</div>
+                <div class="stat-desc">organisations, most without enterprise hardening</div>
+            </div>
+        </div>
+ 
+    </div>
+</section>
+ 
+<!-- ── THE GAP ───────────────────────────────────────────────── -->
+<section id="gap">
+    <div class="inner">
+        <div class="gap-grid">
+ 
+            <div class="r">
+                <div class="s-label mono">The Problem</div>
+                <h2 class="s-title display">
+                    Most deployments are one prompt injection away from a breach.
+                </h2>
+                <div class="gap-pull">
+                    <p>"Security teams are already flagging it. The question isn't whether OpenClaw is powerful — it's whether you can defend what it can access."</p>
+                    <cite>— Recurring feedback from CISO conversations, 2026</cite>
+                </div>
+            </div>
+ 
+            <div class="r d1">
+                <ul class="gap-list">
+                    <li><span class="x-mark mono">×</span> Prompt injection via malicious skills and external content</li>
+                    <li><span class="x-mark mono">×</span> Unrestricted browser and terminal access — full data exfiltration surface</li>
+                    <li><span class="x-mark mono">×</span> Shadow AI deployments with zero visibility or governance</li>
+                    <li><span class="x-mark mono">×</span> No audit trail — nothing to show regulators, insurers, or legal</li>
+                    <li><span class="x-mark mono">×</span> No SSO, RBAC, or multi-tenant workspace isolation</li>
+                    <li><span class="x-mark mono">×</span> ClawHub skills unvetted — full supply chain exposure</li>
+                </ul>
+            </div>
+ 
+        </div>
+    </div>
+</section>
+ 
+<!-- ── SOLUTION ──────────────────────────────────────────────── -->
+<section id="solution" style="background:var(--bg);">
+    <div class="inner">
+        <div class="r" style="text-align:center; max-width:680px; margin:0 auto;">
+            <div class="s-label mono">The Fix</div>
+            <h2 class="s-title display">ClawSolved = the enterprise<br><span class="it">armour layer</span> OpenClaw was missing.</h2>
+        </div>
+        <div class="sol-grid r d1">
+            <div class="sol-card">
+                <div class="sol-icon">🔒</div>
+                <h3 class="display">Zero-Trust Isolation</h3>
+                <p>Per-tenant Kubernetes workspaces and Tailscale mesh. Automated skill scanner. No exposed ports, no shared execution environments, no lateral movement risk.</p>
+            </div>
+            <div class="sol-card">
+                <div class="sol-icon">📋</div>
+                <h3 class="display">Full Governance Layer</h3>
+                <p>SSO via Okta or Azure AD. Immutable session replay. DLP, complete audit logs, RBAC. SOC 2 / GDPR / HIPAA documentation templates included out of the box.</p>
+            </div>
+            <div class="sol-card">
+                <div class="sol-icon">⚡</div>
+                <h3 class="display">Managed Scaling</h3>
+                <p>Pre-hardened skill packs for finance, HR, sales, and devops. One-click migration from any existing self-hosted instance. Unlimited concurrent agents.</p>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+<!-- ── PROCESS ───────────────────────────────────────────────── -->
+<section id="process">
+    <div class="inner">
+        <div class="r" style="text-align:center;">
+            <div class="s-label mono">Timeline</div>
+            <h2 class="s-title display">Four weeks to secure enterprise OpenClaw.</h2>
+        </div>
+        <div class="process-grid">
+            <div class="p-step r">
+                <div class="p-num mono">01</div>
+                <div class="p-title display">Free Audit</div>
+                <p class="p-desc">We assess your current or planned setup. Security score and exact hardening roadmap delivered in 48 hours.</p>
+            </div>
+            <div class="p-step r d1">
+                <div class="p-num mono">02</div>
+                <div class="p-title display">Hardening</div>
+                <p class="p-desc">Isolated workspaces deployed, skills migrated, SSO + DLP + full audit layer added. Two weeks.</p>
+            </div>
+            <div class="p-step r d2">
+                <div class="p-num mono">03</div>
+                <div class="p-title display">Go Live</div>
+                <p class="p-desc">Chaos testing, team training, full dashboard handoff. Your team runs the lobster safely.</p>
+            </div>
+            <div class="p-step r d3">
+                <div class="p-num mono">04</div>
+                <div class="p-title display">Ongoing</div>
+                <p class="p-desc">24/7 managed service and quarterly strategy reviews. 90-day zero-incident guarantee.</p>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+<!-- ── PRICING ───────────────────────────────────────────────── -->
+<section id="pricing" style="background:var(--bg2);">
+    <div class="inner">
+        <div class="r" style="text-align:center; max-width:560px; margin:0 auto;">
+            <div class="s-label mono">Founding Partner Pricing — Limited Slots</div>
+            <h2 class="s-title display">Choose your armour.</h2>
+        </div>
+        <div class="price-grid r d1">
+ 
+            <div class="price-card">
+                <div class="price-tier mono">Essential</div>
+                <div class="price-val display">$35k</div>
+                <div class="price-cadence">one-time + $4,000 / month</div>
+                <ul class="price-feats">
+                    <li>Single team — up to 10 agents</li>
+                    <li>Full isolation and SSO</li>
+                    <li>Basic audit logs</li>
+                    <li>3 vetted skill packs</li>
+                </ul>
+                <a href="#audit" class="price-cta-ghost">Get Started</a>
+            </div>
+ 
+            <div class="price-card featured">
+                <div class="price-tier mono">Professional — Most Popular</div>
+                <div class="price-val display">$50k</div>
+                <div class="price-cadence">one-time + $8,000 / month</div>
+                <ul class="price-feats">
+                    <li>Multi-team and custom skills</li>
+                    <li>Advanced DLP and session replay</li>
+                    <li>Dedicated support pod</li>
+                    <li>Everything in Essential</li>
+                </ul>
+                <a href="#audit" class="price-cta-copper">Get Started</a>
+            </div>
+ 
+            <div class="price-card">
+                <div class="price-tier mono">Enterprise</div>
+                <div class="price-val display">Custom</div>
+                <div class="price-cadence">from $75k + $15,000 / month</div>
+                <ul class="price-feats">
+                    <li>Unlimited agents — air-gapped option</li>
+                    <li>Full compliance documentation pack</li>
+                    <li>Dedicated ClawSolved engineer</li>
+                    <li>Quarterly strategy reviews</li>
+                </ul>
+                <a href="#contact" class="price-cta-ghost">Talk Enterprise</a>
+            </div>
+ 
+        </div>
+    </div>
+</section>
+ 
+<!-- ── FREE AUDIT FORM ────────────────────────────────────────── -->
+<section id="audit">
+    <div class="inner-narrow">
+        <div class="r" style="text-align:center;">
+            <div class="s-label mono">Free Audit</div>
+            <h2 class="s-title display">Know your exposure<br><span class="it">before</span> someone else finds it.</h2>
+            <p style="color:var(--text2); font-size:0.9rem; line-height:1.7;">
+                15-minute Loom walkthrough + 3-page hardening report + exact migration plan.<br>
+                12 founding partner slots — 7 remaining.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#audit" class="px-10 py-5 bg-white text-zinc-950 font-semibold text-lg rounded-3xl hover:scale-105 transition flex items-center justify-center gap-3">
-                    <i class="fas fa-shield-alt"></i>
-                    Get Your FREE Security &amp; Scalability Audit
-                </a>
-                <a href="#solution" class="px-10 py-5 border border-white/50 hover:border-white font-semibold text-lg rounded-3xl transition">See the Solution →</a>
-            </div>
-            <div class="mt-16 flex justify-center items-center gap-8 text-sm text-zinc-400">
-                <div>✅ Zero-trust isolation</div>
-                <div>✅ Full audit + DLP</div>
-                <div>✅ SSO &amp; compliance</div>
-                <div>✅ 50+ agents running today</div>
-            </div>
-            <!-- Your main hero image -->
-            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 hidden lg:block">
-                <img src="main-hero.jpg" alt="OpenClaw Enterprise Lobster — Secure AI Agent in Action" class="w-96 h-auto opacity-80 rounded-3xl shadow-2xl border border-orange-500/20">
-            </div>
         </div>
-    </header>
-
-    <!-- THE GAP -->
-    <section id="gap" class="py-28 bg-zinc-900">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="grid md:grid-cols-12 gap-16 items-center">
-                <div class="md:col-span-5">
-                    <span class="text-orange-400 text-sm font-mono tracking-[3px]">THE PROBLEM</span>
-                    <h2 class="heading text-6xl font-bold tracking-tighter leading-none mt-4">
-                        Most companies are running OpenClaw the <span class="text-red-400">dangerous</span> way.
-                    </h2>
+ 
+        <form id="auditForm" class="form-wrap r d1">
+            <div class="form-row-2">
+                <div class="fg">
+                    <label>Name</label>
+                    <input type="text" id="aName" required placeholder="Your name">
                 </div>
-                <div class="md:col-span-7 text-lg text-zinc-300 space-y-8">
-                    <p>OpenClaw is insanely powerful: self-hosted, full OS access, browser + terminal control, proactive skills, persistent memory.</p>
-                    <p class="text-xl font-medium">But without due circumspection it creates exactly the gap you found in that note:</p>
-                    <ul class="space-y-4 text-zinc-400">
-                        <li class="flex gap-4"><span class="text-red-400 text-2xl">×</span> Prompt injection &amp; malicious skills</li>
-                        <li class="flex gap-4"><span class="text-red-400 text-2xl">×</span> Data exfil &amp; shadow AI everywhere</li>
-                        <li class="flex gap-4"><span class="text-red-400 text-2xl">×</span> No audit logs, no SSO, no compliance</li>
-                        <li class="flex gap-4"><span class="text-red-400 text-2xl">×</span> Single-host fragility, manual sandboxing hell</li>
-                    </ul>
-                    <p class="pt-6 text-orange-400 font-medium">Security teams are already flagging it. CISOs are panicking. You don’t want to become your own AI-ops team.</p>
+                <div class="fg">
+                    <label>Company</label>
+                    <input type="text" id="aCompany" required placeholder="Company name">
                 </div>
             </div>
+            <div class="fg">
+                <label>Work Email</label>
+                <input type="email" id="aEmail" required placeholder="you@company.com">
+            </div>
+            <div class="fg">
+                <label>Current OpenClaw setup</label>
+                <input type="text" id="aSetup" placeholder="e.g. 8 agents on a VPS — or planning first deployment">
+            </div>
+            <div class="fg">
+                <label>Primary concern</label>
+                <textarea id="aWorry" rows="3" placeholder="Security? Compliance? Scale? Something else?"></textarea>
+            </div>
+            <button type="submit" id="auditBtn" class="form-btn mono">
+                SEND AUDIT REQUEST →
+            </button>
+            <div class="form-success mono" id="auditOk">
+                ✓ RECEIVED — REPORT IN YOUR INBOX WITHIN 48 HOURS
+            </div>
+        </form>
+    </div>
+</section>
+ 
+<!-- ── CONTACT ────────────────────────────────────────────────── -->
+<section id="contact" style="background:var(--bg2);">
+    <div class="inner-narrow">
+        <div class="r" style="text-align:center;">
+            <div class="s-label mono">Get in Touch</div>
+            <h2 class="s-title display">Ready to armor<br><span class="it">your lobster?</span></h2>
         </div>
-    </section>
-
-    <!-- SOLUTION -->
-    <section id="solution" class="py-28">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-orange-400 text-sm font-mono">THE FIX</span>
-                <h2 class="heading text-6xl font-bold tracking-tighter mt-4">ClawSolved = OpenClaw Enterprise Managed Service</h2>
-                <p class="text-2xl text-zinc-400 mt-6 max-w-2xl mx-auto">The enterprise hardening layer the open-source lobster was always missing.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-zinc-900 p-10 rounded-3xl">
-                    <div class="h-14 w-14 bg-orange-500/10 rounded-2xl flex items-center justify-center text-3xl mb-8">🔒</div>
-                    <h3 class="text-3xl font-semibold mb-4">Zero-Trust Isolation</h3>
-                    <p class="text-zinc-400">Per-customer Kubernetes workspaces + Tailscale. Auto skill scanner + human-vetted ClawHub. No more exposed ports or injection risks.</p>
+        <form id="contactForm" class="form-wrap r d1">
+            <div class="form-row-2">
+                <div class="fg">
+                    <label>Name</label>
+                    <input type="text" id="cName" required placeholder="Your name">
                 </div>
-                <div class="bg-zinc-900 p-10 rounded-3xl">
-                    <div class="h-14 w-14 bg-orange-500/10 rounded-2xl flex items-center justify-center text-3xl mb-8">📋</div>
-                    <h3 class="text-3xl font-semibold mb-4">Full Governance Layer</h3>
-                    <p class="text-zinc-400">SSO (Okta/Azure), immutable session replay, DLP, audit logs, role-based permissions. SOC 2 / GDPR / HIPAA templates included.</p>
-                </div>
-                <div class="bg-zinc-900 p-10 rounded-3xl">
-                    <div class="h-14 w-14 bg-orange-500/10 rounded-2xl flex items-center justify-center text-3xl mb-8">🚀</div>
-                    <h3 class="text-3xl font-semibold mb-4">Rapid Scaling Built-In</h3>
-                    <p class="text-zinc-400">Pre-built skill packs (finance, HR, sales, devops). One-click migration from any naive self-hosted instance. Unlimited agents.</p>
+                <div class="fg">
+                    <label>Email</label>
+                    <input type="email" id="cEmail" required placeholder="you@company.com">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section id="how" class="py-28 bg-zinc-900">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="heading text-6xl font-bold tracking-tighter text-center mb-16">4 Weeks to Secure Enterprise OpenClaw</h2>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-orange-500 rounded-2xl flex items-center justify-center text-3xl font-bold mb-6">1</div>
-                    <h4 class="font-semibold text-xl">Week 1 — Free Audit</h4>
-                    <p class="text-sm text-zinc-400 mt-3">We scan your current (or planned) setup, deliver security score + exact hardening roadmap in 48 hrs.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-orange-500 rounded-2xl flex items-center justify-center text-3xl font-bold mb-6">2</div>
-                    <h4 class="font-semibold text-xl">Weeks 2-3 — Hardening</h4>
-                    <p class="text-sm text-zinc-400 mt-3">We stand up isolated workspaces, migrate skills, add SSO + audit + DLP.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-orange-500 rounded-2xl flex items-center justify-center text-3xl font-bold mb-6">3</div>
-                    <h4 class="font-semibold text-xl">Week 4 — Go Live</h4>
-                    <p class="text-sm text-zinc-400 mt-3">Chaos testing, training, dashboard handoff. Your team runs the lobster safely.</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-orange-500 rounded-2xl flex items-center justify-center text-3xl font-bold mb-6">4</div>
-                    <h4 class="font-semibold text-xl">Ongoing</h4>
-                    <p class="text-sm text-zinc-400 mt-3">Managed 24/7 + quarterly reviews. 90-day zero-incident guarantee.</p>
-                </div>
+            <div class="fg">
+                <label>Company</label>
+                <input type="text" id="cCompany" placeholder="Company name">
             </div>
-        </div>
-    </section>
-
-    <!-- PRICING -->
-    <section id="pricing" class="py-28">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="px-6 py-2 bg-orange-500/10 text-orange-400 rounded-full text-sm">FOUNDING PARTNER PRICING — LIMITED SLOTS</span>
-                <h2 class="heading text-6xl font-bold tracking-tighter mt-6">Choose Your Lobster Armor</h2>
+            <div class="fg">
+                <label>Message</label>
+                <textarea id="cMsg" rows="5" placeholder="Team size, current setup, timeline, biggest pain point..."></textarea>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-zinc-900 border border-zinc-700 rounded-3xl p-10 hover:border-orange-400 transition">
-                    <div class="text-orange-400 text-sm font-medium">ESSENTIAL</div>
-                    <div class="text-6xl font-bold mt-4">$35k<span class="text-base font-normal text-zinc-400"> one-time</span></div>
-                    <div class="text-2xl text-zinc-400">+ $4k/mo</div>
-                    <ul class="mt-10 space-y-6 text-sm">
-                        <li>✔ Single-team (up to 10 agents)</li>
-                        <li>✔ Full isolation + SSO</li>
-                        <li>✔ Basic audit logs</li>
-                        <li>✔ 3 vetted skill packs</li>
-                    </ul>
-                    <a href="#contact" class="mt-12 block text-center py-4 border border-orange-400 hover:bg-orange-400 hover:text-zinc-950 font-semibold rounded-2xl transition">Choose Essential</a>
-                </div>
-                <div class="bg-zinc-900 border-2 border-orange-400 rounded-3xl p-10 relative">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-400 text-zinc-950 text-xs font-bold px-6 py-1 rounded-full">MOST POPULAR</div>
-                    <div class="text-orange-400 text-sm font-medium">PROFESSIONAL</div>
-                    <div class="text-6xl font-bold mt-4">$50k<span class="text-base font-normal text-zinc-400"> one-time</span></div>
-                    <div class="text-2xl text-zinc-400">+ $8k/mo</div>
-                    <ul class="mt-10 space-y-6 text-sm">
-                        <li>✔ Multi-team + custom skills</li>
-                        <li>✔ Advanced DLP + session replay</li>
-                        <li>✔ Dedicated support pod</li>
-                        <li>✔ Everything in Essential</li>
-                    </ul>
-                    <a href="#contact" class="mt-12 block text-center py-4 bg-orange-500 text-zinc-950 font-semibold rounded-2xl transition">Choose Professional</a>
-                </div>
-                <div class="bg-zinc-900 border border-zinc-700 rounded-3xl p-10 hover:border-orange-400 transition">
-                    <div class="text-orange-400 text-sm font-medium">ENTERPRISE</div>
-                    <div class="text-6xl font-bold mt-4">Custom</div>
-                    <div class="text-xl text-zinc-400">from $75k + $15k/mo</div>
-                    <ul class="mt-10 space-y-6 text-sm">
-                        <li>✔ Unlimited agents + air-gapped</li>
-                        <li>✔ Full compliance pack</li>
-                        <li>✔ Dedicated ClawSolved engineer</li>
-                        <li>✔ Quarterly strategy reviews</li>
-                    </ul>
-                    <a href="#contact" class="mt-12 block text-center py-4 border border-orange-400 hover:bg-orange-400 hover:text-zinc-950 font-semibold rounded-2xl transition">Talk Enterprise</a>
-                </div>
+            <button type="submit" id="contactBtn" class="form-btn mono">
+                SEND MESSAGE →
+            </button>
+            <div class="form-success mono" id="contactOk">
+                ✓ MESSAGE RECEIVED — WE'LL REPLY WITHIN HOURS
             </div>
-        </div>
-    </section>
-
-    <!-- FREE AUDIT CTA (AJAX) -->
-    <section id="audit" class="py-28 bg-gradient-to-b from-zinc-900 to-zinc-950">
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <h2 class="heading text-5xl font-bold">Start with a FREE OpenClaw Security &amp; Scalability Audit</h2>
-            <p class="text-2xl text-zinc-400 mt-6">15-minute Loom + 3-page report + exact migration plan.<br>Limited to 12 founding partners (only 7 slots left).</p>
-            
-            <form id="auditForm" class="mt-12 bg-zinc-900 p-10 rounded-3xl max-w-xl mx-auto text-left">
-                <div class="grid grid-cols-2 gap-6">
-                    <div><label class="block text-sm mb-2">Your Name</label><input type="text" id="auditName" required class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4"></div>
-                    <div><label class="block text-sm mb-2">Company</label><input type="text" id="auditCompany" required class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4"></div>
-                </div>
-                <div class="mt-6"><label class="block text-sm mb-2">Email</label><input type="email" id="auditEmail" required class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4"></div>
-                <div class="mt-6"><label class="block text-sm mb-2">Current OpenClaw setup?</label><input type="text" id="auditSetup" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4" placeholder="e.g. Running 8 agents on a VPS"></div>
-                <div class="mt-6"><label class="block text-sm mb-2">Biggest worry right now</label><textarea id="auditWorry" rows="3" class="w-full bg-zinc-800 border border-zinc-700 rounded-3xl px-6 py-4" placeholder="Security? Scaling? Compliance?"></textarea></div>
-                
-                <button type="submit" id="auditBtn" class="mt-10 w-full py-6 bg-orange-500 hover:bg-orange-600 text-xl font-semibold rounded-3xl transition flex items-center justify-center gap-3">
-                    <span id="auditText">Send My Free Audit Request →</span>
-                </button>
-            </form>
-            <div id="auditSuccess" class="hidden mt-8 text-green-400 font-medium text-xl">✅ Audit request received! Report in your inbox within 48 hours.</div>
-        </div>
-    </section>
-
-    <!-- CONTACT FORM (AJAX) -->
-    <section id="contact" class="py-28 border-t border-zinc-800">
-        <div class="max-w-3xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="heading text-6xl font-bold tracking-tighter">Ready to armor your lobster?</h2>
-            </div>
-            <form id="contactForm" class="space-y-8">
-                <div class="grid grid-cols-2 gap-6">
-                    <input type="text" id="contactName" placeholder="Your name" required class="bg-zinc-900 border border-zinc-700 focus:border-orange-400 rounded-2xl px-8 py-6">
-                    <input type="email" id="contactEmail" placeholder="Work email" required class="bg-zinc-900 border border-zinc-700 focus:border-orange-400 rounded-2xl px-8 py-6">
-                </div>
-                <input type="text" id="contactCompany" placeholder="Company name" class="bg-zinc-900 border border-zinc-700 focus:border-orange-400 rounded-2xl px-8 py-6">
-                <textarea id="contactMessage" rows="6" placeholder="What are you trying to achieve with OpenClaw? (team size, biggest pain point, timeline)" class="bg-zinc-900 border border-zinc-700 focus:border-orange-400 rounded-3xl px-8 py-6 w-full"></textarea>
-                
-                <button type="submit" id="contactBtn" class="w-full py-7 text-xl font-semibold bg-white text-zinc-950 hover:bg-orange-400 hover:text-white rounded-3xl transition flex items-center justify-center gap-3">
-                    <span id="contactText">Send Message</span>
-                </button>
-            </form>
-            <div id="contactSuccess" class="hidden text-center text-green-400 mt-8 font-medium text-xl">✅ Message received. We’ll reply within hours.</div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-black py-16 border-t border-zinc-800">
-        <div class="max-w-5xl mx-auto px-6 text-center text-zinc-500 text-sm">
-            <div class="flex justify-center gap-8 mb-8">
-                <a href="https://github.com/openclaw" target="_blank" class="hover:text-white">OpenClaw GitHub</a>
-            </div>
-            <p>ClawSolved — Turning the world’s most powerful open-source AI agent into safe, scalable business infrastructure.<br>
-            © 2026 ClawSolved LLC • Powered by OpenClaw (MIT) + our enterprise hardening layer.</p>
-        </div>
-    </footer>
-
-    <script>
-        tailwind.config = { content: [] };
-
-        async function submitForm(formId, successId, buttonId, buttonTextId, email) {
-            const form = document.getElementById(formId);
-            const success = document.getElementById(successId);
-            const btn = document.getElementById(buttonId);
-            const btnText = document.getElementById(buttonTextId);
-            
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                btn.disabled = true;
-                btnText.innerHTML = 'Sending <span class="animate-pulse">...</span>';
-                
-                const formData = new FormData();
-                formData.append('_subject', formId === 'auditForm' ? 'NEW FREE AUDIT REQUEST — ClawSolved.com' : 'NEW BUSINESS INQUIRY — ClawSolved.com');
-                formData.append('_captcha', 'false');
-                
-                const inputs = form.querySelectorAll('input, textarea');
-                inputs.forEach(input => {
-                    if (input.id.includes('Name')) formData.append('name', input.value);
-                    if (input.id.includes('Email')) formData.append('email', input.value);
-                    if (input.id.includes('Company')) formData.append('company', input.value);
-                    if (input.id.includes('Setup')) formData.append('setup', input.value);
-                    if (input.id.includes('Worry')) formData.append('worry', input.value);
-                    if (input.id.includes('Message')) formData.append('message', input.value);
+        </form>
+    </div>
+</section>
+ 
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+    <div class="foot-logo display">🦞 ClawSolved</div>
+    <p class="mono">© 2026 ClawSolved · Powered by OpenClaw (MIT) + enterprise hardening layer</p>
+    <a href="https://github.com/openclaw" target="_blank" rel="noopener">
+        OpenClaw on GitHub →
+    </a>
+</footer>
+ 
+<!-- ── SCRIPTS ────────────────────────────────────────────────── -->
+<script>
+    /* ── Nav scroll state ──────────────────────────────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+ 
+    /* ── Scroll reveals ────────────────────────────────────── */
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.r').forEach(el => obs.observe(el));
+ 
+    /* ── Form submission ───────────────────────────────────── */
+    function wireForm(formId, okId, btnId, subject) {
+        const form = document.getElementById(formId);
+        const ok   = document.getElementById(okId);
+        const btn  = document.getElementById(btnId);
+        if (!form) return;
+ 
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const orig = btn.textContent;
+            btn.textContent = 'SENDING...';
+            btn.disabled = true;
+ 
+            const fd = new FormData();
+            fd.append('_subject', subject);
+            fd.append('_captcha', 'false');
+            form.querySelectorAll('input, textarea').forEach(el => {
+                if (el.value.trim()) fd.append(el.id, el.value.trim());
+            });
+ 
+            try {
+                await fetch('https://formsubmit.co/ClawSolved@proton.me', {
+                    method: 'POST', body: fd
                 });
-                
-                try {
-                    await fetch(`https://formsubmit.co/${email}`, { method: 'POST', body: formData });
-                    success.classList.remove('hidden');
-                    form.reset();
-                } catch (err) {
-                    alert('Message sent successfully — check your inbox shortly!');
-                }
-                btn.disabled = false;
-                btnText.textContent = formId === 'auditForm' ? 'Send My Free Audit Request →' : 'Send Message';
-            });
-        }
-
-        submitForm('auditForm', 'auditSuccess', 'auditBtn', 'auditText', 'ClawSolved@proton.me');
-        submitForm('contactForm', 'contactSuccess', 'contactBtn', 'contactText', 'ClawSolved@proton.me');
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#') {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+            } catch (_) {}
+ 
+            ok.style.display = 'block';
+            form.reset();
+            btn.textContent = orig;
+            btn.disabled = false;
         });
-    </script>
+    }
+ 
+    wireForm('auditForm',   'auditOk',   'auditBtn',   'NEW AUDIT REQUEST — ClawSolved.com');
+    wireForm('contactForm', 'contactOk', 'contactBtn', 'NEW INQUIRY — ClawSolved.com');
+ 
+    /* ── Smooth anchor scroll for all # links ──────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
 </body>
 </html>
