@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-        body { font-family: 'Inter', system_ui, sans-serif; }
+        body { font-family: 'Inter', system-ui, sans-serif; }
         .heading { font-family: 'Space Grotesk', sans-serif; }
         .hero-bg { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('main-hero.jpg'); background-size: cover; background-position: center; }
         .claw-accent { color: #f97316; }
@@ -16,7 +16,7 @@
 </head>
 <body class="bg-zinc-950 text-white">
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR – lobster emoji explicitly here -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-lg border-b border-zinc-800">
         <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -62,6 +62,7 @@
                 <div>✅ SSO &amp; compliance</div>
                 <div>✅ 50+ agents running today</div>
             </div>
+            <!-- Your main hero image -->
             <div class="absolute bottom-12 left-1/2 -translate-x-1/2 hidden lg:block">
                 <img src="main-hero.jpg" alt="OpenClaw Enterprise Lobster — Secure AI Agent in Action" class="w-96 h-auto opacity-80 rounded-3xl shadow-2xl border border-orange-500/20">
             </div>
@@ -298,7 +299,7 @@
         submitForm('auditForm', 'auditSuccess', 'auditBtn', 'auditText', 'ClawSolved@proton.me');
         submitForm('contactForm', 'contactSuccess', 'contactBtn', 'contactText', 'ClawSolved@proton.me');
 
-        // Smooth scroll
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href') !== '#') {
