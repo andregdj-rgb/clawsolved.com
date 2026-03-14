@@ -84,29 +84,7 @@
         }
         .nav-cta:hover { background: var(--copper-l); transform: translateY(-1px); }
  
-        /* ── SCANNER BEAM ─────────────────────────────────────── */
-        .scanner-beam {
-            position: fixed; left: 0; right: 0; height: 1px; z-index: 50;
-            background: linear-gradient(
-                90deg,
-                transparent 0%,
-                rgba(20,184,164,0.15) 10%,
-                rgba(20,184,164,0.55) 40%,
-                rgba(20,184,164,0.7)  50%,
-                rgba(20,184,164,0.55) 60%,
-                rgba(20,184,164,0.15) 90%,
-                transparent 100%
-            );
-            animation: beamSweep 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-            opacity: 0;
-            pointer-events: none;
-        }
-        @keyframes beamSweep {
-            0%   { top: 5vh;  opacity: 0; }
-            4%   { opacity: 0.9; }
-            96%  { opacity: 0.9; }
-            100% { top: 95vh; opacity: 0; }
-        }
+ 
  
         /* ── HERO ─────────────────────────────────────────────── */
         #hero {
@@ -545,9 +523,6 @@
 </head>
 <body>
  
-<!-- ── SCANNER BEAM ──────────────────────────────────────────── -->
-<div class="scanner-beam" aria-hidden="true"></div>
- 
 <!-- ── NAVIGATION ───────────────────────────────────────────── -->
 <nav id="nav">
     <a href="#hero" class="nav-logo">
@@ -906,3 +881,4 @@
 </script>
 </body>
 </html>
+ 
