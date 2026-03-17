@@ -3,958 +3,880 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClawSolved — OpenClaw Enterprise Security + ClawSkills</title>
-    <meta name="description" content="Enterprise armour for OpenClaw (isolation, governance, compliance) + ClawSkills: validated skill-tree builder for secure, dependency-aware coding agents. Build, harden, and deploy production-grade dev agents in minutes.">
+    <title>ClawSolved — Verified Skill Intelligence for OpenClaw</title>
+    <meta name="description" content="ClawSolved is the skill intelligence layer for OpenClaw. ClawForge generates dependency-aware skills from live docs. ClawProof validates them against real APIs. ClawShield signs every skill with a cryptographic trust certificate. One in five ClawHub skills is malicious. Know which ones work — and prove it.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ── VARIABLES ────────────────────────────────────────── */
         :root {
-            --bg:       #07111E;
-            --bg2:      #0B1825;
-            --bg3:      #0F2232;
-            --text:     #EDE8DF;
-            --text2:    #7A96B0;
-            --copper:   #C76B2A;
-            --copper-l: #DF8040;
-            --teal:     #14B8A4;
-            --red:      #DC2626;
-            --border:   rgba(255,255,255,0.06);
-            --border-c: rgba(199,107,42,0.25);
-        }
- 
-        /* ── RESET ────────────────────────────────────────────── */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'IBM Plex Sans', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        img { max-width: 100%; display: block; }
-        a { color: inherit; }
- 
-        /* ── TYPOGRAPHY ───────────────────────────────────────── */
-        .display  { font-family: 'Cormorant Garamond', serif; }
-        .mono     { font-family: 'IBM Plex Mono', monospace; }
-        .italic   { font-style: italic; }
- 
-        /* ── NAV ──────────────────────────────────────────────── */
-        #nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 1.2rem 2.5rem;
-            display: flex; align-items: center; justify-content: space-between;
-            transition: background 0.35s, border-color 0.35s;
-            border-bottom: 1px solid transparent;
-        }
-        #nav.scrolled {
-            background: rgba(7,17,30,0.94);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-bottom-color: var(--border);
-        }
-        .nav-logo {
-            display: flex; align-items: center; gap: 0.5rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em;
-            text-decoration: none; color: var(--text);
-        }
-        .nav-logo .lobster { font-size: 1.6rem; line-height: 1; }
-        .nav-links {
-            display: flex; gap: 2.2rem; list-style: none;
-        }
-        .nav-links a {
-            font-size: 0.72rem; font-weight: 500;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            color: var(--text2); text-decoration: none;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--text); }
-        .nav-cta {
-            padding: 0.55rem 1.4rem;
-            background: var(--copper); color: #fff;
-            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.07em;
-            text-transform: uppercase; border: none; border-radius: 3px;
-            cursor: pointer; text-decoration: none;
-            transition: background 0.2s, transform 0.15s;
-            white-space: nowrap;
-        }
-        .nav-cta:hover { background: var(--copper-l); transform: translateY(-1px); }
- 
- 
- 
-        /* ── HERO ─────────────────────────────────────────────── */
-        #hero {
-            min-height: 100vh;
-            display: flex; flex-direction: column; justify-content: center;
-            padding: 9rem 2.5rem 5rem;
-            position: relative; overflow: hidden;
-        }
- 
-        /* Dot lattice */
-        #hero::before {
-            content: '';
-            position: absolute; inset: 0; z-index: 0;
-            background-image:
-                radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
-            background-size: 36px 36px;
-            mask-image: radial-gradient(ellipse 90% 85% at 50% 45%, black 30%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 45%, black 30%, transparent 100%);
-        }
- 
-        /* Atmospheric colour fields */
-        #hero::after {
-            content: '';
-            position: absolute; inset: 0; z-index: 0;
-            background:
-                radial-gradient(ellipse 55% 45% at 15% 65%, rgba(199,107,42,0.09) 0%, transparent 65%),
-                radial-gradient(ellipse 45% 40% at 85% 25%, rgba(20,184,164,0.06) 0%, transparent 65%),
-                radial-gradient(ellipse 35% 30% at 50% 90%, rgba(20,184,164,0.04) 0%, transparent 70%);
-        }
- 
-        .hero-inner {
-            position: relative; z-index: 2;
-            max-width: 960px; margin: 0 auto; text-align: center;
-        }
- 
-        /* Scanning badge */
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 0.6rem;
-            padding: 0.38rem 1rem;
-            background: rgba(20,184,164,0.07);
-            border: 1px solid rgba(20,184,164,0.18);
-            border-radius: 2px;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem; letter-spacing: 0.14em;
-            color: var(--teal); text-transform: uppercase;
-            margin-bottom: 2.5rem;
-            animation: riseIn 0.7s ease 0.1s both;
-        }
-        .badge-dot {
-            width: 5px; height: 5px; border-radius: 50%;
-            background: var(--teal);
-            animation: blink 2.2s ease-in-out infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50%       { opacity: 0.3; }
-        }
- 
-        /* Headline */
-        .hero-h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3.6rem, 9vw, 7.8rem);
-            font-weight: 700; line-height: 0.93;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.6rem;
-            animation: riseIn 0.85s ease 0.2s both;
-        }
-        .hero-h1 .accent  { color: var(--copper); }
-        .hero-h1 .it      { font-style: italic; }
-        .hero-h1 .exposed-wrap {
-            position: relative; display: inline-block;
-        }
-        .hero-h1 .exposed-wrap::after {
-            content: '';
-            position: absolute; left: -2px; right: -2px;
-            top: calc(50% + 4px);
-            height: 3px;
-            background: var(--red);
-            transform: rotate(-1.5deg) scaleX(0);
-            transform-origin: left center;
-            animation: strike 0.45s ease-out 1.8s forwards;
-        }
-        @keyframes strike {
-            to { transform: rotate(-1.5deg) scaleX(1); }
-        }
- 
-        /* Sub text */
-        .hero-sub {
-            font-size: clamp(1rem, 1.6vw, 1.15rem);
-            font-weight: 300; color: var(--text2);
-            max-width: 620px; margin: 0 auto 2.8rem;
-            line-height: 1.7;
-            animation: riseIn 0.85s ease 0.38s both;
-        }
- 
-        /* CTAs */
-        .hero-ctas {
-            display: flex; gap: 0.875rem; justify-content: center; flex-wrap: wrap;
-            animation: riseIn 0.85s ease 0.52s both;
-        }
-        .btn-copper {
-            padding: 0.85rem 2rem;
-            background: var(--copper); color: #fff;
-            font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em;
-            text-transform: uppercase; border: none; border-radius: 3px;
-            cursor: pointer; text-decoration: none;
-            transition: background 0.2s, transform 0.15s;
-            display: inline-block;
-        }
-        .btn-copper:hover { background: var(--copper-l); transform: translateY(-2px); }
-        .btn-outline {
-            padding: 0.85rem 2rem;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.14);
-            color: var(--text); font-size: 0.82rem; font-weight: 500;
-            border-radius: 3px; cursor: pointer; text-decoration: none;
-            transition: border-color 0.2s, transform 0.15s;
-            display: inline-block;
-        }
-        .btn-outline:hover { border-color: rgba(255,255,255,0.38); transform: translateY(-2px); }
- 
-        /* Stat strip */
-        .hero-stats {
-            display: flex; gap: 1px; justify-content: center; flex-wrap: wrap;
-            margin-top: 5rem;
-            border: 1px solid var(--border);
-            animation: riseIn 0.85s ease 0.68s both;
-        }
-        .hero-stat {
-            flex: 1; min-width: 200px;
-            padding: 1.4rem 1.75rem;
-            background: var(--bg2); text-align: left;
-        }
-        .stat-tag {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.6rem; letter-spacing: 0.14em;
-            color: var(--teal); text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-        .stat-val {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem; font-weight: 700; line-height: 1;
-        }
-        .stat-desc { font-size: 0.78rem; color: var(--text2); margin-top: 0.3rem; }
- 
-        @keyframes riseIn {
-            from { opacity: 0; transform: translateY(22px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
- 
-        /* ── SECTIONS BASE ────────────────────────────────────── */
-        section { padding: 7rem 2.5rem; }
-        .inner { max-width: 1080px; margin: 0 auto; }
-        .inner-narrow { max-width: 680px; margin: 0 auto; }
- 
-        .s-label {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.62rem; letter-spacing: 0.18em;
-            text-transform: uppercase; color: var(--teal);
-            margin-bottom: 1rem;
-        }
-        .s-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.4rem, 4.5vw, 4.2rem);
-            font-weight: 700; line-height: 1.02;
-            letter-spacing: -0.025em;
-            margin-bottom: 1.5rem;
-        }
- 
-        /* ── SCROLL REVEAL ────────────────────────────────────── */
-        .r {
-            opacity: 0; transform: translateY(26px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .r.on { opacity: 1; transform: none; }
-        .r.d1 { transition-delay: 0.1s; }
-        .r.d2 { transition-delay: 0.2s; }
-        .r.d3 { transition-delay: 0.3s; }
-        .r.d4 { transition-delay: 0.4s; }
- 
-        /* ── THE GAP ──────────────────────────────────────────── */
-        #gap { background: var(--bg2); }
- 
-        .gap-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 7rem; align-items: center;
-        }
-        .gap-pull {
-            margin-top: 2rem; padding: 1.4rem 1.5rem;
-            border-left: 2px solid var(--copper);
-            background: rgba(199,107,42,0.04);
-        }
-        .gap-pull p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem; font-style: italic;
-            color: var(--text2); line-height: 1.55;
-        }
-        .gap-pull cite {
-            display: block; margin-top: 0.6rem;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem; font-style: normal;
-            color: var(--copper); letter-spacing: 0.06em;
-        }
-        .gap-list { list-style: none; margin-top: 0.5rem; }
-        .gap-list li {
-            display: flex; align-items: flex-start; gap: 1rem;
-            padding: 0.95rem 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.9rem; color: var(--text2); line-height: 1.5;
-        }
-        .gap-list li:first-child { border-top: 1px solid var(--border); }
-        .x-mark {
-            font-family: 'IBM Plex Mono', monospace;
-            color: var(--red); font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;
-        }
- 
-        /* ── SOLUTION ─────────────────────────────────────────── */
-        .sol-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 1px; margin-top: 4rem;
-            background: var(--border);
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-        .sol-card {
-            padding: 2.75rem 2.25rem;
-            background: var(--bg);
-            transition: background 0.25s;
-            position: relative;
-        }
-        .sol-card::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 1px; background: var(--border);
-            transition: background 0.25s;
-        }
-        .sol-card:hover { background: var(--bg2); }
-        .sol-card:hover::before { background: var(--copper); }
-        .sol-icon { font-size: 2.2rem; margin-bottom: 1.5rem; }
-        .sol-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.65rem; font-weight: 700;
-            margin-bottom: 0.8rem; line-height: 1.1;
-        }
-        .sol-card p { font-size: 0.87rem; color: var(--text2); line-height: 1.7; }
- 
-        /* ── CLAWSKILLS SECTION ───────────────────────────────── */
-        #clawskills { background: var(--bg); }
- 
-        .clawskills-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 4rem; align-items: center; margin-top: 4rem;
-        }
-        .clawskills-visual {
-            background: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 2rem;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--teal);
-            position: relative;
-        }
-        .clawskills-visual::before {
-            content: "SKILL TREE PREVIEW";
-            position: absolute; top: -12px; left: 24px;
-            background: var(--bg); padding: 0 12px;
-            font-size: 0.65rem; letter-spacing: 0.12em;
-        }
-        .clawskills-badge {
-            display: inline-block;
-            background: rgba(199,107,42,0.12);
-            color: var(--copper);
-            padding: 0.35rem 0.9rem;
-            border-radius: 2px;
-            font-size: 0.68rem;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-        }
- 
-        /* ── PROCESS ──────────────────────────────────────────── */
-        #process { background: var(--bg2); }
- 
-        .process-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 0; margin-top: 5rem;
-            position: relative;
-        }
-        .process-grid::before {
-            content: '';
-            position: absolute; top: 1.75rem;
-            left: calc(12.5% + 1.5rem); right: calc(12.5% + 1.5rem);
-            height: 1px; background: var(--border);
-        }
-        .p-step { padding: 0 1.5rem; text-align: center; }
-        .p-num {
-            width: 3.5rem; height: 3.5rem; margin: 0 auto 1.75rem;
-            border: 1px solid var(--copper);
-            background: var(--bg2);
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.78rem; font-weight: 500;
-            color: var(--copper); position: relative; z-index: 1;
-        }
-        .p-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem;
-        }
-        .p-desc { font-size: 0.8rem; color: var(--text2); line-height: 1.6; }
- 
-        /* ── PRICING ──────────────────────────────────────────── */
-        .price-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1px; margin-top: 4rem;
-            background: var(--border); border: 1px solid var(--border);
-            overflow: hidden;
-        }
-        .price-card {
-            padding: 2.75rem 2.25rem;
-            background: var(--bg);
-            position: relative;
-            display: flex; flex-direction: column;
-        }
-        .price-card.featured { background: var(--bg2); }
-        .price-card.featured::after {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 2px; background: var(--copper);
-        }
-        .price-tier {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.62rem; letter-spacing: 0.16em;
-            color: var(--copper); text-transform: uppercase; margin-bottom: 1.5rem;
-        }
-        .price-val {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.2rem; font-weight: 700; line-height: 1;
-        }
-        .price-cadence {
-            font-size: 0.82rem; color: var(--text2); margin: 0.3rem 0 2.25rem;
-        }
-        .price-feats { list-style: none; flex: 1; margin-bottom: 2rem; }
-        .price-feats li {
-            display: flex; align-items: flex-start; gap: 0.75rem;
-            padding: 0.65rem 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.84rem; color: var(--text2);
-        }
-        .price-feats li::before { content: '→'; color: var(--copper); flex-shrink: 0; }
-        .price-cta-copper {
-            display: block; text-align: center; padding: 0.85rem;
-            background: var(--copper); color: #fff;
-            font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
-            text-transform: uppercase; border: none; border-radius: 3px;
-            cursor: pointer; text-decoration: none; transition: background 0.2s;
-        }
-        .price-cta-copper:hover { background: var(--copper-l); }
-        .price-cta-ghost {
-            display: block; text-align: center; padding: 0.85rem;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.14); color: var(--text);
-            font-size: 0.78rem; font-weight: 500;
-            border-radius: 3px; cursor: pointer; text-decoration: none;
-            transition: border-color 0.2s;
-        }
-        .price-cta-ghost:hover { border-color: rgba(255,255,255,0.35); }
- 
-        /* ── FORM SECTIONS ────────────────────────────────────── */
-        #audit { background: var(--bg2); }
- 
-        .form-wrap {
-            max-width: 600px; margin: 3rem auto 0;
-        }
-        .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .fg { margin-bottom: 1rem; }
-        .fg label {
-            display: block; font-size: 0.72rem; font-weight: 500;
-            letter-spacing: 0.05em; color: var(--text2); margin-bottom: 0.4rem;
-            text-transform: uppercase;
-        }
-        .fg input, .fg textarea, .fg select {
-            width: 100%; padding: 0.78rem 1rem;
-            background: rgba(255,255,255,0.035);
-            border: 1px solid var(--border);
-            border-radius: 2px; color: var(--text);
-            font-family: 'IBM Plex Sans', sans-serif; font-size: 0.88rem;
-            transition: border-color 0.2s; outline: none; resize: vertical;
-        }
-        .fg input::placeholder, .fg textarea::placeholder { color: rgba(122,150,176,0.5); }
-        .fg input:focus, .fg textarea:focus { border-color: var(--copper); }
-        .form-btn {
-            width: 100%; padding: 1rem;
-            background: var(--copper); color: #fff;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em;
-            text-transform: uppercase; border: none; border-radius: 2px;
-            cursor: pointer; margin-top: 0.25rem;
-            transition: background 0.2s;
-        }
-        .form-btn:hover { background: var(--copper-l); }
-        .form-btn:disabled { opacity: 0.5; cursor: default; }
-        .form-success {
-            display: none; margin-top: 1rem; text-align: center;
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
-            color: var(--teal); letter-spacing: 0.06em;
-        }
- 
-        /* ── DIVIDER ──────────────────────────────────────────── */
-        .divider {
-            max-width: 1080px; margin: 0 auto;
-            height: 1px; background: var(--border);
-        }
- 
-        /* ── FOOTER ───────────────────────────────────────────── */
-        footer {
-            padding: 2.5rem 2.5rem;
-            border-top: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: space-between;
-            flex-wrap: wrap; gap: 1rem;
-        }
-        .foot-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem; font-weight: 700;
-            display: flex; align-items: center; gap: 0.4rem;
-        }
-        footer p {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem; color: var(--text2); letter-spacing: 0.04em;
-        }
-        footer a {
-            font-size: 0.75rem; color: var(--text2); text-decoration: none;
-            transition: color 0.2s;
-        }
-        footer a:hover { color: var(--text); }
- 
-        /* ── MOBILE ───────────────────────────────────────────── */
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .gap-grid  { grid-template-columns: 1fr; gap: 3.5rem; }
-            .sol-grid  { grid-template-columns: 1fr; }
-            .clawskills-grid { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-            .process-grid::before { display: none; }
-            .price-grid { grid-template-columns: 1fr; }
-            .form-row-2 { grid-template-columns: 1fr; }
-            footer { flex-direction: column; text-align: center; }
-            .hero-stats { flex-direction: column; }
-            .hero-stat { min-width: 100%; }
-        }
-        @media (max-width: 480px) {
-            section { padding: 5rem 1.25rem; }
-            #nav { padding: 1rem 1.25rem; }
-            .hero-h1 { font-size: 3.2rem; }
-            .process-grid { grid-template-columns: 1fr; }
-        }
- 
-        /* ── SUBTLE CORNER ORNAMENT ───────────────────────────── */
-        .claw-ornament {
-            position: absolute; bottom: 3rem; right: 3rem;
-            font-size: 8rem; opacity: 0.03; pointer-events: none;
-            line-height: 1; user-select: none;
-            animation: slowSpin 60s linear infinite;
-        }
-        @keyframes slowSpin {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
+            --bg:#07111E; --bg2:#0B1825; --bg3:#0F2232;
+            --text:#EDE8DF; --text2:#7A96B0;
+            --copper:#C76B2A; --copper-l:#DF8040;
+            --teal:#14B8A4; --red:#E03131;
+            --green:#22C55E; --amber:#F59E0B;
+            --border:rgba(255,255,255,0.06);
+            --border-c:rgba(199,107,42,0.28);
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+        a{color:inherit}
+        .display{font-family:'Cormorant Garamond',serif}
+        .mono{font-family:'IBM Plex Mono',monospace}
+        .it{font-style:italic}
+
+        /* NAV */
+        #nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.15rem 2.5rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background .35s,border-color .35s}
+        #nav.scrolled{background:rgba(7,17,30,.96);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom-color:var(--border)}
+        .nav-logo{display:flex;align-items:center;gap:.5rem;font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:700;letter-spacing:-.02em;text-decoration:none;color:var(--text)}
+        .nav-logo .lobster{font-size:1.55rem;line-height:1}
+        .nav-links{display:flex;gap:1.8rem;list-style:none}
+        .nav-links a{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s}
+        .nav-links a:hover{color:var(--text)}
+        .nav-cta{padding:.55rem 1.35rem;background:var(--copper);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .2s,transform .15s}
+        .nav-cta:hover{background:var(--copper-l);transform:translateY(-1px)}
+
+        /* HERO */
+        #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:9rem 2.5rem 5rem;position:relative;overflow:hidden}
+        #hero::before{content:'';position:absolute;inset:0;z-index:0;background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);background-size:36px 36px;mask-image:radial-gradient(ellipse 90% 85% at 50% 45%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 90% 85% at 50% 45%,black 30%,transparent 100%)}
+        #hero::after{content:'';position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 55% 45% at 12% 70%,rgba(199,107,42,.1) 0%,transparent 65%),radial-gradient(ellipse 45% 40% at 88% 25%,rgba(20,184,164,.07) 0%,transparent 65%),radial-gradient(ellipse 30% 25% at 55% 88%,rgba(224,49,49,.05) 0%,transparent 70%)}
+        .hero-inner{position:relative;z-index:2;max-width:1000px;margin:0 auto;text-align:center}
+        .hero-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.38rem 1rem;background:rgba(224,49,49,.07);border:1px solid rgba(224,49,49,.22);border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.14em;color:#f87171;text-transform:uppercase;margin-bottom:2.5rem;animation:riseIn .7s ease .1s both}
+        .badge-dot{width:5px;height:5px;border-radius:50%;background:#f87171;animation:blink 1.8s ease-in-out infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+        .hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.4rem,8.5vw,7.6rem);font-weight:700;line-height:.93;letter-spacing:-.03em;margin-bottom:1.8rem;animation:riseIn .85s ease .2s both}
+        .hero-h1 .accent{color:var(--copper)}
+        .hero-h1 .accent-t{color:var(--teal)}
+        .hero-h1 .accent-r{color:#f87171}
+        .hero-sub{font-size:clamp(.95rem,1.6vw,1.1rem);font-weight:300;color:var(--text2);max-width:620px;margin:0 auto .9rem;line-height:1.78;animation:riseIn .85s ease .36s both}
+        .hero-proof{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--teal);letter-spacing:.08em;margin-bottom:2.8rem;animation:riseIn .85s ease .46s both}
+        .hero-ctas{display:flex;gap:.875rem;justify-content:center;flex-wrap:wrap;animation:riseIn .85s ease .54s both}
+        .btn-copper{padding:.9rem 2.2rem;background:var(--copper);color:#fff;font-size:.82rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s,transform .15s}
+        .btn-copper:hover{background:var(--copper-l);transform:translateY(-2px)}
+        .btn-outline{padding:.9rem 2.2rem;background:transparent;border:1px solid rgba(255,255,255,.16);color:var(--text);font-size:.82rem;font-weight:500;border-radius:3px;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .2s,transform .15s}
+        .btn-outline:hover{border-color:rgba(255,255,255,.4);transform:translateY(-2px)}
+        .hero-stats{display:flex;gap:1px;flex-wrap:wrap;margin-top:5rem;border:1px solid var(--border);animation:riseIn .85s ease .68s both}
+        .hero-stat{flex:1;min-width:200px;padding:1.4rem 1.75rem;background:var(--bg2);text-align:left}
+        .stat-tag{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.14em;color:var(--teal);text-transform:uppercase;margin-bottom:.5rem}
+        .stat-val{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:700;line-height:1}
+        .stat-val.danger{color:#f87171}
+        .stat-desc{font-size:.78rem;color:var(--text2);margin-top:.3rem}
+        @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+        /* SECTIONS */
+        section{padding:7rem 2.5rem}
+        .inner{max-width:1080px;margin:0 auto}
+        .inner-mid{max-width:900px;margin:0 auto}
+        .inner-narrow{max-width:700px;margin:0 auto}
+        .s-label{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+        .s-label.danger{color:#f87171}
+        .s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;line-height:1.02;letter-spacing:-.025em;margin-bottom:1.4rem}
+        .s-lead{font-size:1rem;color:var(--text2);line-height:1.78}
+        .r{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+        .r.on{opacity:1;transform:none}
+        .r.d1{transition-delay:.1s}.r.d2{transition-delay:.2s}.r.d3{transition-delay:.3s}.r.d4{transition-delay:.4s}
+
+        /* CRISIS */
+        #crisis{background:var(--bg2)}
+        .crisis-pull{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.6vw,2rem);font-weight:600;font-style:italic;color:var(--text2);line-height:1.38;border-left:2px solid #f87171;padding-left:1.8rem;margin:3rem 0}
+        .crisis-pull strong{color:var(--text);font-style:normal}
+        .crisis-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:3rem;background:var(--border);border:1px solid var(--border)}
+        .crisis-card{padding:2rem 2.25rem;background:var(--bg2)}
+        .cc-stat{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:#f87171;line-height:1;margin-bottom:.4rem}
+        .cc-label{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);margin-bottom:.8rem}
+        .crisis-card p{font-size:.86rem;color:var(--text2);line-height:1.68}
+        .cite{display:block;margin-top:.75rem;font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:rgba(122,150,176,.6);letter-spacing:.04em}
+
+        /* SOLUTION */
+        #solution{background:var(--bg)}
+        .three-products{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:4rem;background:var(--border);border:1px solid var(--border)}
+        .prod-card{padding:2.75rem 2.25rem;background:var(--bg);position:relative;transition:background .25s}
+        .prod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transition:background .25s}
+        .prod-card.forge::before{background:var(--copper)}
+        .prod-card.proof::before{background:var(--teal)}
+        .prod-card.shield::before{background:var(--amber)}
+        .prod-card:hover{background:var(--bg2)}
+        .prod-name{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.75rem}
+        .prod-card.forge .prod-name{color:var(--copper)}
+        .prod-card.proof .prod-name{color:var(--teal)}
+        .prod-card.shield .prod-name{color:var(--amber)}
+        .prod-card h3{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;margin-bottom:.8rem;line-height:1.05}
+        .prod-tagline{font-size:.88rem;color:var(--text2);line-height:1.7;margin-bottom:1.5rem}
+        .prod-features{list-style:none}
+        .prod-features li{display:flex;align-items:flex-start;gap:.75rem;padding:.5rem 0;border-bottom:1px solid var(--border);font-size:.83rem;color:var(--text2);line-height:1.45}
+        .prod-features li:last-child{border-bottom:none}
+        .pf-icon{flex-shrink:0;font-size:.8rem;padding-top:1px}
+        .prod-card.forge .pf-icon{color:var(--copper)}
+        .prod-card.proof .pf-icon{color:var(--teal)}
+        .prod-card.shield .pf-icon{color:var(--amber)}
+        .solution-join{font-size:.88rem;color:var(--text2);max-width:620px;margin:3rem auto 0;line-height:1.75;text-align:center}
+        .solution-join strong{color:var(--text)}
+
+        /* FORGE */
+        #forge{background:var(--bg2)}
+        .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:4.5rem;position:relative}
+        .pipeline::before{content:'';position:absolute;top:1.75rem;left:calc(10% + 1rem);right:calc(10% + 1rem);height:1px;background:var(--border-c)}
+        .pipe-step{padding:0 1rem;text-align:center}
+        .pipe-num{width:3.5rem;height:3.5rem;margin:0 auto 1.6rem;border:1px solid var(--copper);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:.75rem;font-weight:500;color:var(--copper);position:relative;z-index:1}
+        .pipe-step h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem;line-height:1.2}
+        .pipe-step p{font-size:.79rem;color:var(--text2);line-height:1.62}
+        .pipe-badge{display:inline-block;margin-top:.6rem;font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.08em;padding:.25rem .6rem;border-radius:2px}
+        .pipe-badge.auto{background:rgba(20,184,164,.09);color:var(--teal);border:1px solid rgba(20,184,164,.2)}
+        .pipe-badge.human{background:rgba(224,49,49,.08);color:#f87171;border:1px solid rgba(224,49,49,.2)}
+        .skill-sample{margin-top:3.5rem;background:var(--bg3);border:1px solid var(--border);border-radius:3px;overflow:hidden}
+        .skill-sample-bar{background:rgba(255,255,255,.03);border-bottom:1px solid var(--border);padding:.6rem 1.25rem;display:flex;align-items:center;gap:.75rem}
+        .ssb-dot{width:9px;height:9px;border-radius:50%}
+        .ssb-label{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:var(--text2);text-transform:uppercase}
+        .skill-sample pre{padding:1.75rem;font-family:'IBM Plex Mono',monospace;font-size:.8rem;line-height:1.6;color:var(--text2);overflow-x:auto;white-space:pre}
+        .sk-key{color:var(--teal)}.sk-val{color:var(--text)}.sk-str{color:#94a3b8}.sk-ok{color:var(--green)}.sk-warn{color:var(--amber)}.sk-head{color:var(--copper);font-weight:500}.sk-dim{color:rgba(122,150,176,.5)}
+
+        /* PROOF */
+        #proof{background:var(--bg)}
+        .proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:4rem}
+        .proof-services{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+        .ps-card{padding:1.25rem 1.5rem;background:var(--bg);transition:background .2s}
+        .ps-card:hover{background:var(--bg2)}
+        .ps-name{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-bottom:.3rem}
+        .ps-desc{font-size:.8rem;color:var(--text2);line-height:1.5}
+        .ps-status{display:inline-block;margin-top:.6rem;font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.08em;padding:.2rem .55rem;border-radius:2px}
+        .ps-live{background:rgba(34,197,94,.08);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+        .ps-soon{background:rgba(199,107,42,.08);color:var(--copper);border:1px solid rgba(199,107,42,.2)}
+        .proof-explainer h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;line-height:1.1;margin-bottom:1rem}
+        .proof-explainer p{font-size:.88rem;color:var(--text2);line-height:1.72;margin-bottom:1rem}
+        .confidence-row{display:flex;gap:.5rem;align-items:center;margin:.5rem 0;font-family:'IBM Plex Mono',monospace;font-size:.72rem}
+        .conf-bar{height:6px;border-radius:2px;background:rgba(255,255,255,.06);flex:1;overflow:hidden}
+        .conf-fill{height:100%;border-radius:2px}
+        .conf-label{min-width:80px;color:var(--text2)}
+        .conf-score{min-width:58px;text-align:right}
+        .conf-95{background:var(--green);width:95%}.conf-80{background:var(--teal);width:80%}.conf-60{background:var(--amber);width:60%}.conf-40{background:#f87171;width:40%}
+
+        /* SHIELD */
+        #shield{background:var(--bg2)}
+        .shield-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:4rem}
+        .cert-visual{background:var(--bg3);border:1px solid var(--border-c);border-radius:3px;overflow:hidden}
+        .cert-bar{background:rgba(245,158,11,.08);border-bottom:1px solid rgba(245,158,11,.15);padding:.6rem 1.25rem;display:flex;align-items:center;justify-content:space-between}
+        .cert-title{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:var(--amber);text-transform:uppercase}
+        .cert-badge{font-family:'IBM Plex Mono',monospace;font-size:.58rem;padding:.2rem .55rem;background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2);border-radius:2px}
+        .cert-body{padding:1.5rem 1.25rem;font-family:'IBM Plex Mono',monospace;font-size:.77rem;line-height:1.65;color:var(--text2)}
+        .cert-row{display:flex;gap:1rem;padding:.35rem 0}
+        .cert-k{color:var(--amber);min-width:130px;flex-shrink:0}
+        .cert-v{color:var(--text2)}.cert-v.ok{color:var(--green)}.cert-v.dim{color:rgba(122,150,176,.55);font-size:.7rem}
+        .cert-divider{height:1px;background:var(--border);margin:.6rem 0}
+        .shield-explainer h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;line-height:1.1;margin-bottom:1rem}
+        .shield-explainer p{font-size:.88rem;color:var(--text2);line-height:1.72;margin-bottom:1rem}
+        .shield-checks{list-style:none;margin-top:1rem}
+        .shield-checks li{display:flex;align-items:flex-start;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.84rem;line-height:1.5}
+        .sc-icon{color:var(--amber);flex-shrink:0;font-size:.8rem;padding-top:2px}
+        .sc-title{display:block;color:var(--text);font-weight:500;margin-bottom:.15rem}
+        .sc-desc{color:var(--text2);font-size:.8rem}
+
+        /* COMPARE */
+        #compare{background:var(--bg)}
+        .compare-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:3.5rem;background:var(--border);border:1px solid var(--border)}
+        .compare-col{padding:2.5rem 2.25rem}
+        .compare-col.bad{background:rgba(224,49,49,.04)}
+        .compare-col.good{background:rgba(20,184,164,.04)}
+        .compare-heading{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+        .compare-col.bad .compare-heading{color:#f87171}
+        .compare-col.good .compare-heading{color:var(--teal)}
+        .compare-scenario{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--text2);background:rgba(255,255,255,.03);border:1px solid var(--border);padding:.85rem 1rem;margin-bottom:1.25rem;border-radius:2px}
+        .compare-scenario .sc-lab{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
+        .compare-col.bad .sc-lab{color:#f87171}
+        .compare-col.good .sc-lab{color:var(--teal)}
+        .compare-code{font-family:'IBM Plex Mono',monospace;font-size:.76rem;line-height:1.58;color:var(--text2);white-space:pre-wrap}
+        .compare-code .err{color:#f87171}.compare-code .ok{color:var(--green)}.compare-code .warn{color:var(--amber)}
+        .compare-result{display:flex;align-items:flex-start;gap:.75rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);font-size:.84rem;line-height:1.5}
+        .cr-icon{font-size:1rem;flex-shrink:0}
+        .compare-col.bad .compare-result{color:#f87171}
+        .compare-col.good .compare-result{color:var(--green)}
+
+        /* PRICING */
+        #pricing{background:var(--bg2)}
+        .billing-toggle{display:flex;align-items:center;justify-content:center;gap:1rem;margin:2.5rem 0 0;font-size:.82rem;color:var(--text2)}
+        .toggle-track{position:relative;width:42px;height:24px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:background .2s}
+        .toggle-track.on{background:rgba(20,184,164,.28);border-color:rgba(20,184,164,.4)}
+        .toggle-thumb{position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:var(--text2);transition:transform .2s,background .2s}
+        .toggle-track.on .toggle-thumb{transform:translateX(18px);background:var(--teal)}
+        .save-pill{background:rgba(20,184,164,.1);color:var(--teal);border:1px solid rgba(20,184,164,.22);font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.07em;padding:.2rem .6rem;border-radius:2px}
+        .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2.5rem;background:var(--border);border:1px solid var(--border)}
+        .price-card{padding:2.75rem 2.25rem;background:var(--bg2);position:relative;display:flex;flex-direction:column}
+        .price-card.featured{background:var(--bg3)}
+        .price-card.featured::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--copper)}
+        .price-tier{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.16em;color:var(--copper);text-transform:uppercase;margin-bottom:1.4rem}
+        .price-name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;line-height:1.1;margin-bottom:.4rem}
+        .price-for{font-size:.78rem;color:var(--text2);line-height:1.55;margin-bottom:1.5rem}
+        .price-amount{font-family:'Cormorant Garamond',serif;font-size:2.9rem;font-weight:700;line-height:1}
+        .price-amount .cur{font-size:1.3rem;vertical-align:super}
+        .price-cad{font-size:.78rem;color:var(--text2);margin:.3rem 0 .4rem}
+        .price-ann{font-family:'IBM Plex Mono',monospace;font-size:.64rem;color:var(--teal);margin-bottom:1.8rem;min-height:1.1em}
+        .price-divider{height:1px;background:var(--border);margin:1.4rem 0}
+        .price-sec{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:var(--text2);text-transform:uppercase;margin-bottom:.7rem}
+        .price-feats{list-style:none;flex:1}
+        .price-feats li{display:flex;align-items:flex-start;gap:.7rem;padding:.5rem 0;font-size:.82rem;color:var(--text2);line-height:1.4}
+        .tick{color:var(--teal);flex-shrink:0;font-size:.78rem}
+        .dash{color:rgba(255,255,255,.18);flex-shrink:0;font-size:.78rem}
+        .na{color:rgba(255,255,255,.2)}
+        .price-note{font-size:.74rem;color:var(--text2);font-style:italic;margin:1rem 0 1.5rem;line-height:1.55}
+        .price-cta-copper{display:block;text-align:center;padding:.9rem;background:var(--copper);color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;text-decoration:none;transition:background .2s}
+        .price-cta-copper:hover{background:var(--copper-l)}
+        .price-cta-ghost{display:block;text-align:center;padding:.9rem;background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--text);font-size:.78rem;font-weight:500;border-radius:3px;cursor:pointer;text-decoration:none;transition:border-color .2s}
+        .price-cta-ghost:hover{border-color:rgba(255,255,255,.35)}
+        .price-footnote{text-align:center;margin-top:1.5rem;font-family:'IBM Plex Mono',monospace;font-size:.64rem;color:var(--copper);letter-spacing:.06em}
+
+        /* FOUNDING */
+        #founding{background:var(--bg)}
+        .founding-box{max-width:760px;margin:4rem auto 0;background:var(--bg2);border:1px solid var(--border-c);padding:3.5rem;position:relative}
+        .founding-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--copper)}
+        .founding-slots{display:flex;gap:6px;margin:1.75rem 0 .5rem}
+        .slot{width:28px;height:7px;border-radius:1px}
+        .slot.filled{background:var(--copper)}
+        .slot.open{background:rgba(199,107,42,.18);border:1px solid rgba(199,107,42,.28)}
+        .founding-counter{font-family:'IBM Plex Mono',monospace;font-size:.64rem;color:var(--text2);margin-bottom:1.75rem;letter-spacing:.04em}
+        .founding-perks{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.5rem;list-style:none}
+        .founding-perks li{display:flex;align-items:flex-start;gap:.75rem;font-size:.84rem;color:var(--text2);line-height:1.5}
+        .founding-perks li::before{content:'→';color:var(--copper);flex-shrink:0;font-size:.78rem}
+
+        /* FORM */
+        #audit{background:var(--bg2)}
+        .form-wrap{max-width:580px;margin:3rem auto 0}
+        .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .fg{margin-bottom:.9rem}
+        .fg label{display:block;font-size:.7rem;font-weight:500;letter-spacing:.05em;color:var(--text2);margin-bottom:.35rem;text-transform:uppercase}
+        .fg input,.fg textarea,.fg select{width:100%;padding:.78rem 1rem;background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:2px;color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:.88rem;transition:border-color .2s;outline:none;resize:vertical}
+        .fg input::placeholder,.fg textarea::placeholder{color:rgba(122,150,176,.45)}
+        .fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--copper)}
+        .fg select{appearance:none;cursor:pointer}
+        .form-btn{width:100%;padding:1rem;background:var(--copper);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;margin-top:.5rem;transition:background .2s}
+        .form-btn:hover{background:var(--copper-l)}
+        .form-btn:disabled{opacity:.5;cursor:default}
+        .form-sub{text-align:center;margin-top:.9rem;font-family:'IBM Plex Mono',monospace;font-size:.63rem;color:var(--text2);letter-spacing:.04em}
+        .form-ok{display:none;margin-top:1rem;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--teal);letter-spacing:.06em;line-height:1.65}
+
+        /* FOOTER */
+        footer{padding:2.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem}
+        .foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:.4rem}
+        .foot-links{display:flex;gap:1.75rem;flex-wrap:wrap}
+        .foot-links a{font-size:.75rem;color:var(--text2);text-decoration:none;transition:color .2s}
+        .foot-links a:hover{color:var(--text)}
+        footer p{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--text2);letter-spacing:.03em}
+        .claw-ornament{position:absolute;bottom:3rem;right:3rem;font-size:8rem;opacity:.025;pointer-events:none;line-height:1;user-select:none;animation:slowSpin 60s linear infinite}
+        @keyframes slowSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+        /* RESPONSIVE */
+        @media (max-width:960px){
+            .nav-links{display:none}
+            .crisis-grid,.three-products,.compare-wrap,.price-grid{grid-template-columns:1fr}
+            .pipeline{grid-template-columns:1fr 1fr;gap:2.5rem}
+            .pipeline::before{display:none}
+            .proof-grid,.shield-grid{grid-template-columns:1fr;gap:3rem}
+            .hero-stats{flex-direction:column}
+            .hero-stat{min-width:100%}
+            .form-row-2{grid-template-columns:1fr}
+            footer{flex-direction:column;text-align:center}
+            .foot-links{justify-content:center}
+            .founding-perks{grid-template-columns:1fr}
+        }
+        @media (max-width:600px){
+            section{padding:5rem 1.25rem}
+            #nav{padding:1rem 1.25rem}
+            .hero-h1{font-size:3rem}
+            .pipeline{grid-template-columns:1fr}
+            .proof-services{grid-template-columns:1fr}
+            .founding-box{padding:2rem 1.5rem}
         }
     </style>
 </head>
 <body>
- 
-<!-- ── NAVIGATION ───────────────────────────────────────────── -->
+
+<!-- NAV -->
 <nav id="nav">
-    <a href="#hero" class="nav-logo">
-        <span class="lobster" aria-hidden="true">🦞</span>
-        ClawSolved
-    </a>
+    <a href="#hero" class="nav-logo"><span class="lobster" aria-hidden="true">&#x1F99E;</span> ClawSolved</a>
     <ul class="nav-links" role="navigation" aria-label="Main navigation">
-        <li><a href="#gap">The Gap</a></li>
-        <li><a href="#solution">Security</a></li>
-        <li><a href="#clawskills">ClawSkills</a></li>
-        <li><a href="#process">Process</a></li>
+        <li><a href="#crisis">The Crisis</a></li>
+        <li><a href="#solution">Platform</a></li>
+        <li><a href="#compare">See It Work</a></li>
         <li><a href="#pricing">Pricing</a></li>
     </ul>
-    <a href="#audit" class="nav-cta">Free Audit + Skills Demo</a>
+    <a href="#audit" class="nav-cta">Free Skill Audit</a>
 </nav>
- 
-<!-- ── HERO ─────────────────────────────────────────────────── -->
+
+<!-- HERO -->
 <section id="hero">
-    <div class="claw-ornament" aria-hidden="true">🦞</div>
+    <div class="claw-ornament" aria-hidden="true">&#x1F99E;</div>
     <div class="hero-inner">
- 
         <div class="hero-badge mono">
             <div class="badge-dot" aria-hidden="true"></div>
-            313,000+ OpenClaw deployments · Now with ClawSkills
+            1 in 5 ClawHub skills is malicious &middot; ClawHavoc campaign confirmed &middot; 1,184+ infected packages
         </div>
- 
         <h1 class="hero-h1 display">
-            OpenClaw is<br>
-            <span class="it accent">extraordinary</span>.<br>
-            And dangerously<br>
-            <span class="exposed-wrap">exposed</span>.
+            ClawHub has<br>
+            <span class="accent-t it">13,000 skills.</span><br>
+            We can tell you<br>
+            which ones <span class="accent it">actually work</span><br>
+            &mdash; and <span class="accent-r it">prove it.</span>
         </h1>
- 
         <p class="hero-sub">
-            Enterprise armour (zero-trust isolation, governance, compliance) + <strong>ClawSkills</strong>: validated skill-tree builder that turns raw docs into production-grade, sandbox-tested, dependency-aware coding agents. All hardened by ClawSolved.
+            ClawSolved is the skill intelligence layer for OpenClaw. Generate dependency-aware skills from live documentation. Validate them against real APIs in a sandbox. Sign every skill with a cryptographic trust certificate. Install with confidence, not hope.
         </p>
- 
+        <p class="hero-proof mono">
+            ClawForge &middot; ClawProof &middot; ClawShield &mdash; three tools. One guarantee: every skill tested before it touches your agent.
+        </p>
         <div class="hero-ctas">
-            <a href="#clawskills" class="btn-copper">Try ClawSkills Free</a>
-            <a href="#audit" class="btn-outline">Get Free Security + Skills Audit</a>
+            <a href="#audit" class="btn-copper">Get Your Free Skill Audit</a>
+            <a href="#solution" class="btn-outline">See How It Works</a>
         </div>
- 
         <div class="hero-stats">
             <div class="hero-stat">
-                <div class="stat-tag mono">Default State</div>
-                <div class="stat-val display">Zero</div>
-                <div class="stat-desc">validated skill trees in stock OpenClaw</div>
+                <div class="stat-tag mono">ClawHavoc campaign</div>
+                <div class="stat-val danger display">1,184+</div>
+                <div class="stat-desc">malicious skills confirmed on ClawHub &mdash; roughly 1 in 5 of the entire registry</div>
             </div>
             <div class="hero-stat">
-                <div class="stat-tag mono">Exposure</div>
-                <div class="stat-val display">Full OS</div>
-                <div class="stat-desc">access with unvetted skills by default</div>
+                <div class="stat-tag mono">Prompt injection rate</div>
+                <div class="stat-val danger display">36%</div>
+                <div class="stat-desc">of audited ClawHub skills contain prompt injection payloads (Snyk ToxicSkills research)</div>
             </div>
             <div class="hero-stat">
-                <div class="stat-tag mono">Deployments</div>
-                <div class="stat-val display">313K+</div>
-                <div class="stat-desc">organisations now can run safe dev agents</div>
+                <div class="stat-tag mono">Publication barrier</div>
+                <div class="stat-val danger display">1 week</div>
+                <div class="stat-desc">GitHub account age is the only requirement to publish on ClawHub. No review. No test.</div>
+            </div>
+            <div class="hero-stat">
+                <div class="stat-tag mono">ClawSolved answer</div>
+                <div class="stat-val display" style="color:var(--teal)">Every node</div>
+                <div class="stat-desc">sandbox-executed before publication. Signed. Versioned. No exceptions.</div>
             </div>
         </div>
- 
     </div>
 </section>
- 
-<!-- ── THE GAP ───────────────────────────────────────────────── -->
-<section id="gap">
+
+<!-- CRISIS -->
+<section id="crisis">
     <div class="inner">
-        <div class="gap-grid">
- 
-            <div class="r">
-                <div class="s-label mono">The Problem</div>
-                <h2 class="s-title display">
-                    Most deployments are one prompt injection away from a breach — and skills are the weakest link.
-                </h2>
-                <div class="gap-pull">
-                    <p>"Security teams are flagging it. The question isn't whether OpenClaw is powerful — it's whether your skills are safe, validated, and actually work."</p>
-                    <cite>— Recurring feedback from CISO + dev teams, 2026</cite>
-                </div>
+        <div class="r">
+            <div class="s-label danger mono">The State of ClawHub in March 2026</div>
+            <h2 class="s-title display">The skills ecosystem is a supply<br>chain attack <span class="it" style="color:#f87171">in plain sight.</span></h2>
+        </div>
+        <div class="crisis-pull r d1">
+            The ClawHavoc campaign didn&rsquo;t use zero-day exploits. It used professional documentation and fake Prerequisites sections. <strong>You installed what looked like a legitimate skill. The skill installed Atomic Stealer.</strong> That&rsquo;s the attack surface ClawSolved was built to close.
+        </div>
+        <div class="crisis-grid r d2">
+            <div class="crisis-card">
+                <div class="cc-stat">~20%</div>
+                <div class="cc-label mono">Registry contamination rate</div>
+                <p>Independent audits by Koi Security, Antiy CERT, and Bitdefender place the share of malicious ClawHub skills at 12&ndash;20% of the total registry &mdash; and growing as the platform scales without adequate vetting infrastructure.</p>
+                <span class="cite">Sources: Koi Security (Oren Yomtov), Antiy CERT, Bitdefender, Feb&ndash;Mar 2026</span>
             </div>
- 
-            <div class="r d1">
-                <ul class="gap-list">
-                    <li><span class="x-mark mono">×</span> Prompt injection via malicious or flat skills</li>
-                    <li><span class="x-mark mono">×</span> Unrestricted browser/terminal + unvetted ClawHub skills</li>
-                    <li><span class="x-mark mono">×</span> Shadow AI deployments with zero visibility</li>
-                    <li><span class="x-mark mono">×</span> No audit trail or dependency mapping</li>
-                    <li><span class="x-mark mono">×</span> No SSO, RBAC, or per-tenant isolation</li>
-                    <li><span class="x-mark mono">×</span> Coding agents that hallucinate instead of reading real docs</li>
-                </ul>
+            <div class="crisis-card">
+                <div class="cc-stat">36%</div>
+                <div class="cc-label mono">Prompt injection rate in audited skills</div>
+                <p>Snyk&rsquo;s ToxicSkills research audited 3,984 skills across ClawHub and skills.sh. More than a third contain prompt injection payloads. 91% of confirmed malicious samples combine prompt injection with traditional malware delivery.</p>
+                <span class="cite">Source: Snyk ToxicSkills research, 2026</span>
             </div>
- 
+            <div class="crisis-card">
+                <div class="cc-stat">135k</div>
+                <div class="cc-label mono">Exposed OpenClaw instances</div>
+                <p>SecurityScorecard&rsquo;s STRIKE team identified 135,000 OpenClaw instances exposed to the public internet with insecure defaults. 15,200+ confirmed vulnerable to remote code execution via CVE-2026-25253 (CVSS 8.8).</p>
+                <span class="cite">Source: SecurityScorecard STRIKE Team, Feb 2026</span>
+            </div>
+            <div class="crisis-card">
+                <div class="cc-stat">9 CVEs</div>
+                <div class="cc-label mono">Disclosed in 8 weeks</div>
+                <p>Nine CVEs disclosed across multiple research rounds, January&ndash;March 2026. Three carry public exploit code enabling one-click remote code execution. Skills remain the primary delivery mechanism for all active campaigns.</p>
+                <span class="cite">Sources: Endor Labs, Kaspersky, HackerNews CVE tracker, 2026</span>
+            </div>
+        </div>
+        <div class="r d3" style="margin-top:3rem;padding:2rem 2.25rem;background:rgba(224,49,49,.05);border:1px solid rgba(224,49,49,.18);">
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:#f87171;line-height:1.7;margin-bottom:.75rem;">Microsoft Defender Security Research Team, January 2026:</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;color:var(--text2);line-height:1.5;">&ldquo;OpenClaw should be treated as untrusted code execution with persistent credentials. It is not appropriate to run on a standard personal or enterprise workstation.&rdquo;</p>
+            <p style="font-size:.8rem;color:rgba(122,150,176,.65);margin-top:.75rem;font-family:'IBM Plex Mono',monospace;">The answer is not to stop using OpenClaw. It is to know exactly what you are running &mdash; before it runs.</p>
         </div>
     </div>
 </section>
- 
-<!-- ── SOLUTION ──────────────────────────────────────────────── -->
+
+<!-- SOLUTION -->
 <section id="solution">
     <div class="inner">
-        <div class="r" style="text-align:center; max-width:680px; margin:0 auto;">
-            <div class="s-label mono">The Fix</div>
-            <h2 class="s-title display">ClawSolved = enterprise armour.<br><span class="it">ClawSkills = verified dev agents.</span></h2>
+        <div class="r" style="text-align:center;max-width:680px;margin:0 auto">
+            <div class="s-label mono">The ClawSolved Platform</div>
+            <h2 class="s-title display">Three tools.<br><span class="it">One guarantee.</span></h2>
+            <p class="s-lead" style="margin:0 auto">ClawForge generates skills the right way. ClawProof validates them against the real world. ClawShield makes the proof tamper-proof. Used together, they are the missing quality and security infrastructure for the OpenClaw ecosystem.</p>
         </div>
-        <div class="sol-grid r d1">
-            <div class="sol-card">
-                <div class="sol-icon">🔒</div>
-                <h3 class="display">Zero-Trust Isolation</h3>
-                <p>Per-tenant Kubernetes + Tailscale. Automated skill scanner. No lateral movement.</p>
-            </div>
-            <div class="sol-card">
-                <div class="sol-icon">📋</div>
-                <h3 class="display">Full Governance</h3>
-                <p>SSO, immutable logs, DLP, RBAC, SOC 2 templates.</p>
-            </div>
-            <div class="sol-card">
-                <div class="sol-icon">⚡</div>
-                <h3 class="display">Managed Scaling</h3>
-                <p>Unlimited agents, one-click migration, pre-hardened packs.</p>
-            </div>
-            <div class="sol-card">
-                <div class="sol-icon">🌳</div>
-                <h3 class="display">ClawSkills</h3>
-                <p>Validated skill-tree builder. Turn any framework/docs into dependency graphs, sandbox-tested SKILL.md bundles, and auto-hardened coding agents.</p>
-            </div>
-        </div>
-    </div>
-</section>
- 
-<!-- ── CLAWSKILLS ────────────────────────────────────────────── -->
-<section id="clawskills">
-    <div class="inner">
-        <div class="r" style="text-align:center; max-width:720px; margin:0 auto;">
-            <div class="s-label mono">New in 2026</div>
-            <h2 class="s-title display">ClawSkills — the missing piece for OpenClaw developers</h2>
-            <p style="color:var(--text2); font-size:1.05rem;">Your superior skill-tree engine, now live on ClawSolved. One prompt → validated, navigable, sandbox-tested coding agents that never hallucinate.</p>
-        </div>
- 
-        <div class="clawskills-grid r d1">
-            <div>
-                <div class="clawskills-badge mono">BUILT FOR OPENCLAW</div>
-                <h3 class="display" style="font-size:2.1rem; line-height:1.1;">From raw docs to production agents in minutes</h3>
-                <ul style="margin-top:2rem; font-size:0.95rem; color:var(--text2); line-height:1.7; list-style:none;">
-                    <li style="margin-bottom:1rem;">✅ Dependency-aware skill trees (prereqs, pitfalls, tests)</li>
-                    <li style="margin-bottom:1rem;">✅ Sandbox validation + auto SKILL.md export with ClawHub metadata</li>
-                    <li style="margin-bottom:1rem;">✅ Multi-modal (code + diagrams) + ClawSolved hardening</li>
-                    <li style="margin-bottom:1rem;">✅ Publish-ready bundles + graph visualization</li>
+        <div class="three-products r d1">
+            <div class="prod-card forge">
+                <div class="prod-name mono">ClawForge</div>
+                <h3 class="display">Generate</h3>
+                <p class="prod-tagline">Takes a service, API, or tool and generates a correctly-structured, dependency-aware SKILL.md from live documentation &mdash; not from memory, not from a single LLM pass.</p>
+                <ul class="prod-features">
+                    <li><span class="pf-icon">&rarr;</span> Scrapes live documentation, changelogs, and official examples automatically</li>
+                    <li><span class="pf-icon">&rarr;</span> Builds a dependency graph: prerequisites mapped, parameters typed, error paths documented</li>
+                    <li><span class="pf-icon">&rarr;</span> Generates valid YAML frontmatter with accurate <code>requires</code> declarations that pass ClawHub&rsquo;s security analysis cleanly</li>
+                    <li><span class="pf-icon">&rarr;</span> Instructions written as runbooks, not marketing copy: deterministic steps, stop conditions, explicit output format</li>
+                    <li><span class="pf-icon">&rarr;</span> Local-first pipeline &mdash; no external LLM API, nothing leaves your machine</li>
                 </ul>
-                <a href="#audit" class="btn-copper" style="margin-top:2rem; display:inline-block;">Build Your First Skill Tree Free</a>
             </div>
-            <div class="clawskills-visual">
-                <pre style="background:#0B1825; padding:1.5rem; border-radius:4px; overflow:auto; font-size:0.82rem; line-height:1.4;">
-Supabase Auth
-├── Prerequisites
-│   └── JWT + Postgres
-├── Steps
-│   ├── OAuth Flow
-│   └── Edge Function
-├── Edge Cases
-│   └── Rate Limits
-└── Tests (sandboxed)
-                </pre>
-                <p style="text-align:center; margin-top:1rem; font-size:0.75rem; color:var(--copper);">Live skill-tree preview (React Flow coming soon)</p>
+            <div class="prod-card proof">
+                <div class="prod-name mono">ClawProof</div>
+                <h3 class="display">Validate</h3>
+                <p class="prod-tagline">Installs the generated skill into a clean OpenClaw sandbox and runs it against the real API it claims to operate. Pass/fail, not opinion.</p>
+                <ul class="prod-features">
+                    <li><span class="pf-icon">&rarr;</span> Sandboxed OpenClaw instance executes each skill node&rsquo;s test scenario</li>
+                    <li><span class="pf-icon">&rarr;</span> Live API validation: Todoist, GitHub, Slack, Linear, Stripe sandbox, Notion, Airtable</li>
+                    <li><span class="pf-icon">&rarr;</span> Confidence score per node (0.0&ndash;1.0) based on actual execution pass rate</li>
+                    <li><span class="pf-icon">&rarr;</span> Flags prompt injection vectors, undeclared environment variables, and metadata mismatches</li>
+                    <li><span class="pf-icon">&rarr;</span> Human review gate on every failure &mdash; no unvalidated node ships, ever</li>
+                </ul>
+            </div>
+            <div class="prod-card shield">
+                <div class="prod-name mono">ClawShield</div>
+                <h3 class="display">Certify</h3>
+                <p class="prod-tagline">Signs every validated skill with a cryptographic certificate recording what was tested, when, against which API version, with what result.</p>
+                <ul class="prod-features">
+                    <li><span class="pf-icon">&rarr;</span> Ed25519 certificate bundled with every published skill</li>
+                    <li><span class="pf-icon">&rarr;</span> Records: skill hash, API version tested, test date, per-node confidence scores, ClawSolved public key</li>
+                    <li><span class="pf-icon">&rarr;</span> Tamper detection: any modification to the SKILL.md after signing breaks the certificate &mdash; detectable before install</li>
+                    <li><span class="pf-icon">&rarr;</span> Directly addresses the ClawJacked vulnerability class: skill content confirmed unmodified since validation</li>
+                    <li><span class="pf-icon">&rarr;</span> Verification via CLI: <code>clawsolved verify &lt;skill&gt;</code> or public HTTPS endpoint</li>
+                </ul>
+            </div>
+        </div>
+        <p class="solution-join r d2">The three tools are available individually or as an integrated pipeline. <strong>The integrated pipeline is what most teams want:</strong> input a service name, get a validated, signed, ClawHub-ready SKILL.md in minutes.</p>
+    </div>
+</section>
+
+<!-- FORGE DETAIL -->
+<section id="forge">
+    <div class="inner">
+        <div class="r" style="text-align:center;max-width:640px;margin:0 auto">
+            <div class="s-label mono">ClawForge &mdash; Under the Hood</div>
+            <h2 class="s-title display">How a skill is actually built</h2>
+            <p class="s-lead" style="margin:0 auto">Five stages. Four automated. One requires human judgment &mdash; permanently, by design. The human gate is what separates ClawSolved skills from everything else on ClawHub.</p>
+        </div>
+        <div class="pipeline">
+            <div class="pipe-step r"><div class="pipe-num mono">01</div><h4 class="display">Scrape</h4><p>Playwright navigates official documentation, API references, changelogs, and example repos. Clean Markdown extracted and organised by section. Runs overnight against any public URL.</p><span class="pipe-badge auto">Automated</span></div>
+            <div class="pipe-step r d1"><div class="pipe-num mono">02</div><h4 class="display">Graph</h4><p>Local LLM constructs a directed acyclic dependency graph. NetworkX validates structure: no cycles, no isolated nodes, all prerequisite chains complete and explicit before proceeding.</p><span class="pipe-badge auto">AI + schema validation</span></div>
+            <div class="pipe-step r d2"><div class="pipe-num mono">03</div><h4 class="display">Enrich</h4><p>Each node receives: executable test scenario, documented edge cases, accurate <code>requires</code> declarations, cross-references to adjacent nodes. Frontmatter validated against ClawHub schema.</p><span class="pipe-badge auto">Automated</span></div>
+            <div class="pipe-step r d3"><div class="pipe-num mono">04</div><h4 class="display">Validate</h4><p>Sandboxed OpenClaw executes each test scenario against the real API. Failures trigger human review. Reviewer corrects or removes &mdash; no failed node ships. Confidence score assigned.</p><span class="pipe-badge human">Human gate &mdash; permanent</span></div>
+            <div class="pipe-step r d4"><div class="pipe-num mono">05</div><h4 class="display">Sign + Publish</h4><p>ClawShield certificate generated and bundled. Skill published to ClawHub with ClawSolved-verified badge. Version tracked. Auto-rescan triggered when API docs change.</p><span class="pipe-badge auto">Automated</span></div>
+        </div>
+        <div class="skill-sample r d1">
+            <div class="skill-sample-bar">
+                <div class="ssb-dot" style="background:#f87171"></div>
+                <div class="ssb-dot" style="background:var(--amber)"></div>
+                <div class="ssb-dot" style="background:var(--green)"></div>
+                <span class="ssb-label mono">ClawForge output &mdash; todoist-tasks/SKILL.md (ClawSolved validated)</span>
+            </div>
+<pre><span class="sk-dim">---</span>
+<span class="sk-key">name:</span>        <span class="sk-val">todoist-tasks</span>
+<span class="sk-key">description:</span> <span class="sk-val">"Manage Todoist tasks and projects via REST API v2. Use when: adding tasks,</span>
+             <span class="sk-val"> completing tasks, listing projects, moving tasks between projects."</span>
+<span class="sk-key">version:</span>     <span class="sk-val">2.4.1</span>
+<span class="sk-key">metadata</span><span class="sk-dim">:</span>
+  <span class="sk-key">openclaw</span><span class="sk-dim">:</span>
+    <span class="sk-key">requires</span><span class="sk-dim">:</span>
+      <span class="sk-key">env</span><span class="sk-dim">:</span>    <span class="sk-dim">["TODOIST_API_KEY"]</span>
+      <span class="sk-key">bins</span><span class="sk-dim">:</span>   <span class="sk-dim">["curl"]</span>
+    <span class="sk-key">primaryEnv</span><span class="sk-dim">:</span> <span class="sk-val">TODOIST_API_KEY</span>
+    <span class="sk-key">clawsolved</span><span class="sk-dim">:</span>
+      <span class="sk-key">certified</span><span class="sk-dim">:</span>  <span class="sk-ok">true</span>
+      <span class="sk-key">cert_id</span><span class="sk-dim">:</span>    <span class="sk-str">"cs-cert-7f3a2b1d"</span>
+      <span class="sk-key">api_version</span><span class="sk-dim">:</span> <span class="sk-str">"Todoist REST v2 (2026-02-14)"</span>
+      <span class="sk-key">validated</span><span class="sk-dim">:</span>  <span class="sk-str">"2026-03-10"</span>
+      <span class="sk-key">confidence</span><span class="sk-dim">:</span> <span class="sk-ok">0.96</span>
+<span class="sk-dim">---</span>
+
+<span class="sk-head"># Todoist Task Management</span>
+
+<span class="sk-head">## Dependency map</span>
+<span class="sk-str">Node order: auth-check (1) &rarr; project-list (2) &rarr; task-create (3) / task-complete (4) / task-move (5)</span>
+
+<span class="sk-head">## Node 3: Create a task</span>
+<span class="sk-dim">Confidence: 0.96 | Tested: REST v2 | Last validated: 2026-03-10</span>
+
+When the user asks to add, create, or schedule a task:
+
+1. Check TODOIST_API_KEY is set. If missing, respond: "I need your Todoist API key. Add TODOIST_API_KEY to your environment."
+2. If a project is mentioned, resolve its ID via Node 2 first. If not mentioned, use inbox_project_id.
+3. POST to https://api.todoist.com/rest/v2/tasks with JSON body.
+   Required: content. Optional: project_id, due_string, priority (integer 1-4).
+4. Confirm with the task ID returned. Do not invent an ID.
+
+<span class="sk-warn">Edge cases: due_string is natural language parsed server-side &mdash; "tomorrow at 9am" works.</span>
+<span class="sk-warn">Do not use the deprecated /sync endpoint. REST v2 only.</span>
+<span class="sk-ok">&#x2713; Test scenario passed: task creation, project resolution, due_string, priority &mdash; all 6 cases</span></pre>
+        </div>
+    </div>
+</section>
+
+<!-- CLAWPROOF -->
+<section id="proof">
+    <div class="inner">
+        <div class="proof-grid">
+            <div class="r">
+                <div class="s-label mono">ClawProof</div>
+                <h2 class="s-title display">Validated against<br>the real API.<br><span class="it">Not against assumptions.</span></h2>
+                <div class="proof-explainer">
+                    <p>Every skill on ClawHub was written by someone who <em>believed</em> it worked. ClawProof replaces belief with evidence. A sandboxed OpenClaw instance installs the skill and runs it against the live API it claims to operate &mdash; the same API your agent will call in production.</p>
+                    <p>The confidence score attached to each node is not a rating. It is a measured pass rate from real executions. A node scored 0.96 passed 96% of its test scenarios on first attempt against the current API version. A node scored 0.60 passed after human correction and carries a documented limitation.</p>
+                    <p>When the underlying API releases a breaking change, ClawProof detects it through automated weekly re-scans. Your installed skills are never silently out of date.</p>
+                    <a href="#audit" class="btn-copper" style="margin-top:.5rem">Request a proof audit &rarr;</a>
+                </div>
+            </div>
+            <div class="r d1">
+                <div style="margin-bottom:2rem">
+                    <p style="font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--text2);text-transform:uppercase;margin-bottom:1rem">Confidence score scale</p>
+                    <div class="confidence-row"><span class="conf-label">0.90&ndash;1.00</span><div class="conf-bar"><div class="conf-fill conf-95"></div></div><span class="conf-score" style="color:var(--green)">Excellent</span></div>
+                    <div style="font-size:.72rem;color:var(--text2);margin:.2rem 0 .8rem 80px">All test scenarios passed first attempt. Ship with full confidence.</div>
+                    <div class="confidence-row"><span class="conf-label">0.75&ndash;0.89</span><div class="conf-bar"><div class="conf-fill conf-80"></div></div><span class="conf-score" style="color:var(--teal)">Good</span></div>
+                    <div style="font-size:.72rem;color:var(--text2);margin:.2rem 0 .8rem 80px">Passed after minor correction. Edge case documented in the node.</div>
+                    <div class="confidence-row"><span class="conf-label">0.55&ndash;0.74</span><div class="conf-bar"><div class="conf-fill conf-60"></div></div><span class="conf-score" style="color:var(--amber)">Caution</span></div>
+                    <div style="font-size:.72rem;color:var(--text2);margin:.2rem 0 .8rem 80px">Passed after human review. Known limitation noted. Use with awareness.</div>
+                    <div class="confidence-row"><span class="conf-label">Below 0.55</span><div class="conf-bar"><div class="conf-fill conf-40"></div></div><span class="conf-score" style="color:#f87171">Not shipped</span></div>
+                    <div style="font-size:.72rem;color:var(--text2);margin:.2rem 0 .8rem 80px">Does not meet validation threshold. Returned for rework. Not published.</div>
+                </div>
+                <p style="font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.12em;color:var(--text2);text-transform:uppercase;margin-bottom:1rem">Services with live test credentials (Pro+)</p>
+                <div class="proof-services">
+                    <div class="ps-card"><div class="ps-name mono">Todoist</div><div class="ps-desc">Full REST v2 environment. All task, project, and label operations.</div><span class="ps-status ps-live">Live</span></div>
+                    <div class="ps-card"><div class="ps-name mono">GitHub</div><div class="ps-desc">Dedicated test org. Issues, PRs, repos, Actions, Gists.</div><span class="ps-status ps-live">Live</span></div>
+                    <div class="ps-card"><div class="ps-name mono">Linear</div><div class="ps-desc">Test workspace. Issues, projects, cycles, GraphQL mutations.</div><span class="ps-status ps-live">Live</span></div>
+                    <div class="ps-card"><div class="ps-name mono">Slack</div><div class="ps-desc">Test workspace. Messaging, channel management, bot events.</div><span class="ps-status ps-live">Live</span></div>
+                    <div class="ps-card"><div class="ps-name mono">Stripe</div><div class="ps-desc">Sandbox mode. Payment intents, customers, webhook simulation.</div><span class="ps-status ps-live">Live</span></div>
+                    <div class="ps-card"><div class="ps-name mono">Notion</div><div class="ps-desc">Test workspace. Pages, databases, and content blocks.</div><span class="ps-status ps-live">Live</span></div>
+                    <div class="ps-card"><div class="ps-name mono">Airtable</div><div class="ps-desc">Test base with all field types. Reads, writes, and filtering.</div><span class="ps-status ps-live">Live</span></div>
+                    <div class="ps-card"><div class="ps-name mono">Custom APIs</div><div class="ps-desc">Bring your own credentials for any REST or GraphQL API.</div><span class="ps-status ps-soon">Pro+ and Team</span></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
- 
-<!-- ── PROCESS ───────────────────────────────────────────────── -->
-<section id="process">
+
+<!-- CLAWSHIELD -->
+<section id="shield">
     <div class="inner">
-        <div class="r" style="text-align:center;">
-            <div class="s-label mono">Timeline</div>
-            <h2 class="s-title display">Four weeks to secure + supercharge your OpenClaw.</h2>
-        </div>
-        <div class="process-grid">
-            <div class="p-step r">
-                <div class="p-num mono">01</div>
-                <div class="p-title display">Free Audit</div>
-                <p class="p-desc">Security scan + ClawSkills demo on your stack. Report + first skill tree in 48 hrs.</p>
+        <div class="shield-grid">
+            <div class="r">
+                <div class="cert-visual">
+                    <div class="cert-bar">
+                        <span class="cert-title mono">ClawShield Certificate</span>
+                        <span class="cert-badge mono">&#x2713; Signature valid</span>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-row"><span class="cert-k">skill:</span><span class="cert-v">todoist-tasks v2.4.1</span></div>
+                        <div class="cert-row"><span class="cert-k">cert_id:</span><span class="cert-v">cs-cert-7f3a2b1d</span></div>
+                        <div class="cert-divider"></div>
+                        <div class="cert-row"><span class="cert-k">api_tested:</span><span class="cert-v">Todoist REST v2</span></div>
+                        <div class="cert-row"><span class="cert-k">api_snapshot:</span><span class="cert-v ok">2026-02-14 (current)</span></div>
+                        <div class="cert-row"><span class="cert-k">validated:</span><span class="cert-v ok">2026-03-10</span></div>
+                        <div class="cert-row"><span class="cert-k">nodes_tested:</span><span class="cert-v">5 / 5</span></div>
+                        <div class="cert-row"><span class="cert-k">confidence:</span><span class="cert-v ok">0.96 (excellent)</span></div>
+                        <div class="cert-row"><span class="cert-k">human_reviewed:</span><span class="cert-v ok">yes</span></div>
+                        <div class="cert-divider"></div>
+                        <div class="cert-row"><span class="cert-k">skill_hash:</span><span class="cert-v dim">sha256:a3f7c1e9b4d2&#x2026;</span></div>
+                        <div class="cert-row"><span class="cert-k">signature:</span><span class="cert-v dim">ed25519:5b8f2a1d&#x2026;</span></div>
+                        <div class="cert-row"><span class="cert-k">pubkey:</span><span class="cert-v dim">clawsolved.com/pubkey</span></div>
+                        <div class="cert-divider"></div>
+                        <div class="cert-row"><span class="cert-k">prompt_inject:</span><span class="cert-v ok">none detected</span></div>
+                        <div class="cert-row"><span class="cert-k">undecl_vars:</span><span class="cert-v ok">none</span></div>
+                        <div class="cert-row"><span class="cert-k">metadata_match:</span><span class="cert-v ok">pass</span></div>
+                        <div class="cert-divider"></div>
+                        <div style="font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:rgba(122,150,176,.55);margin-top:.5rem">Verify: clawsolved verify todoist-tasks<br>or: curl https://clawsolved.com/verify/cs-cert-7f3a2b1d</div>
+                    </div>
+                </div>
             </div>
-            <div class="p-step r d1">
-                <div class="p-num mono">02</div>
-                <div class="p-title display">Hardening + Skills</div>
-                <p class="p-desc">Isolation, governance, SSO + validated skill trees for your dev workflows.</p>
-            </div>
-            <div class="p-step r d2">
-                <div class="p-num mono">03</div>
-                <div class="p-title display">Go Live</div>
-                <p class="p-desc">Chaos testing, agent training, dashboard with ClawSkills graph view.</p>
-            </div>
-            <div class="p-step r d3">
-                <div class="p-num mono">04</div>
-                <div class="p-title display">Ongoing</div>
-                <p class="p-desc">24/7 managed service + weekly skill-tree auto-updates. 90-day guarantee.</p>
+            <div class="r d1">
+                <div class="shield-explainer">
+                    <div class="s-label mono">ClawShield</div>
+                    <h2 class="s-title display">Proof that travels<br>with the skill.</h2>
+                    <p>ClawShield directly addresses the attack vector that ClawHavoc exploited: skills that look legitimate but have been modified after creation, or built specifically to deceive. Every ClawSolved skill is signed with an Ed25519 certificate the moment it passes validation.</p>
+                    <p>The certificate records the exact state of the skill at validation time. Any modification to the SKILL.md after signing &mdash; even a single character &mdash; breaks the certificate. The breakage is detectable before installation, before the skill touches your agent.</p>
+                    <ul class="shield-checks">
+                        <li><span class="sc-icon">&rarr;</span><span><span class="sc-title">Tamper detection</span><span class="sc-desc">Ed25519 signature covers the entire SKILL.md. Modified skills fail verification before install. Directly closes the ClawJacked vulnerability class documented by security researchers in February 2026.</span></span></li>
+                        <li><span class="sc-icon">&rarr;</span><span><span class="sc-title">API version pinning</span><span class="sc-desc">Certificate records the exact API snapshot date tested against. When the API releases a breaking change, the certificate flags as potentially stale &mdash; prompting re-validation before continued use.</span></span></li>
+                        <li><span class="sc-icon">&rarr;</span><span><span class="sc-title">Prompt injection attestation</span><span class="sc-desc">Certificate records the result of prompt injection scanning at validation time. A clean certificate means no injection payloads were present when the skill was tested.</span></span></li>
+                        <li><span class="sc-icon">&rarr;</span><span><span class="sc-title">Public verification endpoint</span><span class="sc-desc">Anyone can verify any ClawSolved certificate via CLI or HTTPS. No account required to check a certificate. Verification is always free and takes under two seconds.</span></span></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
- 
-<!-- ── PRICING ───────────────────────────────────────────────── -->
-<section id="pricing" style="background:var(--bg2);">
+
+<!-- COMPARE -->
+<section id="compare">
+    <div class="inner-mid">
+        <div class="r" style="text-align:center">
+            <div class="s-label mono">The Difference in Practice</div>
+            <h2 class="s-title display">Same agent. Same task.<br><span class="it">Different outcome.</span></h2>
+            <p class="s-lead" style="margin:0 auto;max-width:560px">A Todoist task management skill &mdash; one downloaded from ClawHub unvalidated, one generated and certified by ClawSolved. The only variable is whether the skill was tested before installation.</p>
+        </div>
+        <div class="compare-wrap r d1">
+            <div class="compare-col bad">
+                <div class="compare-heading">Unvalidated ClawHub skill &mdash; community published</div>
+                <div class="compare-scenario"><div class="sc-lab">Task given to agent</div>Add "Review Q2 board report" to Work Projects, due next Monday, priority 2</div>
+                <pre class="compare-code">Skill loaded (no certificate present).
+No prerequisite check performed.
+
+Agent calls deprecated /sync endpoint:
+<span class="err">&rarr; POST https://api.todoist.com/sync/v9/sync
+   Response: 400 Bad Request
+   "The sync endpoint is no longer supported"</span>
+
+Agent retries with incorrect project lookup.
+<span class="err">&rarr; "Work Projects" not found &mdash; agent invents
+   a project ID. Task created in wrong project
+   or fails silently with no confirmation.</span>
+
+Priority sent as string "2" (must be integer).
+<span class="err">&rarr; API silently ignores the priority field.</span>
+
+No stop condition &mdash; agent enters retry loop.
+<span class="err">&rarr; 6 API calls. 3 failed attempts. User has
+   no idea what happened or what was created.</span></pre>
+                <div class="compare-result"><span class="cr-icon">&#x2717;</span><span>Deprecated API. Wrong project. Priority ignored. Retry loop. Broken state with no useful confirmation.</span></div>
+            </div>
+            <div class="compare-col good">
+                <div class="compare-heading">ClawSolved validated skill &mdash; certified</div>
+                <div class="compare-scenario"><div class="sc-lab">Task given to agent</div>Add "Review Q2 board report" to Work Projects, due next Monday, priority 2</div>
+                <pre class="compare-code">Certificate verified: <span class="ok">cs-cert-7f3a2b1d &#x2713; valid</span>
+Signature matches. API snapshot current.
+Prompt injection scan: <span class="ok">clean</span>. Proceeding.
+
+Node 2 executed first (dependency graph):
+<span class="ok">&rarr; GET /rest/v2/projects
+   "Work Projects" &rarr; ID: 2350182022 resolved</span>
+
+Node 3 executed:
+<span class="ok">&rarr; POST https://api.todoist.com/rest/v2/tasks
+   {content: "Review Q2 board report",
+    project_id: 2350182022,
+    due_string: "next monday",
+    priority: 2}   &larr; integer, per v2 schema</span>
+
+<span class="ok">&rarr; 201 Created. Task ID: 8842901567
+   due: 2026-03-23, project confirmed.</span>
+
+Stop condition reached. One API call.
+<span class="ok">&rarr; "Done &mdash; added to Work Projects,
+   due Monday 23 March, priority 2."</span></pre>
+                <div class="compare-result"><span class="cr-icon">&#x2713;</span><span>Certificate verified. Dependencies respected. Correct REST endpoint. Task created first attempt. Exact confirmation.</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
     <div class="inner">
-        <div class="r" style="text-align:center; max-width:560px; margin:0 auto;">
-            <div class="s-label mono">Founding Partner Pricing — Limited Slots</div>
-            <h2 class="s-title display">Choose your armour + skills.</h2>
+        <div class="r" style="text-align:center;max-width:580px;margin:0 auto">
+            <div class="s-label mono">Pricing</div>
+            <h2 class="s-title display">Start free.<br><span class="it">Scale with confidence.</span></h2>
+            <p class="s-lead" style="margin:0 auto;font-size:.92rem">The open-source core (ClawForge generation pipeline) is free on GitHub. Pro and Team unlock ClawProof live validation, ClawShield certificates, and the growing validated skill library.</p>
+        </div>
+        <div class="billing-toggle r">
+            <span>Monthly</span>
+            <div class="toggle-track" id="billingToggle" onclick="toggleBilling()"><div class="toggle-thumb"></div></div>
+            <span>Annual</span>
+            <span class="save-pill">Save 28%</span>
         </div>
         <div class="price-grid r d1">
- 
             <div class="price-card">
-                <div class="price-tier mono">ClawSkills Pro</div>
-                <div class="price-val display">$29</div>
-                <div class="price-cadence">/month · billed annually</div>
+                <div class="price-tier mono">Open Source</div>
+                <div class="price-name display">ClawForge Core</div>
+                <div class="price-for">Run the generation pipeline yourself. Build dependency-aware skills from any documentation. Dramatically better than hand-written skills, with zero subscription cost.</div>
+                <div class="price-amount display"><span class="cur">&pound;</span>0</div>
+                <div class="price-cad">Free forever &middot; MIT licence</div>
+                <div class="price-ann">&nbsp;</div>
+                <div class="price-divider"></div>
+                <div class="price-sec mono">What&rsquo;s included</div>
                 <ul class="price-feats">
-                    <li>Unlimited skill-tree builds</li>
-                    <li>Sandbox validation + graph viz</li>
-                    <li>ClawHub publish + basic hardening</li>
-                    <li>Community templates</li>
+                    <li><span class="tick">&#x2713;</span> Full ClawForge pipeline &mdash; complete source on GitHub</li>
+                    <li><span class="tick">&#x2713;</span> Dependency graph construction via local Ollama LLM</li>
+                    <li><span class="tick">&#x2713;</span> Valid YAML frontmatter + ClawHub schema compliance</li>
+                    <li><span class="tick">&#x2713;</span> Scraper for any public documentation URL</li>
+                    <li><span class="tick">&#x2713;</span> Community forum and GitHub discussions</li>
+                    <li><span class="dash">&mdash;</span> <span class="na">ClawProof sandbox validation</span></li>
+                    <li><span class="dash">&mdash;</span> <span class="na">ClawShield cryptographic certificates</span></li>
+                    <li><span class="dash">&mdash;</span> <span class="na">Validated skill library access</span></li>
+                    <li><span class="dash">&mdash;</span> <span class="na">Live API test credentials</span></li>
                 </ul>
-                <a href="#clawskills" class="price-cta-ghost">Start Free Trial</a>
+                <div class="price-note">Self-hosted. Requires Ollama and Node.js. Full setup guide in the repository.</div>
+                <a href="https://github.com/clawsolved" target="_blank" rel="noopener" class="price-cta-ghost">View on GitHub &rarr;</a>
             </div>
- 
             <div class="price-card featured">
-                <div class="price-tier mono">Security + ClawSkills</div>
-                <div class="price-val display">$50k</div>
-                <div class="price-cadence">one-time + $8k / month</div>
+                <div class="price-tier mono">Pro &middot; Most popular</div>
+                <div class="price-name display">Forge + Proof + Shield</div>
+                <div class="price-for">Individual developers who install skills from ClawHub and need to know they actually work &mdash; and can prove it to anyone who asks.</div>
+                <div class="price-amount display"><span class="cur">&pound;</span><span id="pro-price">29</span></div>
+                <div class="price-cad" id="pro-cad">/month &middot; billed monthly</div>
+                <div class="price-ann" id="pro-ann">&nbsp;</div>
+                <div class="price-divider"></div>
+                <div class="price-sec mono">What&rsquo;s included</div>
                 <ul class="price-feats">
-                    <li>Full enterprise hardening</li>
-                    <li>Unlimited ClawSkills + custom packs</li>
-                    <li>Advanced DLP + session replay</li>
-                    <li>Dedicated support + skill engineer</li>
+                    <li><span class="tick">&#x2713;</span> Everything in Open Source</li>
+                    <li><span class="tick">&#x2713;</span> ClawProof validation &mdash; 7 pre-configured live API sandboxes</li>
+                    <li><span class="tick">&#x2713;</span> ClawShield certificate generation for every validated skill</li>
+                    <li><span class="tick">&#x2713;</span> Full access to ClawSolved validated skill library</li>
+                    <li><span class="tick">&#x2713;</span> Priority queue &mdash; request a service, validated within 5 business days</li>
+                    <li><span class="tick">&#x2713;</span> Weekly re-scan alerts when API changes affect your installed skills</li>
+                    <li><span class="tick">&#x2713;</span> ClawHub publish integration with ClawSolved-verified badge</li>
+                    <li><span class="tick">&#x2713;</span> Email support &mdash; 48-hour response</li>
+                    <li><span class="dash">&mdash;</span> <span class="na">Custom API credentials</span></li>
+                    <li><span class="dash">&mdash;</span> <span class="na">Private skill registry</span></li>
                 </ul>
-                <a href="#audit" class="price-cta-copper">Get Started</a>
+                <div class="price-note">14-day free trial. No credit card required to start. Cancel anytime.</div>
+                <a href="#audit" class="price-cta-copper">Start free trial</a>
             </div>
- 
             <div class="price-card">
-                <div class="price-tier mono">Enterprise</div>
-                <div class="price-val display">Custom</div>
-                <div class="price-cadence">from $75k + $15k / month</div>
+                <div class="price-tier mono">Team</div>
+                <div class="price-name display">Full platform for teams</div>
+                <div class="price-for">Teams sharing OpenClaw deployments. Private registry, custom API validation, and the ability to certify your own internal skills so every team member benefits.</div>
+                <div class="price-amount display"><span class="cur">&pound;</span><span id="team-price">480</span></div>
+                <div class="price-cad" id="team-cad">/month &middot; up to 10 seats</div>
+                <div class="price-ann" id="team-ann">&nbsp;</div>
+                <div class="price-divider"></div>
+                <div class="price-sec mono">What&rsquo;s included</div>
                 <ul class="price-feats">
-                    <li>Air-gapped + unlimited agents</li>
-                    <li>Full compliance + ClawSkills library</li>
-                    <li>Dedicated engineer + quarterly reviews</li>
-                    <li>White-label skill marketplace</li>
+                    <li><span class="tick">&#x2713;</span> Everything in Pro</li>
+                    <li><span class="tick">&#x2713;</span> Private skill registry &mdash; team-scoped, version-controlled</li>
+                    <li><span class="tick">&#x2713;</span> Custom API credentials &mdash; validate any REST or GraphQL API</li>
+                    <li><span class="tick">&#x2713;</span> Internal skill certification &mdash; ClawShield for your proprietary skills</li>
+                    <li><span class="tick">&#x2713;</span> 2 custom skill builds per month included</li>
+                    <li><span class="tick">&#x2713;</span> Slack support channel &mdash; 4-hour response, business hours</li>
+                    <li><span class="tick">&#x2713;</span> Monthly library report: coverage, confidence trends, API change impacts</li>
+                    <li><span class="tick">&#x2713;</span> Skill sharing across team &mdash; one install, all members benefit</li>
                 </ul>
-                <a href="#contact" class="price-cta-ghost">Talk Enterprise</a>
+                <div class="price-note">Additional seats: &pound;42/seat/month. Enterprise pricing available for 50+ seats or air-gapped deployments &mdash; contact us.</div>
+                <a href="#audit" class="price-cta-ghost">Book a demo &rarr;</a>
             </div>
- 
+        </div>
+        <p class="price-footnote r d2">Founding Partner Programme open &mdash; 4 of 8 slots remaining. Lock in current pricing permanently + custom build included.</p>
+    </div>
+</section>
+
+<!-- FOUNDING -->
+<section id="founding">
+    <div class="inner">
+        <div class="founding-box r">
+            <div class="s-label mono">Founding Partner Programme</div>
+            <h2 class="s-title display" style="max-width:480px">Eight slots.<br><span class="it">Permanent advantage.</span></h2>
+            <p style="font-size:.9rem;color:var(--text2);max-width:540px;line-height:1.78;margin-bottom:.5rem">The first eight OpenClaw teams to become ClawSolved founding partners get pricing locked permanently and direct influence over which APIs get validated first. In return: early feedback on skill quality, production failure reports, and permission to be referenced as a founding deployment.</p>
+            <div class="founding-slots">
+                <div class="slot filled"></div><div class="slot filled"></div>
+                <div class="slot filled"></div><div class="slot filled"></div>
+                <div class="slot open"></div><div class="slot open"></div>
+                <div class="slot open"></div><div class="slot open"></div>
+            </div>
+            <p class="founding-counter mono">4 of 8 slots filled &middot; 4 remaining</p>
+            <ul class="founding-perks">
+                <li>Founding-tier pricing locked permanently &mdash; all future increases grandfathered</li>
+                <li>Your primary service APIs validated first &mdash; jump the queue entirely</li>
+                <li>Monthly 1:1 with the founding engineer &mdash; direct roadmap input</li>
+                <li>One custom skill build included &mdash; any service, any API, built and certified at no charge</li>
+                <li>Named founding partner on clawsolved.com and GitHub</li>
+                <li>First access to every new feature before general availability</li>
+            </ul>
+            <div style="margin-top:2rem"><a href="#audit" class="btn-copper">Apply for a founding slot &rarr;</a></div>
         </div>
     </div>
 </section>
- 
-<!-- ── FREE AUDIT FORM ────────────────────────────────────────── -->
+
+<!-- AUDIT FORM -->
 <section id="audit">
     <div class="inner-narrow">
-        <div class="r" style="text-align:center;">
-            <div class="s-label mono">Free Audit + Skills Demo</div>
-            <h2 class="s-title display">Know your exposure<br><span class="it">and</span> get your first skill tree.</h2>
-            <p style="color:var(--text2); font-size:0.9rem; line-height:1.7;">
-                15-minute Loom + 3-page report + live ClawSkills demo on your framework.<br>
-                12 founding partner slots — 7 remaining.
-            </p>
+        <div class="r" style="text-align:center">
+            <div class="s-label mono">Free Skill Audit</div>
+            <h2 class="s-title display">Find out what&rsquo;s actually<br><span class="it">in your installed skills.</span></h2>
+            <p style="color:var(--text2);font-size:.9rem;line-height:1.78;max-width:500px;margin:0 auto">Tell us which skills you have installed or which services your OpenClaw agent uses. We run a free audit &mdash; prompt injection scan, metadata validation, API currency check &mdash; and deliver the report within 48 hours. No obligation. No sales call required.</p>
         </div>
- 
         <form id="auditForm" class="form-wrap r d1">
             <div class="form-row-2">
-                <div class="fg">
-                    <label>Name</label>
-                    <input type="text" id="aName" required placeholder="Your name">
-                </div>
-                <div class="fg">
-                    <label>Company</label>
-                    <input type="text" id="aCompany" required placeholder="Company name">
-                </div>
+                <div class="fg"><label>Name</label><input type="text" id="aName" required placeholder="Your name"></div>
+                <div class="fg"><label>Email</label><input type="email" id="aEmail" required placeholder="you@example.com"></div>
             </div>
-            <div class="fg">
-                <label>Work Email</label>
-                <input type="email" id="aEmail" required placeholder="you@company.com">
+            <div class="fg"><label>Which services does your OpenClaw agent connect to?</label><input type="text" id="aServices" placeholder="e.g. GitHub, Todoist, Slack, Linear, Stripe&hellip;"></div>
+            <div class="fg"><label>How many skills do you currently have installed?</label>
+                <select id="aCount">
+                    <option value="">Select range&hellip;</option>
+                    <option>1&ndash;5</option><option>6&ndash;15</option>
+                    <option>16&ndash;30</option><option>30+</option>
+                    <option>I don&rsquo;t know &mdash; that&rsquo;s part of the problem</option>
+                </select>
             </div>
-            <div class="fg">
-                <label>Current OpenClaw setup</label>
-                <input type="text" id="aSetup" placeholder="e.g. 8 agents + dev skills on VPS">
+            <div class="fg"><label>How are you using OpenClaw?</label>
+                <select id="aContext">
+                    <option value="">Select context&hellip;</option>
+                    <option>Personal use</option>
+                    <option>Small team (2&ndash;10 people)</option>
+                    <option>Organisation (10+ people)</option>
+                    <option>Building a product on top of OpenClaw</option>
+                </select>
             </div>
-            <div class="fg">
-                <label>Primary concern</label>
-                <textarea id="aWorry" rows="3" placeholder="Security? Unvalidated skills? Scale?"></textarea>
-            </div>
-            <button type="submit" id="auditBtn" class="form-btn mono">
-                SEND AUDIT + SKILLS REQUEST →
-            </button>
-            <div class="form-success mono" id="auditOk">
-                ✓ RECEIVED — REPORT + DEMO IN YOUR INBOX WITHIN 48 HOURS
-            </div>
+            <div class="fg"><label>Any specific failures or concerns? (optional)</label><textarea id="aWorry" rows="3" placeholder="Unexpected behaviour, wrong API calls, skills not triggering correctly&hellip;"></textarea></div>
+            <button type="submit" id="auditBtn" class="form-btn mono">REQUEST FREE SKILL AUDIT &rarr;</button>
+            <div class="form-sub mono">48-hour turnaround &middot; No sales call &middot; No obligation</div>
+            <div class="form-ok mono" id="auditOk">&#x2713; Audit request received.<br>We&rsquo;ll scan your skill configuration and send the report within 48 hours.<br>Check your email &mdash; including spam just in case.</div>
         </form>
     </div>
 </section>
- 
-<!-- ── CONTACT ────────────────────────────────────────────────── -->
-<section id="contact" style="background:var(--bg2);">
-    <div class="inner-narrow">
-        <div class="r" style="text-align:center;">
-            <div class="s-label mono">Get in Touch</div>
-            <h2 class="s-title display">Ready to armor<br><span class="it">your lobster?</span></h2>
-        </div>
-        <form id="contactForm" class="form-wrap r d1">
-            <div class="form-row-2">
-                <div class="fg">
-                    <label>Name</label>
-                    <input type="text" id="cName" required placeholder="Your name">
-                </div>
-                <div class="fg">
-                    <label>Email</label>
-                    <input type="email" id="cEmail" required placeholder="you@company.com">
-                </div>
-            </div>
-            <div class="fg">
-                <label>Company</label>
-                <input type="text" id="cCompany" placeholder="Company name">
-            </div>
-            <div class="fg">
-                <label>Message</label>
-                <textarea id="cMsg" rows="5" placeholder="Team size, current skills, timeline..."></textarea>
-            </div>
-            <button type="submit" id="contactBtn" class="form-btn mono">
-                SEND MESSAGE →
-            </button>
-            <div class="form-success mono" id="contactOk">
-                ✓ MESSAGE RECEIVED — WE'LL REPLY WITHIN HOURS
-            </div>
-        </form>
-    </div>
-</section>
- 
-<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+
+<!-- FOOTER -->
 <footer>
-    <div class="foot-logo display">🦞 ClawSolved</div>
-    <p class="mono">© 2026 ClawSolved · ClawSkills + Enterprise Hardening for OpenClaw (MIT)</p>
-    <a href="https://github.com/openclaw" target="_blank" rel="noopener">
-        OpenClaw on GitHub →
-    </a>
+    <div class="foot-logo display">&#x1F99E; ClawSolved</div>
+    <div class="foot-links">
+        <a href="#crisis">The Crisis</a>
+        <a href="#solution">Platform</a>
+        <a href="#forge">ClawForge</a>
+        <a href="#proof">ClawProof</a>
+        <a href="#shield">ClawShield</a>
+        <a href="#pricing">Pricing</a>
+        <a href="https://github.com/clawsolved" target="_blank" rel="noopener">GitHub &rarr;</a>
+    </div>
+    <p class="mono">&copy; 2026 ClawSolved &middot; Verified Skill Intelligence for OpenClaw &middot; clawsolved.com</p>
 </footer>
- 
-<!-- ── SCRIPTS ────────────────────────────────────────────────── -->
+
 <script>
-    /* ── Nav scroll state ──────────────────────────────────── */
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
- 
-    /* ── Scroll reveals ────────────────────────────────────── */
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.r').forEach(el => obs.observe(el));
- 
-    /* ── Form submission ───────────────────────────────────── */
-    function wireForm(formId, okId, btnId, subject) {
-        const form = document.getElementById(formId);
-        const ok   = document.getElementById(okId);
-        const btn  = document.getElementById(btnId);
-        if (!form) return;
- 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const orig = btn.textContent;
-            btn.textContent = 'SENDING...';
-            btn.disabled = true;
- 
-            const fd = new FormData();
-            fd.append('_subject', subject);
-            fd.append('_captcha', 'false');
-            form.querySelectorAll('input, textarea').forEach(el => {
-                if (el.value.trim()) fd.append(el.id, el.value.trim());
-            });
- 
-            try {
-                await fetch('https://formsubmit.co/ClawSolved@proton.me', {
-                    method: 'POST', body: fd
-                });
-            } catch (_) {}
- 
-            ok.style.display = 'block';
-            form.reset();
-            btn.textContent = orig;
-            btn.disabled = false;
-        });
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+
+const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+let isAnnual = false;
+const prices = { pro: { mo: 29, ann: 21 }, team: { mo: 480, ann: 346 } };
+function toggleBilling() {
+    isAnnual = !isAnnual;
+    document.getElementById('billingToggle').classList.toggle('on', isAnnual);
+    const pP = document.getElementById('pro-price'), pC = document.getElementById('pro-cad'), pA = document.getElementById('pro-ann');
+    const tP = document.getElementById('team-price'), tC = document.getElementById('team-cad'), tA = document.getElementById('team-ann');
+    if (isAnnual) {
+        pP.textContent = prices.pro.ann; pC.textContent = '/month \u00b7 billed annually (\u00a3249/year)'; pA.textContent = 'Save \u00a399 vs monthly';
+        tP.textContent = prices.team.ann; tC.textContent = '/month \u00b7 billed annually (\u00a34,152/year)'; tA.textContent = 'Save \u00a31,624 vs monthly';
+    } else {
+        pP.textContent = prices.pro.mo; pC.textContent = '/month \u00b7 billed monthly'; pA.textContent = '\u00a0';
+        tP.textContent = prices.team.mo; tC.textContent = '/month \u00b7 up to 10 seats'; tA.textContent = '\u00a0';
     }
- 
-    wireForm('auditForm',   'auditOk',   'auditBtn',   'NEW AUDIT + CLAWSKILLS REQUEST — clawsolved.com');
-    wireForm('contactForm', 'contactOk', 'contactBtn', 'NEW INQUIRY — clawsolved.com');
- 
-    /* ── Smooth anchor scroll for all # links ──────────────── */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-            const target = document.querySelector(a.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
+}
+
+const form = document.getElementById('auditForm');
+const okEl = document.getElementById('auditOk');
+const btn = document.getElementById('auditBtn');
+form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const orig = btn.textContent; btn.textContent = 'SENDING\u2026'; btn.disabled = true;
+    const fd = new FormData();
+    fd.append('_subject', 'NEW SKILL AUDIT REQUEST \u2014 clawsolved.com'); fd.append('_captcha', 'false');
+    form.querySelectorAll('input, textarea, select').forEach(el => { if (el.value && el.value.trim()) fd.append(el.id, el.value.trim()); });
+    try { await fetch('https://formsubmit.co/ClawSolved@proton.me', { method: 'POST', body: fd }); } catch (_) {}
+    okEl.style.display = 'block'; form.reset(); btn.textContent = orig; btn.disabled = false;
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
+});
 </script>
 </body>
 </html>
