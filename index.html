@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClawSolved — OpenClaw Enterprise Security</title>
-    <meta name="description" content="The enterprise armour layer OpenClaw was always missing. Isolation, governance, compliance, scale — managed for you.">
+    <title>ClawSolved — OpenClaw Enterprise Security + ClawSkills</title>
+    <meta name="description" content="Enterprise armour for OpenClaw (isolation, governance, compliance) + ClawSkills: validated skill-tree builder for secure, dependency-aware coding agents. Build, harden, and deploy production-grade dev agents in minutes.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -64,7 +64,7 @@
         }
         .nav-logo .lobster { font-size: 1.6rem; line-height: 1; }
         .nav-links {
-            display: flex; gap: 2.5rem; list-style: none;
+            display: flex; gap: 2.2rem; list-style: none;
         }
         .nav-links a {
             font-size: 0.72rem; font-weight: 500;
@@ -146,7 +146,7 @@
         /* Headline */
         .hero-h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3.8rem, 9.5vw, 8rem);
+            font-size: clamp(3.6rem, 9vw, 7.8rem);
             font-weight: 700; line-height: 0.93;
             letter-spacing: -0.03em;
             margin-bottom: 1.6rem;
@@ -157,7 +157,6 @@
         .hero-h1 .exposed-wrap {
             position: relative; display: inline-block;
         }
-        /* Strikethrough on "exposed" — delayed */
         .hero-h1 .exposed-wrap::after {
             content: '';
             position: absolute; left: -2px; right: -2px;
@@ -176,7 +175,7 @@
         .hero-sub {
             font-size: clamp(1rem, 1.6vw, 1.15rem);
             font-weight: 300; color: var(--text2);
-            max-width: 580px; margin: 0 auto 2.8rem;
+            max-width: 620px; margin: 0 auto 2.8rem;
             line-height: 1.7;
             animation: riseIn 0.85s ease 0.38s both;
         }
@@ -304,7 +303,7 @@
  
         /* ── SOLUTION ─────────────────────────────────────────── */
         .sol-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
+            display: grid; grid-template-columns: repeat(4, 1fr);
             gap: 1px; margin-top: 4rem;
             background: var(--border);
             border: 1px solid var(--border);
@@ -332,6 +331,40 @@
         }
         .sol-card p { font-size: 0.87rem; color: var(--text2); line-height: 1.7; }
  
+        /* ── CLAWSKILLS SECTION ───────────────────────────────── */
+        #clawskills { background: var(--bg); }
+ 
+        .clawskills-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 4rem; align-items: center; margin-top: 4rem;
+        }
+        .clawskills-visual {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--teal);
+            position: relative;
+        }
+        .clawskills-visual::before {
+            content: "SKILL TREE PREVIEW";
+            position: absolute; top: -12px; left: 24px;
+            background: var(--bg); padding: 0 12px;
+            font-size: 0.65rem; letter-spacing: 0.12em;
+        }
+        .clawskills-badge {
+            display: inline-block;
+            background: rgba(199,107,42,0.12);
+            color: var(--copper);
+            padding: 0.35rem 0.9rem;
+            border-radius: 2px;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+        }
+ 
         /* ── PROCESS ──────────────────────────────────────────── */
         #process { background: var(--bg2); }
  
@@ -340,7 +373,6 @@
             gap: 0; margin-top: 5rem;
             position: relative;
         }
-        /* Connector line */
         .process-grid::before {
             content: '';
             position: absolute; top: 1.75rem;
@@ -493,6 +525,7 @@
             .nav-links { display: none; }
             .gap-grid  { grid-template-columns: 1fr; gap: 3.5rem; }
             .sol-grid  { grid-template-columns: 1fr; }
+            .clawskills-grid { grid-template-columns: 1fr; }
             .process-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
             .process-grid::before { display: none; }
             .price-grid { grid-template-columns: 1fr; }
@@ -531,11 +564,12 @@
     </a>
     <ul class="nav-links" role="navigation" aria-label="Main navigation">
         <li><a href="#gap">The Gap</a></li>
-        <li><a href="#solution">Solution</a></li>
+        <li><a href="#solution">Security</a></li>
+        <li><a href="#clawskills">ClawSkills</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#pricing">Pricing</a></li>
     </ul>
-    <a href="#audit" class="nav-cta">Free Audit</a>
+    <a href="#audit" class="nav-cta">Free Audit + Skills Demo</a>
 </nav>
  
 <!-- ── HERO ─────────────────────────────────────────────────── -->
@@ -545,7 +579,7 @@
  
         <div class="hero-badge mono">
             <div class="badge-dot" aria-hidden="true"></div>
-            313,000+ OpenClaw deployments live right now
+            313,000+ OpenClaw deployments · Now with ClawSkills
         </div>
  
         <h1 class="hero-h1 display">
@@ -556,30 +590,29 @@
         </h1>
  
         <p class="hero-sub">
-            The world's most powerful open-source AI agent doesn't come with enterprise armour.<br>
-            ClawSolved adds it — isolation, governance, compliance, scale.
+            Enterprise armour (zero-trust isolation, governance, compliance) + <strong>ClawSkills</strong>: validated skill-tree builder that turns raw docs into production-grade, sandbox-tested, dependency-aware coding agents. All hardened by ClawSolved.
         </p>
  
         <div class="hero-ctas">
-            <a href="#audit" class="btn-copper">Get Free Security Audit</a>
-            <a href="#gap" class="btn-outline">See What's Exposed →</a>
+            <a href="#clawskills" class="btn-copper">Try ClawSkills Free</a>
+            <a href="#audit" class="btn-outline">Get Free Security + Skills Audit</a>
         </div>
  
         <div class="hero-stats">
             <div class="hero-stat">
                 <div class="stat-tag mono">Default State</div>
                 <div class="stat-val display">Zero</div>
-                <div class="stat-desc">audit logs in a stock OpenClaw installation</div>
+                <div class="stat-desc">validated skill trees in stock OpenClaw</div>
             </div>
             <div class="hero-stat">
                 <div class="stat-tag mono">Exposure</div>
                 <div class="stat-val display">Full OS</div>
-                <div class="stat-desc">access with no per-tenant isolation by default</div>
+                <div class="stat-desc">access with unvetted skills by default</div>
             </div>
             <div class="hero-stat">
                 <div class="stat-tag mono">Deployments</div>
                 <div class="stat-val display">313K+</div>
-                <div class="stat-desc">organisations, most without enterprise hardening</div>
+                <div class="stat-desc">organisations now can run safe dev agents</div>
             </div>
         </div>
  
@@ -594,22 +627,22 @@
             <div class="r">
                 <div class="s-label mono">The Problem</div>
                 <h2 class="s-title display">
-                    Most deployments are one prompt injection away from a breach.
+                    Most deployments are one prompt injection away from a breach — and skills are the weakest link.
                 </h2>
                 <div class="gap-pull">
-                    <p>"Security teams are already flagging it. The question isn't whether OpenClaw is powerful — it's whether you can defend what it can access."</p>
-                    <cite>— Recurring feedback from CISO conversations, 2026</cite>
+                    <p>"Security teams are flagging it. The question isn't whether OpenClaw is powerful — it's whether your skills are safe, validated, and actually work."</p>
+                    <cite>— Recurring feedback from CISO + dev teams, 2026</cite>
                 </div>
             </div>
  
             <div class="r d1">
                 <ul class="gap-list">
-                    <li><span class="x-mark mono">×</span> Prompt injection via malicious skills and external content</li>
-                    <li><span class="x-mark mono">×</span> Unrestricted browser and terminal access — full data exfiltration surface</li>
-                    <li><span class="x-mark mono">×</span> Shadow AI deployments with zero visibility or governance</li>
-                    <li><span class="x-mark mono">×</span> No audit trail — nothing to show regulators, insurers, or legal</li>
-                    <li><span class="x-mark mono">×</span> No SSO, RBAC, or multi-tenant workspace isolation</li>
-                    <li><span class="x-mark mono">×</span> ClawHub skills unvetted — full supply chain exposure</li>
+                    <li><span class="x-mark mono">×</span> Prompt injection via malicious or flat skills</li>
+                    <li><span class="x-mark mono">×</span> Unrestricted browser/terminal + unvetted ClawHub skills</li>
+                    <li><span class="x-mark mono">×</span> Shadow AI deployments with zero visibility</li>
+                    <li><span class="x-mark mono">×</span> No audit trail or dependency mapping</li>
+                    <li><span class="x-mark mono">×</span> No SSO, RBAC, or per-tenant isolation</li>
+                    <li><span class="x-mark mono">×</span> Coding agents that hallucinate instead of reading real docs</li>
                 </ul>
             </div>
  
@@ -618,27 +651,71 @@
 </section>
  
 <!-- ── SOLUTION ──────────────────────────────────────────────── -->
-<section id="solution" style="background:var(--bg);">
+<section id="solution">
     <div class="inner">
         <div class="r" style="text-align:center; max-width:680px; margin:0 auto;">
             <div class="s-label mono">The Fix</div>
-            <h2 class="s-title display">ClawSolved = the enterprise<br><span class="it">armour layer</span> OpenClaw was missing.</h2>
+            <h2 class="s-title display">ClawSolved = enterprise armour.<br><span class="it">ClawSkills = verified dev agents.</span></h2>
         </div>
         <div class="sol-grid r d1">
             <div class="sol-card">
                 <div class="sol-icon">🔒</div>
                 <h3 class="display">Zero-Trust Isolation</h3>
-                <p>Per-tenant Kubernetes workspaces and Tailscale mesh. Automated skill scanner. No exposed ports, no shared execution environments, no lateral movement risk.</p>
+                <p>Per-tenant Kubernetes + Tailscale. Automated skill scanner. No lateral movement.</p>
             </div>
             <div class="sol-card">
                 <div class="sol-icon">📋</div>
-                <h3 class="display">Full Governance Layer</h3>
-                <p>SSO via Okta or Azure AD. Immutable session replay. DLP, complete audit logs, RBAC. SOC 2 / GDPR / HIPAA documentation templates included out of the box.</p>
+                <h3 class="display">Full Governance</h3>
+                <p>SSO, immutable logs, DLP, RBAC, SOC 2 templates.</p>
             </div>
             <div class="sol-card">
                 <div class="sol-icon">⚡</div>
                 <h3 class="display">Managed Scaling</h3>
-                <p>Pre-hardened skill packs for finance, HR, sales, and devops. One-click migration from any existing self-hosted instance. Unlimited concurrent agents.</p>
+                <p>Unlimited agents, one-click migration, pre-hardened packs.</p>
+            </div>
+            <div class="sol-card">
+                <div class="sol-icon">🌳</div>
+                <h3 class="display">ClawSkills</h3>
+                <p>Validated skill-tree builder. Turn any framework/docs into dependency graphs, sandbox-tested SKILL.md bundles, and auto-hardened coding agents.</p>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+<!-- ── CLAWSKILLS ────────────────────────────────────────────── -->
+<section id="clawskills">
+    <div class="inner">
+        <div class="r" style="text-align:center; max-width:720px; margin:0 auto;">
+            <div class="s-label mono">New in 2026</div>
+            <h2 class="s-title display">ClawSkills — the missing piece for OpenClaw developers</h2>
+            <p style="color:var(--text2); font-size:1.05rem;">Your superior skill-tree engine, now live on ClawSolved. One prompt → validated, navigable, sandbox-tested coding agents that never hallucinate.</p>
+        </div>
+ 
+        <div class="clawskills-grid r d1">
+            <div>
+                <div class="clawskills-badge mono">BUILT FOR OPENCLAW</div>
+                <h3 class="display" style="font-size:2.1rem; line-height:1.1;">From raw docs to production agents in minutes</h3>
+                <ul style="margin-top:2rem; font-size:0.95rem; color:var(--text2); line-height:1.7; list-style:none;">
+                    <li style="margin-bottom:1rem;">✅ Dependency-aware skill trees (prereqs, pitfalls, tests)</li>
+                    <li style="margin-bottom:1rem;">✅ Sandbox validation + auto SKILL.md export with ClawHub metadata</li>
+                    <li style="margin-bottom:1rem;">✅ Multi-modal (code + diagrams) + ClawSolved hardening</li>
+                    <li style="margin-bottom:1rem;">✅ Publish-ready bundles + graph visualization</li>
+                </ul>
+                <a href="#audit" class="btn-copper" style="margin-top:2rem; display:inline-block;">Build Your First Skill Tree Free</a>
+            </div>
+            <div class="clawskills-visual">
+                <pre style="background:#0B1825; padding:1.5rem; border-radius:4px; overflow:auto; font-size:0.82rem; line-height:1.4;">
+Supabase Auth
+├── Prerequisites
+│   └── JWT + Postgres
+├── Steps
+│   ├── OAuth Flow
+│   └── Edge Function
+├── Edge Cases
+│   └── Rate Limits
+└── Tests (sandboxed)
+                </pre>
+                <p style="text-align:center; margin-top:1rem; font-size:0.75rem; color:var(--copper);">Live skill-tree preview (React Flow coming soon)</p>
             </div>
         </div>
     </div>
@@ -649,28 +726,28 @@
     <div class="inner">
         <div class="r" style="text-align:center;">
             <div class="s-label mono">Timeline</div>
-            <h2 class="s-title display">Four weeks to secure enterprise OpenClaw.</h2>
+            <h2 class="s-title display">Four weeks to secure + supercharge your OpenClaw.</h2>
         </div>
         <div class="process-grid">
             <div class="p-step r">
                 <div class="p-num mono">01</div>
                 <div class="p-title display">Free Audit</div>
-                <p class="p-desc">We assess your current or planned setup. Security score and exact hardening roadmap delivered in 48 hours.</p>
+                <p class="p-desc">Security scan + ClawSkills demo on your stack. Report + first skill tree in 48 hrs.</p>
             </div>
             <div class="p-step r d1">
                 <div class="p-num mono">02</div>
-                <div class="p-title display">Hardening</div>
-                <p class="p-desc">Isolated workspaces deployed, skills migrated, SSO + DLP + full audit layer added. Two weeks.</p>
+                <div class="p-title display">Hardening + Skills</div>
+                <p class="p-desc">Isolation, governance, SSO + validated skill trees for your dev workflows.</p>
             </div>
             <div class="p-step r d2">
                 <div class="p-num mono">03</div>
                 <div class="p-title display">Go Live</div>
-                <p class="p-desc">Chaos testing, team training, full dashboard handoff. Your team runs the lobster safely.</p>
+                <p class="p-desc">Chaos testing, agent training, dashboard with ClawSkills graph view.</p>
             </div>
             <div class="p-step r d3">
                 <div class="p-num mono">04</div>
                 <div class="p-title display">Ongoing</div>
-                <p class="p-desc">24/7 managed service and quarterly strategy reviews. 90-day zero-incident guarantee.</p>
+                <p class="p-desc">24/7 managed service + weekly skill-tree auto-updates. 90-day guarantee.</p>
             </div>
         </div>
     </div>
@@ -681,32 +758,32 @@
     <div class="inner">
         <div class="r" style="text-align:center; max-width:560px; margin:0 auto;">
             <div class="s-label mono">Founding Partner Pricing — Limited Slots</div>
-            <h2 class="s-title display">Choose your armour.</h2>
+            <h2 class="s-title display">Choose your armour + skills.</h2>
         </div>
         <div class="price-grid r d1">
  
             <div class="price-card">
-                <div class="price-tier mono">Essential</div>
-                <div class="price-val display">$35k</div>
-                <div class="price-cadence">one-time + $4,000 / month</div>
+                <div class="price-tier mono">ClawSkills Pro</div>
+                <div class="price-val display">$29</div>
+                <div class="price-cadence">/month · billed annually</div>
                 <ul class="price-feats">
-                    <li>Single team — up to 10 agents</li>
-                    <li>Full isolation and SSO</li>
-                    <li>Basic audit logs</li>
-                    <li>3 vetted skill packs</li>
+                    <li>Unlimited skill-tree builds</li>
+                    <li>Sandbox validation + graph viz</li>
+                    <li>ClawHub publish + basic hardening</li>
+                    <li>Community templates</li>
                 </ul>
-                <a href="#audit" class="price-cta-ghost">Get Started</a>
+                <a href="#clawskills" class="price-cta-ghost">Start Free Trial</a>
             </div>
  
             <div class="price-card featured">
-                <div class="price-tier mono">Professional — Most Popular</div>
+                <div class="price-tier mono">Security + ClawSkills</div>
                 <div class="price-val display">$50k</div>
-                <div class="price-cadence">one-time + $8,000 / month</div>
+                <div class="price-cadence">one-time + $8k / month</div>
                 <ul class="price-feats">
-                    <li>Multi-team and custom skills</li>
-                    <li>Advanced DLP and session replay</li>
-                    <li>Dedicated support pod</li>
-                    <li>Everything in Essential</li>
+                    <li>Full enterprise hardening</li>
+                    <li>Unlimited ClawSkills + custom packs</li>
+                    <li>Advanced DLP + session replay</li>
+                    <li>Dedicated support + skill engineer</li>
                 </ul>
                 <a href="#audit" class="price-cta-copper">Get Started</a>
             </div>
@@ -714,12 +791,12 @@
             <div class="price-card">
                 <div class="price-tier mono">Enterprise</div>
                 <div class="price-val display">Custom</div>
-                <div class="price-cadence">from $75k + $15,000 / month</div>
+                <div class="price-cadence">from $75k + $15k / month</div>
                 <ul class="price-feats">
-                    <li>Unlimited agents — air-gapped option</li>
-                    <li>Full compliance documentation pack</li>
-                    <li>Dedicated ClawSolved engineer</li>
-                    <li>Quarterly strategy reviews</li>
+                    <li>Air-gapped + unlimited agents</li>
+                    <li>Full compliance + ClawSkills library</li>
+                    <li>Dedicated engineer + quarterly reviews</li>
+                    <li>White-label skill marketplace</li>
                 </ul>
                 <a href="#contact" class="price-cta-ghost">Talk Enterprise</a>
             </div>
@@ -732,10 +809,10 @@
 <section id="audit">
     <div class="inner-narrow">
         <div class="r" style="text-align:center;">
-            <div class="s-label mono">Free Audit</div>
-            <h2 class="s-title display">Know your exposure<br><span class="it">before</span> someone else finds it.</h2>
+            <div class="s-label mono">Free Audit + Skills Demo</div>
+            <h2 class="s-title display">Know your exposure<br><span class="it">and</span> get your first skill tree.</h2>
             <p style="color:var(--text2); font-size:0.9rem; line-height:1.7;">
-                15-minute Loom walkthrough + 3-page hardening report + exact migration plan.<br>
+                15-minute Loom + 3-page report + live ClawSkills demo on your framework.<br>
                 12 founding partner slots — 7 remaining.
             </p>
         </div>
@@ -757,17 +834,17 @@
             </div>
             <div class="fg">
                 <label>Current OpenClaw setup</label>
-                <input type="text" id="aSetup" placeholder="e.g. 8 agents on a VPS — or planning first deployment">
+                <input type="text" id="aSetup" placeholder="e.g. 8 agents + dev skills on VPS">
             </div>
             <div class="fg">
                 <label>Primary concern</label>
-                <textarea id="aWorry" rows="3" placeholder="Security? Compliance? Scale? Something else?"></textarea>
+                <textarea id="aWorry" rows="3" placeholder="Security? Unvalidated skills? Scale?"></textarea>
             </div>
             <button type="submit" id="auditBtn" class="form-btn mono">
-                SEND AUDIT REQUEST →
+                SEND AUDIT + SKILLS REQUEST →
             </button>
             <div class="form-success mono" id="auditOk">
-                ✓ RECEIVED — REPORT IN YOUR INBOX WITHIN 48 HOURS
+                ✓ RECEIVED — REPORT + DEMO IN YOUR INBOX WITHIN 48 HOURS
             </div>
         </form>
     </div>
@@ -797,7 +874,7 @@
             </div>
             <div class="fg">
                 <label>Message</label>
-                <textarea id="cMsg" rows="5" placeholder="Team size, current setup, timeline, biggest pain point..."></textarea>
+                <textarea id="cMsg" rows="5" placeholder="Team size, current skills, timeline..."></textarea>
             </div>
             <button type="submit" id="contactBtn" class="form-btn mono">
                 SEND MESSAGE →
@@ -812,7 +889,7 @@
 <!-- ── FOOTER ─────────────────────────────────────────────────── -->
 <footer>
     <div class="foot-logo display">🦞 ClawSolved</div>
-    <p class="mono">© 2026 ClawSolved · Powered by OpenClaw (MIT) + enterprise hardening layer</p>
+    <p class="mono">© 2026 ClawSolved · ClawSkills + Enterprise Hardening for OpenClaw (MIT)</p>
     <a href="https://github.com/openclaw" target="_blank" rel="noopener">
         OpenClaw on GitHub →
     </a>
@@ -865,8 +942,8 @@
         });
     }
  
-    wireForm('auditForm',   'auditOk',   'auditBtn',   'NEW AUDIT REQUEST — ClawSolved.com');
-    wireForm('contactForm', 'contactOk', 'contactBtn', 'NEW INQUIRY — ClawSolved.com');
+    wireForm('auditForm',   'auditOk',   'auditBtn',   'NEW AUDIT + CLAWSKILLS REQUEST — clawsolved.com');
+    wireForm('contactForm', 'contactOk', 'contactBtn', 'NEW INQUIRY — clawsolved.com');
  
     /* ── Smooth anchor scroll for all # links ──────────────── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -881,4 +958,3 @@
 </script>
 </body>
 </html>
- 
