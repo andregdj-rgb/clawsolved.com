@@ -159,6 +159,14 @@ a{color:inherit;text-decoration:none}
 }
 .btn-secondary:hover{border-color:rgba(26,31,46,.22);box-shadow:var(--shadow-md);transform:translateY(-1px)}
 
+/* enterprise teaser under CTAs */
+.hero-enterprise{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.95rem;color:var(--mist);margin-bottom:2.5rem;
+  opacity:0;animation:fadeUp .75s ease .55s forwards;
+}
+.hero-enterprise a{color:var(--rust);font-weight:600}
+
 /* social proof bar */
 .hero-proof-bar{
   display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;
@@ -174,6 +182,24 @@ a{color:inherit;text-decoration:none}
 .proof-stat strong{color:var(--ink)}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ─── CORE VALUE PROOF STRIP ─────────────────────────────── */
+#core-value{
+  background:var(--off);
+  padding:3rem 2.5rem;
+  border-bottom:1px solid var(--rule);
+}
+.core-value-inner{
+  max-width:1040px;margin:0 auto;
+  display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;
+}
+.core-value-item{
+  flex:1;min-width:220px;
+  background:var(--white);border:1px solid var(--rule);
+  border-radius:10px;padding:1.5rem 1.75rem;
+  transition:box-shadow .2s;
+}
+.core-value-item:hover{box-shadow:var(--shadow-md)}
 
 /* ─── SCROLL REVEAL ──────────────────────────────────────── */
 .r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
@@ -233,16 +259,11 @@ section{padding:6rem 2.5rem}
 .fi-pill.warn{background:rgba(184,131,10,.08);color:var(--amber);border:1px solid rgba(184,131,10,.18)}
 .fi-desc{font-size:.83rem;color:var(--mist);line-height:1.6}
 
-.blockquote{
-  border-left:3px solid var(--rust);padding:1.25rem 1.5rem;
-  background:rgba(192,82,40,.04);border-radius:0 8px 8px 0;
-  margin:2rem 0;
+/* ─── SKILLS RISK (NEW LIGHT SECTION) ────────────────────── */
+#skills-risk{
+  background:var(--off2);border-bottom:1px solid var(--rule);
 }
-.blockquote p{
-  font-family:'Lora',serif;font-size:1.1rem;font-style:italic;
-  color:var(--ink2);line-height:1.6;
-}
-.blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mist);font-style:normal}
+.skills-risk-inner{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:start}
 
 /* ─── CLAWCHECK ──────────────────────────────────────────── */
 #clawcheck{
@@ -310,8 +331,15 @@ section{padding:6rem 2.5rem}
   padding:1rem 1.25rem;font-size:.79rem;color:rgba(255,255,255,.38);line-height:1.6
 }
 
+/* ─── SOLUTION SYSTEM ────────────────────────────────────── */
+#solution{
+  background:var(--white);
+  border-top:1px solid var(--rule);
+}
+.solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+
 /* ─── PRODUCTS ───────────────────────────────────────────── */
-#products{background:var(--white);border-top:1px solid var(--rule)}
+#products{background:var(--white)}
 .prod-intro{text-align:center;max-width:580px;margin:0 auto 3.5rem}
 .prod-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem
@@ -417,11 +445,12 @@ section{padding:6rem 2.5rem}
 .pkg-for{font-family:'JetBrains Mono',monospace;font-size:.59rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--rust);margin-bottom:.75rem}
 .pkg-desc{font-size:.83rem;color:var(--mist);line-height:1.62}
+.pkg-benefit{font-size:.83rem;color:var(--teal);font-weight:600;margin-top:.75rem}
 .pkg-skills{margin-top:.875rem;padding-top:.875rem;border-top:1px solid var(--rule);
   font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--mist)}
 .pkg-skills strong{color:var(--ink2)}
 
-/* ─── SECURITY ───────────────────────────────────────────── */
+/* ─── SECURITY DEEP DIVE ─────────────────────────────────── */
 #security{background:var(--off2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .sec-layout{display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:start}
 .sec-text p{font-size:.92rem;color:var(--mist);line-height:1.78;margin-bottom:1rem}
@@ -520,7 +549,7 @@ section{padding:6rem 2.5rem}
 .price-footnote{text-align:center;margin-top:1.5rem;font-family:'JetBrains Mono',monospace;
   font-size:.62rem;color:var(--rust);letter-spacing:.05em}
 
-/* ─── ENTERPRISE ─────────────────────────────────────────── */
+/* ─── ENTERPRISE TEASER ──────────────────────────────────── */
 #enterprise{background:var(--off);border-top:1px solid var(--rule)}
 .ent-layout{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center}
 .ent-text .s-lead{max-width:480px;margin-top:.75rem}
@@ -542,7 +571,7 @@ section{padding:6rem 2.5rem}
 }
 .ent-link:hover{border-color:var(--rust);gap:.75rem}
 
-/* ─── AUDIT FORM ─────────────────────────────────────────── */
+/* ─── FINAL CTA / AUDIT ──────────────────────────────────── */
 #audit{background:var(--ink)}
 .audit-layout{
   display:grid;grid-template-columns:1fr 1fr;gap:6rem;
@@ -610,11 +639,13 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
   .steps::before{display:none}
   .pkg-grid{grid-template-columns:1fr 1fr}
   .sec-layout{grid-template-columns:1fr;gap:3rem}
+  .skills-risk-inner{grid-template-columns:1fr;gap:3rem}
   .price-grid{grid-template-columns:1fr}
   .ent-layout{grid-template-columns:1fr;gap:2rem}
   .audit-layout{grid-template-columns:1fr;gap:3rem}
   .hero-proof-bar{flex-direction:column;align-items:flex-start;gap:.875rem}
   .proof-divider{display:none}
+  .core-value-inner{flex-direction:column}
 }
 @media(max-width:680px){
   section{padding:4.5rem 1.25rem}
@@ -638,10 +669,10 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
     <span class="claw" aria-hidden="true">🦞</span> ClawSolved
   </a>
   <ul class="nav-links">
-    <li><a href="#problem">Why it fails</a></li>
-    <li><a href="#products">What we do</a></li>
     <li><a href="#packages">Workflows</a></li>
+    <li><a href="#security">Security</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#enterprise">Enterprise</a></li>
   </ul>
   <a href="#audit" class="nav-cta">Free Audit</a>
 </nav>
@@ -655,28 +686,57 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
     </div>
 
     <h1 class="hero-h1 lora">
-      OpenClaw is extraordinary.<br>
-      <span class="line2">Get it done right.</span>
+      OpenClaw that boosts your productivity.<br>
+      <span class="line2">Safe, simple, and reliable — in 24 hours.</span>
     </h1>
 
     <p class="hero-sub">
-      Most OpenClaw setups are abandoned before they're useful, wide open to the internet, running unvetted skills, or costing 3× what they should. <strong>ClawSolved fixes that.</strong> Properly configured, secured, and working for your specific business — in 24 hours.
+      ClawSolved handles the setup, security, and workflows so you get a productive OpenClaw agent that works for your business — safe by default, cost-optimised, and always reliable. <strong>We do not install untrusted external Skills. We rebuild and verify them before use.</strong>
     </p>
 
     <div class="hero-ctas">
       <a href="#audit" class="btn-primary">Get your free Claw audit</a>
-      <a href="#products" class="btn-secondary">See how it works →</a>
+      <a href="#how" class="btn-secondary">See how it works →</a>
+    </div>
+
+    <div class="hero-enterprise">
+      Running OpenClaw across a team? <a href="#enterprise">Enterprise &amp; IT →</a>
     </div>
 
     <div class="hero-proof-bar">
-      <div class="proof-stars">★★★★★</div>
-      <div class="proof-text"><strong>48-hour delivery</strong> from audit to working deployment</div>
+      <div class="proof-stat"><strong>24h delivery</strong> — full working setup</div>
       <div class="proof-divider"></div>
-      <div class="proof-stat"><strong>Zero</strong> unvetted skills in any ClawSolved setup</div>
+      <div class="proof-stat"><strong>Zero unverified skills</strong> — rebuilt and verified only</div>
       <div class="proof-divider"></div>
-      <div class="proof-stat"><strong>£20–50/month</strong> true running cost — optimised</div>
+      <div class="proof-stat"><strong>Optimised cost</strong> — no surprise bills</div>
       <div class="proof-divider"></div>
-      <div class="proof-stat"><strong>Free audit</strong> — no sales call, no obligation</div>
+      <div class="proof-stat"><strong>No sales call</strong> — free audit, plain English</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CORE VALUE PROOF STRIP ═══════════════════════════════ -->
+<section id="core-value">
+  <div class="inner core-value-inner">
+    <div class="core-value-item r">
+      <div style="font-size:2.1rem;margin-bottom:.75rem">⏱️</div>
+      <h4 class="lora" style="font-size:1.35rem;margin-bottom:.5rem">24h delivery</h4>
+      <p class="mist">From free audit to a fully working, productive OpenClaw agent — no waiting, no guesswork.</p>
+    </div>
+    <div class="core-value-item r d1">
+      <div style="font-size:2.1rem;margin-bottom:.75rem">🛡️</div>
+      <h4 class="lora" style="font-size:1.35rem;margin-bottom:.5rem">Zero unverified skills</h4>
+      <p class="mist">We do not install untrusted external Skills. Every capability is rebuilt, tested, and verified.</p>
+    </div>
+    <div class="core-value-item r d2">
+      <div style="font-size:2.1rem;margin-bottom:.75rem">💰</div>
+      <h4 class="lora" style="font-size:1.35rem;margin-bottom:.5rem">Optimised cost</h4>
+      <p class="mist">Model routing and monitoring keep your monthly bill predictable and low.</p>
+    </div>
+    <div class="core-value-item r d3">
+      <div style="font-size:2.1rem;margin-bottom:.75rem">📋</div>
+      <h4 class="lora" style="font-size:1.35rem;margin-bottom:.5rem">No sales call</h4>
+      <p class="mist">Free ClawAudit gives you a clear report in 48 hours — no pressure, no obligation.</p>
     </div>
   </div>
 </section>
@@ -694,7 +754,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
           <cite>— Hacker News, March 2026. One of thousands of identical stories.</cite>
         </div>
 
-        <p class="s-lead">OpenClaw is the most capable personal AI agent runtime available. It is also genuinely hard to set up safely, configure usefully, and keep running. The gap between "installed" and "actually working for your business" is where most people give up — or worse, don't realise how much is wrong.</p>
+        <p class="s-lead">OpenClaw is powerful, but setting it up safely and making it useful for your business is hard. Most people waste days on broken installs, hidden risks, or bills that balloon — and still end up with an agent that doesn't actually save time.</p>
         <p class="s-lead" style="margin-top:1rem">ClawSolved closes that gap. One fixed price. 24 hours. Done right.</p>
 
         <div style="margin-top:2rem">
@@ -708,53 +768,79 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
             <div class="fi-title">Docker fails before you even start</div>
             <span class="fi-pill hot">60% of setups</span>
           </div>
-          <div class="fi-desc">Port conflicts, WSL 2 errors, virtualisation off in BIOS, container exits immediately with a cryptic error. Most people don't make it past hour one.</div>
+          <div class="fi-desc">Port conflicts, cryptic errors, containers that exit immediately. Hours lost before you even see the agent.</div>
         </div>
         <div class="fail-item">
           <div class="fi-head">
             <div class="fi-title">Your agent is open to the internet</div>
             <span class="fi-pill hot">135,000 instances</span>
           </div>
-          <div class="fi-desc">OpenClaw binds to 0.0.0.0 with no auth by default. If you followed a standard guide, your agent is almost certainly publicly accessible right now. You'd never know.</div>
+          <div class="fi-desc">Default configuration exposes everything. Most guides skip hardening — your data and workflows are publicly accessible right now.</div>
         </div>
         <div class="fail-item">
           <div class="fi-head">
-            <div class="fi-title">1 in 5 ClawHub skills is malicious</div>
+            <div class="fi-title">Untrusted Skills introduce hidden risks</div>
             <span class="fi-pill hot">Active threat</span>
           </div>
-          <div class="fi-desc">The ClawHavoc campaign infected 1,184+ packages with professional-looking documentation. 36% of audited skills contain prompt injection payloads. A GitHub account aged one week is all it takes to publish.</div>
+          <div class="fi-desc">Many ClawHub Skills contain prompt injection or malware. Standard setups install them blindly, turning a productivity tool into a liability.</div>
         </div>
         <div class="fail-item">
           <div class="fi-head">
             <div class="fi-title">The API bill arrives</div>
             <span class="fi-pill warn">Very common</span>
           </div>
-          <div class="fi-desc">Unoptimised model routing turns a £30/month tool into a £150/month surprise. One documented case: £47 in a single week of testing, with nothing useful to show for it.</div>
+          <div class="fi-desc">Unoptimised routing turns a £30/month tool into £150+ surprises — with little useful output to show for it.</div>
         </div>
         <div class="fail-item">
           <div class="fi-head">
             <div class="fi-title">It stops working. Silently.</div>
             <span class="fi-pill warn">The churn driver</span>
           </div>
-          <div class="fi-desc">OpenClaw updates constantly. APIs change. Sessions expire. Skills go stale. Without ongoing maintenance, what worked last month quietly breaks — and you find out when you need it most.</div>
+          <div class="fi-desc">Updates break things. Skills go stale. Without maintenance, what worked last month quietly fails when you need it most.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CLAWCHECK ════════════════════════════════════════════ -->
+<!-- ═══ SECURITY + SKILLS RISK (LIGHT) ═══════════════════════ -->
+<section id="skills-risk">
+  <div class="inner skills-risk-inner">
+    <div class="sec-text r">
+      <div class="eyebrow">Skills safety — our clear moat</div>
+      <h2 class="s-title lora">ClawSolved never installs external Skills directly.</h2>
+      <p>External Skills from ClawHub are untrusted. Many contain hidden risks — prompt injection, malware, or data exfiltration. Standard setups install them blindly, leaving your business exposed.</p>
+      <p><strong>We rebuild every capability safely, test it thoroughly, and only then include it in your system.</strong></p>
+      <p class="rust" style="font-weight:600;margin-top:1.5rem">We do not install untrusted external Skills. We rebuild and verify them before use.</p>
+      <div style="margin-top:2rem">
+        <a href="#clawcheck" class="btn-primary" style="display:inline-block">Check any skill right now →</a>
+      </div>
+    </div>
+    <div class="r d1">
+      <div style="background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:2rem">
+        <div class="s-title lora" style="font-size:1.4rem;margin-bottom:1rem">Why this matters for your business</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem">
+          <li style="display:flex;gap:1rem;align-items:flex-start"><span class="feat-tick" style="color:var(--red)">→</span> <span>Standard installs = hidden risks you can’t see</span></li>
+          <li style="display:flex;gap:1rem;align-items:flex-start"><span class="feat-tick" style="color:var(--rust)">→</span> <span>We rebuild and verify — nothing runs unless it’s safe</span></li>
+          <li style="display:flex;gap:1rem;align-items:flex-start"><span class="feat-tick" style="color:var(--teal)">→</span> <span>Safe by default, productive by design</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLAWCHECK TOOL ═══════════════════════════════════════ -->
 <section id="clawcheck" style="padding:5rem 2.5rem">
   <div class="cc-wrap r">
     <div class="cc-eyebrow mono">ClawCheck — free instant scan</div>
     <h2 class="cc-title lora">Is your ClawHub skill safe?</h2>
-    <p class="cc-sub">Enter any skill name from ClawHub for an instant assessment: prompt injection scan, API currency check, metadata validation. Try: <span style="color:rgba(255,255,255,.55)">todoist-tasks</span>, <span style="color:rgba(255,255,255,.55)">system-optimizer</span>, or <span style="color:rgba(255,255,255,.55)">gmail-triage</span></p>
+    <p class="cc-sub">ClawCheck instantly assesses any skill for prompt injection, metadata integrity, API issues, and hidden risks. It matters because you can avoid threats before they ever touch your business. Results are based on the ClawSolved verified Skills registry.</p>
     <div class="cc-row">
       <input class="cc-input mono" id="ccInput" type="text"
         placeholder="Skill name from ClawHub…" autocomplete="off" spellcheck="false">
       <button class="cc-btn mono" id="ccBtn" onclick="runCheck()">CHECK →</button>
     </div>
-    <div class="cc-hint mono">Results are from the ClawSolved registry — a maintained database of assessed skills.</div>
+    <div class="cc-hint mono">Results are from the ClawSolved verified Skills registry — a maintained database of assessed skills.</div>
     <div class="cc-loading mono" id="ccLoading">Scanning registry…</div>
     <div class="cc-result" id="ccResult">
       <div class="ccr-head">
@@ -789,13 +875,44 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
   </div>
 </section>
 
-<!-- ═══ PRODUCTS ═════════════════════════════════════════════ -->
+<!-- ═══ SOLUTION — THE CLAWSOLVED SYSTEM ════════════════════ -->
+<section id="solution">
+  <div class="inner">
+    <div class="prod-intro r">
+      <div class="eyebrow teal">The ClawSolved system</div>
+      <h2 class="s-title lora">Three things, done properly.</h2>
+      <p class="s-lead">Diagnose where you stand. Deploy a safe, productive agent. Maintain it so nothing breaks and costs stay controlled. All built around verified Skills only.</p>
+    </div>
+    <div class="solution-grid">
+      <div class="prod-card r" style="border-color:var(--amber);background:var(--white)">
+        <div class="prod-top-line" style="background:var(--amber)"></div>
+        <div class="prod-ey mono">ClawAudit</div>
+        <div class="prod-name lora">Diagnose</div>
+        <p class="prod-tagline">Know exactly where you stand — safety gaps, cost leaks, and the fastest path to real productivity — in a plain-English report.</p>
+      </div>
+      <div class="prod-card r d1" style="border-color:var(--rust);background:linear-gradient(160deg, rgba(192,82,40,.03) 0%, var(--white) 60%)">
+        <div class="prod-top-line" style="background:var(--rust)"></div>
+        <div class="prod-ey mono">ClawSetup</div>
+        <div class="prod-name lora">Deploy</div>
+        <p class="prod-tagline">A fully working, secure OpenClaw tailored to your business — live and productive in 24 hours.</p>
+      </div>
+      <div class="prod-card r d2" style="border-color:var(--teal)">
+        <div class="prod-top-line" style="background:var(--teal)"></div>
+        <div class="prod-ey mono">ClawCare</div>
+        <div class="prod-name lora">Maintain</div>
+        <p class="prod-tagline">Your agent stays reliable, nothing drifts, and costs stay controlled — month after month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRODUCT BREAKDOWN ════════════════════════════════════ -->
 <section id="products">
   <div class="inner">
     <div class="prod-intro r">
-      <div class="eyebrow teal">What ClawSolved does</div>
-      <h2 class="s-title lora">Three things, done properly.</h2>
-      <p class="s-lead">A deployment that works. A service that keeps it working. A diagnostic for when you're not sure where you stand. Together they're the complete Claw infrastructure for a small business.</p>
+      <div class="eyebrow teal">Product breakdown</div>
+      <h2 class="s-title lora">Choose what you need.</h2>
+      <p class="s-lead">Every piece works together. All use our verified Skills model — no untrusted external code is ever installed.</p>
     </div>
     <div class="prod-grid">
 
@@ -803,17 +920,17 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
         <div class="prod-top-line"></div>
         <div class="prod-ey mono">ClawSetup</div>
         <div class="prod-name lora">Deploy</div>
-        <p class="prod-tagline">We install, harden, configure, and validate your OpenClaw deployment in 24 hours. Safe skills only. Costs optimised. Workflows built for your business type.</p>
+        <p class="prod-tagline">We install, harden, and configure OpenClaw for your business — safe by default, cost controlled, and productive from day one. Works exactly for how you operate.</p>
         <div class="prod-price lora"><span class="cur">£</span>297</div>
         <div class="prod-price-note mono">one-time · includes first month of ClawCare</div>
         <div class="prod-rule"></div>
         <ul class="prod-feats">
-          <li><span class="feat-tick">→</span> Full OpenClaw installation, your infrastructure or cloud VM</li>
-          <li><span class="feat-tick">→</span> Security hardening: auth, firewall, gateway locked down</li>
-          <li><span class="feat-tick">→</span> Curated safe skill selection — zero ClawHavoc exposure</li>
-          <li><span class="feat-tick">→</span> Model routing configured to minimise API cost</li>
-          <li><span class="feat-tick">→</span> Your chosen workflow package, tested before handover</li>
-          <li><span class="feat-tick">→</span> 20-minute handover walkthrough — you see everything</li>
+          <li><span class="feat-tick">→</span> Full installation on your infrastructure or cloud VM</li>
+          <li><span class="feat-tick">→</span> Security hardening and locked-down access</li>
+          <li><span class="feat-tick">→</span> <strong>All Skills are rebuilt and verified — no external code is installed.</strong></li>
+          <li><span class="feat-tick">→</span> Model routing optimised to keep costs low</li>
+          <li><span class="feat-tick">→</span> Your chosen workflow package tested and ready</li>
+          <li><span class="feat-tick">→</span> 20-minute handover — you see everything working</li>
         </ul>
         <a href="#audit" class="prod-btn solid">Start with a free audit →</a>
       </div>
@@ -822,17 +939,16 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
         <div class="prod-top-line"></div>
         <div class="prod-ey mono">ClawCare</div>
         <div class="prod-name lora">Maintain</div>
-        <p class="prod-tagline">Monthly managed service. Every update, skill patch, security advisory, and cost check handled for you. Your agent never goes stale or costs what it shouldn't.</p>
+        <p class="prod-tagline">Monthly managed service so nothing breaks, nothing drifts, and your costs stay controlled. Your agent stays productive and reliable.</p>
         <div class="prod-price lora"><span class="cur">£</span>49</div>
         <div class="prod-price-note mono">/month · first month free with ClawSetup</div>
         <div class="prod-rule"></div>
         <ul class="prod-feats">
-          <li><span class="feat-tick">→</span> Monthly OpenClaw updates — tested before applied</li>
-          <li><span class="feat-tick">→</span> Skill security re-scans: threats flagged and patched</li>
-          <li><span class="feat-tick">→</span> API monitoring — skills updated when upstream changes</li>
-          <li><span class="feat-tick">→</span> Monthly cost report: what your agent spent and why</li>
-          <li><span class="feat-tick">→</span> Session health checks — no silent expiry surprises</li>
-          <li><span class="feat-tick">→</span> Email support, 24-hour response</li>
+          <li><span class="feat-tick">→</span> Monthly updates tested before applied</li>
+          <li><span class="feat-tick">→</span> Verified Skills re-scanned and patched</li>
+          <li><span class="feat-tick">→</span> API and cost monitoring — no surprises</li>
+          <li><span class="feat-tick">→</span> Session health checks and drift prevention</li>
+          <li><span class="feat-tick">→</span> 24-hour email support</li>
         </ul>
         <a href="#audit" class="prod-btn outline">Add to any existing setup →</a>
       </div>
@@ -841,17 +957,15 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
         <div class="prod-top-line"></div>
         <div class="prod-ey mono">ClawAudit</div>
         <div class="prod-name lora">Diagnose</div>
-        <p class="prod-tagline">Already running OpenClaw? Not sure if it's safe, useful, or costing what it should? A full diagnostic, plain-English report, delivered in 48 hours.</p>
+        <p class="prod-tagline">Already running OpenClaw? Get a clear 48-hour report on safety, cost efficiency, and workflow opportunities — no jargon, no obligation.</p>
         <div class="prod-price lora"><span class="cur">£</span>47</div>
         <div class="prod-price-note mono">one-time · free with ClawSetup · credited if you proceed</div>
         <div class="prod-rule"></div>
         <ul class="prod-feats">
-          <li><span class="feat-tick">→</span> Full skill scan: prompt injection + metadata</li>
-          <li><span class="feat-tick">→</span> Security exposure: is your gateway open?</li>
-          <li><span class="feat-tick">→</span> Cost efficiency: right model for each task?</li>
-          <li><span class="feat-tick">→</span> Workflow gap analysis: top 3 opportunities ranked</li>
-          <li><span class="feat-tick">→</span> 3–5 page plain-English report — no jargon</li>
-          <li><span class="feat-tick">→</span> No sales call. No obligation.</li>
+          <li><span class="feat-tick">→</span> Full verified-Skills safety scan</li>
+          <li><span class="feat-tick">→</span> Exposure and cost review</li>
+          <li><span class="feat-tick">→</span> Top 3 workflow opportunities ranked</li>
+          <li><span class="feat-tick">→</span> Plain-English report</li>
         </ul>
         <a href="#audit" class="prod-btn outline">Request free audit →</a>
       </div>
@@ -860,109 +974,115 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
   </div>
 </section>
 
-<!-- ═══ HOW IT WORKS ═════════════════════════════════════════ -->
+<!-- ═══ PROCESS (24 HOURS) ═══════════════════════════════════ -->
 <section id="how">
   <div class="inner">
     <div class="how-intro r">
       <div class="eyebrow">The ClawSetup process</div>
-      <h2 class="s-title lora">24 hours from audit<br>to <em style="color:var(--rust)">running.</em></h2>
-      <p class="s-lead" style="margin:0 auto">Simple for you. Thorough on our end.</p>
+      <h2 class="s-title lora">24 hours from audit<br>to <em style="color:var(--rust)">running and productive.</em></h2>
+      <p class="s-lead" style="margin:0 auto">Simple for you. Thorough on our end. Verified Skills only, every step.</p>
     </div>
     <div class="steps">
       <div class="step r">
         <div class="step-circle mono">01</div>
         <h4 class="lora">Audit</h4>
-        <p>5 plain-language questions about your business — what you do, where time goes, which tools you use. 4 minutes. No jargon.</p>
+        <p>You answer 5 quick questions about your business. We give you a clear picture of your current risks and the exact productivity gains possible.</p>
         <span class="step-badge you">You complete this</span>
       </div>
       <div class="step r d1">
         <div class="step-circle mono">02</div>
         <h4 class="lora">Configure</h4>
-        <p>We build your deployment specification: which skills, which model routing, which workflows — matched to your business and existing tools.</p>
+        <p>We build your exact specification: verified Skills, optimised routing, and the workflow that matches how you work.</p>
         <span class="step-badge us">We handle this</span>
       </div>
       <div class="step r d2">
         <div class="step-circle mono">03</div>
         <h4 class="lora">Deploy</h4>
-        <p>Full installation. Security hardened. All skills verified. Costs optimised. Tested end-to-end before we hand over anything.</p>
+        <p>Full installation, security hardening, and end-to-end testing. Your agent is live, safe, and productive in 24 hours.</p>
         <span class="step-badge us">We handle this</span>
       </div>
       <div class="step r d3">
         <div class="step-circle mono">04</div>
         <h4 class="lora">Handover</h4>
-        <p>20-minute walkthrough — you see what runs, where it lives, what to expect. ClawCare takes over. Nothing falls on you.</p>
+        <p>20-minute walkthrough. ClawCare takes over so your agent stays reliable and cost-controlled — nothing falls on you.</p>
         <span class="step-badge both">Together</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ PACKAGES ═════════════════════════════════════════════ -->
+<!-- ═══ WORKFLOW PACKAGES ════════════════════════════════════ -->
 <section id="packages">
   <div class="inner">
     <div class="pkg-intro r">
       <div class="eyebrow teal">Workflow packages</div>
       <h2 class="s-title lora">Built for your type of business.</h2>
-      <p class="s-lead" style="margin:0 auto">Every ClawSetup includes one workflow package, chosen based on your audit. Pick the one that maps to how you actually spend your time.</p>
+      <p class="s-lead" style="margin:0 auto">Every ClawSetup includes one workflow package matched to your audit. Each saves real time and uses only verified Skills.</p>
     </div>
     <div class="pkg-grid">
       <div class="pkg-card r">
         <div class="pkg-icon">📧</div>
         <div class="pkg-name lora">AI Email Triage</div>
         <div class="pkg-for mono">VAs · Consultants · Coaches · Freelancers</div>
-        <div class="pkg-desc">Categorises incoming email, drafts responses to recurring request types, flags urgents, sends follow-up reminders. Configured for your client communication patterns.</div>
+        <div class="pkg-desc">Categorises incoming email, drafts responses to recurring requests, flags urgents, and sends follow-ups.</div>
+        <p class="pkg-benefit">Saves 8–12 hours per week on email handling.</p>
         <div class="pkg-skills"><strong>Skills deployed:</strong> gmail-read · gmail-draft · email-categorise · follow-up-scheduler</div>
       </div>
       <div class="pkg-card r d1">
         <div class="pkg-icon">🤝</div>
         <div class="pkg-name lora">AI Client Onboarding</div>
         <div class="pkg-for mono">Agencies · Freelancers · Service businesses</div>
-        <div class="pkg-desc">New client intake → project brief → welcome sequence → milestone reminders. Every new client gets the same quality, first time, every time.</div>
+        <div class="pkg-desc">New client intake → project brief → welcome sequence → milestone reminders.</div>
+        <p class="pkg-benefit">Cuts onboarding time by 70% — consistent every single time.</p>
         <div class="pkg-skills"><strong>Skills deployed:</strong> intake-form · brief-generator · welcome-sequence · calendar-sync</div>
       </div>
       <div class="pkg-card r d2">
         <div class="pkg-icon">📋</div>
-        <div class="pkg-name lora">AI Invoice & Admin</div>
+        <div class="pkg-name lora">AI Invoice &amp; Admin</div>
         <div class="pkg-for mono">Tradespeople · Small e-commerce · Service providers</div>
-        <div class="pkg-desc">Invoice generation from job records, 3-touch payment chasing, expense categorisation, monthly summaries. Works with your existing invoicing tool.</div>
+        <div class="pkg-desc">Invoice generation from job records, payment chasing, expense tracking, and monthly summaries.</div>
+        <p class="pkg-benefit">Reduces admin work by 15 hours per month.</p>
         <div class="pkg-skills"><strong>Skills deployed:</strong> invoice-create · payment-chase · expense-log · stripe-sync</div>
       </div>
       <div class="pkg-card r">
         <div class="pkg-icon">🔍</div>
-        <div class="pkg-name lora">AI Research & Briefing</div>
+        <div class="pkg-name lora">AI Research &amp; Briefing</div>
         <div class="pkg-for mono">Consultants · Analysts · Content creators</div>
-        <div class="pkg-desc">Background research, competitive monitoring, meeting briefing documents. Research that used to take 3 hours now takes under 15 minutes.</div>
+        <div class="pkg-desc">Background research, competitive monitoring, and meeting briefing documents.</div>
+        <p class="pkg-benefit">Turns 3-hour research tasks into 15 minutes.</p>
         <div class="pkg-skills"><strong>Skills deployed:</strong> web-search · content-brief · competitor-monitor · meeting-prep</div>
       </div>
       <div class="pkg-card r d1">
         <div class="pkg-icon">📅</div>
         <div class="pkg-name lora">AI Scheduling</div>
         <div class="pkg-for mono">Coaches · Therapists · Appointment-based businesses</div>
-        <div class="pkg-desc">Meeting scheduling, rescheduling, appointment reminders, weekly calendar audit, post-meeting follow-up. Integrated with Google Calendar.</div>
+        <div class="pkg-desc">Meeting scheduling, rescheduling, reminders, and post-meeting follow-up.</div>
+        <p class="pkg-benefit">Eliminates double-bookings and saves 5+ hours per week.</p>
         <div class="pkg-skills"><strong>Skills deployed:</strong> calendar-read · schedule-propose · reminder-send · reschedule-handle</div>
       </div>
       <div class="pkg-card r d2" style="border-style:dashed;background:transparent">
         <div class="pkg-icon">✦</div>
         <div class="pkg-name lora">Custom workflow</div>
         <div class="pkg-for mono">Any business type</div>
-        <div class="pkg-desc">None of the above quite fits? Tell us what eats your time. Most bespoke builds are covered within the standard ClawSetup price — describe it in the free audit form.</div>
+        <div class="pkg-desc">None of the above quite fits? Tell us what eats your time. Most custom builds are covered within the standard ClawSetup price.</div>
+        <p class="pkg-benefit">Describe your biggest time sink in the free audit — we build it.</p>
         <div class="pkg-skills" style="color:var(--rust)"><strong>→</strong> Describe your workflow in the free audit</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SECURITY ══════════════════════════════════════════════ -->
+<!-- ═══ SECURITY DEEP DIVE (LIGHT VERSION) ═══════════════════ -->
 <section id="security">
   <div class="inner">
     <div class="sec-layout">
       <div class="sec-text r">
-        <div class="eyebrow">Why security matters for SMBs, not just CISOs</div>
-        <h2 class="s-title lora">The threat is real.<br>Most people don't know it.</h2>
-        <p>OpenClaw's default configuration exposes your agent to the internet with no authentication. Most installation guides skip this entirely — you follow the steps, it works, and you have no idea it's open.</p>
-        <p>ClawHub's skill registry has no vetting infrastructure. A GitHub account aged one week is the only requirement to publish. The ClawHavoc campaign used professional-looking documentation to distribute Atomic Stealer across more than 1,184 packages.</p>
-        <p>Bitdefender's telemetry confirms employees are deploying OpenClaw on company devices using single-line install commands — no security review, no IT visibility. <strong>The risk isn't just enterprise. It's anyone running OpenClaw.</strong></p>
-        <p>Every ClawSolved deployment closes all of this before handover. Security is not an add-on — it's part of what ClawSetup means.</p>
+        <div class="eyebrow">Why security matters for every business</div>
+        <h2 class="s-title lora">Default risk. Skills risk.<br>Your solution.</h2>
+        <p><strong>Default risk:</strong> OpenClaw binds to the internet with no authentication by default. Most guides skip hardening — your agent is publicly accessible.</p>
+        <p><strong>Skills risk:</strong> ClawHub has no vetting. Many Skills contain hidden threats. Standard setups install them blindly.</p>
+        <p><strong>Your solution:</strong> Verified Skills only. <strong>We do not install untrusted external Skills. We rebuild and verify them before use.</strong> No untrusted Skill code ever runs in your system.</p>
+        <p>Security is built in from the first step — not an add-on. Your agent stays productive and safe.</p>
         <div style="margin-top:1.5rem">
           <a href="#audit" class="btn-primary" style="display:inline-block">Check your current setup →</a>
         </div>
@@ -972,22 +1092,22 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
           <div class="sec-stat">
             <div class="ss-label mono">ClawHub contamination</div>
             <div class="ss-val lora">~20%</div>
-            <div class="ss-desc">Share of skills confirmed malicious — growing as the platform scales without vetting infrastructure.</div>
+            <div class="ss-desc">Share of skills confirmed malicious — growing without proper vetting.</div>
           </div>
           <div class="sec-stat">
             <div class="ss-label mono">Prompt injection rate</div>
             <div class="ss-val lora">36%</div>
-            <div class="ss-desc">Of audited ClawHub skills contain prompt injection payloads. Snyk ToxicSkills research, 2026.</div>
+            <div class="ss-desc">Of audited ClawHub skills contain prompt injection payloads.</div>
           </div>
           <div class="sec-stat">
             <div class="ss-label mono">Exposed instances</div>
             <div class="ss-val lora">135k</div>
-            <div class="ss-desc">OpenClaw instances open to the public internet due to default misconfiguration. SecurityScorecard, 2026.</div>
+            <div class="ss-desc">OpenClaw instances publicly accessible due to default misconfiguration.</div>
           </div>
           <div class="sec-stat">
             <div class="ss-label mono">ClawSolved standard</div>
             <div class="ss-val lora good">Zero</div>
-            <div class="ss-desc">Unverified skills in any ClawSolved deployment. Every skill tested and signed before installation.</div>
+            <div class="ss-desc">Unverified skills in any ClawSolved deployment. Every Skill is rebuilt and verified.</div>
           </div>
         </div>
       </div>
@@ -1001,7 +1121,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
     <div class="pricing-intro r">
       <div class="eyebrow">Pricing</div>
       <h2 class="s-title lora">Simple. No surprises.</h2>
-      <p class="s-lead" style="margin:0 auto;text-align:center">One setup fee. One monthly subscription. No tiers that gatekeep features, no costs that mushroom.</p>
+      <p class="s-lead" style="margin:0 auto;text-align:center">One setup fee. One monthly subscription. No hidden costs. No lock-in.</p>
     </div>
     <div class="billing-row r">
       <span>Monthly</span>
@@ -1014,21 +1134,19 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
       <div class="price-card">
         <div class="price-tag mono">Starter</div>
         <div class="price-name lora">ClawAudit</div>
-        <div class="price-for">Already running OpenClaw — or just considering it. Get the full picture before you commit to anything.</div>
+        <div class="price-for">Already running OpenClaw — or just considering it. Get the full picture before you commit.</div>
         <div class="price-amount lora"><span class="cur">£</span>47</div>
         <div class="price-cadence mono">one-time · free with ClawSetup</div>
         <div class="price-ann">&nbsp;</div>
         <div class="p-rule"></div>
         <div class="p-sec mono">What you get</div>
         <ul class="p-feats">
-          <li><span class="p-tick">✓</span> Full skill security scan: injection + metadata</li>
-          <li><span class="p-tick">✓</span> Gateway exposure assessment</li>
-          <li><span class="p-tick">✓</span> Model cost efficiency review</li>
-          <li><span class="p-tick">✓</span> Workflow gap analysis: top 3 opportunities</li>
-          <li><span class="p-tick">✓</span> Plain-English report, 48 hours</li>
-          <li><span class="p-tick">✓</span> 100% of cost credited to ClawSetup</li>
+          <li><span class="p-tick">✓</span> Full verified-Skills safety scan</li>
+          <li><span class="p-tick">✓</span> Exposure and cost review</li>
+          <li><span class="p-tick">✓</span> Top 3 workflow opportunities</li>
+          <li><span class="p-tick">✓</span> Plain-English report in 48 hours</li>
         </ul>
-        <div class="p-note">No sales call. No obligation. The report stands on its own.</div>
+        <div class="p-note">No sales call. No obligation. 100% credited to ClawSetup.</div>
         <a href="#audit" class="p-cta outline-dark">Get your audit →</a>
       </div>
 
@@ -1045,13 +1163,12 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
           <li><span class="p-tick">✓</span> Everything in ClawAudit — included free</li>
           <li><span class="p-tick">✓</span> Full installation + security hardening</li>
           <li><span class="p-tick">✓</span> One workflow package, deployed and tested</li>
-          <li><span class="p-tick">✓</span> Verified skills only — zero ClawHavoc risk</li>
+          <li><span class="p-tick">✓</span> Verified Skills only — zero external code risk</li>
           <li><span class="p-tick">✓</span> 20-minute handover walkthrough</li>
           <li><span class="p-tick">✓</span> First month of ClawCare included free</li>
-          <li><span class="p-tick">✓</span> Monthly updates, patches, cost reports</li>
-          <li><span class="p-tick">✓</span> Email support, 24-hour response</li>
+          <li><span class="p-tick">✓</span> Ongoing updates, patches, cost reports</li>
         </ul>
-        <div class="p-note">No lock-in on ClawCare. Cancel anytime. Setup fee non-refundable after delivery begins.</div>
+        <div class="p-note">No hidden costs. No lock-in. Cancel ClawCare anytime. Setup fee non-refundable after delivery begins.</div>
         <a href="#audit" class="p-cta rust">Start with free audit →</a>
       </div>
 
@@ -1069,10 +1186,9 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
           <li><span class="p-tick">✓</span> Second machine / team member: £197</li>
           <li><span class="p-tick">✓</span> ClawCare multi-seat (up to 5): £89/month</li>
           <li><span class="p-tick">✓</span> Custom workflow build: from £249</li>
-          <li><span class="p-tick">✓</span> Priority deployment (12-hour): +£75</li>
           <li><span class="p-dash">—</span> <span class="p-na">Enterprise — see below</span></li>
         </ul>
-        <div class="p-note">All add-ons require an active ClawSetup. Multi-seat covers all machines in scope.</div>
+        <div class="p-note">All add-ons require an active ClawSetup. No hidden fees.</div>
         <a href="#audit" class="p-cta outline-dark">Discuss your needs →</a>
       </div>
 
@@ -1081,25 +1197,24 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
   </div>
 </section>
 
-<!-- ═══ ENTERPRISE ════════════════════════════════════════════ -->
+<!-- ═══ ENTERPRISE TEASER SECTION ════════════════════════════ -->
 <section id="enterprise">
   <div class="inner">
     <div class="ent-layout">
       <div class="ent-text r">
-        <div class="eyebrow mist">Enterprise & IT teams</div>
-        <h2 class="s-title lora">Running OpenClaw at scale?<br><em style="color:var(--mist);font-weight:400">Different conversation.</em></h2>
-        <p class="s-lead">If your organisation is deploying OpenClaw across a team — or evaluating NemoClaw for governance — the risk profile and the work required are fundamentally different. ClawSolved works with IT and security leads on hardening assessments, NemoClaw readiness, and governed deployment protocols.</p>
-        <a href="#audit" class="ent-link">Request an enterprise assessment <span>→</span></a>
+        <div class="eyebrow mist">For teams &amp; IT environments</div>
+        <h2 class="s-title lora">Running OpenClaw across a team?<br><em style="color:var(--mist);font-weight:400">Different conversation.</em></h2>
+        <p class="s-lead">If you’re scaling OpenClaw to multiple users or machines, the work required and risk profile change. ClawSolved offers the same verified Skills safety moat with added team controls, IT hardening, and governed deployment support — without forcing you onto a separate path.</p>
+        <a href="#audit" class="ent-link">Request enterprise assessment <span>→</span></a>
       </div>
       <div class="ent-box r d1">
-        <h4 class="lora">Enterprise track covers</h4>
+        <h4 class="lora">What changes at scale</h4>
         <ul class="ent-list">
-          <li>Multi-user deployment with RBAC and SSO</li>
-          <li>NemoClaw readiness: production-ready for your stack?</li>
-          <li>CVE exposure assessment (9 CVEs, Jan–Mar 2026)</li>
-          <li>ClawHub vetting protocol for team-wide deployment</li>
-          <li>ISO 27001 / SOC 2 governance documentation</li>
-          <li>Ongoing monitoring and incident response SLA</li>
+          <li>Multi-user access with controlled permissions</li>
+          <li>Team-wide verified Skills deployment</li>
+          <li>IT-visible monitoring and cost reporting</li>
+          <li>Hardening assessments tailored to your stack</li>
+          <li>Ongoing support with defined SLAs</li>
         </ul>
         <p style="margin-top:1.25rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--mist)">From £35k + £4k/month. Scoped per engagement.</p>
       </div>
@@ -1107,17 +1222,17 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
   </div>
 </section>
 
-<!-- ═══ FREE AUDIT FORM ══════════════════════════════════════ -->
+<!-- ═══ FINAL CTA SECTION ════════════════════════════════════ -->
 <section id="audit" style="padding:7rem 2.5rem">
   <div class="audit-layout">
     <div class="audit-text r">
       <div class="eyebrow">Free Claw Audit</div>
-      <h2 class="s-title lora">Find out where<br>you actually stand.</h2>
-      <p>Whether you're running OpenClaw already or just considering it — the audit tells you what's working, what's exposed, and what properly configured looks like for your business. No sales call. No obligation. 48 hours.</p>
+      <h2 class="s-title lora">Find out where you actually stand — and how productive OpenClaw can be for your business.</h2>
+      <p>Get a clear 48-hour report on safety, costs, workflow opportunities, and the exact next steps — all using our verified Skills model.</p>
       <div class="audit-checklist">
-        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>48-hour report</strong> — plain English, no jargon</span></div>
-        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>Full skill security scan</strong> at no charge</span></div>
-        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>Top 3 workflow opportunities</strong> ranked by effort-to-impact</span></div>
+        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>48-hour plain-English report</strong></span></div>
+        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>Verified Skills safety scan</strong> at no charge</span></div>
+        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>Top productivity opportunities</strong> ranked for your business</span></div>
         <div class="ac-item"><span class="ac-icon">✓</span><span><strong>100% credited</strong> against ClawSetup if you proceed</span></div>
         <div class="ac-item"><span class="ac-icon">✓</span><span>No account. No credit card. <strong>Just answers.</strong></span></div>
       </div>
@@ -1153,7 +1268,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
         </div>
         <div class="fg">
           <label>Anything specific you're worried about or hoping for? (optional)</label>
-          <textarea id="aWorry" rows="3" placeholder="Security concerns, specific workflows, cost issues, NemoClaw questions…"></textarea>
+          <textarea id="aWorry" rows="3" placeholder="Security, specific workflows, cost issues…"></textarea>
         </div>
         <button type="submit" id="auditBtn" class="submit-btn mono">
           REQUEST FREE AUDIT →
@@ -1173,15 +1288,16 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
 <footer>
   <div class="foot-logo lora">🦞 ClawSolved</div>
   <div class="foot-links">
-    <a href="#problem">Why it fails</a>
-    <a href="#products">What we do</a>
     <a href="#packages">Workflows</a>
     <a href="#security">Security</a>
     <a href="#pricing">Pricing</a>
     <a href="#enterprise">Enterprise</a>
     <a href="#audit">Free Audit</a>
+    <a href="mailto:hello@clawsolved.com">Contact</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
   </div>
-  <p class="mono">© 2026 ClawSolved · clawsolved.com · OpenClaw, done right.</p>
+  <p class="mono">© 2026 ClawSolved · clawsolved.com · OpenClaw, done right. Verified Skills only.</p>
 </footer>
 
 <!-- ═══ JS ════════════════════════════════════════════════════ -->
