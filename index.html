@@ -48,7 +48,7 @@ a{color:inherit;text-decoration:none}
 .teal{color:var(--teal)}
 .mist{color:var(--mist)}
  
-/* ─── ANNOUNCEMENT BAR (NEW) ──────────────────────────────── */
+/* ─── ANNOUNCEMENT BAR ──────────────────────────────────── */
 #announce{
   background:var(--ink);
   padding:.5rem 2.5rem;
@@ -175,7 +175,7 @@ a{color:inherit;text-decoration:none}
 }
 .btn-secondary:hover{border-color:rgba(26,31,46,.22);box-shadow:var(--shadow-md);transform:translateY(-1px)}
  
-/* trust strip (NEW) */
+/* trust strip */
 .hero-trust-strip{
   display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;
   margin-bottom:1.5rem;
@@ -287,7 +287,7 @@ section{padding:6rem 2.5rem}
 }
 .skills-risk-inner{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:start}
  
-/* skills rebuild diagram (NEW) */
+/* skills rebuild diagram */
 .rebuild-diagram{
   background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:2rem;
 }
@@ -424,7 +424,7 @@ section{padding:6rem 2.5rem}
   letter-spacing:.08em;text-transform:uppercase;padding:.3rem .875rem;
   border-radius:0 0 8px 8px;
 }
-/* ClawScore card (NEW) */
+/* ClawScore card */
 .prod-card.clawscore-card{
   border-color:rgba(11,140,128,.35);
   background:linear-gradient(160deg, rgba(11,140,128,.03) 0%, var(--white) 60%);
@@ -453,7 +453,6 @@ section{padding:6rem 2.5rem}
 .prod-price .cur{font-size:1.1rem;vertical-align:super}
 .prod-price-note{font-size:.75rem;color:var(--mist);margin:.3rem 0 .5rem;
   font-family:'JetBrains Mono',monospace;letter-spacing:.02em}
-/* value note (NEW) */
 .prod-value-note{
   font-size:.72rem;color:var(--teal);margin-bottom:1rem;
   font-family:'JetBrains Mono',monospace;letter-spacing:.04em;font-style:italic;
@@ -597,7 +596,6 @@ section{padding:6rem 2.5rem}
 .price-cadence{font-family:'JetBrains Mono',monospace;font-size:.63rem;margin:.3rem 0 .25rem}
 .price-card:not(.feat) .price-cadence{color:var(--mist)}
 .price-card.feat .price-cadence{color:rgba(255,255,255,.4)}
-/* value note in pricing (NEW) */
 .price-value-note{
   font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.04em;
   color:var(--teal-l);margin-bottom:.5rem;font-style:italic;
@@ -656,7 +654,6 @@ section{padding:6rem 2.5rem}
   transition:border-color .2s,gap .2s;
 }
 .ent-link:hover{border-color:var(--rust);gap:.75rem}
-/* competitive window callout (NEW) */
 .comp-window{
   margin-top:2rem;padding:1.25rem 1.5rem;
   background:rgba(11,140,128,.05);border:1px solid rgba(11,140,128,.2);
@@ -712,6 +709,9 @@ section{padding:6rem 2.5rem}
 .form-ok{display:none;margin-top:1rem;text-align:center;
   font-family:'JetBrains Mono',monospace;font-size:.78rem;
   color:var(--teal);letter-spacing:.04em;line-height:1.7}
+.form-err{display:none;margin-top:1rem;text-align:center;
+  font-family:'JetBrains Mono',monospace;font-size:.73rem;
+  color:#f87171;letter-spacing:.04em;line-height:1.7}
  
 /* ─── FOOTER ─────────────────────────────────────────────── */
 footer{
@@ -728,7 +728,7 @@ footer{
 footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
   color:rgba(255,255,255,.18);letter-spacing:.03em}
  
-/* ─── CHAT WIDGET (NEW) ──────────────────────────────────── */
+/* ─── CHAT WIDGET ────────────────────────────────────────── */
 .chat-bubble{
   position:fixed;bottom:1.75rem;right:1.75rem;z-index:200;
   width:52px;height:52px;border-radius:50%;
@@ -792,7 +792,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
 </head>
 <body>
  
-<!-- ═══ ANNOUNCEMENT BAR (NEW) ═══════════════════════════════ -->
+<!-- ═══ ANNOUNCEMENT BAR ══════════════════════════════════════ -->
 <div id="announce">
   <span class="ann-badge">Window open</span>
   <span>
@@ -838,7 +838,6 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
       <a href="#how" class="btn-secondary">See how it works →</a>
     </div>
  
-    <!-- Trust strip (NEW — from landing variants) -->
     <div class="hero-trust-strip">
       <span class="ts-item"><span class="ts-dot"></span>Fixed price — no surprises</span>
       <span class="ts-item"><span class="ts-dot"></span>48-hour delivery</span>
@@ -950,7 +949,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
   </div>
 </section>
  
-<!-- ═══ SKILLS RISK — FOREGROUNDED & CLARIFIED ═══════════════ -->
+<!-- ═══ SKILLS RISK ═══════════════════════════════════════════ -->
 <section id="skills-risk">
   <div class="inner skills-risk-inner">
     <div class="sec-text r">
@@ -966,7 +965,6 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
       </div>
     </div>
  
-    <!-- Rebuild diagram (NEW — clarifies the process visually) -->
     <div class="r d1">
       <div class="rebuild-diagram">
         <div class="rebuild-diagram-title lora">What actually happens — the difference</div>
@@ -1157,7 +1155,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
         <a href="#audit" class="prod-btn outline">Request free audit →</a>
       </div>
  
-      <!-- ClawScore — Phase 2 (NEW) -->
+      <!-- ClawScore — Phase 2 -->
       <div class="prod-card score clawscore-card r d3">
         <div class="prod-top-line"></div>
         <div class="prod-ey mono">ClawScore</div>
@@ -1414,7 +1412,6 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
         <h2 class="s-title lora">Running OpenClaw or NemoClaw across a team?<br><em style="color:var(--mist);font-weight:400">Different conversation.</em></h2>
         <p class="s-lead">If you're scaling any *Claw runtime to multiple users or machines, the work required and risk profile change. ClawSolved offers the same Skills-rebuilt-from-scratch safety moat with added team controls, IT hardening, NemoClaw readiness, and SOC 2-aligned governance documentation.</p>
  
-        <!-- Competitive window callout (NEW) -->
         <div class="comp-window">
           <div class="comp-window-label mono">Competitive window — 6–9 months</div>
           <p>There is no dominant managed *Claw governance provider in the UK or US market as of March 2026. Traditional MSSPs (CrowdStrike, Palo Alto, BT) have no *Claw-specific practices yet. <strong>ClawSolved is moving first.</strong> Enterprise clients who engage now work with a provider that has hands-on *Claw experience before the market fills.</p>
@@ -1496,6 +1493,9 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
           We'll have the report in your inbox within 48 hours.<br>
           Check spam just in case.
         </div>
+        <div class="form-err mono" id="auditErr">
+          ✕ Something went wrong — please email <a href="mailto:hello@clawsolved.com" style="color:var(--teal-l)">hello@clawsolved.com</a> directly.
+        </div>
       </form>
     </div>
   </div>
@@ -1517,7 +1517,7 @@ footer p{font-family:'JetBrains Mono',monospace;font-size:.6rem;
   <p class="mono">© 2026 ClawSolved · clawsolved.com · OpenClaw, done right. Skills rebuilt from scratch. Verified only.</p>
 </footer>
  
-<!-- ═══ CHAT WIDGET (NEW) ════════════════════════════════════ -->
+<!-- ═══ CHAT WIDGET ════════════════════════════════════════════ -->
 <div class="chat-bubble" id="chatBubble" title="Any questions?" onclick="toggleChatTip()">💬</div>
 <div class="chat-tip" id="chatTip">
   <strong>Any questions?</strong><br>
@@ -1632,22 +1632,65 @@ function runCheck() {
 }
 document.getElementById('ccInput').addEventListener('keydown', e => { if (e.key === 'Enter') runCheck(); });
  
-/* Audit form */
-const form = document.getElementById('auditForm');
-const formOk = document.getElementById('auditOk');
+/* ─── AUDIT FORM — Web3Forms ─────────────────────────────────
+   1. Go to https://web3forms.com
+   2. Enter your email (ClawSolved@proton.me) to get a free access key
+   3. Replace YOUR_WEB3FORMS_KEY_HERE below with that key
+   No activation email required — submissions start arriving immediately.
+────────────────────────────────────────────────────────────── */
+const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY_HERE';
+ 
+const form    = document.getElementById('auditForm');
+const formOk  = document.getElementById('auditOk');
+const formErr = document.getElementById('auditErr');
 const formBtn = document.getElementById('auditBtn');
+ 
 form.addEventListener('submit', async e => {
   e.preventDefault();
+ 
+  // Reset state
+  formOk.style.display  = 'none';
+  formErr.style.display = 'none';
+ 
   const orig = formBtn.textContent;
-  formBtn.textContent = 'SENDING…'; formBtn.disabled = true;
-  const fd = new FormData();
-  fd.append('_subject', 'NEW CLAW AUDIT — clawsolved.com'); fd.append('_captcha','false');
-  form.querySelectorAll('input,textarea,select').forEach(el => {
-    if (el.value && el.value.trim()) fd.append(el.id, el.value.trim());
-  });
-  try { await fetch('https://formsubmit.co/ClawSolved@proton.me', { method:'POST', body:fd }); } catch(_) {}
-  formOk.style.display = 'block'; form.reset();
-  formBtn.textContent = orig; formBtn.disabled = false;
+  formBtn.textContent = 'SENDING…';
+  formBtn.disabled = true;
+ 
+  const payload = {
+    access_key:  WEB3FORMS_KEY,
+    subject:     'NEW CLAW AUDIT — clawsolved.com',
+    from_name:   'ClawSolved Audit Form',
+    name:        document.getElementById('aName').value.trim(),
+    email:       document.getElementById('aEmail').value.trim(),
+    business:    document.getElementById('aBiz').value.trim(),
+    running:     document.getElementById('aRunning').value,
+    time_sink:   document.getElementById('aTime').value.trim(),
+    tools:       document.getElementById('aServices').value.trim(),
+    notes:       document.getElementById('aWorry').value.trim(),
+  };
+ 
+  try {
+    const res  = await fetch('https://api.web3forms.com/submit', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body:    JSON.stringify(payload),
+    });
+    const data = await res.json();
+ 
+    if (data.success) {
+      formOk.style.display = 'block';
+      form.reset();
+    } else {
+      console.error('Web3Forms error:', data);
+      formErr.style.display = 'block';
+    }
+  } catch (err) {
+    console.error('Network error:', err);
+    formErr.style.display = 'block';
+  }
+ 
+  formBtn.textContent = orig;
+  formBtn.disabled = false;
 });
  
 /* Smooth scroll */
