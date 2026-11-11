@@ -3,196 +3,620 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ClawSolved | Practical AI workflows for small businesses</title>
-<meta name="description" content="Practical, fixed-price AI workflow setup for small businesses. Start with one useful workflow, or combine several into a more capable business assistant.">
+<title>ClawSolved | OpenClaw setup for US businesses</title>
+<meta name="description" content="ClawSolved installs and configures OpenClaw for US businesses. Fixed-price setup, deliberately limited access, and one useful first task. Remote from the UK.">
 <meta name="theme-color" content="#17231f">
+<meta property="og:title" content="ClawSolved | OpenClaw setup, without the guesswork">
+<meta property="og:description" content="Get your own OpenClaw AI assistant installed, connected and doing one useful job. Fixed prices in USD. Your accounts stay under your control.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clawsolved.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#17231f;--muted:#63716b;--paper:#fbfaf7;--panel:#f1f2ed;--line:#e2e5df;--accent:#bd5738;--green:#28796b;--white:#fff;--dark:#17231f;--max:1120px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}.topbar{background:var(--dark);color:#d9e1dc;text-align:center;padding:9px 16px;font-size:12px;letter-spacing:.04em}.topbar strong{color:#fff}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(251,250,247,.96);position:sticky;top:0;z-index:10;padding:0 max(24px,calc((100vw - var(--max))/2));backdrop-filter:blur(12px)}.brand{font:26px "DM Serif Display",serif;letter-spacing:-.5px}.brand-mark{color:var(--accent)}.navlinks{display:flex;align-items:center;gap:28px;font-size:13px;color:var(--muted)}.navlinks a:hover{color:var(--ink)}.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;border-radius:6px;padding:13px 20px;font-size:13px;font-weight:700;transition:.2s}.nav-cta:hover,.button:hover{background:#a9472d;transform:translateY(-1px)}.button.secondary{background:transparent;color:var(--ink);border:1px solid #cfd5ce}.button.secondary:hover{background:#fff}.hero{padding:100px 0 86px;background:radial-gradient(ellipse at 80% 10%,#e9eee7 0,transparent 42%)}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:700;color:var(--green);margin:0 0 20px}.hero h1,.section-title{font:clamp(42px,6vw,68px)/1.08 "DM Serif Display",Georgia,serif;letter-spacing:-1.4px;margin:0;max-width:820px}.hero h1 span{color:var(--accent)}.hero-copy{font-size:18px;color:var(--muted);max-width:650px;margin:24px 0 30px;line-height:1.75}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.micro{font-size:12px;color:var(--muted);margin-top:20px}.proofline{display:flex;gap:28px;flex-wrap:wrap;margin-top:46px;padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.proofline span:before{content:"✓";color:var(--green);font-weight:700;margin-right:8px}.section{padding:82px 0}.section.alt{background:var(--panel)}.section.dark{background:var(--dark);color:#fff}.section-head{max-width:700px;margin-bottom:42px}.section-title{font-size:clamp(34px,4.2vw,48px);max-width:760px}.lead{font-size:16px;color:var(--muted);max-width:680px;margin:16px 0 0}.dark .lead{color:#b6c1ba}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.tile{background:#fff;border:1px solid var(--line);border-radius:10px;padding:25px}.tile .num{font-size:11px;color:var(--green);font-weight:700;letter-spacing:.12em}.tile h3{font:23px "DM Serif Display",serif;margin:12px 0 8px}.tile p{font-size:13px;color:var(--muted);margin:0}.usecase{display:flex;gap:15px;padding:19px 0;border-bottom:1px solid var(--line)}.usecase:last-child{border:0}.usecase .icon{width:38px;height:38px;border-radius:8px;background:#e5eee9;display:grid;place-items:center;color:var(--green);font-size:17px;flex:0 0 38px}.usecase h3{font-size:15px;margin:0 0 4px}.usecase p{font-size:13px;color:var(--muted);margin:0}.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}.checklist{list-style:none;padding:0;margin:24px 0 0}.checklist li{padding:10px 0 10px 27px;position:relative;border-bottom:1px solid var(--line);font-size:14px}.checklist li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}.note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--green);border-radius:7px;padding:20px 22px;color:var(--muted);font-size:13px}.note strong{color:var(--ink)}.pricing{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}.price-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px;display:flex;flex-direction:column}.price-card.featured{border:2px solid var(--ink);position:relative}.flag{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--green);font-weight:700}.price-card h3{font:28px "DM Serif Display",serif;margin:8px 0 4px}.price-desc{color:var(--muted);font-size:13px;min-height:44px}.price{font:52px "DM Serif Display",serif;letter-spacing:-1px;margin:16px 0 0}.price small{font:13px "DM Sans",sans-serif;color:var(--muted)}.price-caption{font-size:11px;color:var(--muted);margin-bottom:20px}.price-card ul{list-style:none;padding:0;margin:0 0 24px;flex:1}.price-card li{font-size:13px;padding:8px 0;border-bottom:1px solid #edf0eb;color:#4e5c55}.price-card li:before{content:"✓";color:var(--green);margin-right:9px;font-weight:700}.price-card .button{width:100%;margin-top:auto}.price-foot{font-size:12px;color:var(--muted);margin:22px auto 0;max-width:760px;text-align:center}.addon{margin-top:22px;background:#e8ede7;border-radius:9px;padding:20px 23px;display:flex;justify-content:space-between;gap:20px;align-items:center}.addon strong{display:block;font-size:14px}.addon p{margin:4px 0 0;color:var(--muted);font-size:12px}.addon .addon-price{font-weight:700;white-space:nowrap}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}.step{border-top:2px solid #52645b;padding-top:18px}.step:before{counter-increment:step;content:"0" counter(step);font-size:11px;letter-spacing:.12em;color:#8ca197;font-weight:700}.step h3{font:21px "DM Serif Display",serif;margin:10px 0 7px}.step p{font-size:13px;color:#b6c1ba;margin:0}.faq{max-width:820px}.faq details{border-bottom:1px solid var(--line);padding:18px 0}.faq summary{font-weight:700;font-size:15px;cursor:pointer;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";float:right;color:var(--accent);font-size:20px}.faq details[open] summary:after{content:"−"}.faq details p{font-size:13px;color:var(--muted);max-width:740px;margin:12px 0 0}.contact{display:grid;grid-template-columns:1fr auto;gap:35px;align-items:center;background:#e9eee8;border-radius:12px;padding:36px}.contact h2{font:36px "DM Serif Display",serif;margin:0 0 8px}.contact p{font-size:14px;color:var(--muted);margin:0;max-width:620px}.footer{padding:32px 0 42px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}.footer-top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:20px}.footer-links{display:flex;gap:20px}.fineprint{max-width:850px;line-height:1.7}.mobile-cta{display:none}
-@media(max-width:800px){.navlinks{display:none}.hero{padding:72px 0 62px}.grid3{grid-template-columns:1fr}.split{grid-template-columns:1fr;gap:28px}.steps{grid-template-columns:1fr 1fr}.contact{grid-template-columns:1fr}.pricing{grid-template-columns:1fr}.section{padding:64px 0}}
-@media(max-width:520px){.wrap{width:calc(100% - 36px)}.nav{height:66px;padding:0 18px}.brand{font-size:23px}.nav-cta{padding:10px 12px;font-size:11px}.hero h1{font-size:43px}.hero-copy{font-size:16px}.proofline{gap:12px;flex-direction:column}.steps{grid-template-columns:1fr}.addon{align-items:flex-start;flex-direction:column}.contact{padding:25px}.contact h2{font-size:30px}}
+:root{
+  --ink:#17231f;
+  --muted:#63716b;
+  --paper:#fbfaf7;
+  --panel:#f1f2ed;
+  --line:#e2e5df;
+  --accent:#bd5738;
+  --green:#28796b;
+  --white:#fff;
+  --dark:#17231f;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"DM Sans",Arial,sans-serif;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+
+.topbar{
+  background:var(--dark);
+  color:#d9e1dc;
+  text-align:center;
+  padding:9px 16px;
+  font-size:12px;
+  letter-spacing:.04em;
+}
+.topbar strong{color:#fff}
+
+.nav{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  background:rgba(251,250,247,.96);
+  position:sticky;
+  top:0;
+  z-index:10;
+  padding:0 max(24px,calc((100vw - var(--max))/2));
+  backdrop-filter:blur(12px);
+}
+.brand{font:26px "DM Serif Display",serif;letter-spacing:-.5px}
+.brand-mark{color:var(--accent)}
+.navlinks{display:flex;align-items:center;gap:28px;font-size:13px;color:var(--muted)}
+.navlinks a:hover{color:var(--ink)}
+.nav-cta,.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--accent);
+  color:#fff;
+  border-radius:6px;
+  padding:13px 20px;
+  font-size:13px;
+  font-weight:700;
+  transition:.2s;
+  border:none;
+  cursor:pointer;
+}
+.nav-cta:hover,.button:hover{background:#a9472d;transform:translateY(-1px)}
+.button.secondary{
+  background:transparent;
+  color:var(--ink);
+  border:1px solid #cfd5ce;
+}
+.button.secondary:hover{background:#fff}
+
+.hero{
+  padding:96px 0 80px;
+  background:radial-gradient(ellipse at 80% 10%,#e9eee7 0,transparent 42%);
+}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:10px;
+  font-weight:700;
+  color:var(--green);
+  margin:0 0 18px;
+}
+.hero h1,.section-title{
+  font:clamp(40px,5.8vw,62px)/1.08 "DM Serif Display",Georgia,serif;
+  letter-spacing:-1.3px;
+  margin:0;
+  max-width:860px;
+}
+.hero h1 span{color:var(--accent)}
+.hero-copy{
+  font-size:18px;
+  color:var(--muted);
+  max-width:640px;
+  margin:22px 0 28px;
+  line-height:1.75;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.micro{font-size:12px;color:var(--muted);margin-top:18px}
+.proofline{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  margin-top:42px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+  font-size:12px;
+  color:var(--muted);
+}
+.proofline span:before{
+  content:"✓";
+  color:var(--green);
+  font-weight:700;
+  margin-right:8px;
+}
+
+.section{padding:78px 0}
+.section.alt{background:var(--panel)}
+.section.dark{background:var(--dark);color:#fff}
+.section-head{max-width:720px;margin-bottom:40px}
+.section-title{font-size:clamp(32px,4vw,46px);max-width:780px}
+.lead{font-size:16px;color:var(--muted);max-width:680px;margin:14px 0 0}
+.dark .lead{color:#b6c1ba}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+
+.tile{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:24px;
+}
+.tile .num{font-size:11px;color:var(--green);font-weight:700;letter-spacing:.12em}
+.tile h3{font:22px "DM Serif Display",serif;margin:12px 0 8px}
+.tile p{font-size:13px;color:var(--muted);margin:0}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+
+.checklist{list-style:none;padding:0;margin:22px 0 0}
+.checklist li{
+  padding:10px 0 10px 27px;
+  position:relative;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+}
+.checklist li:before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  color:var(--green);
+  font-weight:700;
+}
+
+.note{
+  background:#fff;
+  border:1px solid var(--line);
+  border-left:3px solid var(--green);
+  border-radius:7px;
+  padding:18px 20px;
+  color:var(--muted);
+  font-size:13px;
+}
+.note strong{color:var(--ink)}
+
+.explain-box{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:28px 30px;
+}
+.explain-box h3{font:24px "DM Serif Display",serif;margin:0 0 12px}
+.explain-box p{font-size:15px;color:var(--muted);margin:0 0 12px}
+.explain-box p:last-child{margin-bottom:0}
+
+.boundaries{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.bound-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:22px 24px;
+}
+.bound-card h3{font:18px "DM Serif Display",serif;margin:0 0 10px}
+.bound-card ul{list-style:none;padding:0;margin:0}
+.bound-card li{
+  font-size:13px;
+  color:var(--muted);
+  padding:6px 0 6px 20px;
+  position:relative;
+}
+.bound-card li:before{
+  content:"–";
+  position:absolute;
+  left:0;
+  color:var(--green);
+  font-weight:700;
+}
+.bound-card.positive li:before{content:"✓";color:var(--green)}
+
+.pricing{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+.price-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+}
+.price-card.featured{border:2px solid var(--ink);position:relative}
+.flag{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--green);font-weight:700}
+.price-card h3{font:28px "DM Serif Display",serif;margin:8px 0 4px}
+.price-desc{color:var(--muted);font-size:13px;min-height:42px}
+.price{font:50px "DM Serif Display",serif;letter-spacing:-1px;margin:14px 0 0}
+.price small{font:13px "DM Sans",sans-serif;color:var(--muted)}
+.price-caption{font-size:11px;color:var(--muted);margin-bottom:18px}
+.price-card ul{list-style:none;padding:0;margin:0 0 22px;flex:1}
+.price-card li{
+  font-size:13px;
+  padding:7px 0;
+  border-bottom:1px solid #edf0eb;
+  color:#4e5c55;
+}
+.price-card li:before{content:"✓";color:var(--green);margin-right:9px;font-weight:700}
+.price-card .button{width:100%;margin-top:auto}
+.price-foot{font-size:12px;color:var(--muted);margin:22px auto 0;max-width:780px;text-align:center}
+
+.addon{
+  margin-top:20px;
+  background:#e8ede7;
+  border-radius:9px;
+  padding:18px 22px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:center;
+}
+.addon strong{display:block;font-size:14px}
+.addon p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.addon .addon-price{font-weight:700;white-space:nowrap}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
+.step{border-top:2px solid #52645b;padding-top:16px}
+.step:before{
+  counter-increment:step;
+  content:"0" counter(step);
+  font-size:11px;
+  letter-spacing:.12em;
+  color:#8ca197;
+  font-weight:700;
+}
+.step h3{font:20px "DM Serif Display",serif;margin:10px 0 7px}
+.step p{font-size:13px;color:#b6c1ba;margin:0}
+
+.faq{max-width:820px}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{
+  font-weight:700;
+  font-size:15px;
+  cursor:pointer;
+  list-style:none;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";float:right;color:var(--accent);font-size:20px}
+.faq details[open] summary:after{content:"−"}
+.faq details p{font-size:13px;color:var(--muted);max-width:740px;margin:12px 0 0}
+
+.contact{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:32px;
+  align-items:center;
+  background:#e9eee8;
+  border-radius:12px;
+  padding:34px;
+}
+.contact h2{font:34px "DM Serif Display",serif;margin:0 0 8px}
+.contact p{font-size:14px;color:var(--muted);margin:0;max-width:600px}
+
+.footer{
+  padding:30px 0 40px;
+  border-top:1px solid var(--line);
+  font-size:11px;
+  color:var(--muted);
+}
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.footer-links{display:flex;gap:20px}
+.fineprint{max-width:860px;line-height:1.7}
+
+@media(max-width:800px){
+  .navlinks{display:none}
+  .hero{padding:68px 0 56px}
+  .grid3{grid-template-columns:1fr}
+  .split,.boundaries{grid-template-columns:1fr;gap:24px}
+  .steps{grid-template-columns:1fr 1fr}
+  .contact{grid-template-columns:1fr}
+  .pricing{grid-template-columns:1fr}
+  .section{padding:60px 0}
+}
+@media(max-width:520px){
+  .wrap{width:calc(100% - 36px)}
+  .nav{height:66px;padding:0 18px}
+  .brand{font-size:23px}
+  .nav-cta{padding:10px 12px;font-size:11px}
+  .hero h1{font-size:38px}
+  .hero-copy{font-size:16px}
+  .proofline{gap:12px;flex-direction:column}
+  .steps{grid-template-columns:1fr}
+  .addon{align-items:flex-start;flex-direction:column}
+  .contact{padding:24px}
+  .contact h2{font-size:28px}
+}
 </style>
 </head>
 <body>
-<div class="topbar"><strong>Practical AI automation.</strong> A useful workflow at a time. No long-term commitment.</div>
-<nav class="nav">
+<div class="topbar"><strong>OpenClaw setup for US businesses.</strong> Fixed prices in USD. Remote from the UK. No long-term commitment.</div>
+
+<nav class="nav" aria-label="Primary">
   <a class="brand" href="#top" aria-label="ClawSolved home">Claw<span class="brand-mark">Solved</span></a>
   <div class="navlinks">
-    <a href="#workflows">What it can do</a><a href="#process">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQs</a>
+    <a href="#openclaw">OpenClaw</a>
+    <a href="#workflows">What you get</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#process">How it works</a>
+    <a href="#faq">FAQs</a>
   </div>
-  <a class="nav-cta" href="mailto:hello@clawsolved.com?subject=Discuss%20an%20AI%20workflow">Discuss a workflow</a>
+  <a class="nav-cta" href="mailto:hello@clawsolved.com?subject=Request%20the%2090-second%20OpenClaw%20demo">See the short demo</a>
 </nav>
 
 <main id="top">
+
+<!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <p class="eyebrow">AI assistance for the work behind the work</p>
-    <h1>Less repetitive admin.<br><span>More time for the work that matters.</span></h1>
-    <p class="hero-copy">ClawSolved sets up practical AI-assisted workflows for small businesses. We take one recurring task, configure a focused solution around the tools you already use, and show you how to put it to work.</p>
+    <p class="eyebrow">OpenClaw setup, without the guesswork</p>
+    <h1>Your own AI assistant.<br><span>Set up properly. Given one useful job.</span></h1>
+    <p class="hero-copy">OpenClaw is powerful, but getting it installed, connected and configured sensibly can be a technical project. ClawSolved handles the setup, helps you choose a useful first task, and keeps the assistant’s access deliberately limited to what that task needs.</p>
     <div class="hero-actions">
-      <a class="button" href="mailto:hello@clawsolved.com?subject=Discuss%20an%20AI%20workflow">Tell us what takes too much time</a>
-      <a class="button secondary" href="#pricing">See fixed-price options</a>
+      <a class="button" href="mailto:hello@clawsolved.com?subject=Request%20the%2090-second%20OpenClaw%20demo">Send me the 90-second demo</a>
+      <a class="button secondary" href="#pricing">View fixed prices</a>
     </div>
-    <p class="micro">Fixed project fees in US dollars · Remote setup · No subscription required</p>
-    <div class="proofline"><span>Start with one defined task</span><span>Human approval stays in control</span><span>Keep your existing tools where practical</span></div>
+    <p class="micro">Fixed project fees in US dollars · Remote setup · Your infrastructure and accounts stay under your control</p>
+    <div class="proofline">
+      <span>Start with limited, agreed access</span>
+      <span>Human review for external actions</span>
+      <span>No subscription required to begin</span>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<!-- WHAT IS OPENCLAW -->
+<section class="section" id="openclaw">
   <div class="wrap split">
     <div>
-      <p class="eyebrow">The idea</p>
-      <h2 class="section-title">You probably don't need an AI transformation project.</h2>
-      <p class="lead">You may simply have a handful of jobs that consume time every week: sorting enquiries, preparing follow-ups, turning information into reports, or keeping track of what needs attention.</p>
+      <p class="eyebrow">What is OpenClaw?</p>
+      <h2 class="section-title">An open-source platform for running your own AI assistant.</h2>
+      <p class="lead">OpenClaw connects an AI model to messaging channels and selected tools, giving you a configurable assistant in an environment you control. It is not a chatbot subscription and it is not a general-purpose “AI employee.”</p>
     </div>
-    <div>
-      <div class="usecase"><div class="icon">↳</div><div><h3>Start with a real bottleneck</h3><p>We identify a specific, repeatable task rather than proposing automation for its own sake.</p></div></div>
-      <div class="usecase"><div class="icon">✳</div><div><h3>Build around your process</h3><p>The workflow is configured around an agreed task and compatible tools—not a generic chatbot dropped into your business.</p></div></div>
-      <div class="usecase"><div class="icon">✓</div><div><h3>Keep people in charge</h3><p>Where a workflow prepares messages or decisions, it can be designed for review and approval before anything is sent or changed.</p></div></div>
+    <div class="explain-box">
+      <h3>Why configuration matters</h3>
+      <p>The value of an OpenClaw assistant depends on what you connect, what permissions you grant, and how tightly the first task is defined. Broad access increases capability—and risk.</p>
+      <p>ClawSolved takes a conservative approach: we install and configure OpenClaw for an agreed starting point, then add only the access needed for one clearly defined job. If a simpler existing tool is a better fit, we will say so.</p>
     </div>
   </div>
 </section>
 
+<!-- WHAT IT CAN DO -->
 <section class="section alt" id="workflows">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Examples of useful workflows</p>
-      <h2 class="section-title">Small improvements that add up.</h2>
-      <p class="lead">The right starting point depends on your business, your systems and the task you want to improve. These are examples to make the possibilities concrete—not a claim that every integration is available out of the box.</p>
+      <p class="eyebrow">What could it actually do?</p>
+      <h2 class="section-title">One useful first task, not a full automation programme.</h2>
+      <p class="lead">These are examples of bounded starting points. They are not promises that every workflow is included or that every integration is available. The task is agreed in writing before work begins.</p>
     </div>
     <div class="grid3">
-      <article class="tile"><span class="num">01 / COMMUNICATION</span><h3>Enquiry preparation</h3><p>Organise incoming enquiries, extract key details, identify missing information and prepare a draft response for your review.</p></article>
-      <article class="tile"><span class="num">02 / FOLLOW-THROUGH</span><h3>Meeting to action list</h3><p>Turn notes or transcripts into concise summaries, assigned actions, deadlines and draft follow-up messages.</p></article>
-      <article class="tile"><span class="num">03 / RESEARCH</span><h3>Business research brief</h3><p>Collect information from agreed sources and produce a structured summary, comparison or recurring intelligence report.</p></article>
-      <article class="tile"><span class="num">04 / ADMINISTRATION</span><h3>Document processing</h3><p>Extract and organise information from routine documents, then place it into a consistent format for checking.</p></article>
-      <article class="tile"><span class="num">05 / SALES SUPPORT</span><h3>Lead and account preparation</h3><p>Bring together publicly available company information and your own notes to prepare a concise briefing before a sales conversation.</p></article>
-      <article class="tile"><span class="num">06 / INTERNAL KNOWLEDGE</span><h3>Find answers in your material</h3><p>Make approved internal documents easier to search and summarise, with source material available for verification.</p></article>
+      <article class="tile">
+        <span class="num">CLAW NOTES</span>
+        <h3>Meeting notes to action list</h3>
+        <p>Turn supplied notes or a transcript into a concise summary, assigned actions and a draft follow-up message. You review and send anything external.</p>
+      </article>
+      <article class="tile">
+        <span class="num">CLAW RESEARCH</span>
+        <h3>Structured research brief</h3>
+        <p>Collect information from agreed sources and produce a short briefing: key facts, relevant links and questions that need further checking. Results are for review, not automatic decisions.</p>
+      </article>
+      <article class="tile">
+        <span class="num">CLAW DOCS</span>
+        <h3>Document summary &amp; extraction</h3>
+        <p>Work with a selected set of documents you provide: summarise, extract key fields or compare content into a consistent format for checking.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap split">
-    <div>
-      <p class="eyebrow">A sensible scope</p>
-      <h2 class="section-title">Useful automation, without handing over the keys.</h2>
-      <p class="lead">AI systems can make mistakes, and connecting them to business tools creates real security and privacy considerations. We take a deliberately bounded approach.</p>
+<!-- BOUNDARIES -->
+<section class="section" id="boundaries">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Boundaries by design</p>
+      <h2 class="section-title">Useful access. Not unrestricted access.</h2>
+      <p class="lead">OpenClaw is flexible because it can interact with connected systems. That flexibility introduces real risks. Standard packages start with deliberate limits.</p>
     </div>
-    <div>
-      <ul class="checklist">
-        <li>Agree the task, inputs, outputs and limits before work begins.</li>
-        <li>Use the minimum access and permissions needed for the agreed workflow.</li>
-        <li>Prefer draft, review and approval steps for external messages or consequential actions.</li>
-        <li>Explain which services and integrations the workflow relies on.</li>
-        <li>Test with sample or appropriately redacted information before live use.</li>
-        <li>Provide a handover so you understand how to use and pause the workflow.</li>
-      </ul>
-      <div class="note" style="margin-top:22px"><strong>A clear privacy point:</strong> “AI” does not automatically mean private or local. Depending on the configuration, information may be processed by model providers, hosting services or connected applications. We explain the proposed data flow before setup; we do not promise that data never leaves your systems.</div>
+    <div class="boundaries">
+      <div class="bound-card positive">
+        <h3>What standard setup aims for</h3>
+        <ul>
+          <li>Customer-controlled accounts and infrastructure where practical</li>
+          <li>Only the permissions needed for the agreed task</li>
+          <li>Human review before external messages or consequential actions</li>
+          <li>Clear explanation of how to pause or disable the assistant</li>
+          <li>Written scope before any work begins</li>
+        </ul>
+      </div>
+      <div class="bound-card">
+        <h3>What standard packages do not include</h3>
+        <ul>
+          <li>Unrestricted shell, filesystem or email access</li>
+          <li>Autonomous external messaging by default</li>
+          <li>Financial transactions or sensitive system access without separate assessment</li>
+          <li>Unreviewed third-party skills or broad permissions</li>
+          <li>A formal security audit or compliance certification</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note" style="margin-top:24px">
+      <strong>Privacy and third parties:</strong> Depending on the configuration, prompts or data may be processed by model providers, hosting services or connected applications. We explain the intended data flow before setup. Self-hosting does not automatically mean all data stays private or local. We do not claim the arrangement is risk-free.
     </div>
   </div>
 </section>
 
+<!-- PRICING -->
 <section class="section alt" id="pricing">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Straightforward project pricing</p>
-      <h2 class="section-title">Start small. Add capability when it makes sense.</h2>
-      <p class="lead">Choose a defined starting point. We confirm the scope and compatibility before accepting payment, so you know what is included and what is not.</p>
+      <h2 class="section-title">Two clear starting points.</h2>
+      <p class="lead">ClawLaunch gets OpenClaw running. ClawWorkflow gets it running and configures one useful job. We confirm scope and compatibility before accepting payment.</p>
     </div>
     <div class="pricing">
       <article class="price-card">
-        <span class="flag">Focused starting point</span>
-        <h3>Workflow Starter</h3>
-        <p class="price-desc">One practical workflow for one clearly defined recurring task.</p>
-        <div class="price">$295 <small>USD</small></div>
+        <span class="flag">Entry point</span>
+        <h3>ClawLaunch</h3>
+        <p class="price-desc">Get your own OpenClaw assistant installed, connected and running as a sensible starting point.</p>
+        <div class="price">$249 <small>USD</small></div>
         <div class="price-caption">One-time project fee</div>
         <ul>
-          <li>Brief discovery and workflow definition</li>
-          <li>One agreed AI-assisted workflow</li>
-          <li>Configuration using compatible tools</li>
-          <li>Testing with agreed sample information</li>
-          <li>Short written handover guide</li>
-          <li>Seven days of post-delivery support for defects or setup questions</li>
+          <li>Suitability and requirements check</li>
+          <li>Installation or configuration in an agreed environment</li>
+          <li>One agreed messaging channel</li>
+          <li>One AI model/provider using your account</li>
+          <li>Owner access and basic access restrictions</li>
+          <li>Basic operational checks and practical handover</li>
+          <li>Seven days of setup support within agreed scope</li>
         </ul>
-        <a class="button secondary" href="mailto:hello@clawsolved.com?subject=Workflow%20Starter%20enquiry">Discuss Workflow Starter</a>
+        <a class="button secondary" href="mailto:hello@clawsolved.com?subject=ClawLaunch%20enquiry">Discuss ClawLaunch</a>
       </article>
       <article class="price-card featured">
-        <span class="flag">More complete setup</span>
-        <h3>Workflow Plus</h3>
-        <p class="price-desc">A broader setup for a business that wants several connected steps working together.</p>
-        <div class="price">$695 <small>USD</small></div>
+        <span class="flag">More complete</span>
+        <h3>ClawWorkflow</h3>
+        <p class="price-desc">Everything in ClawLaunch, plus one clearly defined and bounded workflow.</p>
+        <div class="price">$649 <small>USD</small></div>
         <div class="price-caption">One-time project fee</div>
         <ul>
-          <li>Discovery and a simple workflow map</li>
-          <li>Up to three related workflow components</li>
-          <li>Configuration of agreed compatible integrations</li>
-          <li>Review and approval steps where appropriate</li>
-          <li>Testing with agreed sample information</li>
-          <li>Handover notes and a walkthrough</li>
-          <li>14 days of post-delivery support for defects or setup questions</li>
+          <li>Everything in ClawLaunch</li>
+          <li>Definition of one task, inputs, outputs and boundaries</li>
+          <li>Configuration of one agreed workflow</li>
+          <li>Appropriate human-review steps</li>
+          <li>Testing against agreed examples</li>
+          <li>Written operating instructions and walkthrough</li>
+          <li>Fourteen days of setup support within agreed scope</li>
         </ul>
-        <a class="button" href="mailto:hello@clawsolved.com?subject=Workflow%20Plus%20enquiry">Discuss Workflow Plus</a>
+        <a class="button" href="mailto:hello@clawsolved.com?subject=ClawWorkflow%20enquiry">Discuss ClawWorkflow</a>
       </article>
     </div>
     <div class="addon">
-      <div><strong>Optional ongoing care</strong><p>For customers who want a little help after handover. Support scope and any change requests are agreed in advance.</p></div>
+      <div>
+        <strong>Optional ongoing care</strong>
+        <p>Basic troubleshooting and one minor configuration adjustment per month, within a clearly defined scope. No long-term commitment required.</p>
+      </div>
       <div class="addon-price">$49 / month</div>
     </div>
-    <p class="price-foot">Prices exclude any third-party subscriptions, model/API usage, hosting or software licences. Those costs remain payable to the relevant provider and will be identified before work starts. Bespoke work, additional workflows and unsupported integrations are quoted separately. No recurring plan is required.</p>
+    <p class="price-foot">Prices exclude hosting, hardware, AI model/API usage, messaging charges and other third-party subscriptions. Those remain payable to the relevant providers and will be identified before work starts. Bespoke work and unsupported integrations are quoted separately. No recurring plan is required to begin.</p>
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
 <section class="section dark" id="process">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow" style="color:#9fc7b9">How it works</p>
-      <h2 class="section-title">A clear process, from problem to working workflow.</h2>
-      <p class="lead">The exact delivery time depends on access, integration compatibility and the agreed scope. We confirm the plan before implementation begins.</p>
+      <h2 class="section-title">A low-pressure path from curiosity to a working assistant.</h2>
+      <p class="lead">Requesting the demo does not commit you to anything. Scope, price and permissions are confirmed in writing before work begins.</p>
     </div>
     <div class="steps">
-      <div class="step"><h3>Tell us the task</h3><p>Explain what currently happens, how often it happens and what a useful result would look like.</p></div>
-      <div class="step"><h3>Confirm the scope</h3><p>We check the tools involved, access requirements, data considerations and whether the task is suitable.</p></div>
-      <div class="step"><h3>Configure and test</h3><p>We build the agreed workflow and test it against examples before it is put into normal use.</p></div>
-      <div class="step"><h3>Handover</h3><p>You receive instructions, understand the workflow's limits and know how to pause or disable it.</p></div>
+      <div class="step">
+        <h3>See a short demo</h3>
+        <p>We send a brief demonstration so you can see what a configured OpenClaw assistant looks like in practice.</p>
+      </div>
+      <div class="step">
+        <h3>Describe one task</h3>
+        <p>Tell us the recurring job you want help with, the tools involved and what a useful result would look like.</p>
+      </div>
+      <div class="step">
+        <h3>Approve the scope</h3>
+        <p>You receive a short written scope covering access, limits, environment and the fixed price. Nothing proceeds until you approve it.</p>
+      </div>
+      <div class="step">
+        <h3>Setup and handover</h3>
+        <p>We configure the agreed setup, test it against examples, and hand over clear instructions on how to use, supervise and disable it.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- FAQ -->
 <section class="section" id="faq">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Questions, answered</p>
-      <h2 class="section-title">Before you get started.</h2>
+      <h2 class="section-title">Before you take the next step.</h2>
     </div>
     <div class="faq">
-      <details><summary>Do I need to know anything about AI?</summary><p>No. You need to understand the business task you want to improve. We will explain the proposed workflow in ordinary business terms and identify any decisions or access we need from you.</p></details>
-      <details><summary>Do I need to replace my existing software?</summary><p>Usually not. The intention is to work with tools you already use where suitable integrations are available. We will check compatibility first; if a particular connection is not practical, we will say so rather than imply it is included.</p></details>
-      <details><summary>Will the AI send emails or make changes by itself?</summary><p>Not by default. For external communications or consequential actions, we recommend a review-and-approval step. Any more autonomous behaviour would need to be explicitly scoped, assessed and authorised.</p></details>
-      <details><summary>Is my business information kept private?</summary><p>Privacy depends on the hosting arrangement, AI model, connected services and the information processed. Some configurations send prompts or data to third-party providers. Before setup, we explain the intended data flow and discuss whether it is appropriate for your information. We do not make blanket claims that all processing is local or that no third party can receive data.</p></details>
-      <details><summary>Are subscriptions or usage fees included?</summary><p>No. The project fee covers the work described in the selected package. Third-party software, hosting, model/API usage and other provider charges are separate. We will identify known additional costs before proceeding.</p></details>
-      <details><summary>What if my task turns out to be more complicated?</summary><p>We will explain the issue and agree any revised scope and price before doing additional work. You are not committed to an open-ended project.</p></details>
-      <details><summary>What technology do you use?</summary><p>We select the implementation approach according to the task, required integrations and operating constraints. Open-source agent tools may form part of the underlying setup, but the service is centred on the workflow and its suitability—not on asking you to buy a particular technology.</p></details>
+      <details>
+        <summary>What is OpenClaw?</summary>
+        <p>OpenClaw is an open-source platform for running your own AI assistant. It can connect an AI model to messaging channels and selected tools in an environment you control. ClawSolved handles installation and configuration so you do not have to treat the setup as a technical side-project.</p>
+      </details>
+      <details>
+        <summary>Why OpenClaw rather than ChatGPT or a similar chatbot?</summary>
+        <p>ChatGPT and similar tools are excellent for interactive conversation. OpenClaw is aimed at running a configurable assistant that can work with messaging channels and selected tools under rules you set. It is not automatically better for every use case. If a simpler product is more appropriate, we will say so.</p>
+      </details>
+      <details>
+        <summary>Do I need technical knowledge?</summary>
+        <p>No. You need to understand the business task and be able to make decisions about access and accounts. We handle the technical setup and explain the result in ordinary terms.</p>
+      </details>
+      <details>
+        <summary>Where does it run?</summary>
+        <p>In an environment agreed during scoping—typically infrastructure you control or a hosting arrangement you approve. The exact options depend on the task and your constraints. We confirm this before work begins.</p>
+      </details>
+      <details>
+        <summary>Will it access all my files and email?</summary>
+        <p>Not by default. Standard packages start with limited, agreed permissions tied to the defined task. Unrestricted filesystem or email access is outside the standard packages and would require separate assessment and explicit agreement.</p>
+      </details>
+      <details>
+        <summary>Can you guarantee it is secure?</summary>
+        <p>No. We take a conservative approach to permissions and configuration, but software, model providers, hosting and operational choices all carry residual risk. We do not claim the system is risk-free, unhackable or fully protected, and we do not provide a formal security audit.</p>
+      </details>
+      <details>
+        <summary>Will my information be sent to third parties?</summary>
+        <p>It may be, depending on the model provider, hosting and any connected services. Before setup we explain the intended data flow. You decide whether that is appropriate for the information involved.</p>
+      </details>
+      <details>
+        <summary>What if I only want to see a demonstration?</summary>
+        <p>That is the normal first step. Request the short demo with no obligation. If it is relevant, we can then discuss whether a fixed-price setup makes sense for one task.</p>
+      </details>
+      <details>
+        <summary>Where is ClawSolved based?</summary>
+        <p>ClawSolved is operated from the UK and provides remote setup services to US businesses. Contact and delivery are handled remotely. We do not pretend to be a US-based company.</p>
+      </details>
+      <details>
+        <summary>What if my idea is outside the package?</summary>
+        <p>We will say so and, if appropriate, quote separately for additional work. You are not committed to an open-ended project. If the task is not a good fit for OpenClaw or for a fixed-price package, we will explain why.</p>
+      </details>
     </div>
   </div>
 </section>
 
+<!-- FINAL CTA -->
 <section class="section alt">
   <div class="wrap">
     <div class="contact">
-      <div><p class="eyebrow">Start with a conversation</p><h2>What task would you most like to stop doing manually?</h2><p>Send a short description of the process and the software involved. We can tell you whether it looks suitable for a fixed-price workflow setup and which package is likely to fit.</p></div>
-      <a class="button" href="mailto:hello@clawsolved.com?subject=Discuss%20an%20AI%20workflow">Email ClawSolved</a>
+      <div>
+        <p class="eyebrow">No obligation</p>
+        <h2>Curious what OpenClaw could do for one task?</h2>
+        <p>Request the short demonstration. If it looks useful, we can discuss whether a fixed-price ClawLaunch or ClawWorkflow setup is a sensible next step.</p>
+      </div>
+      <a class="button" href="mailto:hello@clawsolved.com?subject=Request%20the%2090-second%20OpenClaw%20demo">Request the demo</a>
     </div>
   </div>
 </section>
+
 </main>
 
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-top"><a class="brand" href="#top">Claw<span class="brand-mark">Solved</span></a><div class="footer-links"><a href="mailto:hello@clawsolved.com">Contact</a></div></div>
-    <p class="fineprint">ClawSolved provides workflow configuration and implementation services. AI-generated outputs can be inaccurate and should be checked by an appropriately responsible person. Suitability depends on the task, tools, data and permissions involved. Project scope, delivery arrangements, support limits and any third-party costs are confirmed before work begins. Nothing on this page is a guarantee of financial, legal, regulatory or operational outcomes.</p>
+    <div class="footer-top">
+      <a class="brand" href="#top">Claw<span class="brand-mark">Solved</span></a>
+      <div class="footer-links">
+        <a href="mailto:hello@clawsolved.com">hello@clawsolved.com</a>
+      </div>
+    </div>
+    <p class="fineprint">ClawSolved is operated from the United Kingdom and provides remote OpenClaw installation, configuration and narrowly scoped workflow setup to US businesses. AI-generated outputs can be inaccurate and should be checked by a responsible person. Suitability depends on the task, tools, data and permissions involved. Project scope, delivery arrangements, support limits and third-party costs are confirmed in writing before work begins. Nothing on this page is a guarantee of financial, legal, regulatory, security or operational outcomes.</p>
     <p style="margin-top:14px">© <span id="year">2026</span> ClawSolved. All rights reserved.</p>
   </div>
 </footer>
