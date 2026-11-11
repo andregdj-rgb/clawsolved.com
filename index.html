@@ -2,635 +2,200 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ClawSolved — OpenClaw set up safely, built around your business.</title>
-<meta name="description" content="ClawSolved is launching a fixed-price OpenClaw setup and care service: hardened configuration, skills we write ourselves, and workflows built around your business. This page sets out what we intend to deliver.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClawSolved | Practical AI workflows for small businesses</title>
+<meta name="description" content="Practical, fixed-price AI workflow setup for small businesses. Start with one useful workflow, or combine several into a more capable business assistant.">
+<meta name="theme-color" content="#17231f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
-:root{--white:#fff;--off:#F7F6F3;--off2:#EFF0EC;--ink:#1A1F2E;--ink2:#2D3444;--mist:#6B7489;--rule:rgba(26,31,46,.09);--rule2:rgba(26,31,46,.05);--rust:#C05228;--rust-l:#D4643A;--teal:#0B8C80;--teal-l:#0FA898;--amber:#B8830A;--red:#B83232;--green:#1A8C52;--shadow-sm:0 1px 3px rgba(26,31,46,.08),0 1px 2px rgba(26,31,46,.06);--shadow-md:0 4px 16px rgba(26,31,46,.10),0 2px 6px rgba(26,31,46,.07);--shadow-lg:0 12px 40px rgba(26,31,46,.12),0 4px 16px rgba(26,31,46,.08)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--white);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-.lora{font-family:'Lora',serif}.mono{font-family:'JetBrains Mono',monospace}.rust{color:var(--rust)}.teal{color:var(--teal)}.mist{color:var(--mist)}
-#announce{background:var(--ink);padding:.55rem 2.5rem;display:flex;align-items:center;justify-content:center;gap:.75rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.06em;color:rgba(255,255,255,.6);text-align:center;position:relative}
-.ann-badge{background:rgba(11,140,128,.18);color:var(--teal-l);border:1px solid rgba(11,140,128,.3);border-radius:100px;padding:.15rem .55rem;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0}
-.ann-dismiss{position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.3);cursor:pointer;font-size:.9rem;background:none;border:none;font-family:inherit}
-#nav{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid transparent;padding:1rem 2.5rem;display:flex;align-items:center;justify-content:space-between;transition:border-color .3s}
-#nav.scrolled{border-bottom-color:var(--rule)}
-.nav-logo{display:flex;align-items:center;gap:.5rem;font-family:'Lora',serif;font-size:1.35rem;font-weight:700;letter-spacing:-.015em}
-.nav-links{display:flex;gap:1.75rem;list-style:none}
-.nav-links a{font-size:.82rem;font-weight:500;color:var(--mist);transition:color .2s}.nav-links a:hover{color:var(--ink)}
-.nav-cta{padding:.6rem 1.4rem;background:var(--rust);color:#fff;font-size:.8rem;font-weight:600;border-radius:6px;box-shadow:var(--shadow-sm)}.nav-cta:hover{background:var(--rust-l)}
-#hero{padding:7rem 2.5rem 5rem;border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
-#hero::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--rule2) 1px,transparent 1px),linear-gradient(90deg,var(--rule2) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 0%,#000 0%,transparent 100%);mask-image:radial-gradient(ellipse 80% 70% at 50% 0%,#000 0%,transparent 100%)}
-.hero-inner{position:relative;z-index:2;max-width:1040px;margin:0 auto}
-.hero-kicker{display:inline-flex;align-items:center;gap:.6rem;background:rgba(192,82,40,.07);border:1px solid rgba(192,82,40,.18);border-radius:100px;padding:.38rem 1rem;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rust);margin-bottom:2rem}
-.kicker-dot{width:5px;height:5px;border-radius:50%;background:var(--rust);animation:blink 2s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-.hero-h1{font-family:'Lora',serif;font-size:clamp(2.6rem,5.6vw,5rem);font-weight:700;line-height:1.06;letter-spacing:-.025em;margin-bottom:1.5rem}
-.hero-h1 .line2{display:block;color:var(--mist);font-weight:400}
-.hero-sub{font-size:1.08rem;color:var(--mist);max-width:600px;line-height:1.72;margin-bottom:2.25rem}.hero-sub strong{color:var(--ink);font-weight:600}
-.hero-ctas{display:flex;gap:.875rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.btn-primary{padding:1rem 2rem;background:var(--rust);color:#fff;font-size:.9rem;font-weight:600;border-radius:8px;box-shadow:var(--shadow-md);transition:all .2s;display:inline-block}.btn-primary:hover{background:var(--rust-l);transform:translateY(-1px)}
-.btn-secondary{padding:1rem 2rem;background:var(--white);color:var(--ink);font-size:.9rem;font-weight:500;border-radius:8px;border:1.5px solid var(--rule);box-shadow:var(--shadow-sm);display:inline-block}
-.hero-trust-strip{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.ts-item{display:flex;align-items:center;gap:.45rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--mist)}
-.ts-dot{width:4px;height:4px;border-radius:50%;background:var(--teal)}
-.hero-note{font-size:.84rem;color:var(--mist);padding:1rem 1.25rem;background:var(--off);border:1px solid var(--rule);border-radius:10px;max-width:720px}.hero-note strong{color:var(--ink)}
-.r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}.r.on{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
-section{padding:6rem 2.5rem}.inner{max-width:1040px;margin:0 auto}
-.eyebrow{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rust);margin-bottom:.875rem}.eyebrow.teal{color:var(--teal)}.eyebrow.mist{color:var(--mist)}
-.s-title{font-family:'Lora',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem}
-.s-lead{font-size:1rem;color:var(--mist);line-height:1.75;max-width:600px}
-.center{text-align:center;max-width:620px;margin:0 auto 3.25rem}.center .s-lead{margin:0 auto}
-/* what's changed */
-#changed{background:var(--off);border-bottom:1px solid var(--rule)}
-.chg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
-.chg{background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:1.4rem 1.5rem}
-.chg h4{font-family:'Lora',serif;font-size:1.05rem;margin-bottom:.4rem}.chg p{font-size:.84rem;color:var(--mist);line-height:1.62}
-.chg .tag{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;display:block}
-.chg .tag.warn{color:var(--amber)}
-/* problem */
-.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.fail-list{display:flex;flex-direction:column;gap:.75rem}
-.fail-item{background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:1.3rem 1.5rem}
-.fi-head{display:flex;justify-content:space-between;gap:1rem;margin-bottom:.35rem}.fi-title{font-size:.95rem;font-weight:600}
-.fi-pill{flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:.55rem;padding:.22rem .6rem;border-radius:100px;white-space:nowrap;height:fit-content}
-.fi-pill.hot{background:rgba(184,50,50,.08);color:var(--red);border:1px solid rgba(184,50,50,.18)}.fi-pill.warn{background:rgba(184,131,10,.08);color:var(--amber);border:1px solid rgba(184,131,10,.18)}
-.fi-desc{font-size:.83rem;color:var(--mist)}
-#problem{background:var(--white);border-bottom:1px solid var(--rule)}
-/* skills */
-#skills-risk{background:var(--off2);border-bottom:1px solid var(--rule)}
-.two{display:grid;grid-template-columns:5fr 4fr;gap:5rem;align-items:start}
-.sec-text p{font-size:.92rem;color:var(--mist);line-height:1.78;margin-bottom:1rem}.sec-text p strong{color:var(--ink)}
-.rebuild-diagram{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:2rem}
-.rebuild-row{display:flex;gap:.75rem;padding:.75rem 1rem;border-radius:8px;font-size:.84rem;margin-bottom:.625rem}
-.rebuild-row.danger{background:rgba(184,50,50,.06);border:1px solid rgba(184,50,50,.15)}.rebuild-row.safe{background:rgba(11,140,128,.06);border:1px solid rgba(11,140,128,.18)}.rebuild-row.result{background:rgba(26,31,46,.04);border:1px solid var(--rule);margin-top:1rem}
-.rebuild-text strong{display:block;font-size:.76rem;font-family:'JetBrains Mono',monospace;margin-bottom:.2rem}
-.rebuild-row.danger strong{color:var(--red)}.rebuild-row.safe strong{color:var(--teal)}
-.rebuild-divider{margin:.25rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--mist);text-align:center}
-/* clawcheck */
-#clawcheck{background:var(--ink);color:#fff;padding:5rem 2.5rem}
-.cc-wrap{max-width:700px;margin:0 auto}
-.cc-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.875rem}
-.cc-title{font-family:'Lora',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;line-height:1.1;margin-bottom:.75rem}
-.cc-sub{font-size:.92rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:1.5rem}
-.cc-sample{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden}
-.cc-sample-head{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.55)}
-.cc-badge{font-size:.6rem;letter-spacing:.08em;padding:.25rem .7rem;border-radius:100px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.12)}
-.cc-rows{padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.72rem}
-.cc-rows div{display:flex;gap:1rem}.cc-rows span:first-child{color:rgba(255,255,255,.4);min-width:170px}.cc-rows span:last-child{color:rgba(255,255,255,.7)}
-.cc-note{border-top:1px solid rgba(255,255,255,.08);padding:1rem 1.25rem;font-size:.78rem;color:rgba(255,255,255,.4)}
-/* cards */
-.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.prod-card{border:1.5px solid var(--rule);border-radius:12px;padding:2.25rem 2rem 2rem;background:var(--white);position:relative;transition:box-shadow .25s,transform .25s}
-.prod-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.prod-card.featured{border-color:var(--rust);background:linear-gradient(160deg,rgba(192,82,40,.03),var(--white) 60%)}
-.prod-card.featured::before{content:'Core offer';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--rust);color:#fff;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .875rem;border-radius:0 0 8px 8px}
-.prod-card.clawscore-card{border-color:rgba(11,140,128,.35)}
-.prod-card.clawscore-card::before{content:'Phase 2 · Planned';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .875rem;border-radius:0 0 8px 8px}
-.prod-top-line{height:3px;border-radius:2px;margin-bottom:1.5rem;width:2.5rem}
-.setup .prod-top-line{background:var(--rust)}.care .prod-top-line,.score .prod-top-line{background:var(--teal)}.audit .prod-top-line{background:var(--amber)}
-.prod-ey{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
-.setup .prod-ey{color:var(--rust)}.care .prod-ey,.score .prod-ey{color:var(--teal)}.audit .prod-ey{color:var(--amber)}
-.prod-name{font-family:'Lora',serif;font-size:1.55rem;font-weight:700;line-height:1.1;margin-bottom:.5rem}
-.prod-tagline{font-size:.87rem;color:var(--mist);line-height:1.65;margin-bottom:1.25rem}
-.prod-price{font-family:'Lora',serif;font-size:2.4rem;font-weight:700;line-height:1}.prod-price .cur{font-size:1.1rem;vertical-align:super}
-.prod-price-note{font-size:.72rem;color:var(--mist);margin:.3rem 0 .5rem;font-family:'JetBrains Mono',monospace}
-.prod-rule{height:1px;background:var(--rule);margin:1.25rem 0}
-.prod-feats{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
-.prod-feats li{display:flex;gap:.65rem;font-size:.84rem;color:var(--mist);line-height:1.45}
-.feat-tick{flex-shrink:0;font-size:.78rem;margin-top:.1rem}.setup .feat-tick{color:var(--rust)}.care .feat-tick,.score .feat-tick{color:var(--teal)}.audit .feat-tick{color:var(--amber)}
-.prod-btn{display:block;text-align:center;padding:.875rem;font-size:.83rem;font-weight:600;border-radius:8px}
-.prod-btn.solid{background:var(--rust);color:#fff}.prod-btn.outline{border:1.5px solid var(--rule)}.prod-btn.teal-outline{border:1.5px solid rgba(11,140,128,.35);color:var(--teal)}
-/* steps */
-#how{background:var(--off);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.step{text-align:center;padding:0 1.25rem}
-.step-circle{width:3rem;height:3rem;border-radius:50%;border:1.5px solid var(--rule);background:var(--white);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--rust);box-shadow:var(--shadow-sm)}
-.step h4{font-family:'Lora',serif;font-size:1.05rem;margin-bottom:.4rem}.step p{font-size:.81rem;color:var(--mist)}
-.step-badge{display:inline-block;margin-top:.6rem;font-family:'JetBrains Mono',monospace;font-size:.56rem;padding:.2rem .55rem;border-radius:100px}
-.step-badge.you{background:rgba(192,82,40,.07);color:var(--rust);border:1px solid rgba(192,82,40,.18)}.step-badge.us{background:rgba(11,140,128,.07);color:var(--teal);border:1px solid rgba(11,140,128,.18)}.step-badge.both{background:rgba(26,31,46,.05);color:var(--mist);border:1px solid var(--rule)}
-/* packages */
-.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.pkg-card{border:1px solid var(--rule);border-radius:10px;padding:1.6rem;background:var(--off);transition:all .2s}.pkg-card:hover{box-shadow:var(--shadow-md);background:var(--white)}
-.pkg-icon{font-size:1.75rem;margin-bottom:.875rem}.pkg-name{font-family:'Lora',serif;font-size:1.1rem;font-weight:700;margin-bottom:.25rem}
-.pkg-for{font-family:'JetBrains Mono',monospace;font-size:.59rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-bottom:.75rem}
-.pkg-desc{font-size:.83rem;color:var(--mist)}.pkg-benefit{font-size:.83rem;color:var(--teal);font-weight:600;margin-top:.75rem}
-.pkg-skills{margin-top:.875rem;padding-top:.875rem;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--mist)}.pkg-skills strong{color:var(--ink2)}
-.fine{text-align:center;margin-top:1.75rem;font-size:.78rem;color:var(--mist);font-style:italic}
-/* security */
-#security{background:var(--off2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.sec-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
-.sec-stat{background:var(--white);padding:1.4rem 1.5rem}
-.ss-val{font-family:'Lora',serif;font-size:1.9rem;font-weight:700;color:var(--red);line-height:1;margin-bottom:.25rem}.ss-val.good{color:var(--green)}
-.ss-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin-bottom:.4rem}
-.ss-desc{font-size:.78rem;color:var(--mist);line-height:1.55}
-.src{margin-top:1rem;font-size:.7rem;color:var(--mist);font-style:italic}
-/* pricing */
-.billing-row{display:flex;align-items:center;justify-content:center;gap:.875rem;margin-bottom:3rem;font-size:.84rem;color:var(--mist)}
-.tog-wrap{position:relative;width:40px;height:22px;background:var(--rule);border:1px solid rgba(26,31,46,.15);border-radius:11px;cursor:pointer}
-.tog-wrap.on{background:rgba(11,140,128,.2)}
-.tog-thumb{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--mist);transition:transform .2s}.tog-wrap.on .tog-thumb{transform:translateX(18px);background:var(--teal)}
-.save-chip{font-family:'JetBrains Mono',monospace;font-size:.6rem;padding:.2rem .6rem;background:rgba(11,140,128,.08);color:var(--teal);border:1px solid rgba(11,140,128,.2);border-radius:100px}
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.price-card{border:1.5px solid var(--rule);border-radius:12px;padding:2.25rem 2rem;display:flex;flex-direction:column}
-.price-card.feat{border-color:var(--ink);background:var(--ink);color:#fff}
-.price-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1.1rem;color:var(--mist)}.feat .price-tag{color:rgba(255,255,255,.4)}
-.price-name{font-family:'Lora',serif;font-size:1.45rem;font-weight:700;margin-bottom:.35rem}
-.price-for{font-size:.81rem;margin-bottom:1.25rem;color:var(--mist)}.feat .price-for{color:rgba(255,255,255,.55)}
-.price-amount{font-family:'Lora',serif;font-size:2.6rem;font-weight:700;line-height:1}.price-amount .cur{font-size:1.1rem;vertical-align:super}
-.price-cadence{font-family:'JetBrains Mono',monospace;font-size:.63rem;margin:.3rem 0 .25rem;color:var(--mist)}.feat .price-cadence{color:rgba(255,255,255,.45)}
-.price-value-note{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--teal-l);font-style:italic}
-.price-ann{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--teal);min-height:1em;margin-bottom:1rem}
-.p-rule{height:1px;margin:1.1rem 0;background:var(--rule)}.feat .p-rule{background:rgba(255,255,255,.1)}
-.p-feats{list-style:none;flex:1;display:flex;flex-direction:column;gap:.5rem}
-.p-feats li{display:flex;gap:.65rem;font-size:.83rem;line-height:1.45;color:var(--mist)}.feat .p-feats li{color:rgba(255,255,255,.6)}
-.p-tick{color:var(--teal);flex-shrink:0}
-.p-note{font-size:.74rem;font-style:italic;margin:1rem 0 1.5rem;color:var(--mist)}.feat .p-note{color:rgba(255,255,255,.4)}
-.p-cta{display:block;text-align:center;padding:.9rem;font-size:.82rem;font-weight:600;border-radius:8px}
-.p-cta.rust{background:var(--rust);color:#fff}.p-cta.outline-dark{border:1.5px solid var(--rule)}
-.price-footnote{text-align:center;margin-top:1.5rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--rust)}
-/* enterprise */
-#enterprise{background:var(--off);border-top:1px solid var(--rule)}
-.ent-layout{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:start}
-.ent-box{min-width:290px;background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:1.75rem;box-shadow:var(--shadow-sm)}
-.ent-box h4{font-family:'Lora',serif;font-size:1.1rem;margin-bottom:1rem}
-.ent-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.ent-list li{display:flex;gap:.6rem;font-size:.82rem;color:var(--mist)}.ent-list li::before{content:'→';color:var(--rust)}
-.ent-link{display:inline-block;margin-top:1.5rem;font-size:.84rem;font-weight:600;color:var(--rust);border-bottom:1.5px solid rgba(192,82,40,.25)}
-.comp-window{margin-top:2rem;padding:1.25rem 1.5rem;background:rgba(11,140,128,.05);border:1px solid rgba(11,140,128,.2);border-radius:10px}
-.comp-window-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem}
-.comp-window p{font-size:.84rem;color:var(--mist)}.comp-window strong{color:var(--ink)}
-/* audit */
-#audit{background:var(--ink);padding:7rem 2.5rem}
-.audit-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;max-width:1040px;margin:0 auto;align-items:start}
-.audit-text .s-title{color:#fff}.audit-text p{font-size:.92rem;color:rgba(255,255,255,.55);line-height:1.78;margin-top:.875rem}
-.audit-checklist{margin-top:1.75rem;display:flex;flex-direction:column;gap:.75rem}
-.ac-item{display:flex;gap:.75rem;font-size:.85rem;color:rgba(255,255,255,.55)}.ac-icon{color:var(--teal)}.ac-item strong{color:rgba(255,255,255,.85)}
-.fg{margin-bottom:.875rem}.fg label{display:block;font-size:.69rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.35rem}
-.fg input,.fg textarea,.fg select{width:100%;padding:.78rem 1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-family:inherit;font-size:.88rem;outline:none;resize:vertical}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.25)}.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:rgba(192,82,40,.5)}
-.fg select option{background:#1a1f2e;color:#fff}
-.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:.875rem}
-.submit-btn{width:100%;padding:1rem;background:var(--rust);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.77rem;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer}.submit-btn:disabled{opacity:.4}
-.form-reassure{text-align:center;margin-top:.875rem;font-family:'JetBrains Mono',monospace;font-size:.61rem;color:rgba(255,255,255,.3);line-height:1.6}
-.form-ok,.form-err{display:none;margin-top:1rem;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.76rem;line-height:1.7}.form-ok{color:var(--teal-l)}.form-err{color:#f87171}
-footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:2.25rem 2.5rem;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1.25rem}
-.foot-logo{font-family:'Lora',serif;font-size:1.2rem;font-weight:700;color:#fff}
-.foot-links{display:flex;gap:1.75rem;flex-wrap:wrap}.foot-links a{font-size:.78rem;color:rgba(255,255,255,.35)}
-.foot-legal{width:100%;font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.25);line-height:1.7;max-width:820px}
-.chat-bubble{position:fixed;bottom:1.75rem;right:1.75rem;z-index:200;width:52px;height:52px;border-radius:50%;background:var(--ink);border:2px solid rgba(192,82,40,.4);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow-lg);font-size:1.25rem}
-.chat-tip{position:fixed;bottom:5.25rem;right:1.75rem;z-index:200;background:var(--ink);color:#fff;border-radius:10px 10px 2px 10px;padding:.65rem 1rem;font-size:.78rem;max-width:220px;box-shadow:var(--shadow-lg);opacity:0;transform:translateY(8px);pointer-events:none;transition:all .25s}.chat-tip.show{opacity:1;transform:none;pointer-events:auto}
-@media(max-width:980px){.problem-grid,.two,.ent-layout,.audit-layout,.chg-grid{grid-template-columns:1fr;gap:3rem}.prod-grid,.price-grid,.solution-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr;gap:2.5rem}.pkg-grid{grid-template-columns:1fr 1fr}#announce{padding:.5rem 1.25rem}.ann-dismiss{display:none}}
-@media(max-width:680px){section{padding:4.5rem 1.25rem}#nav{padding:.875rem 1.25rem}.nav-links{display:none}.pkg-grid,.steps,.sec-stats,.form-row-2{grid-template-columns:1fr}.cc-rows div{flex-direction:column;gap:.1rem}}
+:root{--ink:#17231f;--muted:#63716b;--paper:#fbfaf7;--panel:#f1f2ed;--line:#e2e5df;--accent:#bd5738;--green:#28796b;--white:#fff;--dark:#17231f;--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}.topbar{background:var(--dark);color:#d9e1dc;text-align:center;padding:9px 16px;font-size:12px;letter-spacing:.04em}.topbar strong{color:#fff}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(251,250,247,.96);position:sticky;top:0;z-index:10;padding:0 max(24px,calc((100vw - var(--max))/2));backdrop-filter:blur(12px)}.brand{font:26px "DM Serif Display",serif;letter-spacing:-.5px}.brand-mark{color:var(--accent)}.navlinks{display:flex;align-items:center;gap:28px;font-size:13px;color:var(--muted)}.navlinks a:hover{color:var(--ink)}.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;border-radius:6px;padding:13px 20px;font-size:13px;font-weight:700;transition:.2s}.nav-cta:hover,.button:hover{background:#a9472d;transform:translateY(-1px)}.button.secondary{background:transparent;color:var(--ink);border:1px solid #cfd5ce}.button.secondary:hover{background:#fff}.hero{padding:100px 0 86px;background:radial-gradient(ellipse at 80% 10%,#e9eee7 0,transparent 42%)}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:700;color:var(--green);margin:0 0 20px}.hero h1,.section-title{font:clamp(42px,6vw,68px)/1.08 "DM Serif Display",Georgia,serif;letter-spacing:-1.4px;margin:0;max-width:820px}.hero h1 span{color:var(--accent)}.hero-copy{font-size:18px;color:var(--muted);max-width:650px;margin:24px 0 30px;line-height:1.75}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.micro{font-size:12px;color:var(--muted);margin-top:20px}.proofline{display:flex;gap:28px;flex-wrap:wrap;margin-top:46px;padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.proofline span:before{content:"✓";color:var(--green);font-weight:700;margin-right:8px}.section{padding:82px 0}.section.alt{background:var(--panel)}.section.dark{background:var(--dark);color:#fff}.section-head{max-width:700px;margin-bottom:42px}.section-title{font-size:clamp(34px,4.2vw,48px);max-width:760px}.lead{font-size:16px;color:var(--muted);max-width:680px;margin:16px 0 0}.dark .lead{color:#b6c1ba}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.tile{background:#fff;border:1px solid var(--line);border-radius:10px;padding:25px}.tile .num{font-size:11px;color:var(--green);font-weight:700;letter-spacing:.12em}.tile h3{font:23px "DM Serif Display",serif;margin:12px 0 8px}.tile p{font-size:13px;color:var(--muted);margin:0}.usecase{display:flex;gap:15px;padding:19px 0;border-bottom:1px solid var(--line)}.usecase:last-child{border:0}.usecase .icon{width:38px;height:38px;border-radius:8px;background:#e5eee9;display:grid;place-items:center;color:var(--green);font-size:17px;flex:0 0 38px}.usecase h3{font-size:15px;margin:0 0 4px}.usecase p{font-size:13px;color:var(--muted);margin:0}.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}.checklist{list-style:none;padding:0;margin:24px 0 0}.checklist li{padding:10px 0 10px 27px;position:relative;border-bottom:1px solid var(--line);font-size:14px}.checklist li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}.note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--green);border-radius:7px;padding:20px 22px;color:var(--muted);font-size:13px}.note strong{color:var(--ink)}.pricing{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}.price-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px;display:flex;flex-direction:column}.price-card.featured{border:2px solid var(--ink);position:relative}.flag{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--green);font-weight:700}.price-card h3{font:28px "DM Serif Display",serif;margin:8px 0 4px}.price-desc{color:var(--muted);font-size:13px;min-height:44px}.price{font:52px "DM Serif Display",serif;letter-spacing:-1px;margin:16px 0 0}.price small{font:13px "DM Sans",sans-serif;color:var(--muted)}.price-caption{font-size:11px;color:var(--muted);margin-bottom:20px}.price-card ul{list-style:none;padding:0;margin:0 0 24px;flex:1}.price-card li{font-size:13px;padding:8px 0;border-bottom:1px solid #edf0eb;color:#4e5c55}.price-card li:before{content:"✓";color:var(--green);margin-right:9px;font-weight:700}.price-card .button{width:100%;margin-top:auto}.price-foot{font-size:12px;color:var(--muted);margin:22px auto 0;max-width:760px;text-align:center}.addon{margin-top:22px;background:#e8ede7;border-radius:9px;padding:20px 23px;display:flex;justify-content:space-between;gap:20px;align-items:center}.addon strong{display:block;font-size:14px}.addon p{margin:4px 0 0;color:var(--muted);font-size:12px}.addon .addon-price{font-weight:700;white-space:nowrap}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}.step{border-top:2px solid #52645b;padding-top:18px}.step:before{counter-increment:step;content:"0" counter(step);font-size:11px;letter-spacing:.12em;color:#8ca197;font-weight:700}.step h3{font:21px "DM Serif Display",serif;margin:10px 0 7px}.step p{font-size:13px;color:#b6c1ba;margin:0}.faq{max-width:820px}.faq details{border-bottom:1px solid var(--line);padding:18px 0}.faq summary{font-weight:700;font-size:15px;cursor:pointer;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";float:right;color:var(--accent);font-size:20px}.faq details[open] summary:after{content:"−"}.faq details p{font-size:13px;color:var(--muted);max-width:740px;margin:12px 0 0}.contact{display:grid;grid-template-columns:1fr auto;gap:35px;align-items:center;background:#e9eee8;border-radius:12px;padding:36px}.contact h2{font:36px "DM Serif Display",serif;margin:0 0 8px}.contact p{font-size:14px;color:var(--muted);margin:0;max-width:620px}.footer{padding:32px 0 42px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}.footer-top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:20px}.footer-links{display:flex;gap:20px}.fineprint{max-width:850px;line-height:1.7}.mobile-cta{display:none}
+@media(max-width:800px){.navlinks{display:none}.hero{padding:72px 0 62px}.grid3{grid-template-columns:1fr}.split{grid-template-columns:1fr;gap:28px}.steps{grid-template-columns:1fr 1fr}.contact{grid-template-columns:1fr}.pricing{grid-template-columns:1fr}.section{padding:64px 0}}
+@media(max-width:520px){.wrap{width:calc(100% - 36px)}.nav{height:66px;padding:0 18px}.brand{font-size:23px}.nav-cta{padding:10px 12px;font-size:11px}.hero h1{font-size:43px}.hero-copy{font-size:16px}.proofline{gap:12px;flex-direction:column}.steps{grid-template-columns:1fr}.addon{align-items:flex-start;flex-direction:column}.contact{padding:25px}.contact h2{font-size:30px}}
 </style>
 </head>
 <body>
-
-<div id="announce">
-  <span class="ann-badge">Pre-launch</span>
-  <span>This page sets out what ClawSolved intends to deliver. We’re taking early audit requests ahead of launch.</span>
-  <button class="ann-dismiss" onclick="this.parentElement.style.display='none'" aria-label="Dismiss">×</button>
-</div>
-
-<nav id="nav">
-  <a href="#hero" class="nav-logo"><span aria-hidden="true">🦞</span> ClawSolved</a>
-  <ul class="nav-links">
-    <li><a href="#packages">Workflows</a></li>
-    <li><a href="#security">Security</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#enterprise">Teams</a></li>
-  </ul>
-  <a href="#audit" class="nav-cta">Request an audit</a>
+<div class="topbar"><strong>Practical AI automation.</strong> A useful workflow at a time. No long-term commitment.</div>
+<nav class="nav">
+  <a class="brand" href="#top" aria-label="ClawSolved home">Claw<span class="brand-mark">Solved</span></a>
+  <div class="navlinks">
+    <a href="#workflows">What it can do</a><a href="#process">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQs</a>
+  </div>
+  <a class="nav-cta" href="mailto:hello@clawsolved.com?subject=Discuss%20an%20AI%20workflow">Discuss a workflow</a>
 </nav>
 
-<section id="hero">
-  <div class="hero-inner">
-    <div class="hero-kicker mono"><span class="kicker-dot"></span>Built for OpenClaw 2.0 and later · NemoClaw-aware</div>
-    <h1 class="hero-h1">OpenClaw, set up safely and built around your business.<span class="line2">Our target: working in 48 hours.</span></h1>
-    <p class="hero-sub">ClawSolved is launching a fixed-price setup and care service for OpenClaw. We plan to harden the install, turn on the protections OpenClaw leaves optional, and build workflows that fit how you work. <strong>We intend never to install third-party skills from ClawHub. We write every skill ourselves.</strong></p>
-    <div class="hero-ctas">
-      <a href="#audit" class="btn-primary">Request your Claw audit</a>
-      <a href="#how" class="btn-secondary">See how it will work →</a>
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">AI assistance for the work behind the work</p>
+    <h1>Less repetitive admin.<br><span>More time for the work that matters.</span></h1>
+    <p class="hero-copy">ClawSolved sets up practical AI-assisted workflows for small businesses. We take one recurring task, configure a focused solution around the tools you already use, and show you how to put it to work.</p>
+    <div class="hero-actions">
+      <a class="button" href="mailto:hello@clawsolved.com?subject=Discuss%20an%20AI%20workflow">Tell us what takes too much time</a>
+      <a class="button secondary" href="#pricing">See fixed-price options</a>
     </div>
-    <div class="hero-trust-strip">
-      <span class="ts-item"><span class="ts-dot"></span>Fixed price, agreed up front</span>
-      <span class="ts-item"><span class="ts-dot"></span>48-hour delivery target</span>
-      <span class="ts-item"><span class="ts-dot"></span>No third-party skill code</span>
-      <span class="ts-item"><span class="ts-dot"></span>Plain-English reporting</span>
-    </div>
-    <p class="hero-note"><strong>A note on this page.</strong> ClawSolved is pre-launch. Everything below describes the service we intend to provide, including prices, timings and savings. These are our targets and plans, not guarantees or a record of past client results.</p>
+    <p class="micro">Fixed project fees in US dollars · Remote setup · No subscription required</p>
+    <div class="proofline"><span>Start with one defined task</span><span>Human approval stays in control</span><span>Keep your existing tools where practical</span></div>
   </div>
 </section>
 
-<section id="changed">
-  <div class="inner">
-    <div class="center r">
-      <div class="eyebrow teal">What’s changed in OpenClaw</div>
-      <h2 class="s-title lora">Easier to install. Still not safe by default.</h2>
-      <p class="s-lead">OpenClaw 2.0 landed in August 2026 and the stable line has moved on since (v2026.11.x at the time of writing). The project is now run by the OpenClaw Foundation. Here is how that shapes what we plan to do.</p>
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">The idea</p>
+      <h2 class="section-title">You probably don't need an AI transformation project.</h2>
+      <p class="lead">You may simply have a handful of jobs that consume time every week: sorting enquiries, preparing follow-ups, turning information into reports, or keeping track of what needs attention.</p>
     </div>
-    <div class="chg-grid">
-      <div class="chg r"><span class="tag">Better</span><h4 class="lora">Setup is much simpler</h4><p>Guided onboarding now looks for AI access you already have, tests that it works, and refuses network installs that would be exposed without authentication. We’ll spend our time on configuration and workflows, not on fighting installers.</p></div>
-      <div class="chg r d1"><span class="tag warn">Still on you</span><h4 class="lora">Hardening is opt-in</h4><p>Docker or Podman sandboxing and command approvals exist, but they’re off by default. Making sure they’re on, and tuned so the agent stays useful, is a core part of our setup.</p></div>
-      <div class="chg r d2"><span class="tag">Better</span><h4 class="lora">Teams and shared sessions</h4><p>Shared cloud sessions let colleagues work in the same agent session. OpenClaw’s own docs say that’s collaboration, not a security boundary. One Gateway is one trust domain. We plan to design team setups around that limit.</p></div>
-      <div class="chg r d3"><span class="tag warn">New risk</span><h4 class="lora">Agents can now write their own skills</h4><p>OpenClaw can turn past conversations into reusable skills. That’s handy, but it means new, unreviewed code can appear on its own. We intend to review anything the agent writes before it’s allowed to run unattended.</p></div>
-      <div class="chg r"><span class="tag warn">Upgrades need care</span><h4 class="lora">Sessions moved into SQLite</h4><p>2.0 migrates sessions and transcripts to a new store, and downgrading is awkward. Our plan is a verified backup before any upgrade and tested updates before we apply them to your system.</p></div>
-      <div class="chg r d1"><span class="tag">Better</span><h4 class="lora">ClawHub now scans uploads</h4><p>Skills are checked with VirusTotal, but the maintainers themselves call that “not a silver bullet”. Malicious skills that rely on hidden instructions or staged downloads can slip through. That’s why we plan to skip the marketplace.</p></div>
+    <div>
+      <div class="usecase"><div class="icon">↳</div><div><h3>Start with a real bottleneck</h3><p>We identify a specific, repeatable task rather than proposing automation for its own sake.</p></div></div>
+      <div class="usecase"><div class="icon">✳</div><div><h3>Build around your process</h3><p>The workflow is configured around an agreed task and compatible tools—not a generic chatbot dropped into your business.</p></div></div>
+      <div class="usecase"><div class="icon">✓</div><div><h3>Keep people in charge</h3><p>Where a workflow prepares messages or decisions, it can be designed for review and approval before anything is sent or changed.</p></div></div>
     </div>
   </div>
 </section>
 
-<section id="problem">
-  <div class="inner problem-grid">
-    <div class="r">
-      <div class="eyebrow">Why self-setups go wrong</div>
-      <h2 class="s-title lora">Getting it running is the easy part now.</h2>
-      <p class="s-lead">Getting a safe, useful, affordable agent is where people still struggle. The mistakes below are what we’re designing our service to prevent.</p>
-      <p class="s-lead" style="margin-top:1rem">One fixed price, a clear process, and someone who stays on it after launch.</p>
-      <div style="margin-top:2rem"><a href="#audit" class="btn-primary">Start with an audit</a></div>
+<section class="section alt" id="workflows">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Examples of useful workflows</p>
+      <h2 class="section-title">Small improvements that add up.</h2>
+      <p class="lead">The right starting point depends on your business, your systems and the task you want to improve. These are examples to make the possibilities concrete—not a claim that every integration is available out of the box.</p>
     </div>
-    <div class="fail-list r d1">
-      <div class="fail-item"><div class="fi-head"><div class="fi-title">Protections left switched off</div><span class="fi-pill hot">Common</span></div><div class="fi-desc">Sandboxing, approvals and channel allowlists are opt-in. A working agent with full access to your email and files and no guardrails is a liability.</div></div>
-      <div class="fail-item"><div class="fi-head"><div class="fi-title">Marketplace skills installed on trust</div><span class="fi-pill hot">Active threat</span></div><div class="fi-desc">ClawHub has carried confirmed malicious skills, including a coordinated campaign early in 2026. Scanning has improved but can’t catch everything.</div></div>
-      <div class="fail-item"><div class="fi-head"><div class="fi-title">Credentials in plaintext</div><span class="fi-pill hot">Common</span></div><div class="fi-desc">API keys sitting in config files or visible to the model. OpenClaw now offers a team Secret Store and audit checks, but someone has to set them up.</div></div>
-      <div class="fail-item"><div class="fi-head"><div class="fi-title">Bills with no ceiling</div><span class="fi-pill warn">Very common</span></div><div class="fi-desc">Long-running agents on a premium model for every task, and no spend alerts, can produce unpleasant surprises.</div></div>
-      <div class="fail-item"><div class="fi-head"><div class="fi-title">Fast-moving releases, nobody watching</div><span class="fi-pill warn">The churn driver</span></div><div class="fi-desc">OpenClaw ships very frequently. Security fixes matter, but so do breaking changes. Without someone testing updates, you either fall behind or break things.</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="skills-risk">
-  <div class="inner two">
-    <div class="sec-text r">
-      <div class="eyebrow">Skills safety · our intended approach</div>
-      <h2 class="s-title lora">We plan to rebuild skills, not install them.</h2>
-      <p>Most services scan or review ClawHub skills and then install them. The original author’s code still runs on your machine, and if the review missed something, you carry the risk.</p>
-      <p><strong>We intend to take a different route.</strong> We read what a skill claims to do (send emails, track expenses, schedule meetings) and write our own implementation. The original code never enters your system.</p>
-      <p>This applies to skills your agent writes for itself too. We plan to review those before they can run without supervision.</p>
-      <p><strong>An honest boundary:</strong> OpenClaw itself, and any official plugins we use, are still third-party software. We plan to run only official, pinned releases and to update them on a tested schedule. Skills are the part we write.</p>
-      <p class="rust" style="font-weight:600;margin-top:1.5rem">Our commitment: no ClawHub skill code in your deployment, and our own skills reviewed before they go live.</p>
-    </div>
-    <div class="r d1">
-      <div class="rebuild-diagram">
-        <div class="lora" style="font-size:1.1rem;font-weight:700;margin-bottom:1.25rem">The difference, in practice</div>
-        <div class="rebuild-row danger"><div>⚠️</div><div class="rebuild-text"><strong>Standard approach</strong>Install from ClawHub, rely on a scan, third-party code runs on your machine.</div></div>
-        <div class="rebuild-divider">ClawSolved intends to</div>
-        <div class="rebuild-row safe"><div>📋</div><div class="rebuild-text"><strong>1 · Read the spec</strong>Study what the skill claims to do. That’s all we take.</div></div>
-        <div class="rebuild-row safe"><div>🔨</div><div class="rebuild-text"><strong>2 · Write our own</strong>A clean implementation, scoped to the permissions it needs.</div></div>
-        <div class="rebuild-row safe"><div>✅</div><div class="rebuild-text"><strong>3 · Test and review</strong>Tested end-to-end and reviewed before it touches your system.</div></div>
-        <div class="rebuild-row result"><div>🏢</div><div class="rebuild-text"><strong>The goal</strong>The capability without a marketplace author’s code in your environment.</div></div>
-      </div>
+    <div class="grid3">
+      <article class="tile"><span class="num">01 / COMMUNICATION</span><h3>Enquiry preparation</h3><p>Organise incoming enquiries, extract key details, identify missing information and prepare a draft response for your review.</p></article>
+      <article class="tile"><span class="num">02 / FOLLOW-THROUGH</span><h3>Meeting to action list</h3><p>Turn notes or transcripts into concise summaries, assigned actions, deadlines and draft follow-up messages.</p></article>
+      <article class="tile"><span class="num">03 / RESEARCH</span><h3>Business research brief</h3><p>Collect information from agreed sources and produce a structured summary, comparison or recurring intelligence report.</p></article>
+      <article class="tile"><span class="num">04 / ADMINISTRATION</span><h3>Document processing</h3><p>Extract and organise information from routine documents, then place it into a consistent format for checking.</p></article>
+      <article class="tile"><span class="num">05 / SALES SUPPORT</span><h3>Lead and account preparation</h3><p>Bring together publicly available company information and your own notes to prepare a concise briefing before a sales conversation.</p></article>
+      <article class="tile"><span class="num">06 / INTERNAL KNOWLEDGE</span><h3>Find answers in your material</h3><p>Make approved internal documents easier to search and summarise, with source material available for verification.</p></article>
     </div>
   </div>
 </section>
 
-<section id="clawcheck">
-  <div class="cc-wrap r">
-    <div class="cc-eyebrow mono">ClawCheck · in development</div>
-    <h2 class="cc-title lora">A quick check for any ClawHub skill.</h2>
-    <p class="cc-sub">We’re planning ClawCheck as a free tool: name a skill and get a short report on prompt-injection risk, whether its declared permissions match what it does, whether its APIs are current, and any undeclared environment variables. It isn’t live yet. Below is an <strong>illustrative example</strong> of the kind of report we intend to produce, not a real result.</p>
-    <div class="cc-sample">
-      <div class="cc-sample-head"><span>example-skill-name</span><span class="cc-badge">ILLUSTRATIVE ONLY</span></div>
-      <div class="cc-rows">
-        <div><span>Prompt injection</span><span>checked for hidden instructions</span></div>
-        <div><span>Declared vs actual access</span><span>compared, mismatches flagged</span></div>
-        <div><span>API currency</span><span>deprecated endpoints flagged</span></div>
-        <div><span>Undeclared env vars</span><span>listed with where they’re read</span></div>
-        <div><span>Overall</span><span>safe / caution / do not install</span></div>
-      </div>
-      <div class="cc-note">Want a skill reviewed now? Name it in the audit form below and we’ll plan to look at it manually. Any review will say what was and wasn’t checked, and it won’t be a guarantee.</div>
+<section class="section">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow">A sensible scope</p>
+      <h2 class="section-title">Useful automation, without handing over the keys.</h2>
+      <p class="lead">AI systems can make mistakes, and connecting them to business tools creates real security and privacy considerations. We take a deliberately bounded approach.</p>
+    </div>
+    <div>
+      <ul class="checklist">
+        <li>Agree the task, inputs, outputs and limits before work begins.</li>
+        <li>Use the minimum access and permissions needed for the agreed workflow.</li>
+        <li>Prefer draft, review and approval steps for external messages or consequential actions.</li>
+        <li>Explain which services and integrations the workflow relies on.</li>
+        <li>Test with sample or appropriately redacted information before live use.</li>
+        <li>Provide a handover so you understand how to use and pause the workflow.</li>
+      </ul>
+      <div class="note" style="margin-top:22px"><strong>A clear privacy point:</strong> “AI” does not automatically mean private or local. Depending on the configuration, information may be processed by model providers, hosting services or connected applications. We explain the proposed data flow before setup; we do not promise that data never leaves your systems.</div>
     </div>
   </div>
 </section>
 
-<section id="solution">
-  <div class="inner">
-    <div class="center r">
-      <div class="eyebrow teal">The ClawSolved system</div>
-      <h2 class="s-title lora">Three things, done properly.</h2>
-      <p class="s-lead">Diagnose where you stand. Deploy a hardened, useful agent. Maintain it so it stays that way.</p>
+<section class="section alt" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Straightforward project pricing</p>
+      <h2 class="section-title">Start small. Add capability when it makes sense.</h2>
+      <p class="lead">Choose a defined starting point. We confirm the scope and compatibility before accepting payment, so you know what is included and what is not.</p>
     </div>
-    <div class="solution-grid">
-      <div class="prod-card audit r"><div class="prod-top-line"></div><div class="prod-ey mono">ClawAudit</div><div class="prod-name lora">Diagnose</div><p class="prod-tagline">A plain-English view of your safety gaps, cost leaks and the quickest route to real productivity.</p></div>
-      <div class="prod-card setup r d1"><div class="prod-top-line"></div><div class="prod-ey mono">ClawSetup</div><div class="prod-name lora">Deploy</div><p class="prod-tagline">A hardened OpenClaw deployment tailored to your business, with skills we write ourselves.</p></div>
-      <div class="prod-card care r d2"><div class="prod-top-line"></div><div class="prod-ey mono">ClawCare</div><div class="prod-name lora">Maintain</div><p class="prod-tagline">Tested updates, re-run security checks and cost watching, month after month.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="products" style="padding-top:0">
-  <div class="inner">
-    <div class="center r">
-      <div class="eyebrow teal">What each piece will include</div>
-      <h2 class="s-title lora">Choose what you need.</h2>
-      <p class="s-lead">Each one uses the same approach: our own skills, protections turned on, and nothing installed on trust.</p>
-    </div>
-    <div class="prod-grid">
-      <div class="prod-card setup featured r">
-        <div class="prod-top-line"></div><div class="prod-ey mono">ClawSetup</div><div class="prod-name lora">Deploy</div>
-        <p class="prod-tagline">We plan to install, harden and configure OpenClaw for your business, with costs controlled and one workflow working from day one.</p>
-        <div class="prod-price lora"><span class="cur">£</span>497</div>
-        <div class="prod-price-note mono">planned one-time price · includes first month of ClawCare (£45 value)</div>
-        <div class="prod-rule"></div>
-        <ul class="prod-feats">
-          <li><span class="feat-tick">→</span> Install of a current official release on your machine or cloud VM, pinned to supported Node versions</li>
-          <li><span class="feat-tick">→</span> Hardening: private-only access, token auth, channel allowlists, Docker/Podman sandboxing on, command approvals set to allowlist-and-ask</li>
-          <li><span class="feat-tick">→</span> Credentials moved out of plaintext into a secret store; baseline <span class="mono" style="font-size:.78rem">openclaw security audit</span> run and fixed</li>
-          <li><span class="feat-tick">→</span> <strong>Every skill written by us. No ClawHub code.</strong></li>
-          <li><span class="feat-tick">→</span> Model routing: cheaper models for routine work, optional local models for sensitive tasks, spend alerts and caps</li>
-          <li><span class="feat-tick">→</span> Your chosen workflow package connected to your chat app and tested</li>
-          <li><span class="feat-tick">→</span> Verified backup and a 20-minute handover</li>
+    <div class="pricing">
+      <article class="price-card">
+        <span class="flag">Focused starting point</span>
+        <h3>Workflow Starter</h3>
+        <p class="price-desc">One practical workflow for one clearly defined recurring task.</p>
+        <div class="price">$295 <small>USD</small></div>
+        <div class="price-caption">One-time project fee</div>
+        <ul>
+          <li>Brief discovery and workflow definition</li>
+          <li>One agreed AI-assisted workflow</li>
+          <li>Configuration using compatible tools</li>
+          <li>Testing with agreed sample information</li>
+          <li>Short written handover guide</li>
+          <li>Seven days of post-delivery support for defects or setup questions</li>
         </ul>
-        <a href="#audit" class="prod-btn solid">Start with an audit →</a>
-      </div>
-      <div class="prod-card care r d1">
-        <div class="prod-top-line"></div><div class="prod-ey mono">ClawCare</div><div class="prod-name lora">Maintain</div>
-        <p class="prod-tagline">A planned monthly service so updates don’t break things, protections don’t drift, and costs stay visible.</p>
-        <div class="prod-price lora"><span class="cur">£</span>45</div>
-        <div class="prod-price-note mono">planned /month · first month included with ClawSetup</div>
-        <div class="prod-rule"></div>
-        <ul class="prod-feats">
-          <li><span class="feat-tick">→</span> Updates tested (including backup and rollback plan) before they’re applied</li>
-          <li><span class="feat-tick">→</span> Security audit re-run monthly and after changes</li>
-          <li><span class="feat-tick">→</span> Review of any skills the agent has written for itself</li>
-          <li><span class="feat-tick">→</span> Monthly cost report and spend-spike alerts</li>
-          <li><span class="feat-tick">→</span> Email support, with a 24-hour response target</li>
+        <a class="button secondary" href="mailto:hello@clawsolved.com?subject=Workflow%20Starter%20enquiry">Discuss Workflow Starter</a>
+      </article>
+      <article class="price-card featured">
+        <span class="flag">More complete setup</span>
+        <h3>Workflow Plus</h3>
+        <p class="price-desc">A broader setup for a business that wants several connected steps working together.</p>
+        <div class="price">$695 <small>USD</small></div>
+        <div class="price-caption">One-time project fee</div>
+        <ul>
+          <li>Discovery and a simple workflow map</li>
+          <li>Up to three related workflow components</li>
+          <li>Configuration of agreed compatible integrations</li>
+          <li>Review and approval steps where appropriate</li>
+          <li>Testing with agreed sample information</li>
+          <li>Handover notes and a walkthrough</li>
+          <li>14 days of post-delivery support for defects or setup questions</li>
         </ul>
-        <a href="#audit" class="prod-btn outline">Add to an existing setup →</a>
-      </div>
-      <div class="prod-card audit r d2">
-        <div class="prod-top-line"></div><div class="prod-ey mono">ClawAudit</div><div class="prod-name lora">Diagnose</div>
-        <p class="prod-tagline">Already running OpenClaw, or thinking about it? A planned written report within 48 hours.</p>
-        <div class="prod-price lora"><span class="cur">£</span>47</div>
-        <div class="prod-price-note mono">planned standard price · free during launch · credited if you proceed</div>
-        <div class="prod-rule"></div>
-        <ul class="prod-feats">
-          <li><span class="feat-tick">→</span> Version and patch-level check, and update readiness</li>
-          <li><span class="feat-tick">→</span> Exposure, sandbox, approvals and secrets review</li>
-          <li><span class="feat-tick">→</span> Inventory of installed skills and plugins</li>
-          <li><span class="feat-tick">→</span> Spend review and top 3 workflow opportunities</li>
-          <li><span class="feat-tick">→</span> Honest view on whether OpenClaw, or another runtime, fits you</li>
-        </ul>
-        <a href="#audit" class="prod-btn outline">Request an audit →</a>
-      </div>
-      <div class="prod-card score clawscore-card r d3">
-        <div class="prod-top-line"></div><div class="prod-ey mono">ClawScore</div><div class="prod-name lora">Monitor</div>
-        <p class="prod-tagline">A health dashboard we’re planning for a later phase: exposure score, skill inventory, cost drift and session health at a glance.</p>
-        <div class="prod-price lora"><span class="cur">£</span>19</div>
-        <div class="prod-price-note mono">intended /month (solo) · £39/month (team, up to 5 deployments)</div>
-        <div class="prod-rule"></div>
-        <ul class="prod-feats">
-          <li><span class="feat-tick">→</span> Security exposure score for your deployment</li>
-          <li><span class="feat-tick">→</span> Skill and plugin change monitoring</li>
-          <li><span class="feat-tick">→</span> Cost-drift detection</li>
-          <li><span class="feat-tick">→</span> Session and Gateway health</li>
-        </ul>
-        <a href="#audit" class="prod-btn teal-outline">Join the early-interest list →</a>
-      </div>
+        <a class="button" href="mailto:hello@clawsolved.com?subject=Workflow%20Plus%20enquiry">Discuss Workflow Plus</a>
+      </article>
     </div>
+    <div class="addon">
+      <div><strong>Optional ongoing care</strong><p>For customers who want a little help after handover. Support scope and any change requests are agreed in advance.</p></div>
+      <div class="addon-price">$49 / month</div>
+    </div>
+    <p class="price-foot">Prices exclude any third-party subscriptions, model/API usage, hosting or software licences. Those costs remain payable to the relevant provider and will be identified before work starts. Bespoke work, additional workflows and unsupported integrations are quoted separately. No recurring plan is required.</p>
   </div>
 </section>
 
-<section id="how">
-  <div class="inner">
-    <div class="center r">
-      <div class="eyebrow">The planned ClawSetup process</div>
-      <h2 class="s-title lora">From audit to running, in about 48 hours.</h2>
-      <p class="s-lead">Simple for you, thorough on our side. 48 hours is our target and depends on you giving us access promptly.</p>
+<section class="section dark" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" style="color:#9fc7b9">How it works</p>
+      <h2 class="section-title">A clear process, from problem to working workflow.</h2>
+      <p class="lead">The exact delivery time depends on access, integration compatibility and the agreed scope. We confirm the plan before implementation begins.</p>
     </div>
     <div class="steps">
-      <div class="step r"><div class="step-circle mono">01</div><h4 class="lora">Audit</h4><p>You answer a few questions about your business and setup. We report back on risks and the best productivity wins.</p><span class="step-badge you">You complete this</span></div>
-      <div class="step r d1"><div class="step-circle mono">02</div><h4 class="lora">Configure</h4><p>We agree the workflow, which skills to write, model routing and spend limits.</p><span class="step-badge us">We handle this</span></div>
-      <div class="step r d2"><div class="step-circle mono">03</div><h4 class="lora">Deploy</h4><p>Install, harden, back up, test end-to-end, then go live with our own skills only.</p><span class="step-badge us">We handle this</span></div>
-      <div class="step r d3"><div class="step-circle mono">04</div><h4 class="lora">Handover</h4><p>A 20-minute walkthrough. ClawCare then handles updates and monitoring.</p><span class="step-badge both">Together</span></div>
+      <div class="step"><h3>Tell us the task</h3><p>Explain what currently happens, how often it happens and what a useful result would look like.</p></div>
+      <div class="step"><h3>Confirm the scope</h3><p>We check the tools involved, access requirements, data considerations and whether the task is suitable.</p></div>
+      <div class="step"><h3>Configure and test</h3><p>We build the agreed workflow and test it against examples before it is put into normal use.</p></div>
+      <div class="step"><h3>Handover</h3><p>You receive instructions, understand the workflow's limits and know how to pause or disable it.</p></div>
     </div>
   </div>
 </section>
 
-<section id="packages">
-  <div class="inner">
-    <div class="center r">
-      <div class="eyebrow teal">Planned workflow packages</div>
-      <h2 class="s-title lora">Built for your type of business.</h2>
-      <p class="s-lead">Each ClawSetup is intended to include one workflow package matched to your audit, using only skills we write ourselves.</p>
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Questions, answered</p>
+      <h2 class="section-title">Before you get started.</h2>
     </div>
-    <div class="pkg-grid">
-      <div class="pkg-card r"><div class="pkg-icon">📧</div><div class="pkg-name lora">AI Email Triage</div><div class="pkg-for mono">VAs · Consultants · Coaches · Freelancers</div><div class="pkg-desc">Sorts incoming email, drafts replies to recurring requests, flags urgent items and schedules follow-ups. You approve before anything is sent.</div><p class="pkg-benefit">Target: 8–12 hours a week saved on email.</p><div class="pkg-skills"><strong>Skills we’ll build:</strong> mail-read · mail-draft · categorise · follow-up-scheduler</div></div>
-      <div class="pkg-card r d1"><div class="pkg-icon">🤝</div><div class="pkg-name lora">AI Client Onboarding</div><div class="pkg-for mono">Agencies · Freelancers · Service businesses</div><div class="pkg-desc">Intake, project brief, welcome sequence and milestone reminders, done the same way every time.</div><p class="pkg-benefit">Target: cut onboarding time by around 70%.</p><div class="pkg-skills"><strong>Skills we’ll build:</strong> intake-form · brief-generator · welcome-sequence · calendar-sync</div></div>
-      <div class="pkg-card r d2"><div class="pkg-icon">📋</div><div class="pkg-name lora">AI Invoice &amp; Admin</div><div class="pkg-for mono">Tradespeople · Small e-commerce · Service providers</div><div class="pkg-desc">Invoices from job records, payment chasing, expense tracking and monthly summaries.</div><p class="pkg-benefit">Target: around 15 hours a month of admin saved.</p><div class="pkg-skills"><strong>Skills we’ll build:</strong> invoice-create · payment-chase · expense-log · payments-sync</div></div>
-      <div class="pkg-card r"><div class="pkg-icon">🔍</div><div class="pkg-name lora">AI Research &amp; Briefing</div><div class="pkg-for mono">Consultants · Analysts · Content creators</div><div class="pkg-desc">Background research, competitor monitoring and meeting briefs, with sources you can check.</div><p class="pkg-benefit">Target: turn 3-hour research jobs into about 15 minutes.</p><div class="pkg-skills"><strong>Skills we’ll build:</strong> web-research · content-brief · competitor-monitor · meeting-prep</div></div>
-      <div class="pkg-card r d1"><div class="pkg-icon">📅</div><div class="pkg-name lora">AI Scheduling</div><div class="pkg-for mono">Coaches · Therapists · Appointment-based businesses</div><div class="pkg-desc">Scheduling, rescheduling, reminders and post-meeting follow-up. Health or client data stays on your own machine.</div><p class="pkg-benefit">Target: fewer double-bookings and 5+ hours a week saved.</p><div class="pkg-skills"><strong>Skills we’ll build:</strong> calendar-read · schedule-propose · reminder-send · reschedule-handle</div></div>
-      <div class="pkg-card r d2" style="border-style:dashed;background:transparent"><div class="pkg-icon">✦</div><div class="pkg-name lora">Custom workflow</div><div class="pkg-for mono">Any business type</div><div class="pkg-desc">None of these fit? Tell us what eats your time. We expect most custom builds to fit within the standard ClawSetup price, and we’ll tell you up front if one won’t.</div><p class="pkg-benefit">Describe your biggest time sink in the audit form.</p></div>
-    </div>
-    <p class="fine r">Time-saving figures are our design targets, not measured results. Your outcomes will depend on your workload and tools.</p>
-  </div>
-</section>
-
-<section id="security">
-  <div class="inner two">
-    <div class="sec-text r">
-      <div class="eyebrow">Why security comes first</div>
-      <h2 class="s-title lora">Early risks were real. Some are fixed, some aren’t.</h2>
-      <p><strong>What’s improved:</strong> OpenClaw now blocks network installs that would be exposed without authentication, has a built-in <span class="mono" style="font-size:.8rem">security audit</span> command, and ClawHub scans uploads with VirusTotal.</p>
-      <p><strong>What still needs a human:</strong> sandboxing and approvals are off by default. One Gateway is one trust domain. Scanning can’t reliably catch malicious instructions hidden in skill text or fetched later.</p>
-      <p><strong>What we plan to do:</strong> turn on the protections, keep skills in our own code, and re-check on a schedule. Security is part of the build, not an add-on.</p>
-      <div style="margin-top:1.5rem"><a href="#audit" class="btn-primary">Check your current setup →</a></div>
-    </div>
-    <div class="r d1">
-      <div class="sec-stats">
-        <div class="sec-stat"><div class="ss-label mono">Exposed instances, Feb 2026</div><div class="ss-val lora">135k+</div><div class="ss-desc">Reported at peak by SecurityScorecard, mostly from old defaults. The count has changed since.</div></div>
-        <div class="sec-stat"><div class="ss-label mono">Malicious skills found</div><div class="ss-val lora">341</div><div class="ss-desc">In one coordinated ClawHub campaign reported in Feb 2026.</div></div>
-        <div class="sec-stat"><div class="ss-label mono">Skills with flaws</div><div class="ss-val lora">~1 in 3</div><div class="ss-desc">Snyk’s early-2026 research found security flaws in roughly a third of audited skills.</div></div>
-        <div class="sec-stat"><div class="ss-label mono">Our intended standard</div><div class="ss-val lora good">Zero</div><div class="ss-desc">ClawHub skills in any ClawSolved deployment.</div></div>
-      </div>
-      <p class="src">Figures are early-2026 snapshots from public security research and have changed since. We’ll re-check and update them before launch.</p>
+    <div class="faq">
+      <details><summary>Do I need to know anything about AI?</summary><p>No. You need to understand the business task you want to improve. We will explain the proposed workflow in ordinary business terms and identify any decisions or access we need from you.</p></details>
+      <details><summary>Do I need to replace my existing software?</summary><p>Usually not. The intention is to work with tools you already use where suitable integrations are available. We will check compatibility first; if a particular connection is not practical, we will say so rather than imply it is included.</p></details>
+      <details><summary>Will the AI send emails or make changes by itself?</summary><p>Not by default. For external communications or consequential actions, we recommend a review-and-approval step. Any more autonomous behaviour would need to be explicitly scoped, assessed and authorised.</p></details>
+      <details><summary>Is my business information kept private?</summary><p>Privacy depends on the hosting arrangement, AI model, connected services and the information processed. Some configurations send prompts or data to third-party providers. Before setup, we explain the intended data flow and discuss whether it is appropriate for your information. We do not make blanket claims that all processing is local or that no third party can receive data.</p></details>
+      <details><summary>Are subscriptions or usage fees included?</summary><p>No. The project fee covers the work described in the selected package. Third-party software, hosting, model/API usage and other provider charges are separate. We will identify known additional costs before proceeding.</p></details>
+      <details><summary>What if my task turns out to be more complicated?</summary><p>We will explain the issue and agree any revised scope and price before doing additional work. You are not committed to an open-ended project.</p></details>
+      <details><summary>What technology do you use?</summary><p>We select the implementation approach according to the task, required integrations and operating constraints. Open-source agent tools may form part of the underlying setup, but the service is centred on the workflow and its suitability—not on asking you to buy a particular technology.</p></details>
     </div>
   </div>
 </section>
 
-<section id="pricing">
-  <div class="inner">
-    <div class="center r">
-      <div class="eyebrow">Planned pricing</div>
-      <h2 class="s-title lora">Simple. No surprises.</h2>
-      <p class="s-lead">One setup fee, one optional monthly subscription. Prices below are what we intend to charge at launch and may change before then.</p>
-    </div>
-    <div class="billing-row r"><span>Monthly</span><div class="tog-wrap" id="billingTog" onclick="toggleBilling()"><div class="tog-thumb"></div></div><span>Annual</span><span class="save-chip">Save 20%</span></div>
-    <div class="price-grid r d1">
-      <div class="price-card">
-        <div class="price-tag mono">Starter</div><div class="price-name lora">ClawAudit</div>
-        <div class="price-for">Already running OpenClaw, or just considering it. See the full picture before you commit.</div>
-        <div class="price-amount lora"><span class="cur">£</span>47</div>
-        <div class="price-cadence mono">planned one-time · free during launch</div><div class="price-ann">&nbsp;</div>
-        <div class="p-rule"></div>
-        <ul class="p-feats">
-          <li><span class="p-tick">✓</span> Safety, exposure and update-readiness review</li>
-          <li><span class="p-tick">✓</span> Skills and plugin inventory</li>
-          <li><span class="p-tick">✓</span> Cost review and top 3 opportunities</li>
-          <li><span class="p-tick">✓</span> Plain-English report, 48-hour target</li>
-        </ul>
-        <div class="p-note">No sales call. No obligation. We plan to credit it in full against ClawSetup.</div>
-        <a href="#audit" class="p-cta outline-dark">Request an audit →</a>
-      </div>
-      <div class="price-card feat">
-        <div class="price-tag mono">Core offer</div><div class="price-name lora">ClawSetup + ClawCare</div>
-        <div class="price-for">A properly deployed, hardened, workflow-ready OpenClaw, then kept that way.</div>
-        <div class="price-amount lora"><span class="cur">£</span>497</div>
-        <div class="price-cadence mono">setup, then <span id="care-price">£45</span>/month ClawCare</div>
-        <div class="price-value-note">Planned value £542, first month of ClawCare included</div>
-        <div class="price-ann" id="care-ann">&nbsp;</div>
-        <div class="p-rule"></div>
-        <ul class="p-feats">
-          <li><span class="p-tick">✓</span> ClawAudit included</li>
-          <li><span class="p-tick">✓</span> Install and security hardening</li>
-          <li><span class="p-tick">✓</span> One workflow package, deployed and tested</li>
-          <li><span class="p-tick">✓</span> Every skill written by us, no ClawHub code</li>
-          <li><span class="p-tick">✓</span> Model routing, spend alerts and caps</li>
-          <li><span class="p-tick">✓</span> 20-minute handover</li>
-          <li><span class="p-tick">✓</span> Ongoing tested updates and cost reports</li>
-        </ul>
-        <div class="p-note">No lock-in; cancel ClawCare any time. Refund terms for the setup fee will be set out in our terms before launch.</div>
-        <a href="#audit" class="p-cta rust">Start with an audit →</a>
-      </div>
-      <div class="price-card">
-        <div class="price-tag mono">Add-ons</div><div class="price-name lora">Extras</div>
-        <div class="price-for">More workflows, more machines, or a second setup for a team member.</div>
-        <div class="price-amount lora"><span class="cur">£</span>149</div>
-        <div class="price-cadence mono">per additional workflow package</div><div class="price-ann">&nbsp;</div>
-        <div class="p-rule"></div>
-        <ul class="p-feats">
-          <li><span class="p-tick">✓</span> Additional workflow package: £149</li>
-          <li><span class="p-tick">✓</span> Second machine or team member: £197</li>
-          <li><span class="p-tick">✓</span> ClawCare multi-seat (up to 5): £89/month</li>
-          <li><span class="p-tick">✓</span> Custom workflow build: from £249</li>
-        </ul>
-        <div class="p-note">Add-ons would require an active ClawSetup. Teams of more than a few people: see below.</div>
-        <a href="#audit" class="p-cta outline-dark">Discuss your needs →</a>
-      </div>
-    </div>
-    <p class="price-footnote r d2">We intend to hold launch pricing (£497) for our first 8 founding clients.</p>
-  </div>
-</section>
-
-<section id="enterprise">
-  <div class="inner ent-layout">
-    <div class="r">
-      <div class="eyebrow mist">For teams &amp; IT environments</div>
-      <h2 class="s-title lora">Running OpenClaw across a team?<br><span class="mist" style="font-weight:400">Different conversation.</span></h2>
-      <p class="s-lead">OpenClaw 2.0 makes shared sessions easy, but one Gateway is still one trust domain. People who shouldn’t see each other’s work need separate Gateways. NemoClaw and OpenShell add sandbox and network policy around agents, but NVIDIA’s own documentation says they’re not a multi-tenant control plane or an identity system. We plan to help teams work out what they actually need.</p>
-      <div class="comp-window">
-        <div class="comp-window-label mono">How we plan to differ</div>
-        <p>Managed OpenClaw hosting is now a crowded market, with dozens of providers. We don’t plan to be one more host. We intend to offer <strong>independent, hands-on advice and build work</strong>: which runtime fits (OpenClaw, NemoClaw-wrapped, or an alternative such as Hermes Agent), how to split trust domains, and how to keep skills under your control.</p>
-      </div>
-      <a href="#audit" class="ent-link">Request a team assessment →</a>
-    </div>
-    <div class="ent-box r d1">
-      <h4 class="lora">What we expect to cover at scale</h4>
-      <ul class="ent-list">
-        <li>Trust-domain design: separate Gateways (“cells”) where needed</li>
-        <li>Roles, approvals and secret handling for multiple users</li>
-        <li>NemoClaw / OpenShell fit assessment for your stack</li>
-        <li>Team skills written by us, reviewed and version-controlled</li>
-        <li>Monitoring and cost reporting your IT team can see</li>
-        <li>Governance documentation to support SOC 2 or ISO 27001 work (not a certification)</li>
-      </ul>
-      <p style="margin-top:1.25rem;font-family:'JetBrains Mono',monospace;font-size:.63rem;color:var(--mist)">Planned from £35k plus monthly retainer. Scoped per engagement.</p>
+<section class="section alt">
+  <div class="wrap">
+    <div class="contact">
+      <div><p class="eyebrow">Start with a conversation</p><h2>What task would you most like to stop doing manually?</h2><p>Send a short description of the process and the software involved. We can tell you whether it looks suitable for a fixed-price workflow setup and which package is likely to fit.</p></div>
+      <a class="button" href="mailto:hello@clawsolved.com?subject=Discuss%20an%20AI%20workflow">Email ClawSolved</a>
     </div>
   </div>
 </section>
+</main>
 
-<section id="audit">
-  <div class="audit-layout">
-    <div class="audit-text r">
-      <div class="eyebrow">Claw audit · early requests</div>
-      <h2 class="s-title lora">Find out where you stand, and what OpenClaw could do for you.</h2>
-      <p>We’re taking early audit requests ahead of launch. We aim to reply with a plain-English report within 48 hours of confirming your details.</p>
-      <div class="audit-checklist">
-        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>Plain-English report</strong>, 48-hour target</span></div>
-        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>Safety and exposure review</strong> of your setup</span></div>
-        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>Top opportunities</strong> ranked for your business</span></div>
-        <div class="ac-item"><span class="ac-icon">✓</span><span><strong>Credited in full</strong> against ClawSetup if you proceed</span></div>
-        <div class="ac-item"><span class="ac-icon">✓</span><span>No account. No card. We’ll never ask for your API keys.</span></div>
-      </div>
-    </div>
-    <div class="r d1">
-      <form id="auditForm">
-        <div class="form-row-2">
-          <div class="fg"><label>Name</label><input type="text" id="aName" required placeholder="Your name"></div>
-          <div class="fg"><label>Email</label><input type="email" id="aEmail" required placeholder="you@yourco.com"></div>
-        </div>
-        <div class="fg"><label>What does your business do?</label><input type="text" id="aBiz" placeholder="e.g. freelance VA, marketing agency, plumbing business…"></div>
-        <div class="fg"><label>Are you running OpenClaw or similar today?</label>
-          <select id="aRunning"><option value="">Select…</option>
-            <option>Yes, and it’s working well enough</option>
-            <option>Yes, but I’m not sure it’s safe or useful</option>
-            <option>Yes, and I have specific problems with it</option>
-            <option>Evaluating NemoClaw or a team setup</option>
-            <option>No, I’m evaluating it</option>
-            <option>No, I haven’t looked at it yet</option>
-          </select></div>
-        <div class="fg"><label>What eats most of your non-client time each week?</label><input type="text" id="aTime" placeholder="e.g. email, invoicing, scheduling, research…"></div>
-        <div class="fg"><label>Tools you use day to day</label><input type="text" id="aServices" placeholder="e.g. Gmail, Notion, Stripe, Google Calendar…"></div>
-        <div class="fg"><label>Any ClawHub skill you’d like us to look at? (optional)</label><input type="text" id="aSkill" placeholder="Skill name or link"></div>
-        <div class="fg"><label>Anything you’re worried about or hoping for? (optional)</label><textarea id="aWorry" rows="3" placeholder="Security, workflows, costs, team setups…"></textarea></div>
-        <button type="submit" id="auditBtn" class="submit-btn mono">REQUEST AN AUDIT →</button>
-        <div class="form-reassure mono">Early request · No sales call · No obligation</div>
-        <div class="form-ok mono" id="auditOk">✓ Request received.<br>We’ll be in touch by email. Check spam just in case.</div>
-        <div class="form-err mono" id="auditErr">✕ Something went wrong. Please email <a href="mailto:hello@clawsolved.com" style="color:var(--teal-l)">hello@clawsolved.com</a> directly.</div>
-      </form>
-    </div>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top"><a class="brand" href="#top">Claw<span class="brand-mark">Solved</span></a><div class="footer-links"><a href="mailto:hello@clawsolved.com">Contact</a></div></div>
+    <p class="fineprint">ClawSolved provides workflow configuration and implementation services. AI-generated outputs can be inaccurate and should be checked by an appropriately responsible person. Suitability depends on the task, tools, data and permissions involved. Project scope, delivery arrangements, support limits and any third-party costs are confirmed before work begins. Nothing on this page is a guarantee of financial, legal, regulatory or operational outcomes.</p>
+    <p style="margin-top:14px">© <span id="year">2026</span> ClawSolved. All rights reserved.</p>
   </div>
-</section>
-
-<footer>
-  <div class="foot-logo">🦞 ClawSolved</div>
-  <div class="foot-links">
-    <a href="#packages">Workflows</a><a href="#security">Security</a><a href="#pricing">Pricing</a><a href="#enterprise">Teams</a><a href="#audit">Audit</a>
-    <a href="mailto:hello@clawsolved.com">Contact</a><a href="#">Privacy</a><a href="#">Terms</a>
-  </div>
-  <p class="foot-legal">© 2026 ClawSolved. ClawSolved is pre-launch and independent; it isn’t affiliated with or endorsed by the OpenClaw project or Foundation, NVIDIA, or any other product named here. This page describes planned services, prices and targets. They’re intentions, not guarantees, and may change.</p>
 </footer>
-
-<div class="chat-bubble" id="chatBubble" title="Any questions?" onclick="toggleChatTip()">💬</div>
-<div class="chat-tip" id="chatTip"><strong>Any questions?</strong><br>Email <a href="mailto:hello@clawsolved.com" style="color:var(--teal-l)">hello@clawsolved.com</a> or use the audit form above.</div>
-
-<script>
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50),{passive:true});
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.07,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.r').forEach(el=>obs.observe(el));
-let annual=false;
-function toggleBilling(){annual=!annual;document.getElementById('billingTog').classList.toggle('on',annual);
-  document.getElementById('care-price').textContent=annual?'£36':'£45';
-  document.getElementById('care-ann').textContent=annual?'Save £108/yr vs monthly':'\u00a0';}
-let chatOpen=false;
-function toggleChatTip(){chatOpen=!chatOpen;document.getElementById('chatTip').classList.toggle('show',chatOpen)}
-
-/* Audit form via Web3Forms: get a free access key at https://web3forms.com and paste it below. */
-const WEB3FORMS_KEY='YOUR_WEB3FORMS_KEY_HERE';
-const form=document.getElementById('auditForm'),formOk=document.getElementById('auditOk'),formErr=document.getElementById('auditErr'),formBtn=document.getElementById('auditBtn');
-form.addEventListener('submit',async e=>{
-  e.preventDefault();formOk.style.display='none';formErr.style.display='none';
-  const orig=formBtn.textContent;formBtn.textContent='SENDING…';formBtn.disabled=true;
-  const v=id=>document.getElementById(id).value.trim();
-  const payload={access_key:WEB3FORMS_KEY,subject:'NEW CLAW AUDIT REQUEST — clawsolved.com',from_name:'ClawSolved Audit Form',
-    name:v('aName'),email:v('aEmail'),business:v('aBiz'),running:document.getElementById('aRunning').value,time_sink:v('aTime'),tools:v('aServices'),skill_to_review:v('aSkill'),notes:v('aWorry')};
-  try{
-    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)});
-    const data=await res.json();
-    if(data.success){formOk.style.display='block';form.reset()}else{console.error(data);formErr.style.display='block'}
-  }catch(err){console.error(err);formErr.style.display='block'}
-  formBtn.textContent=orig;formBtn.disabled=false;
-});
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-  const id=a.getAttribute('href');if(id.length>1){const t=document.querySelector(id);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}}));
-</script>
+<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
 </body>
 </html>
